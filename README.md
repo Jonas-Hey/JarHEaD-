@@ -1,2 +1,0 @@
-# JarHEaD-
-JarHEaDProjekt
