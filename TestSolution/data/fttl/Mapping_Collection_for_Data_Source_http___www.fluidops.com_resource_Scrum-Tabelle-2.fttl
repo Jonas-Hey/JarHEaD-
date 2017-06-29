@@ -1,0 +1,77 @@
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rrx: <http://www.fluidops.com/ontologies/r2rmlExtension/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.fluidops.com/resource/Scrum-Tabelle-2/MappingCollection96330002660646464764060815817461> a rrx:TriplesMapCollection ;
+    rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/Scrum-Tabelle-2" ;
+    rrx:dataSource default:Scrum-Tabelle-2 ;
+    rrx:sourceSchema <http://www.fluidops.com/resource/Scrum-Tabelle-2/MetaData> ;
+    rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Bootstrapped Mapping for Table: PUBLIC.TABELLENBLATT1" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TABELLENBLATT1"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "UID" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:uid
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "DATUM" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:datum
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "NAME" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:name
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Was habe ich seit dem letzten Daily Scrum getan ?" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:washabeichseitdemletztenDailyScrumgetan
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Was plane ich, bis zum nächsten Daily Scrum zu tun?" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:wasplaneichbiszumnchstenDailyScrumzutun
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Was hat mich bei der Arbeit behindert." ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:washatmichbeiderArbeitbehindert
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/{UID}" ;
+            rr:class default:TABELLENBLATT1
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/Scrum-Tabelle-2/MappingCollection96330002660646464764060815817461> rrx:containsTriplesMap _:node1bjp7vmscx653 .

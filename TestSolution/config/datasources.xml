@@ -7,9 +7,9 @@
           <password>********</password>
         </credentials>
       </authentication>
-      <location>./data/dataops/20170628-084732</location>
+      <location>./data/dataops/20170629-092923</location>
     </config>
-    <identifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-excel-sheet</identifier>
-    <metaDataURI class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-excel-sheet/MetaData</metaDataURI>
+    <identifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-Tabelle-2</identifier>
+    <metaDataURI class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-Tabelle-2/MetaData</metaDataURI>
   </com.fluidops.iwb.datasource.XLSTable>
 </list>
