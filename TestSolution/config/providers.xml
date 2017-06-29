@@ -1,0 +1,23 @@
+<list>
+  <com.fluidops.iwb.provider.R2RMLProvider secrets__id="http://www.fluidops.com/resource/Scrum-excel-sheet-provider" secrets__type="IWBProvider">
+    <config class="com.fluidops.iwb.provider.R2RMLProvider$Config">
+      <dataSource class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-excel-sheet</dataSource>
+      <mappingIdentifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-excel-sheet/MappingCollection51274732413599850152053654424544</mappingIdentifier>
+      <inMemory>true</inMemory>
+    </config>
+    <postProcessors/>
+    <targetRepository></targetRepository>
+    <schedulingConfig class="com.fluidops.util.concurrent.SchedulingConfigImpl">
+      <enabled>false</enabled>
+      <pollInterval>0</pollInterval>
+    </schedulingConfig>
+    <lastStartTime>2017-06-28 07:11:14.452 UTC</lastStartTime>
+    <lastUpdate>2017-06-28 07:11:15.632 UTC</lastUpdate>
+    <lastDuration>1180</lastDuration>
+    <providerID class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-excel-sheet-provider</providerID>
+    <size>118</size>
+    <providerDataEditable>false</providerDataEditable>
+    <userModified>true</userModified>
+    <deleted>false</deleted>
+  </com.fluidops.iwb.provider.R2RMLProvider>
+</list>

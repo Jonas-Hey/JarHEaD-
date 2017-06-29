@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.6
+Created-By: 1.8.0_131-b12 (Oracle Corporation)
+project: TestSolution
+ProductName: TestSolution
+ProductLongName: Solution von Peer mit Excel DataSource
+ProductVersion: 0.3
+version: 0.3
+ProductContact: n/a
+CompanyName: n/a
+date: 2017-06-29_08:30:50
+
