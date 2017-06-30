@@ -5,7 +5,7 @@
 @prefix rrx: <http://www.fluidops.com/ontologies/r2rmlExtension/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.fluidops.com/resource/Scrum-Tabelle-2/MappingCollection96330002660646464764060815817461> a rrx:TriplesMapCollection ;
+<http://www.fluidops.com/resource/Scrum-Tabelle-2/MappingCollection32588017036531325656844852834749> a rrx:TriplesMapCollection ;
     rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/Scrum-Tabelle-2" ;
     rrx:dataSource default:Scrum-Tabelle-2 ;
     rrx:sourceSchema <http://www.fluidops.com/resource/Scrum-Tabelle-2/MetaData> ;
@@ -73,5 +73,3 @@
             rr:class default:TABELLENBLATT1
         ]
     ] .
-
-<http://www.fluidops.com/resource/Scrum-Tabelle-2/MappingCollection96330002660646464764060815817461> rrx:containsTriplesMap _:node1bjp7vmscx653 .
