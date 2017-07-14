@@ -20,9 +20,10 @@ import org.openrdf.repository.RepositoryException;
 import org.openrdf.model.impl.ValueFactoryImpl;
 
 public class test2 {
-	public static final String gemeinde = ":Gemeinde";
+	public static final String gemeinde = ":GEMEINDE";
 	public static final String länge=":längengrad";
 	public static final String breite=":breitengrad";
+	public static final boolean debug=true;
 	
 	
 	/**
@@ -45,31 +46,41 @@ public class test2 {
 		
 		String SPARQL="Select ?längengrad ?breitengrad where {?? "+länge+" ?längengrad.?? "+breite+" ?breitengrad}";
 		
-		System.out.println(SPARQL);
-		System.out.println(left+" "+right);
+		if(debug)System.out.println(SPARQL);
+		if(debug)System.out.println(left+" >-< "+right);
+		
+		List<String> l =query(right, SPARQL,"längengrad");
+		String rechtsLänge=null;
+		String rechtsBreite=null;
+		String linksLänge=null;
+		String linksBreite=null;
+		
+		if(!l.isEmpty()){
+			rechtsLänge=literalToString(l.get(0));}//kann sein, dass nichts oder mehr als eins zurück gegeben wird
+		
+		l =query(right, SPARQL,"breitengrad");
+		if (!l.isEmpty()){
+		rechtsBreite=literalToString(l.get(0));}
+		if (debug)System.out.println(rechtsLänge+" c "+rechtsBreite);
+		
+		l =query(left, SPARQL,"längengrad");
+		if(!l.isEmpty()){
+		linksLänge=literalToString(l.get(0));}//kann sein, dass nichts oder mehr als eins zurück gegeben wird
+		
+		l =query(left, SPARQL,"breitengrad");
+		if (!l.isEmpty()){
+		linksBreite=literalToString(l.get(0));}
+		if (debug)System.out.println(linksLänge+"  "+linksBreite);
+		
+		if(rechtsLänge==null||rechtsBreite==null||linksLänge==null||linksBreite==null){
+			System.err.println("Error: String is empty");
+			System.err.println(SPARQL);
+			return -1;
+			
+		}		
 		
 		
-		String rechtsString=literalToString(query(right, SPARQL,"längengrad").get(0));//kann sein, dass nichts oder mehr als eins zurück gegeben wird
-		rechtsString="\""+rechtsString+"\""+"\"";
-		rechtsString+=" "+literalToString((query(right,SPARQL,"breitengrad").get(0)));
-		rechtsString=rechtsString+"\"";
-		
-		System.out.println("Test");
-		String linksString=literalToString(query(left, SPARQL,"längengrad").get(0));//kann sein, dass nichts oder mehr als eins zurück gegeben wird
-		linksString="\""+linksString+"\""+"\"";
-		linksString+=" "+literalToString((query(left,SPARQL,"breitengrad").get(0)));
-		linksString=linksString+"\"";
-		
-		
-		System.out.println(rechtsString+" "+linksString);
-		
-		double links[]=stringToDouble(linksString);
-		double rechts[]=stringToDouble(rechtsString);
-		
-		
-		System.out.println("Länge ist :"+links[0]+" Breite ist :"+links[1]);
-		System.out.println("Länge ist :"+rechts[0]+" Breite ist :"+rechts[1]);
-		return berechneDistance(rechts,links);
+		return berechneDistance(stringToDouble(rechtsLänge),stringToDouble(rechtsBreite),stringToDouble(linksLänge),stringToDouble(linksBreite));
 		
 	}
 	/**
@@ -80,7 +91,7 @@ public class test2 {
 	 */
 	@CallableFromWidget
 	public static String distance(URI left,URI right){
-		System.out.println("test");
+		if(debug)System.out.println("test");
 		
 		return "Der Abstand beträgt "+distanceDouble(left,right)+" Km";
 	}
@@ -88,15 +99,17 @@ public class test2 {
 	
 	/**
 	 * Helper Method for Distance, which calculates the Distance
+	 * @param ds2 
+	 * @param ds 
 	 * @param double array with latitude and longitude
 	 * @param double array with latitude and longitude
 	 * @return double of the distance in Km
 	 */
-	public static double berechneDistance(double rechts[],double links[]){
-		double lat=(rechts[1]+links[1])/2*0.01745;
+	public static double berechneDistance(double rechtsLänge,double rechtsBreite, double linksLänge, double linksBreite){
+		double lat=(rechtsBreite+linksBreite)/2*0.01745;
 		
-		double dx=111.3*Math.cos(lat)*(rechts[0]-links[0]);
-		double dy=111.3*(rechts[1]-links[1]);
+		double dx=111.3*Math.cos(lat)*(rechtsLänge-linksLänge);
+		double dy=111.3*(rechtsBreite-linksBreite);
 		
 		double distance=Math.sqrt(dx*dx+dy*dy);
 		
@@ -116,8 +129,8 @@ public class test2 {
 	 * @param String 
 	 * @return Double
 	 */
-	public static double [] stringToDouble(String o){
-        double[] rechts=new double [2];
+	public static double  stringToDouble(String o){
+        double out;
         int indexEnde=0;
         char c;
         int indexKomma=0;
@@ -129,34 +142,20 @@ public class test2 {
                 y=o.length();
             }            
         }
-        for (int y =1;y<o.length();y++){
+        for (int y =0;y<o.length();y++){
             c=o.charAt(y);
             if(c==','){
                 indexKomma=y;
                 y=o.length();
             }            
-        }        
-       
+        }               
         
         String rechtsString=o.substring(1,indexKomma)+"."+o.substring(indexKomma+1, indexEnde);        
-        rechts[0]=Double.parseDouble(rechtsString);
+        out=Double.parseDouble(rechtsString);
         
         
         
-        for (int y =indexEnde;y<o.length();y++){
-            c=o.charAt(y);
-            if(c==','){
-                indexKomma=y;
-                y=o.length();
-            }            
-        }  
-        
-        String linksString=o.substring(indexEnde+2,indexKomma)+"."+o.substring(indexKomma+1, o.length()-1);
-        System.out.println(linksString);
-        rechts[1]=Double.parseDouble(linksString);
-        
-        
-        return rechts;
+        return out;
     }
     	
 	
@@ -168,7 +167,7 @@ public class test2 {
 	 * @param current
 	 * @param SPARQL
 	 * @param parameter
-	 * @return
+	 * @return List<String>
 	 */
 	@CallableFromWidget
 	public static List<String> query(URI current, String SPARQL,String parameter) 
@@ -238,49 +237,35 @@ public class test2 {
 	}
 	
 	/**
-	 * Calling a helper funktion to get all Gemeinde URIs
-	 * @param uri
-	 * @return List of URIs 
+	 * Calling a helper function to get all URIs of rdfs:type type
+	 * @param type rdfs:type 
+	 * @return List of URIs of type
+	 * @throws QueryEvaluationException 
 	 */
-	public static List<URI> getNewURIs(URI uri){
+	public static List<URI> getNewURIs(URI type) throws QueryEvaluationException{
 		List<URI>uris=new ArrayList<URI>();
-		List<String> uriStrings=NewUris(null,"Select ?x where {?x rdf:type :GEMEINDE}","x");
-		 for(String s:uriStrings){
-		 System.out.println(s);
-		 uris.add(RDFUtil.uri(s));
+		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select ?x where {?x rdf:type "+type+"}","x");
+		 for(URI uri:uriStrings){
+		 System.out.println(uri);
+		 uris.add(uri);
 		 }
 		
 		return uris;
 	}
+	
 	/**
 	 * Query for getUris
 	 * @param current
 	 * @param SPARQL
 	 * @param parameter
 	 * @return
+	 * @throws QueryEvaluationException 
 	 */
-	public static List<String> NewUris(URI current, String SPARQL,String parameter) 
-	   {	  
-	  
-	  ReadDataManager dm = EndpointImpl.api().getDataManager();
-	  ValueFactory vf = ValueFactoryImpl.getInstance();
-	  // setting URI context for ?? in the query
-	  //URI valueContext = vf.createURI(current);
-	  System.err.println(SPARQL);
-	  URI valueContext= current;
-	  QueryBuilder<TupleQuery> queryBuilder = QueryBuilder
-	    .createTupleQuery(SPARQL).resolveValue(valueContext)
-	    .infer(false);
-	  List<String> out =new ArrayList<String>();
-	  TupleQuery query = null;
-	  try {
-	   query = queryBuilder.build(dm);
-	  } catch (MalformedQueryException | RepositoryException e) {
-	   System.err.println(e);
-	   }
-	  TupleQueryResult iterator = null;
-	  try {
-	   iterator = query.evaluate();
+	public static List<URI> getNode(URI current, String SPARQL,String parameter) throws QueryEvaluationException 
+	   {	
+		List<URI> out=new ArrayList<URI>();
+		 TupleQueryResult iterator=getIterator(current,SPARQL,parameter);
+	   //Helpermethod that return iterator
 	   
 	   while (iterator.hasNext()) {
 		    BindingSet bindingSet = null;
@@ -292,17 +277,61 @@ public class test2 {
 		    }
 		    //out= bindingSet.getValue("x").toString();
 		    //out+=bindingSet.getValue("y").toString();
-		    out.add(bindingSet.getValue(parameter).toString());
-		    //out.add(bindingSet.getValue("breitengrad").toString());
-		     }
+		    String s =bindingSet.getValue(parameter).toString();
+		    if (!s.isEmpty()){
+		    	out.add(RDFUtil.fullUri(s));
+		    }else{
+		    	System.err.println("Error: URI is null!");
+		    }
+		         }
 	   
-	  } catch (QueryEvaluationException e) {
-	   System.err.println(e);
-	 
-	  }
+	  
 	  return out;
 	 
 	 }
+
+/**
+ * Query for getUris
+ * @param current
+ * @param SPARQL
+ * @param parameter
+ * @return
+ */		
+public static TupleQueryResult getIterator(URI current,String SPARQL,String parameter){
+	  	  
+	  ReadDataManager dm = EndpointImpl.api().getDataManager();
+	  ValueFactory vf = ValueFactoryImpl.getInstance();
+	  // setting URI context for ?? in the query
+	  //URI valueContext = vf.createURI(current);
+	  System.err.println(SPARQL);
+	  URI valueContext= current;
+	  QueryBuilder<TupleQuery> queryBuilder = QueryBuilder
+	    .createTupleQuery(SPARQL).resolveValue(valueContext)
+	    .infer(false);
+	  List<URI> out =new ArrayList<URI>();
+	  TupleQuery query = null;
+	  try {
+	   query = queryBuilder.build(dm);
+	  } catch (MalformedQueryException | RepositoryException e) {
+	   System.err.println(e);
+	   }
+	  TupleQueryResult iterator = null;
+	  
+	  try{
+	   iterator = query.evaluate();
+	   }catch (QueryEvaluationException e) {
+		   System.err.println(e);}
+	  return iterator;
+	  
+		
+}
+	
+	
+	public static List<Literal> getLiteral(URI current, String SPARQL,String parameter){
+		//getNode, which returns a List of Literals
+		
+		return null;
+	}
 	
 	
 }

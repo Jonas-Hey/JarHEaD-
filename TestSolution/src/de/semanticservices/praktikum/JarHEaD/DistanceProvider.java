@@ -38,19 +38,26 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 	@Override
 	public void gather(final List<Statement> res) throws Exception {
 				//Liste von URI´s die alle Gemeinden der Datenbanken zurückgeben
-				List<URI> gemeinden = test2.getURIs(RDFUtil.uri(test2.gemeinde));
+				List<URI> gemeinden = test2.getNewURIs(RDFUtil.fullUri(test2.gemeinde));
 				
-		
+				
 				//Helper funktion, die aus SPARQLstatement liste von Gemeinde URI´s erstellt /Query umbauen
 				//Distance über alle Gemeinden laufen
 				for (URI gemeinde:gemeinden){
+					if(gemeinde.equals(RDFUtil.fullUri("http://www.fluidops.com/null"))){
+						continue;
+					}
 		   			for (URI vergleich:gemeinden){
+		   				if(vergleich.equals(RDFUtil.fullUri("http://www.fluidops.com/null"))){
+							continue;
+						}
 		   				if(vergleich.equals(gemeinde)){
 		   					continue;
 		   				}
 		   				double distance= test2.distanceDouble(gemeinde,vergleich);
-		   				if (distance<10){
-		   					
+		   				if(distance==-1){
+		   				continue;	
+		   				}else if (distance<10){		   					
 		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter 10Km"),
 		   							vergleich));
 		   				}else if (distance<30){
