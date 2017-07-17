@@ -55,7 +55,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		   					continue;
 		   				}
 		   				double distance= test2.distanceDouble(gemeinde,vergleich);
-		   				System.out.println(gemeinde);
+		   				if(test2.debug)System.out.println(gemeinde);
 		   				if(distance== -1){
 		   					if(test2.debug){System.out.println("distance ist -1");}
 		   				continue;}else if (distance<10){		   					

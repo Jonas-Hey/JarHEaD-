@@ -31,9 +31,10 @@ public class test2 {
 	 * @param URI of Gemeinde
 	 * @param URI of Gemeinde
 	 * @return Double of the distance in Km
+	 * @throws QueryEvaluationException 
 	 */
 	@CallableFromWidget
-	public static double distanceDouble(URI left,URI right){
+	public static double distanceDouble(URI left,URI right) throws QueryEvaluationException{
 		/*left=Längen-, right=Breitengrad
 		 * berechne Abstand zwischen links und rechts/längen und
 		 * schreibe den Abstand in die Datenbank (DataProvider)
@@ -50,32 +51,34 @@ public class test2 {
 		if(debug)System.out.println(left+" >-< "+right);
 		
 		
-		List<String> l =query(right, SPARQL,"längengrad");
+		String[] l =query(right, SPARQL,"längengrad","breitengrad");
 		String rechtsLänge=null;
 		String rechtsBreite=null;
 		String linksLänge=null;
 		String linksBreite=null;
+				
+		if (l[0]!=null&&l[1]!=null&&!(l[1].isEmpty())&&!l[0].isEmpty()&&!l[0].equals("0")&&!l[1].equals("0")){
+			if(debug)System.out.println("Ausgabe von l: "+l);
+		rechtsBreite=literalToString(l[1]);
+		rechtsLänge=literalToString(l[0]);
+		}
 		
-		if(!l.isEmpty()){
-			rechtsLänge=literalToString(l.get(0));}//kann sein, dass nichts oder mehr als eins zurück gegeben wird
-		
-		l =query(right, SPARQL,"breitengrad");
-		if (!l.isEmpty()){
-		rechtsBreite=literalToString(l.get(0));}
 		if (debug)System.out.println(rechtsLänge+" c "+rechtsBreite);
 		
-		l =query(left, SPARQL,"längengrad");
-		if(!l.isEmpty()){
-		linksLänge=literalToString(l.get(0));}//kann sein, dass nichts oder mehr als eins zurück gegeben wird
+		l =query(left, SPARQL,"längengrad","breitengrad");
 		
-		l =query(left, SPARQL,"breitengrad");
-		if (!l.isEmpty()){
-		linksBreite=literalToString(l.get(0));}
-		if (debug)System.out.println(linksLänge+"  "+linksBreite);
+		if (l[0]!=null&&l[1]!=null&&!(l[1].isEmpty())&&!l[0].isEmpty()&&!l[0].equals("0")&&!l[1].equals("0")){
+			if(debug)System.out.println("Ausgabe von l: "+l);
+		linksBreite=literalToString(l[1]);
+		linksLänge=literalToString(l[0]);}//kann sein, dass nichts oder mehr als eins zurück gegeben wird
+		
+		
+		if (debug)System.out.println(linksLänge+" O "+linksBreite);
 		
 			
 		if(rechtsLänge==null||rechtsBreite==null||linksLänge==null||linksBreite==null){
-			if (debug)System.err.println("Error: String is empty");
+			String name = new Object(){}.getClass().getEnclosingMethod().getName();
+			if (debug)System.err.println("Error: String is empty"+name);
 			if (debug)System.err.println(SPARQL);
 			return -1;
 			
@@ -95,9 +98,10 @@ public class test2 {
 	 * @param URI of Gemeinde
 	 * @param URI of Gemeinde
 	 * @return String of the distance 
+	 * @throws QueryEvaluationException 
 	 */
 	@CallableFromWidget
-	public static String distance(URI left,URI right){
+	public static String distance(URI left,URI right) throws QueryEvaluationException{
 		if(debug)System.out.println("test");
 		
 		return "Der Abstand beträgt "+distanceDouble(left,right)+" Km";
@@ -178,38 +182,44 @@ public class test2 {
 	
 	
 	/**
-	 * 
+	 * Only returns first line, if the result is more than one
 	 * @param current
 	 * @param SPARQL
 	 * @param parameter
 	 * @return List<String>
+	 * @throws QueryEvaluationException 
 	 */
 	@CallableFromWidget
-	public static List<String> query(URI current, String SPARQL,String parameter) 
+	public static String[] query(URI current, String SPARQL,String parameter,String para2) throws QueryEvaluationException 
 	   {	  
-	  
-	  ReadDataManager dm = EndpointImpl.api().getDataManager();
-	  ValueFactory vf = ValueFactoryImpl.getInstance();
-	  // setting URI context for ?? in the query
-	  //URI valueContext = vf.createURI(current);
-	  if (debug)System.err.println(SPARQL);
-	  URI valueContext= current;
-	  QueryBuilder<TupleQuery> queryBuilder = QueryBuilder
-	    .createTupleQuery(SPARQL).resolveValue(valueContext)
-	    .infer(false);
-	  List<String> out =new ArrayList<String>();
-	  TupleQuery query = null;
-	  try {
-	   query = queryBuilder.build(dm);
-	  } catch (MalformedQueryException | RepositoryException e) {
-		  if (debug)System.err.println(e);
-	   }
-	  TupleQueryResult iterator = null;
-	  try {
-	   iterator = query.evaluate();
-	   
-	   while (iterator.hasNext()) {
-		    BindingSet bindingSet = null;
+		String[] out=new String[2];
+		
+		ReadDataManager dm = EndpointImpl.api().getDataManager();
+		  ValueFactory vf = ValueFactoryImpl.getInstance();
+		  // setting URI context for ?? in the query
+		  //URI valueContext = vf.createURI(current);
+		  if (debug)System.err.println(SPARQL);
+		  URI valueContext= current;
+		  QueryBuilder<TupleQuery> queryBuilder = QueryBuilder
+		    .createTupleQuery(SPARQL).resolveValue(valueContext)
+		    .infer(false);
+		  TupleQuery query = null;
+		  try {
+		   query = queryBuilder.build(dm);
+		  } catch (MalformedQueryException | RepositoryException e) {
+			  if (debug)System.err.println(e);
+		   }
+		  TupleQueryResult iterator = null;
+		  
+		  try{
+		   iterator = query.evaluate();
+		   }catch (QueryEvaluationException e) {
+			   if (debug)System.err.println(e);}
+				    
+		  
+	  // while (iterator.hasNext()) {
+		  if (iterator.hasNext()){  
+			  BindingSet bindingSet = null;
 		    try {
 		     bindingSet = iterator.next();
 		    } catch (QueryEvaluationException e) {
@@ -218,18 +228,25 @@ public class test2 {
 		    }
 		    //out= bindingSet.getValue("x").toString();
 		    //out+=bindingSet.getValue("y").toString();
-		    out.add(bindingSet.getValue(parameter).toString());
-		    //out.add(bindingSet.getValue("breitengrad").toString());
-		     }
-	   
-	  } catch (QueryEvaluationException e) {
-		  if (debug)System.err.println(e);
-	 
-	  }
+		    String s =bindingSet.getValue(parameter).toString();
+		    String o =bindingSet.getValue(para2).toString();
+		    if (!s.isEmpty()){
+		    	if (debug)System.out.println(s);
+		    	out[0]= s;		    	
+		    	}else{
+			    	if (debug)System.err.println("Error: URI is null!");
+			    }
+		    if(!o.isEmpty()){
+		    		if (debug)System.out.println(o);
+		    	out[1]=o;		    	
+		    }else{
+		    	if (debug)System.err.println("Error: URI is null!");
+		    }
+		         }  	  
 	  return out;
 	 
 	 }
-
+	
 
 	/**
 	 * 
