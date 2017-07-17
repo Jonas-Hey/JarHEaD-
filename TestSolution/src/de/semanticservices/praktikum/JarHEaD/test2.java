@@ -23,7 +23,7 @@ public class test2 {
 	public static final String gemeinde = ":GEMEINDE";
 	public static final String länge=":längengrad";
 	public static final String breite=":breitengrad";
-	public static final boolean debug=true;
+	public static final boolean debug=false;
 	
 	
 	/**
@@ -49,6 +49,7 @@ public class test2 {
 		if(debug)System.out.println(SPARQL);
 		if(debug)System.out.println(left+" >-< "+right);
 		
+		
 		List<String> l =query(right, SPARQL,"längengrad");
 		String rechtsLänge=null;
 		String rechtsBreite=null;
@@ -72,13 +73,19 @@ public class test2 {
 		linksBreite=literalToString(l.get(0));}
 		if (debug)System.out.println(linksLänge+"  "+linksBreite);
 		
+			
 		if(rechtsLänge==null||rechtsBreite==null||linksLänge==null||linksBreite==null){
-			System.err.println("Error: String is empty");
-			System.err.println(SPARQL);
+			if (debug)System.err.println("Error: String is empty");
+			if (debug)System.err.println(SPARQL);
 			return -1;
 			
 		}		
-		
+		if(rechtsLänge.equals("0")||rechtsBreite.equals("0")||linksLänge.equals("0")||linksBreite.equals("0")){
+			if (debug)System.err.println("Error:One or more Coordinates are 0");
+			if (debug)System.err.println(SPARQL);
+			return -1;
+			
+		}
 		
 		return berechneDistance(stringToDouble(rechtsLänge),stringToDouble(rechtsBreite),stringToDouble(linksLänge),stringToDouble(linksBreite));
 		
@@ -106,6 +113,8 @@ public class test2 {
 	 * @return double of the distance in Km
 	 */
 	public static double berechneDistance(double rechtsLänge,double rechtsBreite, double linksLänge, double linksBreite){
+		if (debug)System.out.println("anfang der berechne distance");
+		if (debug)System.out.println(rechtsLänge+" "+rechtsBreite+" "+linksLänge+" "+linksBreite);
 		double lat=(rechtsBreite+linksBreite)/2*0.01745;
 		
 		double dx=111.3*Math.cos(lat)*(rechtsLänge-linksLänge);
@@ -114,6 +123,7 @@ public class test2 {
 		double distance=Math.sqrt(dx*dx+dy*dy);
 		
 		distance=Math.floor(distance*100)/100;// to convert it to 2 numbers after the dot
+		if (debug)System.out.println(distance+"ende der berechne distance");
 		return distance;		
 		
 	}
@@ -131,16 +141,20 @@ public class test2 {
 	 */
 	public static double  stringToDouble(String o){
         double out;
-        int indexEnde=0;
         char c;
         int indexKomma=0;
+        if (debug)System.out.println(o);
                       
-        for (int y =1;y<o.length();y++){
+       /* for (int y =1;y<o.length();y++){
             c=o.charAt(y);
             if(c=='"'){
                 indexEnde=y;
                 y=o.length();
             }            
+        }**/
+        if (o.equals(0)){
+        	if (debug)System.out.println("double null");
+        	return 0;
         }
         for (int y =0;y<o.length();y++){
             c=o.charAt(y);
@@ -150,7 +164,8 @@ public class test2 {
             }            
         }               
         
-        String rechtsString=o.substring(1,indexKomma)+"."+o.substring(indexKomma+1, indexEnde);        
+        //String rechtsString=o.substring(1,indexKomma)+"."+o.substring(indexKomma+1, indexEnde);
+        String rechtsString=o.substring(0,indexKomma)+"."+o.substring(indexKomma+1, o.length());
         out=Double.parseDouble(rechtsString);
         
         
@@ -177,7 +192,7 @@ public class test2 {
 	  ValueFactory vf = ValueFactoryImpl.getInstance();
 	  // setting URI context for ?? in the query
 	  //URI valueContext = vf.createURI(current);
-	  System.err.println(SPARQL);
+	  if (debug)System.err.println(SPARQL);
 	  URI valueContext= current;
 	  QueryBuilder<TupleQuery> queryBuilder = QueryBuilder
 	    .createTupleQuery(SPARQL).resolveValue(valueContext)
@@ -187,7 +202,7 @@ public class test2 {
 	  try {
 	   query = queryBuilder.build(dm);
 	  } catch (MalformedQueryException | RepositoryException e) {
-	   System.err.println(e);
+		  if (debug)System.err.println(e);
 	   }
 	  TupleQueryResult iterator = null;
 	  try {
@@ -198,7 +213,7 @@ public class test2 {
 		    try {
 		     bindingSet = iterator.next();
 		    } catch (QueryEvaluationException e) {
-		     System.err.println(e);
+		    	if (debug)System.err.println(e);
 
 		    }
 		    //out= bindingSet.getValue("x").toString();
@@ -208,7 +223,7 @@ public class test2 {
 		     }
 	   
 	  } catch (QueryEvaluationException e) {
-	   System.err.println(e);
+		  if (debug)System.err.println(e);
 	 
 	  }
 	  return out;
@@ -246,7 +261,7 @@ public class test2 {
 		List<URI>uris=new ArrayList<URI>();
 		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select ?x where {?x rdf:type "+type+"}","x");
 		 for(URI uri:uriStrings){
-		 System.out.println(uri);
+			 if (debug)System.out.println(uri);
 		 uris.add(uri);
 		 }
 		
@@ -272,7 +287,7 @@ public class test2 {
 		    try {
 		     bindingSet = iterator.next();
 		    } catch (QueryEvaluationException e) {
-		     System.err.println(e);
+		    	if (debug)System.err.println(e);
 
 		    }
 		    //out= bindingSet.getValue("x").toString();
@@ -281,7 +296,7 @@ public class test2 {
 		    if (!s.isEmpty()){
 		    	out.add(RDFUtil.fullUri(s));
 		    }else{
-		    	System.err.println("Error: URI is null!");
+		    	if (debug)System.err.println("Error: URI is null!");
 		    }
 		         }
 	   
@@ -303,7 +318,7 @@ public static TupleQueryResult getIterator(URI current,String SPARQL,String para
 	  ValueFactory vf = ValueFactoryImpl.getInstance();
 	  // setting URI context for ?? in the query
 	  //URI valueContext = vf.createURI(current);
-	  System.err.println(SPARQL);
+	  if (debug)System.err.println(SPARQL);
 	  URI valueContext= current;
 	  QueryBuilder<TupleQuery> queryBuilder = QueryBuilder
 	    .createTupleQuery(SPARQL).resolveValue(valueContext)
@@ -313,14 +328,14 @@ public static TupleQueryResult getIterator(URI current,String SPARQL,String para
 	  try {
 	   query = queryBuilder.build(dm);
 	  } catch (MalformedQueryException | RepositoryException e) {
-	   System.err.println(e);
+		  if (debug)System.err.println(e);
 	   }
 	  TupleQueryResult iterator = null;
 	  
 	  try{
 	   iterator = query.evaluate();
 	   }catch (QueryEvaluationException e) {
-		   System.err.println(e);}
+		   if (debug)System.err.println(e);}
 	  return iterator;
 	  
 		

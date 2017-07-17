@@ -55,9 +55,10 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		   					continue;
 		   				}
 		   				double distance= test2.distanceDouble(gemeinde,vergleich);
-		   				if(distance==-1){
-		   				continue;	
-		   				}else if (distance<10){		   					
+		   				System.out.println(gemeinde);
+		   				if(distance== -1){
+		   					if(test2.debug){System.out.println("distance ist -1");}
+		   				continue;}else if (distance<10){		   					
 		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter 10Km"),
 		   							vergleich));
 		   				}else if (distance<30){
