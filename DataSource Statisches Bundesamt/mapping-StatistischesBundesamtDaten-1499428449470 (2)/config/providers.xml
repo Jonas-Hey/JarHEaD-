@@ -1,0 +1,23 @@
+<list>
+  <com.fluidops.iwb.provider.R2RMLProvider secrets__id="http://www.fluidops.com/resource/StatistischesBundesamtDaten-provider" secrets__type="IWBProvider">
+    <config class="com.fluidops.iwb.provider.R2RMLProvider$Config">
+      <dataSource class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten</dataSource>
+      <mappingIdentifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975</mappingIdentifier>
+      <inMemory>true</inMemory>
+    </config>
+    <postProcessors/>
+    <targetRepository></targetRepository>
+    <schedulingConfig class="com.fluidops.util.concurrent.SchedulingConfigImpl">
+      <enabled>false</enabled>
+      <pollInterval>0</pollInterval>
+    </schedulingConfig>
+    <lastStartTime>2017-07-07 08:32:46.775 UTC</lastStartTime>
+    <lastUpdate>2017-07-07 08:34:11.212 UTC</lastUpdate>
+    <lastDuration>84437</lastDuration>
+    <providerID class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten-provider</providerID>
+    <size>191704</size>
+    <providerDataEditable>false</providerDataEditable>
+    <userModified>true</userModified>
+    <deleted>false</deleted>
+  </com.fluidops.iwb.provider.R2RMLProvider>
+</list>
