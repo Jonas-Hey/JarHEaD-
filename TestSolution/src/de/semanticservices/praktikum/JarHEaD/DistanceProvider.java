@@ -18,6 +18,7 @@ import com.fluidops.iwb.util.RDFUtil;
  * Generic provider skeleton. Can be used as a basis for implementing any type
  * of data provider.
  */
+@SuppressWarnings("unused")
 public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Config> {
 	
 	private static final long serialVersionUID = 684345323098327777L;
@@ -38,7 +39,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 	@Override
 	public void gather(final List<Statement> res) throws Exception {
 				//Liste von URI´s die alle Gemeinden der Datenbanken zurückgeben
-				List<URI> gemeinden = test2.getNewURIs(RDFUtil.fullUri(test2.gemeinde));
+				List<URI> gemeinden = Helper.getNewURIs(RDFUtil.fullUri(Util.gemeinde));
 				
 				
 				//Helper funktion, die aus SPARQLstatement liste von Gemeinde URI´s erstellt /Query umbauen
@@ -54,19 +55,20 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		   				if(vergleich.equals(gemeinde)){
 		   					continue;
 		   				}
-		   				double distance= test2.distanceDouble(gemeinde,vergleich);
-		   				if(test2.debug)System.out.println(gemeinde);
+		   				double distance= Util.distanceDouble(gemeinde,vergleich);
+		   				if(Util.debug)System.out.println(gemeinde);
 		   				if(distance== -1){
-		   					if(test2.debug){System.out.println("distance ist -1");}
+		   					if(Util.debug){System.out.println("distance ist -1");}
 		   				continue;}else if (distance<10){		   					
 		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter 10Km"),
 		   							vergleich));
 		   				}else if (distance<30){
-		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter 30Km"),
+		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand zwischen 10Km und 30Km"),
 		   							vergleich));
-		   				}else if (distance<50){res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter 50Km"),
-	   							vergleich));}else{res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand über 50Km"),
-	   							vergleich));}
+		   				}else if (distance<50){res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand zwischen 30Km und 50Km"),
+	   							vergleich));}else if (distance<100){res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand zwischen 50Km und 100Km"),
+	   							vergleich));}else{res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand über 100Km"),
+	   		   							vergleich));}
 		   					
 		   				
 		   			}

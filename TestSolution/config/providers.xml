@@ -11,11 +11,11 @@
       <enabled>false</enabled>
       <pollInterval>0</pollInterval>
     </schedulingConfig>
-    <lastStartTime>2017-07-13 07:56:42.594 UTC</lastStartTime>
-    <lastUpdate>2017-07-13 07:58:18.409 UTC</lastUpdate>
-    <lastDuration>95815</lastDuration>
+    <lastStartTime>2017-07-17 10:28:46.655 UTC</lastStartTime>
+    <lastUpdate>2017-07-17 10:30:12.245 UTC</lastUpdate>
+    <lastDuration>85590</lastDuration>
     <providerID class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten-provider</providerID>
-    <size>274367</size>
+    <size>274358</size>
     <providerDataEditable>false</providerDataEditable>
     <userModified>true</userModified>
     <deleted>false</deleted>

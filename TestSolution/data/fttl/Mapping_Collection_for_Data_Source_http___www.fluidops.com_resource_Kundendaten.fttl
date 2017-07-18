@@ -31,10 +31,10 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> a rrx:TriplesMapCollection ;
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> a rrx:TriplesMapCollection ;
     rrx:containsTriplesMap [
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+            rr:tableName "PUBLIC.TABELLE3"
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
@@ -47,133 +47,47 @@
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "SATZART" ;
+                rr:column "ID" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:satzart
+                rr:constant default:id
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "TEXTKENNZEICHEN" ;
+                rr:column "JAHR" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:textkennzeichen
+                rr:constant default:jahr
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Fläche km2" ;
+                rr:column "MONAT" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:flächekm2
+                rr:constant default:monat
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Bevölkerung: insgesamt" ;
+                rr:column "TAG" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:bevölkerunginsgesamt
+                rr:constant default:tag
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Bevölkerung: männlich" ;
+                rr:column "ID 2" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:bevölkerungmännlich
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Bevölkerung: weiblich" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:bevölkerungweiblich
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Bevölkerung: je km2" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:bevölkerungjekm2
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "LÄNGENGRAD" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:längengrad
-            ]
-        ] ;
-        a rr:TriplesMap ;
-        rdfs:label "GEMEINDE" ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/LAND_{LAND}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:land
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "BREITENGRAD" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:breitengrad
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/REGIERUNGSBEZIRK_{REGIERUNGSBEZIRK}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:regierungsbezirk
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/KREIS_{KREIS}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:kreis
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/GEMEINDEVERBAND_{GEMEINDEVERBAND}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:gemeindeverband
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/GEMEINDENUMMER_{GEMEINDE}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:gemeindenummer
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/REISEGEBIET_{Reisegebiet: Schlüssel}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:reisegebiet
+                rr:constant default:id2
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
@@ -182,24 +96,142 @@
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:name
+                rr:constant default:gemeindename
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "GEMEINDENAME"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant rdfs:label
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Grad der Verstädterung: Bezeichnung" ;
+                rr:column "STAAT" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:verstädterung
+                rr:constant default:staat
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "GEBIET" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:gebiet
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Sponsor ID" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:sponsorID
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "JAHR1" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:jahr1
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "D Monat" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:dmonat
+            ]
+        ] ;
+        rdfs:label "KundenDaten" ;
+        a rr:TriplesMap ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Jahr O" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:jahrO
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Monat O" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:monatO
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "LEVEL" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:level
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  CCs" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:ccs
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  SRP(Empfohlener Preis)" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:srpempfohlenerpreis
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  WHS" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:whs
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  NDP" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:ndp
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "TYPE" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:type
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/NAME:PERSON_{Name:Person}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:namePerson
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:adresse
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
@@ -211,186 +243,92 @@
             ]
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/GEMEINDE_{GEMEINDENAME}" ;
-            rr:class default:GEMEINDE
+            rr:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" ;
+            rr:class default:KundenDaten
         ]
     ] .
 
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
-        rdfs:label "Land" ;
-        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "LAND" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:schlüssel
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "LAND"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant rdfs:label
-            ]
-        ] ;
-        rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/LAND_{LAND}" ;
-            rr:class default:GEMEINDE
-        ]
-    ] .
-
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
-        rdfs:label "Regierungsbezirk" ;
-        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "REGIERUNGSBEZIRK" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:schlüssel
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "REGIERUNGSBEZIRK"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant rdfs:label
-            ]
-        ] ;
-        rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/REGIERUNGSBEZIRK_{REGIERUNGSBEZIRK}" ;
-            rr:class default:GEMEINDE
-        ]
-    ] .
-
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
-        rdfs:label "Kreis" ;
-        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "KREIS" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:schlüssel
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "KREIS"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant rdfs:label
-            ]
-        ] ;
-        rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/KREIS_{KREIS}" ;
-            rr:class default:GEMEINDE
-        ]
-    ] .
-
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap _:node1bl7jdbp5x1180343 , [ a rr:TriplesMap ;
-        rdfs:label "Gemeindeverband" ;
-        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "GEMEINDEVERBAND" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:schlüssel
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "GEMEINDEVERBAND"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant rdfs:label
-            ]
-        ] ;
-        rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/GEMEINDEVERBAND_{GEMEINDEVERBAND}" ;
-            rr:class default:GEMEINDE
-        ]
-    ] .
-
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/StatistischesBundesamtDaten" ;
-    rrx:dataSource default:StatistischesBundesamtDaten ;
-    rrx:sourceSchema <http://www.fluidops.com/resource/StatistischesBundesamtDaten/MetaData> ;
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/Kundendaten" ;
+    rrx:dataSource default:Kundendaten ;
+    rrx:sourceSchema <http://www.fluidops.com/resource/Kundendaten/MetaData> ;
     rrx:containsTriplesMap [ a rr:TriplesMap ;
-        rdfs:label "Gemeindenummer" ;
+        rdfs:label "Name:Person" ;
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+            rr:tableName "PUBLIC.TABELLE3"
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "GEMEINDE" ;
+                rr:column "Name:Person" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:schlüssel
+                rr:constant <name:person>
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "GEMEINDE"
+                rr:column "ADRESSE" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:adresse
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Name:Person"
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
                 rr:constant rdfs:label
             ]
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/GEMEINDENUMMER_{GEMEINDE}" ;
-            rr:class default:GEMEINDE
+            rr:template "http://www.fluidops.com/resource/NAME:PERSON_{Name:Person}" ;
+            rr:class default:KundenDaten
         ]
     ] .
 
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
-        rdfs:label "Reisegebiet" ;
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Adresse" ;
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+            rr:tableName "PUBLIC.TABELLE3"
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Reisegebiet: Bezeichnung" ;
+                rr:column "ADRESSE" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:reisegebiet-bezeichnung
+                rr:constant default:adresse
             ]
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Reisegebiet: Bezeichnung"
+                rr:column "Name:Person" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant <name:person>
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ADRESSE"
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
                 rr:constant rdfs:label
             ]
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/REISEGEBIET_{Reisegebiet: Schlüssel}" ;
-            rr:class default:GEMEINDE
+            rr:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}" ;
+            rr:class default:KundenDaten
         ]
     ] .
 
-<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rrx:containsTriplesMap [ a rr:TriplesMap ;
         rdfs:label "Postleitzahl" ;
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
-            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+            rr:tableName "PUBLIC.TABELLE3"
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
@@ -403,6 +341,6 @@
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
             rr:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" ;
-            rr:class default:GEMEINDE
+            rr:class default:KundenDaten
         ]
     ] .
