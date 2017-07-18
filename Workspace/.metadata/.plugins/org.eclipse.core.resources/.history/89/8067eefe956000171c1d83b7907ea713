@@ -1,0 +1,27 @@
+import com.fluidops.iwb.annotation.CallableFromWidget;
+import java.lang.*;
+public class test2 {
+	@CallableFromWidget
+	public static void fakultaet(String o){
+			int i = Integer.parseInt(o);
+			int fak = 1;
+			for (int x = 1; x <= i; ++x) 
+			{
+				fak = fak * x;
+			}
+			
+			System.out.println("Fakultät von "+i+" ist : " + fak);
+			
+		
+	}
+	@CallableFromWidget
+	public static void ausgabe (String i){
+			System.out.println(i);
+	}
+	@CallableFromWidget
+	public static int ausgabe2(int i ){
+		int b=i+i;
+		return b;
+	}
+	
+}
