@@ -1,0 +1,346 @@
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rrx: <http://www.fluidops.com/ontologies/r2rmlExtension/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix twitter: <http://twitter.com/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> a rrx:TriplesMapCollection ;
+    rrx:containsTriplesMap [
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TABELLE3"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "UID" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:uid
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ID" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:id
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "JAHR" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:jahr
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "MONAT" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:monat
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "TAG" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:tag
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ID 2" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:id2
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "GEMEINDENAME" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:gemeindename
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "STAAT" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:staat
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "GEBIET" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:gebiet
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Sponsor ID" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:sponsorID
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "JAHR1" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:jahr1
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "D Monat" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:dmonat
+            ]
+        ] ;
+        rdfs:label "KundenDaten" ;
+        a rr:TriplesMap ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Jahr O" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:jahrO
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Monat O" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:monatO
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "LEVEL" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:level
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  CCs" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:ccs
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  SRP(Empfohlener Preis)" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:srpempfohlenerpreis
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  WHS" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:whs
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "  NDP" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:ndp
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "TYPE" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:type
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/NAME:PERSON_{Name:Person}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:namePerson
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:adresse
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:postleitzahl
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" ;
+            rr:class default:KundenDaten
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/Kundendaten" ;
+    rrx:dataSource default:Kundendaten ;
+    rrx:sourceSchema <http://www.fluidops.com/resource/Kundendaten/MetaData> ;
+    rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Name:Person" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TABELLE3"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Name:Person" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant <name:person>
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ADRESSE" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:adresse
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Name:Person"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant rdfs:label
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/NAME:PERSON_{Name:Person}" ;
+            rr:class default:KundenDaten
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Adresse" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TABELLE3"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ADRESSE" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:adresse
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Name:Person" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant <name:person>
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ADRESSE"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant rdfs:label
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}" ;
+            rr:class default:KundenDaten
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Postleitzahl" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TABELLE3"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "POSTLEITZAHL" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:postleitzahl
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" ;
+            rr:class default:KundenDaten
+        ]
+    ] .

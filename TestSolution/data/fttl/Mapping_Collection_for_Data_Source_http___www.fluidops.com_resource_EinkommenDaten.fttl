@@ -1,0 +1,172 @@
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rrx: <http://www.fluidops.com/ontologies/r2rmlExtension/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix twitter: <http://twitter.com/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> a rrx:TriplesMapCollection ;
+    rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "EinkommenDaten" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TBL666514"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Kreise und kreisfreie Städte" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:kreiseundkreisfreieStdte
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/DG_{COLUMN0}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:DG
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Kreise und kreisfreie Städte"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant rdfs:label
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/EINKOMMENINSGESAMT2014_{Einkommen Haushalte insgesamt 2014}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:einkommengesamt
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/EINKOMMENJEEINWOHNER2014_{Einkommen Haushalte je Einwohner 2014}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:einkommenprokopf
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/KREIS_{Kreise und kreisfreie Städte}" ;
+            rr:class default:EinkommenDaten
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/EinkommenDaten" ;
+    rrx:dataSource default:EinkommenDaten ;
+    rrx:sourceSchema <http://www.fluidops.com/resource/EinkommenDaten/MetaData> ;
+    rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "DG" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TBL666514"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "COLUMN0" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:DG
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "COLUMN0"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant rdfs:label
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/DG_{COLUMN0}" ;
+            rr:class default:EinkommenDaten
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Einkommen insgesamt" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TBL666514"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Einkommen Haushalte insgesamt 2014" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:einkommenins
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Einkommen Haushalte insgesamt 2014"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant rdfs:label
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/EINKOMMENINSGESAMT2014_{Einkommen Haushalte insgesamt 2014}" ;
+            rr:class default:EinkommenDaten
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Einkommen je Einwohner" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TBL666514"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Einkommen Haushalte je Einwohner 2014" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:einkommenprokopf
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Einkommen Haushalte je Einwohner 2014"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant rdfs:label
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/EINKOMMENJEEINWOHNER2014_{Einkommen Haushalte je Einwohner 2014}" ;
+            rr:class default:EinkommenDaten
+        ]
+    ] .
