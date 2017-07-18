@@ -3,11 +3,11 @@ Ant-Version: Apache Ant 1.9.6
 Created-By: 1.8.0_131-b12 (Oracle Corporation)
 project: TestSolution
 ProductName: TestSolution
-ProductLongName: First version of the Jarhead Solution with a Distance
- Provider
-ProductVersion: 1.1
-version: 1.1
+ProductLongName: JarHEaD Solution v1.2 with an optimized DistanceProvi
+ der
+ProductVersion: 1.2
+version: 1.2
 ProductContact: n/a
 CompanyName: n/a
-date: 2017-07-17_05:53:23
+date: 2017-07-18_08:08:55
 
