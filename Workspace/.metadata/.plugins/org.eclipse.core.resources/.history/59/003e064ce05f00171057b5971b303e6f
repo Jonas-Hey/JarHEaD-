@@ -1,8 +1,0 @@
-
-public class test {
-	public void ausgabe(String i){
-		System.out.println(i+i);
-	}
-	
-	
-}
