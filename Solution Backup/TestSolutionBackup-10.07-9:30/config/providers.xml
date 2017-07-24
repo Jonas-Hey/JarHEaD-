@@ -1,0 +1,23 @@
+<list>
+  <com.fluidops.iwb.provider.R2RMLProvider secrets__id="http://www.fluidops.com/resource/Scrum-Tabelle-2-provider" secrets__type="IWBProvider">
+    <config class="com.fluidops.iwb.provider.R2RMLProvider$Config">
+      <dataSource class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-Tabelle-2</dataSource>
+      <mappingIdentifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-Tabelle-2/MappingCollection96330002660646464764060815817461</mappingIdentifier>
+      <inMemory>true</inMemory>
+    </config>
+    <postProcessors/>
+    <targetRepository></targetRepository>
+    <schedulingConfig class="com.fluidops.util.concurrent.SchedulingConfigImpl">
+      <enabled>false</enabled>
+      <pollInterval>0</pollInterval>
+    </schedulingConfig>
+    <lastStartTime>2017-06-29 07:32:28.341 UTC</lastStartTime>
+    <lastUpdate>2017-06-29 07:32:29.884 UTC</lastUpdate>
+    <lastDuration>1543</lastDuration>
+    <providerID class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Scrum-Tabelle-2-provider</providerID>
+    <size>118</size>
+    <providerDataEditable>false</providerDataEditable>
+    <userModified>true</userModified>
+    <deleted>false</deleted>
+  </com.fluidops.iwb.provider.R2RMLProvider>
+</list>

@@ -1,0 +1,352 @@
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rrx: <http://www.fluidops.com/ontologies/r2rmlExtension/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix twitter: <http://twitter.com/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> a rrx:TriplesMapCollection ;
+    rrx:containsTriplesMap [
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "UID" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:uid
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "SATZART" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:satzart
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "TEXTKENNZEICHEN" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:textkennzeichen
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "POSTLEITZAHL" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:postleitzahl
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Fläche km2" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:flächekm2
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Bevölkerung: insgesamt" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:bevölkerunginsgesamt
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Bevölkerung: männlich" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:bevölkerungmännlich
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Bevölkerung: weiblich" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:bevölkerungweiblich
+            ]
+        ] ;
+        a rr:TriplesMap ;
+        rdfs:label "Bootstrapped Mapping for Table: PUBLIC.ONLINEPRODUKTGEMEINDEN311214" ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Bevölkerung: je km2" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:bevölkerungjekm2
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "LÄNGENGRAD" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:längengrad
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/LAND_{LAND}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:land
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "BREITENGRAD" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:breitengrad
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/REGIERUNGSBEZIRK_{REGIERUNGSBEZIRK}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:regierungsbezirk
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/KREIS_{KREIS}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:kreis
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/GEMEINDEVERBAND_{GEMEINDEVERBAND}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:gemeindeverband
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/GEMEINDENUMMER_{GEMEINDE}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:gemeindenummer
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/VERSTÄDTERUNG_{Grad der Verstädterung: Schlüssel}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:verstädterung
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/REISEGEBIET_{Reisegebiet: Schlüssel}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:reisegebiet
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "GEMEINDENAME" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:name
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/GEMEINDE_{POSTLEITZAHL}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Land" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "LAND" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:schlüssel
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/LAND_{LAND}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Regierungsbezirk" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "REGIERUNGSBEZIRK" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:schlüssel
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/REGIERUNGSBEZIRK_{REGIERUNGSBEZIRK}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Kreis" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "KREIS" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:schlüssel
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/KREIS_{KREIS}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/StatistischesBundesamtDaten" ;
+    rrx:dataSource default:StatistischesBundesamtDaten ;
+    rrx:sourceSchema <http://www.fluidops.com/resource/StatistischesBundesamtDaten/MetaData> ;
+    rrx:containsTriplesMap _:node1bkdqj8e2x3490246 , [ a rr:TriplesMap ;
+        rdfs:label "Gemeindeverband" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "GEMEINDEVERBAND" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:schlüssel
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/GEMEINDEVERBAND_{GEMEINDEVERBAND}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Gemeindenummer" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "GEMEINDE" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:schlüssel
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/GEMEINDENUMMER_{GEMEINDE}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Reisegebiet" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Reisegebiet: Bezeichnung" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:reisegebiet-bezeichnung
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/REISEGEBIET_{Reisegebiet: Schlüssel}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Verstädterung" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Grad der Verstädterung: Bezeichnung" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:verstädterung-bezeichnung
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/VERSTÄDTERUNG_{Grad der Verstädterung: Schlüssel}" ;
+            rr:class default:ONLINEPRODUKTGEMEINDEN311214
+        ]
+    ] .

@@ -1,0 +1,111 @@
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix twitter: <http://twitter.com/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix r2rml: <http://www.w3.org/ns/r2rml#> .
+
+
+default:logicalTable45892688907468230278852843504397 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TABELLENBLATT1" .
+
+default:objectMap26466264610198999759449256302892 a r2rml:ObjectMap ;
+	r2rml:column "Was hat mich bei der Arbeit behindert." ;
+	r2rml:datatype xsd:string .
+
+default:objectMap27518540015714032493694701737342 a r2rml:ObjectMap ;
+	r2rml:column "Was habe ich seit dem letzten Daily Scrum getan ?" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap32057009884279812220024235708644 a r2rml:ObjectMap ;
+	r2rml:column "UID" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap89299207810115464888935820486818 a r2rml:ObjectMap ;
+	r2rml:column "DATUM" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap90644823094298420260739412681743 a r2rml:ObjectMap ;
+	r2rml:column "NAME" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap99587279673565525420443130376640 a r2rml:ObjectMap ;
+	r2rml:column "Was plane ich, bis zum nächsten Daily Scrum zu tun?" ;
+	r2rml:datatype xsd:string .
+
+default:predicateMap10883088126938134000199312212704 a r2rml:PredicateMap ;
+	r2rml:constant default:datum .
+
+default:predicateMap12870162689097345086745809159810 a r2rml:PredicateMap ;
+	r2rml:constant default:washabeichseitdemletztenDailyScrumgetan .
+
+default:predicateMap26146060912412629128753397110193 a r2rml:PredicateMap ;
+	r2rml:constant default:name .
+
+default:predicateMap49919366282560479671761396430368 a r2rml:PredicateMap ;
+	r2rml:constant default:washatmichbeiderArbeitbehindert .
+
+default:predicateMap60384448568471224397894429172872 a r2rml:PredicateMap ;
+	r2rml:constant default:wasplaneichbiszumnchstenDailyScrumzutun .
+
+default:predicateMap60880800522948791556694505360439 a r2rml:PredicateMap ;
+	r2rml:constant default:uid .
+
+default:predicateObjectMap28326887084518355038335730526292 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap99587279673565525420443130376640 ;
+	r2rml:predicateMap default:predicateMap60384448568471224397894429172872 .
+
+default:predicateObjectMap42937010291400386734828431025456 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap89299207810115464888935820486818 ;
+	r2rml:predicateMap default:predicateMap10883088126938134000199312212704 .
+
+default:predicateObjectMap48259149809325491413860633225845 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap90644823094298420260739412681743 ;
+	r2rml:predicateMap default:predicateMap26146060912412629128753397110193 .
+
+default:predicateObjectMap59126129696113309526677837314161 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap27518540015714032493694701737342 ;
+	r2rml:predicateMap default:predicateMap12870162689097345086745809159810 .
+
+default:predicateObjectMap78428277066317977271117677970903 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap26466264610198999759449256302892 ;
+	r2rml:predicateMap default:predicateMap49919366282560479671761396430368 .
+
+default:predicateObjectMap93945051821264059965701250586484 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap32057009884279812220024235708644 ;
+	r2rml:predicateMap default:predicateMap60880800522948791556694505360439 .
+
+default:subjectMap46186283626668418399528583824359 a r2rml:SubjectMap ;
+	r2rml:class default:TABELLENBLATT1 ;
+	r2rml:template "http://www.fluidops.com/resource/{UID}" .
+
+default:triplesMap46567669304550963161335758795276 a r2rml:TriplesMap ;
+	rdfs:label "Bootstrapped Mapping for Table: PUBLIC.TABELLENBLATT1" ;
+	r2rml:logicalTable default:logicalTable45892688907468230278852843504397 ;
+	r2rml:predicateObjectMap default:predicateObjectMap28326887084518355038335730526292 , default:predicateObjectMap42937010291400386734828431025456 , default:predicateObjectMap48259149809325491413860633225845 , default:predicateObjectMap59126129696113309526677837314161 , default:predicateObjectMap78428277066317977271117677970903 , default:predicateObjectMap93945051821264059965701250586484 ;
+	r2rml:subjectMap default:subjectMap46186283626668418399528583824359 .
