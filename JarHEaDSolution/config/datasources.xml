@@ -1,9 +1,0 @@
-<list>
-  <com.fluidops.iwb.datasource.XLSTable>
-    <config class="com.fluidops.iwb.datasource.XLSTable$Config">
-      <location>./data/dataops/20170706-141734</location>
-    </config>
-    <identifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten</identifier>
-    <metaDataURI class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten/MetaData</metaDataURI>
-  </com.fluidops.iwb.datasource.XLSTable>
-</list>
