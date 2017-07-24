@@ -1,0 +1,6 @@
+
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> a <http://www.fluidops.com/ontologies/r2rmlExtension/TriplesMapCollection> ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Mapping Collection for Data Source http://www.fluidops.com/resource/Kundendaten" ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/sourceSchema> <http://www.fluidops.com/resource/Kundendaten/MetaData> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/dataSource> <http://www.fluidops.com/resource/Kundendaten> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/containsTriplesMap> <http://www.fluidops.com/resource/triplesMap84507333616110714994534362768307> , <http://www.fluidops.com/resource/triplesMap09392800552967789820680626374940> , <http://www.fluidops.com/resource/triplesMap72874360460368100092278615382744> , <http://www.fluidops.com/resource/triplesMap19910225037862550045330703506565> .

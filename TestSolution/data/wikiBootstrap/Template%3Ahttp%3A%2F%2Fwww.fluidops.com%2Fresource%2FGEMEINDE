@@ -1,0 +1,6 @@
+Template Gemeinde
+
+{{#widget: TableResult | 
+ query = 'Select * where {?? ?x ?y}'
+}}
+

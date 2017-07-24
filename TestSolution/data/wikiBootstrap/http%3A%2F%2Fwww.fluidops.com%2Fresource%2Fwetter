@@ -1,0 +1,12 @@
+{{#widget: CodeExecution | 
+ clazz = 'Wetter'
+ | method = 'aufruf'
+ | label = 'Wetter'
+ | args = {{ '%Location' }}
+ | userInput = {{ 
+      {{ name = 'Location'
+       | componentType = 'TEXTAREA'
+       | required = true
+      }} }}
+ | onFinish = 'inline'
+}}

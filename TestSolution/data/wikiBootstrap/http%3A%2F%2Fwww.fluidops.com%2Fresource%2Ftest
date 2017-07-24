@@ -1,0 +1,71 @@
+{{#widget: CodeExecution | 
+ clazz = 'de.semanticservices.praktikum.JarHEaD.Interface'
+ | method = 'setDebug'
+ | onFinish = 'inlineHTML'
+}}
+
+{{#widget: CodeExecution | 
+ clazz = 'de.semanticservices.praktikum.JarHEaD.Interface'
+ | method = 'distance'
+ | label = 'distance'
+ | args = {{ '%left' | '%right' }}
+ | userInput = {{ 
+      {{ name = 'left'
+       | componentType = 'DROPDOWN'
+       | required = true
+       | selectValues = $Select ?x where 
+{?x rdf:type :GEMEINDE}$
+      }} | 
+      {{ name = 'right'
+       | componentType = 'DROPDOWN'
+       | required = true
+       | selectValues = $Select ?x where {?x rdf:type :GEMEINDE}$
+      }} }}
+}}
+
+<br />
+<br />
+
+
+
+<br />
+<br />
+<br />
+{{#widget: TripleEditor | 
+ propertyConfiguration = {{ 
+      {{ property = ':Länge'
+       | datatype = 'xsd:decimal'
+       | componentType = 'TEXTAREA'
+      }} | 
+      {{ property = ':Breite'
+       | datatype = 'xsd:decimal'
+       | componentType = 'TEXTAREA'
+      }} }}
+}}
+<br />
+<br />
+<br />
+
+
+
+
+{{#widget: ActionableResult | 
+ query = 'Select ?Peer where{?x :Peer ?Peer}'
+ | rowActions = {{ 
+      {{ clazz = 'test2'
+       | method = 'fakultaet'
+       | passContext = false
+       | args = {{ '?:Peer' }}
+       | userInput = {{  }}
+| onFinish = 'inlineHTML'
+      }} }}
+
+}}
+<br />
+<br />
+<br />
+{{#widget: TableResult | 
+ query = 'select * where
+{ ?s :Peer ?o }'
+}}
+
