@@ -27,8 +27,8 @@ public class DistributorProvider extends AbstractFlexProvider<DistanceProvider.C
 		private static final long serialVersionUID = -6759601022040845557L;
 
 		// in the provider configuration, the user specifies a directory
-		@ParameterConfigDoc(desc = "Range", required = true)
-		public int range;
+		@ParameterConfigDoc(desc = "directory", required = true)
+		public String directory;
 	}
 
 	@Override
@@ -40,12 +40,16 @@ public class DistributorProvider extends AbstractFlexProvider<DistanceProvider.C
 	public void gather(final List<Statement> res) throws Exception {
 				
 						   					
-		   		res.add(ProviderUtils.createStatement( RDFUtil.uri("Abstand unter 10Km")));
-		   				
+		   		//res.add(ProviderUtils.createStatement( RDFUtil.uri("Abstand unter 10Km")));
+		   			
+		
+		
+		
+		
 		   				
 		   			}
 					
-				   }
+				  
 										
 				
 				
@@ -75,4 +79,3 @@ public class DistributorProvider extends AbstractFlexProvider<DistanceProvider.C
 		// that's all, the triples add to res will automatically added to the
 		// repository by the surrounding provider framework
 	
-}
