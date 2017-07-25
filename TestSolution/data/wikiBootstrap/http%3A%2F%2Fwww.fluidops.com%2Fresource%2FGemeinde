@@ -1,0 +1,4 @@
+{{#widget: TableResult | 
+ query = 'SELECT ?x WHERE { 
+	{ ?x a :GEMEINDE } }LIMIT 10000'
+}}

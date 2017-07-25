@@ -1,0 +1,6 @@
+
+<http://www.fluidops.com/resource/Scrum-excel-sheet/MappingCollection51274732413599850152053654424544> a <http://www.fluidops.com/ontologies/r2rmlExtension/TriplesMapCollection> ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Mapping Collection for Data Source http://www.fluidops.com/resource/Scrum-excel-sheet" ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/sourceSchema> <http://www.fluidops.com/resource/Scrum-excel-sheet/MetaData> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/dataSource> <http://www.fluidops.com/resource/Scrum-excel-sheet> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/containsTriplesMap> <http://www.fluidops.com/resource/triplesMap80158708829714283134403521062544> .
