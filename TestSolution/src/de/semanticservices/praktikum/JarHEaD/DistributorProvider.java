@@ -18,7 +18,7 @@ import com.fluidops.iwb.util.RDFUtil;
  * A Provider that asks for all municipalities and then calculates the distance between them
  * and writes it in the database
  */
-@SuppressWarnings("unused")
+/*@SuppressWarnings("unused")
 public class DistributorProvider extends AbstractFlexProvider<DistanceProvider.Config> {
 	
 	private static final long serialVersionUID = 684345323098327777L;
@@ -31,23 +31,23 @@ public class DistributorProvider extends AbstractFlexProvider<DistanceProvider.C
 		public String directory;
 	}
 
-	@Override
+	/*@Override
 	public Class<? extends Config> getConfigClass() {
-		return Config.class;
-	}
+		return Config.class;}
+	**/
 
-	@Override
+	/*@Override
 	public void gather(final List<Statement> res) throws Exception {
 				
 						   					
-		   		//res.add(ProviderUtils.createStatement( RDFUtil.uri("Abstand unter 10Km")));
+		**/   		//res.add(ProviderUtils.createStatement( RDFUtil.uri("Abstand unter 10Km")));
 		   			
 		
 		
 		
 		
 		   				
-		   			}
+		   			/*}
 					
 				  
 										
@@ -79,3 +79,4 @@ public class DistributorProvider extends AbstractFlexProvider<DistanceProvider.C
 		// that's all, the triples add to res will automatically added to the
 		// repository by the surrounding provider framework
 	
+**/
