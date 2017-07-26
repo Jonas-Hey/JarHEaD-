@@ -67,9 +67,10 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		   					if(Util.debug){System.out.println("distance ist -1");}
 		   				continue;
 		   				}else if (distance<config.range){		   					
-		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter 10Km"),
+		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter "+config.range),
 		   							vergleich));
-		   				}else if (distance<30){
+		   				}
+		   				/*else if (distance<30){
 		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand zwischen 10Km und 30Km"),
 		   							vergleich));
 		   				}else if (distance<50){res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand zwischen 30Km und 50Km"),
@@ -78,7 +79,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 	   							vergleich));
 		   				}else{res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand über 100Km"),
 	   		   							vergleich));}
-		   					
+		   				**/	
 		   				
 		   			}
 					
