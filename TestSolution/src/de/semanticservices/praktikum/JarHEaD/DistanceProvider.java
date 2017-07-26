@@ -46,6 +46,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 				List<URI> gemeinden = Helper.getNewURIs(RDFUtil.fullUri(Util.gemeinde),config.limit);
 				System.out.println(gemeinden.size());
 				int i=0;
+				int range=config.range;
 				
 				//Helper funktion, die aus SPARQLstatement liste von Gemeinde URI´s erstellt /Query umbauen
 				//Distance über alle Gemeinden laufen
@@ -67,7 +68,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		   					if(Util.debug){System.out.println("distance ist -1");}
 		   				continue;
 		   				}else if (distance<config.range){		   					
-		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter "+config.range),
+		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter "+range),
 		   							vergleich));
 		   				}
 		   				/*else if (distance<30){
