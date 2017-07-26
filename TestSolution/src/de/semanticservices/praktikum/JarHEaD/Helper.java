@@ -172,7 +172,7 @@ public class Helper {
 	 */
 	public static List<URI> getNewURIs(URI type) throws QueryEvaluationException{
 		List<URI>uris=new ArrayList<URI>();
-		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select ?x where {?x rdf:type "+type+"}","x");
+		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select distinct ?x where {?x rdf:type "+type+"}","x");
 		 for(URI uri:uriStrings){
 			 if (Util.debug)System.out.println(uri);
 		 uris.add(uri);
@@ -258,6 +258,16 @@ public static TupleQueryResult getIterator(URI current,String SPARQL,String para
 		//getNode, which returns a List of Literals
 		
 		return null;
+	}
+	public static List<URI> getDistributor(URI type) throws QueryEvaluationException{
+		List<URI>uris=new ArrayList<URI>();
+		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select * where {?x :personenid ?y}","x");
+		 for(URI uri:uriStrings){
+			 if (Util.debug)System.out.println(uri);
+		 uris.add(uri);
+		 }
+		
+		return uris;
 	}
 	
 	

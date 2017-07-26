@@ -14,6 +14,7 @@ public class Util {
 	public static final String gemeinde = ":GEMEINDE";
 	public static final String länge=":längengrad";
 	public static final String breite=":breitengrad";
+	public static final String distributor=":personenid";
 	public static boolean debug=false;
 	
 	/**

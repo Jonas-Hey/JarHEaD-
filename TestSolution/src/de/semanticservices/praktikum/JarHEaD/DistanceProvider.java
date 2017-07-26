@@ -41,6 +41,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 				
 				//Liste von URI´s die alle Gemeinden der Datenbanken zurückgeben
 				List<URI> gemeinden = Helper.getNewURIs(RDFUtil.fullUri(Util.gemeinde));
+				System.out.println(gemeinden.size());
 				int i=0;
 				
 				//Helper funktion, die aus SPARQLstatement liste von Gemeinde URI´s erstellt /Query umbauen
