@@ -170,9 +170,9 @@ public class Helper {
 	 * @return List of URIs of type
 	 * @throws QueryEvaluationException 
 	 */
-	public static List<URI> getNewURIs(URI type) throws QueryEvaluationException{
+	public static List<URI> getNewURIs(URI type,int limit) throws QueryEvaluationException{
 		List<URI>uris=new ArrayList<URI>();
-		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select distinct ?x where {?x rdf:type "+type+"}","x");
+		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select distinct ?x where {?x rdf:type "+type+"}LIMIT "+limit,"x");
 		 for(URI uri:uriStrings){
 			 if (Util.debug)System.out.println(uri);
 		 uris.add(uri);

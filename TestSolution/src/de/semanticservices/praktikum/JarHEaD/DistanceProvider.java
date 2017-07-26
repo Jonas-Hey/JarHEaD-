@@ -29,6 +29,9 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		// in the provider configuration, the user specifies a directory
 		@ParameterConfigDoc(desc = "Range", required = true)
 		public int range;
+		
+		@ParameterConfigDoc(desc = "limit for SPRQL Query", required = true)
+		public int limit;
 	}
 
 	@Override
@@ -40,7 +43,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 	public void gather(final List<Statement> res) throws Exception {
 				
 				//Liste von URI´s die alle Gemeinden der Datenbanken zurückgeben
-				List<URI> gemeinden = Helper.getNewURIs(RDFUtil.fullUri(Util.gemeinde));
+				List<URI> gemeinden = Helper.getNewURIs(RDFUtil.fullUri(Util.gemeinde),config.limit);
 				System.out.println(gemeinden.size());
 				int i=0;
 				
@@ -62,12 +65,11 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		   				if(Util.debug)System.out.println(gemeinde);
 		   				if(distance== -1){
 		   					if(Util.debug){System.out.println("distance ist -1");}
-		   				continue;}
-		   				/*}else if (distance<config.range){		   					
+		   				continue;
+		   				}else if (distance<config.range){		   					
 		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter 10Km"),
 		   							vergleich));
-		   				**/
-		   				/*else if (distance<30){
+		   				}else if (distance<30){
 		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand zwischen 10Km und 30Km"),
 		   							vergleich));
 		   				}else if (distance<50){res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand zwischen 30Km und 50Km"),
@@ -76,11 +78,11 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 	   							vergleich));
 		   				}else{res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand über 100Km"),
 	   		   							vergleich));}
-		   					**/
+		   					
 		   				
 		   			}
 					
-				   }
+				   
 										
 				System.out.println(i);
 				
@@ -110,4 +112,4 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		// that's all, the triples add to res will automatically added to the
 		// repository by the surrounding provider framework
 	
-}
+}}
