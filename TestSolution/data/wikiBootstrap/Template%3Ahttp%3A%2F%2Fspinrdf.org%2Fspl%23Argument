@@ -1,4 +1,0 @@
-{{#widget: TripleEditor | 
- editMode = 'PAGE_AT_ONCE'
- | limitProperties = false
-}}

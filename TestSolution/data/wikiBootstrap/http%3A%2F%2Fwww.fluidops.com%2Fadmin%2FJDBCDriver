@@ -1,9 +1,0 @@
-= JDBC Drivers =
-
-The following table lists the known JDBC drivers, as well as available information. In addition it prints the status of the driver.
-
-{{#widget: com.fluidops.iwb.widget.system.JDBCDriverWidget}}
-
-= Installation =
-
-Download the respective JDBC Driver JAR file, place it in the %HOME%/lib/extensions folder and restart the service.

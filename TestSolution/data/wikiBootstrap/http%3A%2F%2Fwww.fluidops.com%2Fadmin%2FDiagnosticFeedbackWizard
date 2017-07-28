@@ -1,3 +1,0 @@
-{{#widget: com.fluidops.iwb.widget.ComponentWidget | 
- type = 'com.fluidops.coremgmt.ui.wizard.DiagnosticFeedbackWizard'
-}}

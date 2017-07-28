@@ -1,6 +1,0 @@
-<!-- being included from owl:Ontology to be visible for administrators only -->
-==== Import Ontologies ====
-<br/>
-{{#widget: com.fluidops.iwb.widget.OntologyImportWidget | 
- width = '600'
-}}

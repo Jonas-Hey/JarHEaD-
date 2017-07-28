@@ -1,7 +1,0 @@
-[[Admin:DataSources|Data Sources]] > Create a new Data Source 
-
-<br/>
-The following form guides you in creating a new Data Source.<br/>
-Please follow the instruction on how to install a 3rd party  [[Admin:JDBCDriver | JDBC driver]], if using JDBC Data Sources. 
-
-{{#widget: com.fluidops.iwb.widget.system.DataSourceConfigurationWidget}}

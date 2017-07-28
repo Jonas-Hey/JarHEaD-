@@ -1,7 +1,0 @@
-=== Session Monitoring ===
-
-The [[ Admin:SessionMonitoring |''Session Monitoring'' page ]] lists all active user sessions.
-
-An active session starts when a user logs in to {{PRODUCT}} in a browser. The session ends if either the user logs out or if the session times out. Simply closing the browser does not end the active session.
-
-'''Note''': If the system is separated into a backend and one or more frontends, users that login to the frontend will ''not'' be listed in the ''Session Monitoring'' table on the backend.

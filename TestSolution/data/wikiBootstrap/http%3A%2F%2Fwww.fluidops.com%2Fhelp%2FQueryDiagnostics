@@ -1,7 +1,0 @@
-=== Query Diagnostics ===
-
-The [[Admin:QueryDiagnostics|Widget Diagnostics page]] lists all SPARQL queries that are located on wiki pages i.e. queries that form part of widget definitions or SPARQL parser functions. The table on the site lists the corresponding page on which the query is found and its corresponding environment, for example the widget name.
-
-<br/>
-
-<img src="../images/help/query-diagnostics.png" width="1050px" />

@@ -1,9 +1,0 @@
-= Job Status Page <sup>[[Help:Jobs | <img width="19" src="../images/navigation/help_start.png" />]]</sup> =
-
-{{#widget: com.fluidops.iwb.ecm.widget.JobStatusWidget | 
- userFilter = ''
- | showActive = true
- | showHistory = true
- | enableUserActions = true
- | descriptionFilter = '{{{job}}}'
-}}

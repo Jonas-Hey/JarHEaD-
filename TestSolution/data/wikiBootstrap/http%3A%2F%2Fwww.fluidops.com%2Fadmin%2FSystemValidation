@@ -1,6 +1,0 @@
-= System Validation =
-
-This page shows the state / setup of different aspects of the system.
-
-<!-- include all pages typed as Platform:SystemValidationPage . -->
-{{#sparql: SELECT ?resource WHERE { ?resource a Platform:SystemValidationPage . } ORDER BY ASC(?resource) | format=template | template=Template:System:IncludeResource}}

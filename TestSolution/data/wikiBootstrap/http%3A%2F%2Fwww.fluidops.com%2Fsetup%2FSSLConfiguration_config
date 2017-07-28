@@ -1,4 +1,0 @@
-{{#widget: com.fluidops.iwb.ecm.widget.InlineConfigurationWidget | 
- fields = {{ 'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
- | configOptions = {{ 'keyStore' | 'keyStorePassword' |'trustStore' | 'trustStorePassword' }}
-}}

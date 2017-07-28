@@ -1,9 +1,0 @@
-== Charts ==
-
-The chart widgets are a set of elaborate tools for creating charts and diagrams from query results. 
-
-=== Overview ===
-
-[[Help:Widgets]] lists the types of charts that are available.
-
-The data for the respective visualizations can be obtained via SPARQL queries from an RDF database (e.g., by default from the local triple store). Optionally, the ''repository'' setting in the chart configuration can be used to define the actual source for the data (e.g., as a [[Help:RepositoryManagement| managed repository]] or using the [[Help:PolyglotWidgets| polyglot access paradigm]]).
