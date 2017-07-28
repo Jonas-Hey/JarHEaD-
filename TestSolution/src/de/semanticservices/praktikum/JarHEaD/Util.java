@@ -81,7 +81,7 @@ public class Util {
 			
 		}
 		
-		return Util.berechneDistance(Helper.stringToDouble(rechtsLänge),Helper.stringToDouble(rechtsBreite),Helper.stringToDouble(linksLänge),Helper.stringToDouble(linksBreite));
+		return Util.berechneDistance(Double.parseDouble(rechtsLänge),Double.parseDouble(rechtsBreite),Double.parseDouble(linksLänge),Double.parseDouble(linksBreite));
 		
 	}
 
