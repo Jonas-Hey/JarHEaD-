@@ -1,0 +1,52 @@
+{{#ifexpr: {{#sparql: ASK { ?? <http://www.fluidops.com/ontologies/spin/useQueryTemplate> "Inline"^^xsd:string . } }} 
+ | 
+<!-- true branch -->
+''Please enter the SPARQL query and select the query type to be created: ''
+{{#widget: TripleEditor | 
+ width = '980'
+ | startInEditMode = true
+ | editMode = 'PAGE_AT_ONCE'
+ | clusterByDomain = true
+ | propertyConfiguration = {{ 
+      {{ minCardinality = 1
+       | showAlways = true
+       | values = {{ 'sp:Select' | 'sp:Construct' }}
+       | property = 'http://www.fluidops.com/ontologies/spin/queryType'
+       | datatype = 'rdfs:Resource'
+       | displayName = 'Query Type'
+       | enforceConstraints = true
+       | componentType = 'DROPDOWN'
+       | maxCardinality = 1
+      }} | 
+      {{ minCardinality = 1
+       | showAlways = true
+       | property = 'sp:text'
+       | datatype = 'xsd:string'
+       | displayName = 'SPARQL Query'
+       | enforceConstraints = true
+       | componentType = 'SPARQLEDITOR'
+       | maxCardinality = 1
+      }} }}
+ | addNewProperties = false
+ | limitProperties = true
+}}
+ | 
+<!-- else branch -->
+''Please select a query to be referenced from the list of existing base queries:''
+{{#widget: TripleEditor | 
+ width = '600'
+ | startInEditMode = true
+ | propertyConfiguration = {{ 
+      {{ minCardinality = 1
+       | queryPattern = 'SELECT ?query WHERE {?query a sp:Query}'
+       | property = 'http://spinrdf.org/spin#body'
+       | datatype = 'rdfs:Resource'
+       | displayName = 'Query'
+       | enforceConstraints = true
+       | maxCardinality = 1
+      }} }}
+ | editMode = 'PAGE_AT_ONCE'
+ | addNewProperties = false
+ | limitProperties = true
+}}
+}}

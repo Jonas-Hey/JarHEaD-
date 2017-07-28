@@ -1,0 +1,32 @@
+=== Event Provider ===
+
+==== Functionality ====
+
+Creates events based on the results of a SPARQL query.
+Events capture a description, timestamp of detection, a classification,
+as well as a link to the resource where the event was observed.
+Users can view the generated events on dashboards ([[Admin:Events]] and [[System:Event]] for eCloudManager).
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.ecm.provider.EventProvider
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Providers | Providers ]]
+
+==== Configuration Settings ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.ecm.provider.EventProvider
+}}
+
+==== Example ====
+
+Show events for overdue payments:
+
+<source>
+message = Payment overdue
+category = Sales
+classification = INFORMATION
+query = select ?payment where { ?payment sales:isOverdue true }
+</source>
+
+See also [[Help:TaskPostProcessor]] for a concrete example use case with email notifications.

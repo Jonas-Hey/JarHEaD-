@@ -1,0 +1,529 @@
+==== LINE Charts ====
+<br />
+<table>
+<tr>
+<td>
+====== Single Line Chart ======
+
+Settings file: [[Settings:line.example]]
+
+{{#widget: LineChart | 
+ input = 'Org'
+ | query = '
+    SELECT ?Org ?projects WHERE { 
+        VALUES (?Org ?projects)
+        { 
+          ("Org 1" 23)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 20)
+          ("Org 6" 15)
+          ("Org 7" 90)
+          ("Org 8" 55)
+          ("Org 9" 6)
+          ("Org 10" 56)
+          ("Org 11" 33)
+          ("Org 12" 87)
+          ("Org 13" 20)
+          ("Org 14" 15)
+          ("Org 15" 90)
+          ("Org 16" 55)
+   } }'
+ | settings = 'Settings:line.example'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+<td>
+====== Clustered Line and Bar Chart ======
+
+Settings: [[Settings:line.bar.clustered.example]]
+{{#widget: LineChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'started projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'closed projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB )
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+          ("Org 6" 15 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 6 3)
+   } }'
+ | settings = 'Settings:line.bar.clustered.example'
+ | output = {{  'projectsA'| 'projectsB' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+</tr>
+</table>
+==== BAR VERTICAL Charts ====
+<br />
+<table>
+<tr>
+<td>
+====== Simple Chart ======
+
+Settings: [[Settings:barvertical.example]]
+
+{{#widget: BarChart | 
+ input = 'organisation'
+ | query = '
+    SELECT ?organisation ?projects WHERE { 
+        VALUES (?organisation ?projects)
+        { 
+          ("Org 1" 23)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 20)
+          ("Org 6" 1)
+          ("Org 7" 90)
+          ("Org 8" 55)
+   } }'
+ | settings = 'Settings:barvertical.example'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+<td>
+====== Cylinder Chart ======
+
+Settings: [[Settings:barvertical.cylinder.example]]
+
+{{#widget: BarChart | 
+ input = 'organisation'
+ | query = '
+    SELECT ?organisation ?projects WHERE { 
+        VALUES (?organisation ?projects)
+        { 
+          ("Org 1" 23)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 20)
+          ("Org 6" 7)
+          ("Org 7" 90)
+          ("Org 8" 55)
+   } }'
+ | settings = 'Settings:barvertical.cylinder.example'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+</tr>
+</table>
+==== BAR HORIZONTAL Charts ====
+<br />
+Settings: [[Settings:barhorizontal.example]]
+
+{{#widget: BarChart | 
+ input = 'Org'
+ | query = '
+    SELECT ?Org ?projects WHERE { 
+        VALUES (?Org ?projects)
+        { 
+          ("Org 6" 1)
+          ("Org 5" 20)
+          ("Org 1" 23)
+          ("Org 3" 33)
+          ("Org 8" 55)
+          ("Org 2" 56)
+          ("Org 4" 87)
+          ("Org 7" 90)
+   } }'
+ | settings = 'Settings:barhorizontal.example'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+==== PIE Charts ====
+<br />
+<table>
+<tr>
+<td>
+====== Simple Chart ======
+Settings: [[ Settings:pie.example ]]
+
+{{#widget: PieChart | 
+ input = 'organisation'
+ | query = '
+    SELECT ?organisation ?projects WHERE { 
+        VALUES (?organisation ?projects)
+        { 
+          ("Organisation 1" 27)
+          ("Organisation 2" 56)
+          ("Organisation 3" 33)
+          ("Organisation 4" 23)
+          ("Organisation 5" 20)
+          ("Organisation 6" 5)
+   } }'
+ | settings = 'Settings:pie.example'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '300'
+    | width = '400'
+   }}
+}}
+</td>
+<td>
+====== Percent Chart ======
+Settings: [[ Settings:pie.percent.example ]]
+
+{{#widget: PieChart | 
+ input = 'title'
+ | query = '
+    SELECT ?title ?percent WHERE { 
+        VALUES (?title ?percent)
+        { 
+          ("used" 27)
+          ("free" 73)
+   } }'
+ | settings = 'Settings:pie.percent.example'
+ | output = {{ 'percent' }}
+ | colors = {{ '#9FA1A2' | '#ffffff' }}
+ | styling = 
+   {{ height = '300'
+    | width = '400'
+   }}
+}}
+</td>
+</tr>
+</table>
+
+==== RADAR Charts ====
+
+<br />
+<table>
+<tr>
+<td>
+====== Simple Chart ======
+
+Settings: [[ Settings:radar.example ]]
+
+{{#widget: RadarChart | 
+ input = 'Org'
+ | query = '
+    SELECT ?Org ?projects WHERE { 
+        VALUES (?Org ?projects)
+        { 
+          ("Org 1" 97)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 59)
+          ("Org 6" 47)
+          ("Org 7" 90)
+          ("Org 8" 55)
+   } }'
+ | settings = 'Settings:radar.example'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '300'
+    | width = '400'
+   }}
+}}
+</td>
+<td>
+====== Clustered Chart ======
+
+Settings: [[ Settings:radar.clustered.example ]]
+
+{{#widget: RadarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'started projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'closed projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB)
+        { 
+          ("Org 1" 89 88)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 67 45)
+          ("Org 6" 78 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 70 56)
+   } }'
+ | settings = 'Settings:radar.clustered.example'
+ | output = {{ 'projectsA' | 'projectsB' }}
+ | styling = 
+   {{ height = '300'
+    | width = '400'
+   }}
+}}
+</td>
+</tr>
+</table>
+==== BAR CLUSTERED Charts ====
+<br />
+<table>
+<tr>
+<td>
+====== Vertical bars ======
+
+Settings: [[Settings:barvertical.example]].
+
+{{#widget: BarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'started projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'closed projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB)
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+          ("Org 6" 15 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 6 3)
+   } }'
+ | settings = 'Settings:barvertical.example'
+ | output = {{ 'projectsA' | 'projectsB' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+<td>
+====== Horizontal bars ======
+
+Settings: [[Settings:barhorizontal.example]]
+
+{{#widget: BarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'started projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'closed projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB)
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+   } }'
+ | settings = 'Settings:barhorizontal.example'
+ | output = {{ 'projectsA' | 'projectsB' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+</tr>
+<tr>
+<td>
+====== Stacked Bars ======
+Settings:[[Settings:barvertical.stacked.example]]
+{{#widget: BarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'national projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'international projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB )
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+          ("Org 6" 15 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 6 3)
+   } }'
+ | settings = 'Settings:barvertical.stacked.example'
+ | output = {{ 'projectsA' | 'projectsB' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+<td>
+
+====== Stacked Bars 100% ======
+Settings: [[Settings:barvertical.stacked100.example]]
+{{#widget: BarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'national projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'international projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB )
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+          ("Org 6" 15 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 6 3)
+   } }'
+ | settings = 'Settings:barvertical.stacked100.example'
+ | output = {{ 'projectsA' | 'projectsB' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</td>
+</tr>
+<tr>
+<td>
+====== 3D Bars ======
+
+Settings file: [[Settings:barvertical.3d.example ]]
+{{#widget: BarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'national projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'international projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB )
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+          ("Org 6" 15 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 6 3)
+   } }'
+ | settings = 'Settings:barvertical.3d.example'
+ | output = {{'projectsB' | 'projectsA' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+<td>
+</td>
+</tr>
+</table>
+==== Other Charts ====
+
+<br />
+<table>
+<tr>
+<td>
+====== Funnel Chart ======
+
+Settings: [[ Settings:funnel.example ]]
+
+{{#widget: PieChart | 
+ input = 'title'
+ | query = '
+    SELECT ?title ?value WHERE { 
+        VALUES (?title ?value)
+        { 
+          ("Website visits" 300)
+          ("Downloads" 123)
+          ("Requested price list" 98)
+          ("Contaced for more info" 72)
+          ("Purchased" 35)
+   } }'
+ | settings = 'Settings:funnel.example'
+ | output = {{ 'value' }}
+ | styling = 
+   {{ height = '180'
+    | width = '400'
+   }}
+}}
+</td>
+<td>
+====== Bar Cylinder Chart ======
+
+Settings: [[ Settings:gauge.cylinder.example ]]
+
+{{#widget: BarChart | 
+ input = 'Category'
+ | query = '
+    SELECT ?Category ?used ?free WHERE { 
+        VALUES (?Category ?used ?free )
+        { 
+          ("CPU" 45 55)
+   } }'
+ | settings = 'Settings:gauge.cylinder.example'
+ | output = {{ 'used' | 'free' }}
+ | styling = 
+   {{ height = '130'
+    | width = '120'
+   }}
+}}
+
+</td>
+</tr>
+</table>
+
+Look also [[Help:ChartSamples | here]] for other chart examples.

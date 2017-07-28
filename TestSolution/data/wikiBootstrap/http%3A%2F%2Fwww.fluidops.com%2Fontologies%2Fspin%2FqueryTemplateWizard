@@ -1,0 +1,31 @@
+[[Admin:Admin|Settings]] > [[sp:Query|Query Catalog]] > Create New Query
+
+=Create Query=
+<div class="query-template-wizard">
+{{#widget: WizardWidget | 
+ stepConfigurations = {{ 
+      {{ stepWikiPageURI = 'http://www.fluidops.com/ontologies/spin/createQueryTemplate'
+       | onNextMethod = 'com.fluidops.iwb.query.catalog.QueryCatalog.validateCreateQueryTemplate'
+       | stepTitle = 'Create Query'
+      }} | 
+      {{ stepWikiPageURI = 'http://www.fluidops.com/ontologies/spin/createQuery'
+       | onNextMethod = 'com.fluidops.iwb.query.catalog.QueryCatalog.validateCreateQuery'
+       | stepTitle = 'Create Template'
+      }} | 
+      {{ stepWikiPageURI = 'http://www.fluidops.com/ontologies/spin/createQueryConstraints'
+       | stepTitle = 'Query Constraints'
+      }} }}
+ | preDefinedProperties = {{ 
+      {{ values = {{ '<http://spinrdf.org/spin#Template>' }}
+       | property = 'rdf:type'
+      }} | 
+      {{ values = {{ '"true"^^<http://www.w3.org/2001/XMLSchema#boolean>' }}
+       | property = 'http://www.fluidops.com/ontologies/spin/useDefaultRepository'
+      }} }}
+ | finishActionConfiguration = 
+   {{ pageActionAfterFinish = 'sp:Query'
+    | finishMethod = 'com.fluidops.iwb.query.catalog.QueryCatalog.assembleQueryTemplate'
+    | discardCollectedData = true
+   }}
+}}
+<div>

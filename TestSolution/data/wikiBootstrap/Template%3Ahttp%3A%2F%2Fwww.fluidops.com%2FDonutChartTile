@@ -1,0 +1,36 @@
+<!-- 
+The template shows values in a donut. 
+The tile in size 1x1 (colspan 1) can visualize up to 4 values in a donut
+The tile in size 2x1 (colspan 2) can visualize up to 6 values in a donut
+
+The requirements for the tile:
+
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{query}}} - the query returning 'category' and 'value' result set to be displayed in the chart (required)
+	the parameter {{{colspan}}} - the tile size: 1 or 2. Default is 1 (optional)
+	the parameter {{{useQueryForColors}}} - is not empty if the colors should be retrieved from the query result
+-->
+
+<div data-ss-colspan="{{{colspan|1}}}" class="pietile tile{{{colspan|1}}}x1">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading|}}}| headingLink={{{headingLink|}}}| description={{{description|}}} }}
+<div class="tiledata">
+{{#widget: PieChart | 
+ input = 'category'
+ | output = {{ 'value' }}
+ | query = '{{{query|SELECT ("Example" as ?category) (5 as ?value) WHERE{}}}}'
+ | settings = 'Settings:donuttile{{{colspan|1}}}x1'
+ | customMappings = 'useQueryForColors={{{useQueryForColors|}}}'
+ | styling = 
+   {{ height = '274'
+   }}
+ | enableLinks = true
+ | asynch = true
+}}
+</div>
+
+<div style="clear:left;"></div>
+
+</div>
+</div>

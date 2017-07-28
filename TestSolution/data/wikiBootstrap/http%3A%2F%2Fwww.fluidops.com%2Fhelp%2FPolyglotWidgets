@@ -1,0 +1,121 @@
+== Polyglot ==
+
+Polyglot describes an access paradigm to [[Help:DataSources| data sources]] without materialization in the local database.
+
+The main use case is the visualization of volatile data (e.g. performance or monitoring information of compute resources). As it is not required to materialize the data upfront (i.e. to create a local copy of the data), Polyglot can significantly improve the performance of the overall system.
+
+Polyglot access to data sources is supported in the following widgets:
+
+* [[Help:TableResult| TableResult widget]]
+* All [[Help:Chart| chart]] widgets (Bar, Pie, Stockchart, ...)
+* [[Help:ActionableResult| ActionableResult widget]]
+* [[Help:TreeResult| TreeResult widget]]
+* [[Help:QueryResult | QueryResult widget]]
+
+Except for the [[Help:TreeResult| TreeResult widget]] all data sources are expected to be of tabular form (i.e. a relational database or a spreadsheet). The requested data can be customized with a native query that is sent to the data source (e.g. SQL for a relational database or XPath for tree structured data).
+
+=== Usage ===
+
+This section describes how [[Help:DataSources | Data Sources]] can be used within widgets directly using the Polyglot feature.
+
+In a typical setup the information from a data source is accessed with a [[Help:Providers| provider]], which saves the data in the
+main RDF repository. From there, widgets can access the materialized data via SPARQL.
+In some scenarios, it might not make sense to import all data from a data source, especially when the
+data is very volatile or the data volume is very high. In these cases, it is better to federate
+the data via the SPARQL service keyword or an approach like [[Help:FedX | FedX]]. If the data source
+is structurally simple, Polyglot widgets are another option.
+
+Polyglot widgets do not use SPARQL to gather data from a repository. Instead, they issue a native query to 
+an underlying data source. For instance, an SQL query can be sent to a relational database.
+The widget displays the SQL result along with all the other widgets defined in the wiki.
+The link to the RDF world is established by parameterizing the query with values from the current
+RDF neighborhood. 
+
+Consider the following example:
+
+<source>
+{{#widget: TableResult | 
+ repository = 'sqlDatabase1'
+ | query = 'select * from company'
+}}
+</source>
+
+The [[Help:TableResult| table result widget]] is fed with the result of the query <tt>select * from company</tt>.
+The query is run against the database ''sqlDatabase1'', which is a JDBC data source.
+This example yields the same result, regardless of where the widget is placed.
+The next example runs a query which is parameterized with RDF values:
+
+<source>
+{{#widget: TableResult | 
+ repository = 'sqlDatabase1'
+ | query = 'select * from company where id=?:id'
+ | queryParameters = {{ 
+      {{ name = 'id'
+       | value = $this.comp:id$
+      }} }}
+}}
+</source>
+
+If the widget definition is located on the resource ''http://example.org'', and an RDF statement
+<nowiki>(<http://example.org> <comp:id> "1234")</nowiki> exists, then the widget displays the result of the query
+<tt>select * from company where id=1234</tt>.
+
+For the JDBC based polyglot provider values from the relational database are treated as literals, 
+unless they are enclosed by '<>' (e.g. <nowiki><http://www.example.com/myUri></nowiki>), in which case they are considered URIs.
+
+=== Supported Widgets ===
+
+The following widgets support this feature:
+
+* BarChartWidget
+* HeatMapWidget
+* LineChartWidget
+* PieChartWidget
+* RadarChartWidget
+* StockChartWidget
+* TableResultWidget
+* ActionableResultWidget
+* MatrixResultWidget
+* SelectableTableResultWidget
+* TreeResultWidget
+
+Note that all widgets require a tabular data source. The only exception is the tree result widget, which
+can visualize tree structures such as XML or JSON.
+
+==== Supported Query Languages ====
+
+The following query languages are supported within the widgets:
+
+* SQL
+* XPath
+* ElasticSearch (<a href='https://appcenter.fluidops.com/resource/?uri=http%3A%2F%2Fwww.fluidops.com%2Fapplication%2FELKstack'>App for ELKstack</a>)
+
+Other data sources and their respective query languages can be implemented within [[Help:PlatformSDK | Apps]].
+
+=== Parameterized Data Sources ===
+
+Apart from issuing queries, some data sources can also be parameterized via their location.
+This is the case for ''RESTTable'', ''SNMPTable'', ''GroovyTable'', and some other datasource which are defined in Apps.
+Please refer to the App documentation for additional information whether a given datasource supports this feature.
+
+Assume you have a set of REST endpoints which return tabular data. The REST endpoint address is:
+''http://{ipAddress}/REST/info'' and this generic description is provided in a data source ''ds''.
+
+Further assume, that the following widget definition is given on the resource ''http://example.org/rest1'' and that
+the statement <nowiki>(<http://example.org/rest1> <ex:ipAddress> "1.2.3.4")</nowiki> is present:
+
+<source>
+{{#widget: TableResult | 
+ repository = 'ds'
+ | query = 'ignored for parameterized datasources - make sure you specify the correct xpath expression in the datasource'
+ | queryParameters = {{ 
+      {{ name = 'ipAddress'
+       | value = $this.ex:ipAddress$
+      }} }}
+}}
+</source>
+
+In this setup, {{PRODUCT}} displays the tabular data provided by the REST endpoint ''http://1.2.3.4/REST/info''
+within the table result widget. Note that in this case it is not possible to apply additional SQL statements on the result.
+Furthermore, no caching is applied and the widget loading is delayed until the rest service answers.
+

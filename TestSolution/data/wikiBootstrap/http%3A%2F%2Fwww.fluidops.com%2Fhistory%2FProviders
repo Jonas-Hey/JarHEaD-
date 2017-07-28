@@ -1,0 +1,6 @@
+= Data Providers Historic Settings =
+
+{{#widget: com.fluidops.iwb.widget.ComponentWidget | 
+title = 'Data Providers' |
+type = 'com.fluidops.iwb.ui.HistoryTabPane'
+}}

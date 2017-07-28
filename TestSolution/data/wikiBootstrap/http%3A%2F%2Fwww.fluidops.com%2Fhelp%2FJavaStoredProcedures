@@ -1,0 +1,61 @@
+== Java stored procedures ==
+
+
+{{PRODUCT}} supports the execution of Java stored procedures to produce query results. 
+
+Sometimes it is very hard to express an operation (e.g. a date conversion) in a SPARQL query. For this stored procedures can be used to generate, manipulate or post-process query results.
+
+
+=== Usage ===
+
+Stored procedures are implemented in Java and must have one of the following signatures:
+
+<source>
+public static TupleQueryResult selectQuery(JavaQueryContext ctx)
+public static GraphQueryResult constructQuery(JavaQueryContext ctx)
+public static boolean askTest(JavaQueryContext ctx)
+</source>
+
+Note that the return type of the method defines the actual query type.
+
+In addition, the methods need to be annotated with the ''@CallableFromWidget'' annotation, which optionally may define an ''authorization'' id for fine granular [[Help:AccessControl| access control]].
+
+To execute a stored procedure as a query (e.g. from a widget) the following notation can be applied:
+
+<source>
+Java:com.package.MyClass#myMethodName
+
+e.g.
+Java:com.fluidops.iwb.api.query.StoredProcedureHelper#selectTest
+</source>
+
+For the implementation of the stored procedure {{PRODUCT}} provides a set of commonly used convenience function. Please refer to the javadoc for class ''com.fluidops.iwb.api.query.StoredProcedureHelper''.
+
+=== Example ===
+
+The following example demonstrates how a manually constructed query result can be visualized in a table.
+
+Stored procedure definition:
+
+<source>
+@CallableFromWidget
+public static TupleQueryResult selectTest( JavaQueryContext ctx) throws Exception
+{
+	List<String> bindingNames = Arrays.asList( "rowid", "value" );
+	return StoredProcedureHelper.tupleQueryResultsBuilder(bindingNames)
+			.add( Arrays.asList(RDFUtil.literal(1), RDFUtil.literal(10)) )
+			.add( Arrays.asList(RDFUtil.literal(2), RDFUtil.literal(20)) )
+			.add( Arrays.asList(RDFUtil.literal(2), RDFUtil.literal(30)) )
+			.build();		
+}
+</source>
+
+Widget definition:
+
+<source>
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.iwb.api.query.StoredProcedureHelper#selectTest'
+}} 
+</source>
+
+The result is a table showing two columns ({rowid, value}) and three rows.

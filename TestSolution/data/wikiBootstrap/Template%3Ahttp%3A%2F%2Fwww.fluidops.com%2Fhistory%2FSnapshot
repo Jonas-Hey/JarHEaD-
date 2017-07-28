@@ -1,0 +1,46 @@
+= Snapshot Information =
+{|
+| '''ID:'''
+| {{#show: {{this}} | valueResolver=LABEL}}
+|-
+|'''Timestamp:'''
+| {{#show: {{this}} | dc:date | valueResolver=DATETIME}}
+|-
+| '''Provider:'''
+| {{#show: {{this}} | ^historyProvider:hasAggregationSnapshot }} 
+|-
+| '''Aggregation Type:'''
+| {{#show: {{this}} |  historyAggregationSnapshot:type | noDataMessage=Aggregation type is not defined}}
+|-
+| '''Snapshot Type:'''
+| {{#show: {{this}} | historySnapshot:type | noDataMessage=Snapshot type is not defined.}}
+|-
+| '''Size:'''
+| {{#widget: QueryResult | 
+ query = 'SELECT (COUNT(?Subject) AS ?cnt) WHERE { GRAPH ?? { ?Subject ?Predicate ?Object } } '
+ | repository = 'history'
+ | asynch = true
+}}
+|}
+
+== Actions ==
+
+{{#widget: CodeExecution | 
+ confirm = 'Are you sure you want to delete this snapshot and all associated data?'
+ | args = {{ $this$ }}
+ | method = 'deleteSnapshot'
+ | label = 'Delete'
+ | useJob = true
+ | onFinish = 'history:History'
+ | clazz = 'com.fluidops.iwb.history.HistoricalDataManagement'
+}}
+
+== Data in this Snapshot ==
+
+Note: data is limited to 1000 triples.
+
+{{#widget: TableResult | 
+ query = 'SELECT * WHERE { GRAPH ?? { ?Subject ?Predicate ?Object } } LIMIT 1000'
+ | repository = 'history'
+ | asynch = true
+}}

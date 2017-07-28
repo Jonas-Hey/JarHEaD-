@@ -1,0 +1,113 @@
+=== API Task ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.APITask
+| type = 'DESCRIPTION'
+}}
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.APITask
+| type = CONFIGURATION
+}}
+
+==== Quick guide ====
+
+This task can invoke methods on the platform API. Also see [[Help:CLI]], [[Help:APIExtensions]], and the <a href="/REST/JSON">dynamic REST endpoint</a>.
+Marshalling and unmarshalling of parameters follows same principle as the [[Help:CodeExecution | Code Execution Widget]]. Specifically, the following examples are possible:
+
+{|class="wikitable"
+|-
+! API task parameter
+! Method parameter type
+! Evaluated to
+! Explanation
+|-
+| "string"
+| java.lang.String
+| string
+| Simple string representation
+|-
+| System:null
+|
+| null
+| special handling for representing Java null values
+|-
+| 1.1
+| java.lang.Float
+| 1.1f
+| Built in types are parsed from arguments
+|-
+| true
+| java.lang.Boolean
+| true
+| Built in types are parsed from arguments
+|-
+| "list"
+| java.util.List<String>
+| List("list")
+| Single values are automatically converted to lists
+|-
+| <source>{{1|2}}</source>
+| java.lang.List<Integer>
+| List(1,2)
+| Multi-valued lists can be represented in wiki notation
+|-
+| "a"
+| org.openrdf.model.Literal
+| Literal("a")
+| RDF Literals are converted from the task arguments
+|-
+| "System:x"
+| org.openrdf.model.Value
+| URI("http://www.fluidops.com/x")
+| RDF URIs are converted from the task arguments (with namespace handling)
+|-
+| "<http://www.fluidops.com/x>"
+| org.openrdf.model.Value
+| URI("http://www.fluidops.com/x")
+| RDF URIs are converted from the task arguments (explicit notation)
+|-
+| ''$''this.rdfs:label''$'' / ''$''select ...''$''
+| java.lang.String
+| the label of the task context nodes
+| externally run tasks can also leverage the operator notation in order to retrieve information from the DB
+|-
+| "<http://www.fluidops.com/VM17>"
+| com.fluidops.coremgmt.common.model.BasePojo
+| Host(17)
+| URI are automatically converted to eCloudManager POJO objects
+|}
+
+Note that complex signatures involving nested pojos and some collection types are not supported
+to be called directly from tasks or widgets. In this case, please use a custom task as
+described in [[Help:TaskExtensions]]. This allows for tasks to collect parameters
+which can then be parsed, converted, cast, etc. to fit any API signature.
+
+==== Examples ====
+
+Calling the "version" API:
+
+<source>
+method = version
+</source>
+
+This API is on the root level. Therefore we only need to specify a single method. The version call
+has no parameters, thus the parameters are omitted.
+
+Running a provider:
+
+<source>
+method = getSemanticService
+method = getProviderService
+method = runProvider
+args = :myProvider
+args = System:null
+</source>
+
+To run a provider, we first need to navigate to the semantic service, then to the provider service
+and finally to the runProvider method. It has two arguments: first the provider ID, second optional
+parameters, which are null in this case.
+

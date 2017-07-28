@@ -1,0 +1,43 @@
+<source>
+{
+	"type": "serial",
+	"rotate": true,
+	"autoMargins": false,
+	"marginBottom": 0,
+	"marginLeft": 0,
+	"marginRight": 0,
+	"marginTop": 0,
+	"categoryAxis": {
+		"axisThickness": 0,
+		"gridCount": 0,
+		"gridThickness": 0,
+		"tickLength": 0
+	},
+	"graphs": [
+		{
+			"fillAlphas": 1,
+			"fillColors" : ["#8AD05E", "#A0AF55", "#f73838"],
+                        "gradientOrientation" : "horizontal",
+                        "lineColor": "#FFFFFF",
+                        "showBalloon": false,
+                        "columnWidth": 1,
+ 			"type": "column"
+		}
+	],
+	"guides": [
+		{
+			"lineAlpha": 1,
+			"value": $value$,
+		        "above": true
+		}
+	],
+	"valueAxes": [
+		{
+                  "stackType": "100%",
+                  "axisAlpha": 0,
+                  "lineColor": "#4C5860",
+	          "gridAlpha": 0
+		}
+	]
+}
+</source>

@@ -1,0 +1,20 @@
+<table class="start" style="border-spacing: 10px 0px;margin-top:10px;width:98%;margin:auto;">
+<tr style="border-bottom:1px solid #B6C5BC;height:130px;">
+<td colspan=3 >
+<h2 style="text-transform: uppercase;">Welcome to  <br />
+{{PRODUCT}}&trade;</h2>
+</td>
+</tr>
+{{Help:Start_Include}}
+<tr style="border-top:1px solid #B6C5BC;">
+<td colspan="3">
+<ul style="margin-top:30px;width:240px;list-style-type: none;padding-left:0;">
+<li class="icon--drilldown" style="background-color: #F2F4F3;height: 30px;line-height: 30px;margin-bottom: 10px;padding-left:5px;"><span style="font-family: sans-serif;padding-left:10px;">[[ Help:GettingStarted | Getting started tutorial ]]</span></li>
+<li class="icon--drilldown" style="background-color: #F2F4F3;height: 30px;line-height: 30px;margin-bottom: 10px;padding-left:5px;"><span style="font-family: sans-serif;padding-left:10px;">[[Help:Help | Help pages]]</span></li>
+<li class="icon--drilldown" style="background-color: #F2F4F3;height: 30px;line-height: 30px;margin-bottom: 10px;padding-left:5px;"><span style="font-family: sans-serif;padding-left:10px;">[[Admin:Admin | Administration page ]]</span></li>
+<li class="icon--drilldown" style="background-color: #F2F4F3;height: 30px;line-height: 30px;margin-bottom: 10px;padding-left:5px;"><span style="font-family: sans-serif;padding-left:10px;">[[Help:PlatformSDK | Platform SDK]] </span></li>
+<li class="icon--drilldown" style="background-color: #F2F4F3;height: 30px;line-height: 30px;margin-bottom: 10px;padding-left:5px;"><span style="font-family: sans-serif;padding-left:10px;">[http://groups.google.com/group/iwb-discussion/subscribe Register for our mailing list]</span></li>
+</ul>
+</td>
+</tr>
+</table>

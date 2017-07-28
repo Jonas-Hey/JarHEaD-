@@ -1,0 +1,35 @@
+=== XML Provider ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.provider.XMLProvider
+| type = 'DESCRIPTION'
+}}
+
+Please note that the preferred method for integrating XML data is now our [[Help:DataOps | three-step data integration process]], as it adds additional flexibility over the older XML provider.
+This provider is kept for purposes of backwards compatibility.
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.provider.XMLProvider
+}}
+
+==== Mappings ====
+The provider requires a mapping to translate the data according to your wishes.
+Please refer to [[Help:XmlMappings | XML mappings]] for details and examples.
+
+==== Provider Setup ====
+
+Having the XML file with the source data and the mapping file as in example above you can set up the XML provider using the configuration form in [[Admin:Providers | Providers UI]]. To configure the provider from our example just enter the [[Help:Providers | basic information]], enter the path of the XML file in the '''xmlfile''' field and the path of the mapping file in the '''mappingfile''' field of the configuration form:
+
+<img src="../images/help/xml-provider1.png" style="border:1px solid black" />
+
+In order to edit the mappings click on the ''edit'' button under the mapping file. An editor in a popup window will be displayed where you can modify and save your mappings:
+
+<img src="../images/help/xml-provider2.png" style="border:1px solid black"/>
+
+You can also create the mapping file using this configuration field. For this purpose enter the name of the new file in the '''mappingfile''' field and use the editor to save the content in the file. Keep in mind that you should have the write access to the file to edit it. 
+
+Note that the '''xmlfile''' is interpreted relatively to the working directory if it points to a single file. In case of a folder, it may point to any place on the file system. In case of a conflict (a folder with the absolute path in '''xmlfile''' and a file or folder relative to the runtime folder both exist) the folder with the absolute path is chosen.
+

@@ -1,0 +1,133 @@
+<!--
+
+Reusable template for showing and browsing the upload folder
+
+Parameters
+
+ - rootFolder 		:= the root folder URI, e.g. System:UploadRoot (default) or <File:mysubfolder>
+ - currentFolder 	:= the current folder taken from the 'dir' request parameter
+ - rootFolderPath 	:= the root folder path e.g. mysubfolder
+ - pageUri 			:= URI of the page to show in dialog for the upload form, default <http://www.fluidops.com/UploadResource>
+
+Example usage:
+
+{{Template:System:FileBrowser| currentFolder={{#urlget:dir|System:UploadRoot}} }}
+{{Template:System:FileBrowser| currentFolder={{#urlget:dir|<File:mysubfolder>}} | rootFolder=<File:mysubfolder> }}
+
+-->
+
+{{#widget: com.fluidops.iwb.widget.ActionableResultWidget | 
+ query = 'SELECT ?icon ?fileHandle ?mimetype ?lastModified ?comment ?fileOrDirectory ?isFolder WHERE{ 
+        
+       # make sure current folder is always bound and that root folder is a directory
+       BIND ( COALESCE(?currentFolder, :___dummyRoot) AS ?_currentFolder )
+       ?rootFolder a System:Directory .
+       FILTER NOT EXISTS { ?_currentFolder System:hasChild+ ?rootFolder } 
+
+    {
+        ?_currentFolder System:hasChild ?fileOrDirectory . 
+        OPTIONAL { ?fileOrDirectory foaf:thumbnail ?icon_defined.}
+        OPTIONAL { ?fileOrDirectory dcterms:modified ?lastModified } 
+        OPTIONAL { ?fileOrDirectory dc:format ?mimetypeInternal  } 
+        OPTIONAL { ?fileOrDirectory rdfs:comment ?commentInternal  } 
+        
+        
+        BIND ( IF(EXISTS { ?fileOrDirectory a System:Directory }, true, false) AS ?isFolder) .
+        BIND ( IF(?isFolder, CONCAT("0_", STR(?fileOrDirectory)), CONCAT("1_", STR(?fileOrDirectory))) AS  ?sort)
+        BIND ( IF(?isFolder, "", ?mimetypeInternal) AS ?mimetype)
+        BIND ( IF(?isFolder, "", ?commentInternal) AS ?comment)
+
+        BIND ( IF(?isFolder, CONCAT("DIR::", CONCAT(STR(??), CONCAT("::", STR(?fileOrDirectory)))), ?fileOrDirectory) AS ?fileHandle )
+
+        BIND ("/ajax/icons/filetypes/folder.png" AS ?icon_folder) .  
+        BIND ("/ajax/icons/filetypes/page-white.png" AS ?icon_unknown) .  
+        BIND ( IF(?isFolder, ?icon_folder, ?icon_unknown ) AS ?icon_custom ) .  
+        BIND ( COALESCE(?icon_defined, ?icon_custom) AS ?icon)  
+    }
+    UNION {
+       ?parent System:hasChild ?_currentFolder .
+       FILTER (?_currentFolder != ?rootFolder)
+       BIND (CONCAT("PARENT::", CONCAT(STR(??), CONCAT("::", STR(?parent)))) AS ?fileHandle)
+       BIND ("0" AS ?sort)
+       BIND ("/ajax/icons/filetypes/folder.png" AS ?icon) .
+       BIND (true AS ?isFolder) .
+    }        
+} ORDER BY ?sort'
+ | columnConfiguration = {{ 
+      {{ variableName = 'fileHandle'
+       | valueResolver = 'com.fluidops.iwb.cms.DirectoryBrowserValueResolver'
+       | displayName = '&nbsp; '
+      }} | 
+      {{ variableName = 'icon'
+       | columnWidth = 2
+       | valueResolver = 'IMAGE'
+       | displayName = '&nbsp;'
+      }} | 
+      {{ variableName = 'mimetype'
+       | displayName = {{#i18n: widgets#label_mime_type | Mime type }}
+      }} | 
+      {{ variableName = 'lastModified'
+       | valueResolver = 'DATETIME'
+       | displayName = {{#i18n: widgets#label_last_modified | Last modified }}
+      }} | 
+      {{ variableName = 'comment'
+       | displayName = {{#i18n: widgets#label_comment | Comment }}
+      }} |
+      {{ variableName = 'fileOrDirectory'
+       | visibility = 'HIDDEN'
+      }} |
+      {{ variableName = 'isFolder'
+       | visibility = 'HIDDEN'
+      }} }}
+ | queryParameters = {{ 
+      {{ name = 'currentFolder'
+       | value = '{{{currentFolder}}}'
+      }} | 
+      {{ name = 'rootFolder'
+       | value = '{{{rootFolder|System:UploadRoot}}}'
+      }} }}
+| rowActions = {{
+     {{ clazz = 'com.fluidops.iwb.cms.FileControl'
+       | method = 'showFileDetailsPage'
+       | hideAction = '?:isFolder'
+       | passContext = true
+       | render = 'img:/ajax/icons/edit.png'
+       | label = {{ #i18n: widgets#label_edit | Edit }}
+       | args = {{ '?:fileOrDirectory' }}
+      }} |
+      {{ clazz = 'com.fluidops.iwb.cms.service.CMSService'
+       | method = 'deleteFile'
+       | hideAction = '?:isFolder'
+       | passContext = false
+       | render = 'img:/images/icons/16x16/trashBin.png'
+       | label = {{ #i18n: widgets#label_delete | Delete }}
+       | confirm = {{ #i18n: widgets#confirm_delete_file | Do you really want to delete this file? }}
+       | args = {{ '?:fileOrDirectory' }}
+       | useJob=true
+       | onFinish = 'reloadComponent'
+      }}
+   }}
+ | selectedRowActions = {{ 
+      {{ clazz = 'com.fluidops.iwb.widget.WikiPopupWidget'
+       | method = 'openWikiInDialog'
+       | showForEmptyTable = true
+       | passContext = true
+       | render = 'btn'
+       | label = {{ #i18n: widgets#btn_upload | Upload }}
+       | args = {{ '{{{pageUri|<http://www.fluidops.com/UploadResource>}}}' | $this$ | {{ #i18n: widgets#btn_upload | Upload }} | 'baseFolder' | '{{{rootFolderPath | NOT_EXISTING_FOLDER}}}' }}
+       | useJob=false
+       | onFinish = 'reloadComponent'
+      }} |
+      {{ clazz = 'com.fluidops.iwb.cms.service.CMSService'
+       | method = 'deleteFiles'
+       | showForEmptyTable = false
+       | passContext = false
+       | render = 'btn'
+       | label = {{ #i18n: widgets#label_delete | Delete }}
+       | confirm = {{ #i18n: widgets#confirm_delete_selected_files | Do you really want to delete the selected files? }}
+       | args = {{ '?:fileOrDirectory' }}
+       | useJob=true
+       | onFinish = 'reloadComponent'
+      }}
+   }}     
+}}

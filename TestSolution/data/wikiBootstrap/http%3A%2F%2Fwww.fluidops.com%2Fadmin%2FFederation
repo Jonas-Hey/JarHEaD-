@@ -1,0 +1,15 @@
+= Federation management <sup>[[Help:FedX | <img width="19" src="../images/navigation/help_start.png" />]]</sup> =
+
+This interface allows to administrate a FedX federation and requires federation mode to be active. See [[Help:FedX]] for detailed information on how to use FedX within {{PRODUCT}}. Please note that this feature is available in the Enterprise Edition only.
+
+<span style="color:red"><b>Note: federation management has been moved to [[Admin:RepositoryManagement]].</b></span>
+
+<!--
+== Current federation members: ==
+
+{{#widget: com.fluidops.iwb.federation.FederationControlWidget }}
+-->
+
+== Federation statistics ==
+
+{{#widget: com.fluidops.iwb.federation.FederationStatisticsWidget | asynch=true }}

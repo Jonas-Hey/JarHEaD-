@@ -1,0 +1,43 @@
+<!-- 
+The template can show labels and values in defined colors
+
+The requirements for the status tile:
+
+Circle size: 40 x 40px
+Border: 250 x 1px (BxH) • #E6E9E7
+Headline: Arial • Regular • 18px • #839088
+Subheadline: Arial • Bold • 14px • #333333
+Label: Arial • Regular • 13px • #333333
+Value: Arial • Regular • 20px • #FFFFFF
+
+Parameters: 
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{query}}} - the query returning 'category-error-warning-ok' binding sets (required)
+	the parameter {{{colspan}}} - the tile size: 1 or 2. Default is 1 (optional)
+	the parameter {{{color}}} - the color of the circle in which the value is displayed (e.g. "#D53548")
+
+-->
+
+<div data-ss-colspan="{{{colspan|1}}}" class="statustile tile{{{colspan|1}}}x1">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading|VM Status}}} | headingLink={{{headingLink|}}} | description={{{description|}}} }}
+<div class="tiledata">
+{{#widget: QueryResult | 
+ query = '{{{query|SELECT ("Example" as ?label) (5 as ?value) ("grey" as ?color)  WHERE{}}}}'
+ | template = '<div class="statustile_col statustile_item"> 
+		   <div style="background-color:{{{color}}};">{{{value}}}</div> 
+		   <p class="statustile_name">{{{label}}}</p> 
+	       </div>'
+ | format = 'NONE'
+ | styling = 
+   {{ cssClass = 'tileShiftContainer'
+    | width = '250'
+   }}
+}}
+</div>
+
+<div style="clear:left;"></div>
+
+</div>
+</div>

@@ -1,0 +1,19 @@
+<!-- 
+The template for a tile description text
+
+Used to compute the description text shown in Template:fluidops:TileDescription
+The description is retrieved from the rdfs:comment of the passed URI (or the 
+current page)
+
+Note: the description is retrieved from the config repository
+
+	the parameter {{{pageName}}} - the name (URI resolvable) of the page (optional, default current page)
+
+
+Example usage on "include:DatacentersTile"
+
+description={{Template:fluidops:TileDescriptionText|pageName=include:DatacentersTile}}
+
+
+-->
+{{#show: {{{pageName|{{this}} }}} | rdfs:comment | valueResolver=DEFAULT_NOERROR | repository=config}}

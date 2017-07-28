@@ -1,0 +1,1587 @@
+<ul class="tc">
+	<li>
+		<span id="Help:Introduction_Introduction">1.</span><a href="/resource/Help:Introduction#Introduction">Introduction</a>
+		<ul>
+		<li>
+			<span id="Help:Introduction_What_is_the_Information_Workbench">1.1.</span><a href="/resource/Help:Introduction#What_is_the_Information_Workbench">What is the Information Workbench</a>
+			<ul>
+			<li>
+				<span id="Help:Introduction_The_Information_Workbench_User_Interface">1.1.1.</span><a href="/resource/Help:Introduction#The_Information_Workbench_User_Interface">The Information Workbench User Interface</a>
+			</li>
+			<li>
+				<span id="Help:Introduction_Features_and_Scope">1.1.2.</span><a href="/resource/Help:Introduction#Features_and_Scope">Features and Scope</a>
+			</li>
+			<li>
+				<span id="Help:Introduction_Where_to_get_Help">1.1.3.</span><a href="/resource/Help:Introduction#Where_to_get_Help">Where to get Help</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:ExampleData_Loading_Example_Data_into_the_fluidOps_Suite">1.2.</span><a href="/resource/Help:ExampleData#Loading_Example_Data_into_the_fluidOps_Suite">Loading Example Data into the fluidOps Suite</a>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:DataIntegration_Data_Integration_and_Management">2.</span><a href="/resource/Help:DataIntegration#Data_Integration_and_Management">Data Integration and Management</a>
+		<ul>
+		<li>
+			<span id="Help:RDFImport_Importing_RDF_data">2.1.</span><a href="/resource/Help:RDFImport#Importing_RDF_data">Importing RDF data</a>
+			<ul>
+			<li>
+				<span id="Help:RDFImport_Configuration">2.1.1.</span><a href="/resource/Help:RDFImport#Configuration">Configuration</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:RDFExport_Exporting_RDF_Data">2.2.</span><a href="/resource/Help:RDFExport#Exporting_RDF_Data">Exporting RDF Data</a>
+			<ul>
+			<li>
+				<span id="Help:RDFExport_Configuration">2.2.1.</span><a href="/resource/Help:RDFExport#Configuration">Configuration</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:OpenRefine_Open_Refine">2.3.</span><a href="/resource/Help:OpenRefine#Open_Refine">Open Refine</a>
+			<ul>
+			<li>
+				<span id="Help:OpenRefine_Using_Open_Refine">2.3.1.</span><a href="/resource/Help:OpenRefine#Using_Open_Refine">Using Open Refine</a>
+			</li>
+			<li>
+				<span id="Help:OpenRefine_Importing_Data_from_Open_Refine">2.3.2.</span><a href="/resource/Help:OpenRefine#Importing_Data_from_Open_Refine">Importing Data from Open Refine</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:ContentOverview_Content_Overview">2.4.</span><a href="/resource/Help:ContentOverview#Content_Overview">Content Overview</a>
+			<ul>
+			<li>
+				<span id="Help:ContentOverview_Statistics_of_Imported_Datasets">2.4.1.</span><a href="/resource/Help:ContentOverview#Statistics_of_Imported_Datasets">Statistics of Imported Datasets</a>
+			</li>
+			<li>
+				<span id="Help:ContentOverview_Class_Hierarchy">2.4.2.</span><a href="/resource/Help:ContentOverview#Class_Hierarchy">Class Hierarchy</a>
+			</li>
+			<li>
+				<span id="Help:ContentOverview_Properties_by_Range_and_Domain">2.4.3.</span><a href="/resource/Help:ContentOverview#Properties_by_Range_and_Domain">Properties by Range and Domain</a>
+			</li>
+			<li>
+				<span id="Help:ContentOverview_Context_Overview">2.4.4.</span><a href="/resource/Help:ContentOverview#Context_Overview">Context Overview</a>
+			</li>
+			<li>
+				<span id="Help:ContentOverview_Individual_Context_Pages">2.4.5.</span><a href="/resource/Help:ContentOverview#Individual_Context_Pages">Individual Context Pages</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:DataOps_Integrating_Data_Sources">2.5.</span><a href="/resource/Help:DataOps#Integrating_Data_Sources">Integrating Data Sources</a>
+			<ul>
+			<li>
+				<span id="Help:DataSources_Data_Sources">2.5.1.</span><a href="/resource/Help:DataSources#Data_Sources">Data Sources</a>
+			</li>
+			<li>
+				<span id="Help:DataSourceMappings_Data_Mappings">2.5.2.</span><a href="/resource/Help:DataSourceMappings#Data_Mappings">Data Mappings</a>
+			</li>
+			<li>
+				<span id="Help:DataOpsPostProcessing_Post_Processing">2.5.3.</span><a href="/resource/Help:DataOpsPostProcessing#Post_Processing">Post Processing</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Providers_Providers">2.6.</span><a href="/resource/Help:Providers#Providers">Providers</a>
+			<ul>
+			<li>
+				<span id="Help:Providers_Data_Provider_Concept">2.6.1.</span><a href="/resource/Help:Providers#Data_Provider_Concept">Data Provider Concept</a>
+			</li>
+			<li>
+				<span id="Help:Providers_Provider_Management_UI">2.6.2.</span><a href="/resource/Help:Providers#Provider_Management_UI">Provider Management UI</a>
+			</li>
+			<li>
+				<span id="Help:Providers_Adding_and_Removing_Providers">2.6.3.</span><a href="/resource/Help:Providers#Adding_and_Removing_Providers">Adding and Removing Providers</a>
+			</li>
+			<li>
+				<span id="Help:CkanProvider_CKAN_Provider">2.6.4.</span><a href="/resource/Help:CkanProvider#CKAN_Provider">CKAN Provider</a>
+			</li>
+			<li>
+				<span id="Help:HistoricalDataProvider_Historical_Data_Provider">2.6.5.</span><a href="/resource/Help:HistoricalDataProvider#Historical_Data_Provider">Historical Data Provider</a>
+			</li>
+			<li>
+				<span id="Help:LDAPProvider_LDAP_Provider">2.6.6.</span><a href="/resource/Help:LDAPProvider#LDAP_Provider">LDAP Provider</a>
+			</li>
+			<li>
+				<span id="Help:RDFProvider_RDF_Provider">2.6.7.</span><a href="/resource/Help:RDFProvider#RDF_Provider">RDF Provider</a>
+			</li>
+			<li>
+				<span id="Help:ScriptProvider_Script_Provider">2.6.8.</span><a href="/resource/Help:ScriptProvider#Script_Provider">Script Provider</a>
+			</li>
+			<li>
+				<span id="Help:SequenceProvider_Sequence_Provider">2.6.9.</span><a href="/resource/Help:SequenceProvider#Sequence_Provider">Sequence Provider</a>
+			</li>
+			<li>
+				<span id="Help:SilkProvider_Silk_Provider">2.6.10.</span><a href="/resource/Help:SilkProvider#Silk_Provider">Silk Provider</a>
+			</li>
+			<li>
+				<span id="Help:SPARQLEndpointProvider_SPARQL_Endpoint_Provider">2.6.11.</span><a href="/resource/Help:SPARQLEndpointProvider#SPARQL_Endpoint_Provider">SPARQL Endpoint Provider</a>
+			</li>
+			<li>
+				<span id="Help:SPARQLTriggerProvider_SPARQL_Trigger_Provider">2.6.12.</span><a href="/resource/Help:SPARQLTriggerProvider#SPARQL_Trigger_Provider">SPARQL Trigger Provider</a>
+			</li>
+			<li>
+				<span id="Help:ValueBasedDataMappingProvider_Value_Based_Data_Mapping_Provider">2.6.13.</span><a href="/resource/Help:ValueBasedDataMappingProvider#Value_Based_Data_Mapping_Provider">Value Based Data Mapping Provider</a>
+			</li>
+			<li>
+				<span id="Help:XMLProvider_XML_Provider">2.6.14.</span><a href="/resource/Help:XMLProvider#XML_Provider">XML Provider</a>
+			</li>
+			<li>
+				<span id="Help:R2RMLProvider_R2RML_Provider">2.6.15.</span><a href="/resource/Help:R2RMLProvider#R2RML_Provider">R2RML Provider</a>
+			</li>
+			<li>
+				<span id="Help:ReportProvider_Report_Provider">2.6.16.</span><a href="/resource/Help:ReportProvider#Report_Provider">Report Provider</a>
+			</li>
+			<li>
+				<span id="Help:MetaQueryProvider_Meta_Query_Provider">2.6.17.</span><a href="/resource/Help:MetaQueryProvider#Meta_Query_Provider">Meta Query Provider</a>
+			</li>
+			<li>
+				<span id="Help:MetaDataSourceProvider_Meta_Data_Source_Provider">2.6.18.</span><a href="/resource/Help:MetaDataSourceProvider#Meta_Data_Source_Provider">Meta Data Source Provider</a>
+			</li>
+			<li>
+				<span id="Help:GroupProvider_Group_Provider">2.6.19.</span><a href="/resource/Help:GroupProvider#Group_Provider">Group Provider</a>
+			</li>
+			<li>
+				<span id="Help:FormulaProvider_Formula_Provider">2.6.20.</span><a href="/resource/Help:FormulaProvider#Formula_Provider">Formula Provider</a>
+			</li>
+			<li>
+				<span id="Help:EventProvider_Event_Provider">2.6.21.</span><a href="/resource/Help:EventProvider#Event_Provider">Event Provider</a>
+			</li>
+			<li>
+				<span id="Help:SystemHealthProvider_System_Health_Provider">2.6.22.</span><a href="/resource/Help:SystemHealthProvider#System_Health_Provider">System Health Provider</a>
+			</li>
+			<li>
+				<span id="Help:DatabaseSnapshotProvider_Database_Snapshot_Provider">2.6.23.</span><a href="/resource/Help:DatabaseSnapshotProvider#Database_Snapshot_Provider">Database Snapshot Provider</a>
+			</li>
+			<li>
+				<span id="Help:DataGenerator_Data_Generator">2.6.24.</span><a href="/resource/Help:DataGenerator#Data_Generator">Data Generator</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:PostProcessors_Post_Processors">2.7.</span><a href="/resource/Help:PostProcessors#Post_Processors">Post Processors</a>
+			<ul>
+			<li>
+				<span id="Help:PostProcessors_Post_Processor_Extensions">2.7.1.</span><a href="/resource/Help:PostProcessors#Post_Processor_Extensions">Post Processor Extensions</a>
+			</li>
+			<li>
+				<span id="Help:SilkPostProcessor_Silk_Post_Processor">2.7.2.</span><a href="/resource/Help:SilkPostProcessor#Silk_Post_Processor">Silk Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:LanguagePostProcessor_Language_Post_Processor">2.7.3.</span><a href="/resource/Help:LanguagePostProcessor#Language_Post_Processor">Language Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:RegexPostProcessor_Regular_Expression_Post_Processor">2.7.4.</span><a href="/resource/Help:RegexPostProcessor#Regular_Expression_Post_Processor">Regular Expression Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:SparqlPostProcessor_SPARQL_Post_Processor">2.7.5.</span><a href="/resource/Help:SparqlPostProcessor#SPARQL_Post_Processor">SPARQL Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:MultiColumnPostProcessor_Multi_Column_Post_Processor">2.7.6.</span><a href="/resource/Help:MultiColumnPostProcessor#Multi_Column_Post_Processor">Multi Column Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:TaskPostProcessor_Task_Post_Processor">2.7.7.</span><a href="/resource/Help:TaskPostProcessor#Task_Post_Processor">Task Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:DateTimePostProcessor_DateTime_Post_Processor">2.7.8.</span><a href="/resource/Help:DateTimePostProcessor#DateTime_Post_Processor">DateTime Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:EntityMergingPostProcessor_Entity_Merging_Post_Processor">2.7.9.</span><a href="/resource/Help:EntityMergingPostProcessor#Entity_Merging_Post_Processor">Entity Merging Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:DeleteDuplicatesPostProcessor_Delete_Duplicates_Post_Processor">2.7.10.</span><a href="/resource/Help:DeleteDuplicatesPostProcessor#Delete_Duplicates_Post_Processor">Delete Duplicates Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:StringOperationPostProcessor_String_Operation_Post_Processor">2.7.11.</span><a href="/resource/Help:StringOperationPostProcessor#String_Operation_Post_Processor">String Operation Post Processor</a>
+			</li>
+			<li>
+				<span id="Help:EventTrigger_Event_Trigger">2.7.12.</span><a href="/resource/Help:EventTrigger#Event_Trigger">Event Trigger</a>
+			</li>
+			<li>
+				<span id="Help:ChangeHistoryPostProcessor_Change_History_Post_Processor">2.7.13.</span><a href="/resource/Help:ChangeHistoryPostProcessor#Change_History_Post_Processor">Change History Post Processor</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Tasks_Recurring_Tasks">2.8.</span><a href="/resource/Help:Tasks#Recurring_Tasks">Recurring Tasks</a>
+			<ul>
+			<li>
+				<span id="Help:GroovyTask_Groovy_Task">2.8.1.</span><a href="/resource/Help:GroovyTask#Groovy_Task">Groovy Task</a>
+			</li>
+			<li>
+				<span id="Help:ShellScriptTask_Shell_Script_Task">2.8.2.</span><a href="/resource/Help:ShellScriptTask#Shell_Script_Task">Shell Script Task</a>
+			</li>
+			<li>
+				<span id="Help:EmailTask_Email_Task">2.8.3.</span><a href="/resource/Help:EmailTask#Email_Task">Email Task</a>
+			</li>
+			<li>
+				<span id="Help:TriggerTask_Trigger_Task">2.8.4.</span><a href="/resource/Help:TriggerTask#Trigger_Task">Trigger Task</a>
+			</li>
+			<li>
+				<span id="Help:APITask_API_Task">2.8.5.</span><a href="/resource/Help:APITask#API_Task">API Task</a>
+			</li>
+			<li>
+				<span id="Help:CodeExecutionTask_Code_Execution_Task">2.8.6.</span><a href="/resource/Help:CodeExecutionTask#Code_Execution_Task">Code Execution Task</a>
+			</li>
+			<li>
+				<span id="Help:ActionOnEvent_Setting_up_Action_on_Event_Policies">2.8.7.</span><a href="/resource/Help:ActionOnEvent#Setting_up_Action_on_Event_Policies">Setting up Action on Event Policies</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:ContentEnrichment_Content_Enrichment">2.9.</span><a href="/resource/Help:ContentEnrichment#Content_Enrichment">Content Enrichment</a>
+		</li>
+		<li>
+			<span id="Help:DataAnalytics_Data_Analytics">2.10.</span><a href="/resource/Help:DataAnalytics#Data_Analytics">Data Analytics</a>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:KnowledgeManagement_Collaborative_Knowledge_Management">3.</span><a href="/resource/Help:KnowledgeManagement#Collaborative_Knowledge_Management">Collaborative Knowledge Management</a>
+		<ul>
+		<li>
+			<span id="Help:Views_Views_and_Navigation">3.1.</span><a href="/resource/Help:Views#Views_and_Navigation">Views and Navigation</a>
+			<ul>
+			<li>
+				<span id="Help:Views_Semantic_Wiki">3.1.1.</span><a href="/resource/Help:Views#Semantic_Wiki">Semantic Wiki</a>
+			</li>
+			<li>
+				<span id="Help:Views_Table_View">3.1.2.</span><a href="/resource/Help:Views#Table_View">Table View</a>
+			</li>
+			<li>
+				<span id="Help:Views_Graph_View">3.1.3.</span><a href="/resource/Help:Views#Graph_View">Graph View</a>
+			</li>
+			<li>
+				<span id="Help:Views_Pivot_View">3.1.4.</span><a href="/resource/Help:Views#Pivot_View">Pivot View</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Wiki_Using_the_Semantic_Wiki">3.2.</span><a href="/resource/Help:Wiki#Using_the_Semantic_Wiki">Using the Semantic Wiki</a>
+			<ul>
+			<li>
+				<span id="Help:Wiki_Semantic_Wiki_Overview">3.2.1.</span><a href="/resource/Help:Wiki#Semantic_Wiki_Overview">Semantic Wiki Overview</a>
+			</li>
+			<li>
+				<span id="Help:Wiki_Wiki_Markup_Language">3.2.2.</span><a href="/resource/Help:Wiki#Wiki_Markup_Language">Wiki Markup Language</a>
+			</li>
+			<li>
+				<span id="Help:Wiki_Graphical_Wiki_Editor">3.2.3.</span><a href="/resource/Help:Wiki#Graphical_Wiki_Editor">Graphical Wiki Editor</a>
+			</li>
+			<li>
+				<span id="Help:Wiki_Wiki_Page_Metadata">3.2.4.</span><a href="/resource/Help:Wiki#Wiki_Page_Metadata">Wiki Page Metadata</a>
+			</li>
+			<li>
+				<span id="Help:Wiki_Other_Wiki_Features">3.2.5.</span><a href="/resource/Help:Wiki#Other_Wiki_Features">Other Wiki Features</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:AdvancedResultVisualization_Advanced_Result_Visualization">3.3.</span><a href="/resource/Help:AdvancedResultVisualization#Advanced_Result_Visualization">Advanced Result Visualization</a>
+			<ul>
+			<li>
+				<span id="Help:AdvancedResultVisualization_From_table_results_to_Charts,_Maps_or_Timelines">3.3.1.</span><a href="/resource/Help:AdvancedResultVisualization#From_table_results_to_Charts%2C_Maps_or_Timelines">From table results to Charts, Maps or Timelines</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedResultVisualization_Visualization_Configuration_and_Actions">3.3.2.</span><a href="/resource/Help:AdvancedResultVisualization#Visualization_Configuration_and_Actions">Visualization Configuration and Actions</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:AdvancedWikiSyntax_Advanced_Wiki_Syntax">3.4.</span><a href="/resource/Help:AdvancedWikiSyntax#Advanced_Wiki_Syntax">Advanced Wiki Syntax</a>
+			<ul>
+			<li>
+				<span id="Help:AdvancedWikiSyntax_Magic_Words">3.4.1.</span><a href="/resource/Help:AdvancedWikiSyntax#Magic_Words">Magic Words</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWikiSyntax_Parser_Functions">3.4.2.</span><a href="/resource/Help:AdvancedWikiSyntax#Parser_Functions">Parser Functions</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWikiSyntax_Conditional_Widgets">3.4.3.</span><a href="/resource/Help:AdvancedWikiSyntax#Conditional_Widgets">Conditional Widgets</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWikiSyntax_Parameterized_Templates">3.4.4.</span><a href="/resource/Help:AdvancedWikiSyntax#Parameterized_Templates">Parameterized Templates</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWikiSyntax_Partial_Reload_of_Wiki_Content">3.4.5.</span><a href="/resource/Help:AdvancedWikiSyntax#Partial_Reload_of_Wiki_Content">Partial Reload of Wiki Content</a>
+			</li>
+			<li>
+				<span id="Help:ValueResolvers_Value_Resolvers">3.4.6.</span><a href="/resource/Help:ValueResolvers#Value_Resolvers">Value Resolvers</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:TripleEditor_Authoring_Semantic_Data">3.5.</span><a href="/resource/Help:TripleEditor#Authoring_Semantic_Data">Authoring Semantic Data</a>
+			<ul>
+			<li>
+				<span id="Help:TripleEditor_Adding_Properties">3.5.1.</span><a href="/resource/Help:TripleEditor#Adding_Properties">Adding Properties</a>
+			</li>
+			<li>
+				<span id="Help:TripleEditor_Removing_Properties">3.5.2.</span><a href="/resource/Help:TripleEditor#Removing_Properties">Removing Properties</a>
+			</li>
+			<li>
+				<span id="Help:TripleEditor_Validation_of_user_input">3.5.3.</span><a href="/resource/Help:TripleEditor#Validation_of_user_input">Validation of user input</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Reporting_Reporting">3.6.</span><a href="/resource/Help:Reporting#Reporting">Reporting</a>
+			<ul>
+			<li>
+				<span id="Help:Reporting_Conceptual_Overview">3.6.1.</span><a href="/resource/Help:Reporting#Conceptual_Overview">Conceptual Overview</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Installation">3.6.2.</span><a href="/resource/Help:Reporting#Installation">Installation</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Report_Management">3.6.3.</span><a href="/resource/Help:Reporting#Report_Management">Report Management</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Use_Case_Example:_scheduling_all_customer_reports">3.6.4.</span><a href="/resource/Help:Reporting#Use_Case_Example%3A_scheduling_all_customer_reports">Use Case Example: scheduling all customer reports</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Tutorial">3.6.5.</span><a href="/resource/Help:Reporting#Tutorial">Tutorial</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Search_Searching_and_Querying">4.</span><a href="/resource/Help:Search#Searching_and_Querying">Searching and Querying</a>
+		<ul>
+		<li>
+			<span id="Help:Search_Full_Text_Search">4.1.</span><a href="/resource/Help:Search#Full_Text_Search">Full Text Search</a>
+		</li>
+		<li>
+			<span id="Help:Search_Structured_Search">4.2.</span><a href="/resource/Help:Search#Structured_Search">Structured Search</a>
+		</li>
+		<li>
+			<span id="Help:Search_Hybrid_Search">4.3.</span><a href="/resource/Help:Search#Hybrid_Search">Hybrid Search</a>
+		</li>
+		<li>
+			<span id="Help:Search_Visualization_of_Query_Results">4.4.</span><a href="/resource/Help:Search#Visualization_of_Query_Results">Visualization of Query Results</a>
+		</li>
+		<li>
+			<span id="Help:SPARQLEndpoint_SPARQL_Endpoint">4.5.</span><a href="/resource/Help:SPARQLEndpoint#SPARQL_Endpoint">SPARQL Endpoint</a>
+			<ul>
+			<li>
+				<span id="Help:SPARQLEndpoint_Security_Aspects">4.5.1.</span><a href="/resource/Help:SPARQLEndpoint#Security_Aspects">Security Aspects</a>
+			</li>
+			<li>
+				<span id="Help:SPARQLEndpoint_Supported_Output_Formats">4.5.2.</span><a href="/resource/Help:SPARQLEndpoint#Supported_Output_Formats">Supported Output Formats</a>
+			</li>
+			<li>
+				<span id="Help:SPARQLEndpoint_Configuration">4.5.3.</span><a href="/resource/Help:SPARQLEndpoint#Configuration">Configuration</a>
+			</li>
+			<li>
+				<span id="Help:SPARQLEndpoint_Scripting_via_REST">4.5.4.</span><a href="/resource/Help:SPARQLEndpoint#Scripting_via_REST">Scripting via REST</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:JavaStoredProcedures_Java_stored_procedures">4.6.</span><a href="/resource/Help:JavaStoredProcedures#Java_stored_procedures">Java stored procedures</a>
+			<ul>
+			<li>
+				<span id="Help:JavaStoredProcedures_Usage">4.6.1.</span><a href="/resource/Help:JavaStoredProcedures#Usage">Usage</a>
+			</li>
+			<li>
+				<span id="Help:JavaStoredProcedures_Example">4.6.2.</span><a href="/resource/Help:JavaStoredProcedures#Example">Example</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Widgets_Widgets">5.</span><a href="/resource/Help:Widgets#Widgets">Widgets</a>
+		<ul>
+		<li>
+			<span id="Help:Widgets_Widgets_Overview">5.1.</span><a href="/resource/Help:Widgets#Widgets_Overview">Widgets Overview</a>
+			<ul>
+			<li>
+				<span id="Help:Widgets_Linking_Widgets_to_Semantic_Resources">5.1.1.</span><a href="/resource/Help:Widgets#Linking_Widgets_to_Semantic_Resources">Linking Widgets to Semantic Resources</a>
+			</li>
+			<li>
+				<span id="Help:Widgets_Embedding_Widgets_into_Wiki_Pages">5.1.2.</span><a href="/resource/Help:Widgets#Embedding_Widgets_into_Wiki_Pages">Embedding Widgets into Wiki Pages</a>
+			</li>
+			<li>
+				<span id="Help:Widgets_Asynchronous_loading_of_widgets">5.1.3.</span><a href="/resource/Help:Widgets#Asynchronous_loading_of_widgets">Asynchronous loading of widgets</a>
+			</li>
+			<li>
+				<span id="Help:Widgets_Available_Widgets">5.1.4.</span><a href="/resource/Help:Widgets#Available_Widgets">Available Widgets</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:AdvancedWidgetConfiguration_Advanced_Widget_Configuration">5.2.</span><a href="/resource/Help:AdvancedWidgetConfiguration#Advanced_Widget_Configuration">Advanced Widget Configuration</a>
+			<ul>
+			<li>
+				<span id="Help:AdvancedWidgetConfiguration_Key_Concepts">5.2.1.</span><a href="/resource/Help:AdvancedWidgetConfiguration#Key_Concepts">Key Concepts</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWidgetConfiguration_Constants">5.2.2.</span><a href="/resource/Help:AdvancedWidgetConfiguration#Constants">Constants</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWidgetConfiguration_Lists_and_Structures">5.2.3.</span><a href="/resource/Help:AdvancedWidgetConfiguration#Lists_and_Structures">Lists and Structures</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWidgetConfiguration_Dynamic_Operators">5.2.4.</span><a href="/resource/Help:AdvancedWidgetConfiguration#Dynamic_Operators">Dynamic Operators</a>
+			</li>
+			<li>
+				<span id="Help:AdvancedWidgetConfiguration_Casting_Table">5.2.5.</span><a href="/resource/Help:AdvancedWidgetConfiguration#Casting_Table">Casting Table</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:VisualizationWidgets_Visualization">5.3.</span><a href="/resource/Help:VisualizationWidgets#Visualization">Visualization</a>
+			<ul>
+			<li>
+				<span id="Help:TableResult_Table_Result_Widget">5.3.1.</span><a href="/resource/Help:TableResult#Table_Result_Widget">Table Result Widget</a>
+			</li>
+			<li>
+				<span id="Help:QueryResult_Query_Result_Widget">5.3.2.</span><a href="/resource/Help:QueryResult#Query_Result_Widget">Query Result Widget</a>
+			</li>
+			<li>
+				<span id="Help:GMap_Google_Map_Widget">5.3.3.</span><a href="/resource/Help:GMap#Google_Map_Widget">Google Map Widget</a>
+			</li>
+			<li>
+				<span id="Help:GraphWidget_Graph_Widget">5.3.4.</span><a href="/resource/Help:GraphWidget#Graph_Widget">Graph Widget</a>
+			</li>
+			<li>
+				<span id="Help:IFrame_IFrame_Widget">5.3.5.</span><a href="/resource/Help:IFrame#IFrame_Widget">IFrame Widget</a>
+			</li>
+			<li>
+				<span id="Help:Image_Image_Widget">5.3.6.</span><a href="/resource/Help:Image#Image_Widget">Image Widget</a>
+			</li>
+			<li>
+				<span id="Help:PivotWidget_Pivot_Widget">5.3.7.</span><a href="/resource/Help:PivotWidget#Pivot_Widget">Pivot Widget</a>
+			</li>
+			<li>
+				<span id="Help:TagCloud_Tag_Cloud_Widget">5.3.8.</span><a href="/resource/Help:TagCloud#Tag_Cloud_Widget">Tag Cloud Widget</a>
+			</li>
+			<li>
+				<span id="Help:TreeResult_Tree_Result_Widget">5.3.9.</span><a href="/resource/Help:TreeResult#Tree_Result_Widget">Tree Result Widget</a>
+			</li>
+			<li>
+				<span id="Help:Timeline_Timeline_Widget">5.3.10.</span><a href="/resource/Help:Timeline#Timeline_Widget">Timeline Widget</a>
+			</li>
+			<li>
+				<span id="Help:Timeplot_Timeplot_Widget">5.3.11.</span><a href="/resource/Help:Timeplot#Timeplot_Widget">Timeplot Widget</a>
+			</li>
+			<li>
+				<span id="Help:Tachometer_Tachometer_Widget">5.3.12.</span><a href="/resource/Help:Tachometer#Tachometer_Widget">Tachometer Widget</a>
+			</li>
+			<li>
+				<span id="Help:CollapsibleWidget_Collapsible_Widget">5.3.13.</span><a href="/resource/Help:CollapsibleWidget#Collapsible_Widget">Collapsible Widget</a>
+			</li>
+			<li>
+				<span id="Help:TabWidget_Tab_Widget">5.3.14.</span><a href="/resource/Help:TabWidget#Tab_Widget">Tab Widget</a>
+			</li>
+			<li>
+				<span id="Help:WikiPopupWidget_Wiki_Popup_Widget">5.3.15.</span><a href="/resource/Help:WikiPopupWidget#Wiki_Popup_Widget">Wiki Popup Widget</a>
+			</li>
+			<li>
+				<span id="Help:KPIWidget_KPI_Widget">5.3.16.</span><a href="/resource/Help:KPIWidget#KPI_Widget">KPI Widget</a>
+			</li>
+			<li>
+				<span id="Help:GraphExplorerWidget_Graph_Explorer_Widget">5.3.17.</span><a href="/resource/Help:GraphExplorerWidget#Graph_Explorer_Widget">Graph Explorer Widget</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Chart_Charts">5.4.</span><a href="/resource/Help:Chart#Charts">Charts</a>
+			<ul>
+			<li>
+				<span id="Help:Chart_Overview">5.4.1.</span><a href="/resource/Help:Chart#Overview">Overview</a>
+			</li>
+			<li>
+				<span id="Help:BarChart_Bar_Chart_Widget">5.4.2.</span><a href="/resource/Help:BarChart#Bar_Chart_Widget">Bar Chart Widget</a>
+			</li>
+			<li>
+				<span id="Help:Heatmap_Heat_Map_Widget">5.4.3.</span><a href="/resource/Help:Heatmap#Heat_Map_Widget">Heat Map Widget</a>
+			</li>
+			<li>
+				<span id="Help:LineChart_Line_Chart_Widget">5.4.4.</span><a href="/resource/Help:LineChart#Line_Chart_Widget">Line Chart Widget</a>
+			</li>
+			<li>
+				<span id="Help:PieChart_Pie_Chart_Widget">5.4.5.</span><a href="/resource/Help:PieChart#Pie_Chart_Widget">Pie Chart Widget</a>
+			</li>
+			<li>
+				<span id="Help:RadarChart_Radar_Chart_Widget">5.4.6.</span><a href="/resource/Help:RadarChart#Radar_Chart_Widget">Radar Chart Widget</a>
+			</li>
+			<li>
+				<span id="Help:StockChart_Stock_Chart_Widget">5.4.7.</span><a href="/resource/Help:StockChart#Stock_Chart_Widget">Stock Chart Widget</a>
+			</li>
+			<li>
+				<span id="Help:ChartCustomization_Chart_Customization">5.4.8.</span><a href="/resource/Help:ChartCustomization#Chart_Customization">Chart Customization</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:PolyglotWidgets_Polyglot">5.5.</span><a href="/resource/Help:PolyglotWidgets#Polyglot">Polyglot</a>
+			<ul>
+			<li>
+				<span id="Help:PolyglotWidgets_Usage">5.5.1.</span><a href="/resource/Help:PolyglotWidgets#Usage">Usage</a>
+			</li>
+			<li>
+				<span id="Help:PolyglotWidgets_Supported_Widgets">5.5.2.</span><a href="/resource/Help:PolyglotWidgets#Supported_Widgets">Supported Widgets</a>
+			</li>
+			<li>
+				<span id="Help:PolyglotWidgets_Parameterized_Data_Sources">5.5.3.</span><a href="/resource/Help:PolyglotWidgets#Parameterized_Data_Sources">Parameterized Data Sources</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Authoring_Authoring_&_Search">5.6.</span><a href="/resource/Help:Authoring#Authoring_%26_Search">Authoring &amp; Search</a>
+			<ul>
+			<li>
+				<span id="Help:DataInput_Data_Input_Widget">5.6.1.</span><a href="/resource/Help:DataInput#Data_Input_Widget">Data Input Widget</a>
+			</li>
+			<li>
+				<span id="Help:NewInstance_New_Instance_Widget">5.6.2.</span><a href="/resource/Help:NewInstance#New_Instance_Widget">New Instance Widget</a>
+			</li>
+			<li>
+				<span id="Help:SearchWidget_Search_Widget">5.6.3.</span><a href="/resource/Help:SearchWidget#Search_Widget">Search Widget</a>
+			</li>
+			<li>
+				<span id="Help:TripleEditorWidget_Triple_Editor_Widget">5.6.4.</span><a href="/resource/Help:TripleEditorWidget#Triple_Editor_Widget">Triple Editor Widget</a>
+			</li>
+			<li>
+				<span id="Help:InstanceCreation_Instance_Creation_Widget">5.6.5.</span><a href="/resource/Help:InstanceCreation#Instance_Creation_Widget">Instance Creation Widget</a>
+			</li>
+			<li>
+				<span id="Help:WizardWidget_Wizard_Widget">5.6.6.</span><a href="/resource/Help:WizardWidget#Wizard_Widget">Wizard Widget</a>
+			</li>
+			<li>
+				<span id="Help:FormInputWidget_Form_Input_Widget">5.6.7.</span><a href="/resource/Help:FormInputWidget#Form_Input_Widget">Form Input Widget</a>
+			</li>
+			<li>
+				<span id="Help:Slider_Slider_Widget">5.6.8.</span><a href="/resource/Help:Slider#Slider_Widget">Slider Widget</a>
+			</li>
+			<li>
+				<span id="Help:BucketSelection_Bucket_Selection_Widget">5.6.9.</span><a href="/resource/Help:BucketSelection#Bucket_Selection_Widget">Bucket Selection Widget</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SocialMediaWidgets_Social_Media">5.7.</span><a href="/resource/Help:SocialMediaWidgets#Social_Media">Social Media</a>
+			<ul>
+			<li>
+				<span id="Help:News_News_Widget">5.7.1.</span><a href="/resource/Help:News#News_Widget">News Widget</a>
+			</li>
+			<li>
+				<span id="Help:RSS_RSS_Widget">5.7.2.</span><a href="/resource/Help:RSS#RSS_Widget">RSS Widget</a>
+			</li>
+			<li>
+				<span id="Help:Twitter_Twitter_Widget">5.7.3.</span><a href="/resource/Help:Twitter#Twitter_Widget">Twitter Widget</a>
+			</li>
+			<li>
+				<span id="Help:Youtube_Youtube_Widget">5.7.4.</span><a href="/resource/Help:Youtube#Youtube_Widget">Youtube Widget</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:WorkflowAndActionWidgets_Workflow_&_Actions">5.8.</span><a href="/resource/Help:WorkflowAndActionWidgets#Workflow_%26_Actions">Workflow &amp; Actions</a>
+			<ul>
+			<li>
+				<span id="Help:CodeExecution_Code_Execution_Widget">5.8.1.</span><a href="/resource/Help:CodeExecution#Code_Execution_Widget">Code Execution Widget</a>
+			</li>
+			<li>
+				<span id="Help:ActionableResult_Actionable_Result_Widget">5.8.2.</span><a href="/resource/Help:ActionableResult#Actionable_Result_Widget">Actionable Result Widget</a>
+			</li>
+			<li>
+				<span id="Help:ScriptExecution_Script_Execution_Widget">5.8.3.</span><a href="/resource/Help:ScriptExecution#Script_Execution_Widget">Script Execution Widget</a>
+			</li>
+			<li>
+				<span id="Help:PowerShell_PowerShell">5.8.4.</span><a href="/resource/Help:PowerShell#PowerShell">PowerShell</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Jobs_Jobs">6.</span><a href="/resource/Help:Jobs#Jobs">Jobs</a>
+		<ul>
+		<li>
+			<span id="Help:JobApproval_Job_Approval">6.1.</span><a href="/resource/Help:JobApproval#Job_Approval">Job Approval</a>
+			<ul>
+			<li>
+				<span id="Help:JobApproval_Widgets">6.1.1.</span><a href="/resource/Help:JobApproval#Widgets">Widgets</a>
+			</li>
+			<li>
+				<span id="Help:JobApproval_Framework">6.1.2.</span><a href="/resource/Help:JobApproval#Framework">Framework</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Installation_Installation">7.</span><a href="/resource/Help:Installation#Installation">Installation</a>
+		<ul>
+		<li>
+			<span id="Help:Installation_Installation_Requirements">7.1.</span><a href="/resource/Help:Installation#Installation_Requirements">Installation Requirements</a>
+		</li>
+		<li>
+			<span id="Help:Installation_Installing_the_Information_Workbench">7.2.</span><a href="/resource/Help:Installation#Installing_the_Information_Workbench">Installing the Information Workbench</a>
+			<ul>
+			<li>
+				<span id="Help:Installation_The_Windows_Installer_for_the_backend">7.2.1.</span><a href="/resource/Help:Installation#The_Windows_Installer_for_the_backend">The Windows Installer for the backend</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Silent_Installation">7.2.2.</span><a href="/resource/Help:Installation#Silent_Installation">Silent Installation</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Windows">7.2.3.</span><a href="/resource/Help:Installation#Windows">Windows</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Linux">7.2.4.</span><a href="/resource/Help:Installation#Linux">Linux</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Opening_the_Information_Workbench">7.2.5.</span><a href="/resource/Help:Installation#Opening_the_Information_Workbench">Opening the Information Workbench</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Installation_Post_Installation_Steps">7.3.</span><a href="/resource/Help:Installation#Post_Installation_Steps">Post Installation Steps</a>
+			<ul>
+			<li>
+				<span id="Help:Installation_License_Management">7.3.1.</span><a href="/resource/Help:Installation#License_Management">License Management</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Enabling_HTTP">7.3.2.</span><a href="/resource/Help:Installation#Enabling_HTTP">Enabling HTTP</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Changing_the_Web_Server_HTTP(S)_Port">7.3.3.</span><a href="/resource/Help:Installation#Changing_the_Web_Server_HTTP%28S%29_Port">Changing the Web Server HTTP(S) Port</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Installing_a_Custom_HTTPS_Certificate">7.3.4.</span><a href="/resource/Help:Installation#Installing_a_Custom_HTTPS_Certificate">Installing a Custom HTTPS Certificate</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Changing_API_certificates">7.3.5.</span><a href="/resource/Help:Installation#Changing_API_certificates">Changing API certificates</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Common_Error_messages">7.3.6.</span><a href="/resource/Help:Installation#Common_Error_messages">Common Error messages</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Increasing_the_Strength_of_the_SSL_Cipher">7.3.7.</span><a href="/resource/Help:Installation#Increasing_the_Strength_of_the_SSL_Cipher">Increasing the Strength of the SSL Cipher</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Installation_Update">7.4.</span><a href="/resource/Help:Installation#Update">Update</a>
+			<ul>
+			<li>
+				<span id="Help:Installation_Old_version_is_running">7.4.1.</span><a href="/resource/Help:Installation#Old_version_is_running">Old version is running</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Upgrading_the_Information_Workbench_on_Linux">7.4.2.</span><a href="/resource/Help:Installation#Upgrading_the_Information_Workbench_on_Linux">Upgrading the Information Workbench on Linux</a>
+			</li>
+			<li>
+				<span id="Help:Installation_License_Migration">7.4.3.</span><a href="/resource/Help:Installation#License_Migration">License Migration</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Backup_of_the_Old_Version">7.4.4.</span><a href="/resource/Help:Installation#Backup_of_the_Old_Version">Backup of the Old Version</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Keystore_Migration">7.4.5.</span><a href="/resource/Help:Installation#Keystore_Migration">Keystore Migration</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Installation_Non-standard_Installations">7.5.</span><a href="/resource/Help:Installation#Non-standard_Installations">Non-standard Installations</a>
+			<ul>
+			<li>
+				<span id="Help:Installation_Extending_the_Application_Through_an_App">7.5.1.</span><a href="/resource/Help:Installation#Extending_the_Application_Through_an_App">Extending the Application Through an App</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Installation_Using_the_Information_Workbench_SDK">7.6.</span><a href="/resource/Help:Installation#Using_the_Information_Workbench_SDK">Using the Information Workbench SDK</a>
+		</li>
+		<li>
+			<span id="Help:Installation_Troubleshooting">7.7.</span><a href="/resource/Help:Installation#Troubleshooting">Troubleshooting</a>
+			<ul>
+			<li>
+				<span id="Help:Installation_Log_Files">7.7.1.</span><a href="/resource/Help:Installation#Log_Files">Log Files</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Diagnostic_Reports">7.7.2.</span><a href="/resource/Help:Installation#Diagnostic_Reports">Diagnostic Reports</a>
+			</li>
+			<li>
+				<span id="Help:Installation_Java_VM_Parameters">7.7.3.</span><a href="/resource/Help:Installation#Java_VM_Parameters">Java VM Parameters</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Installation_Important_Notes">7.8.</span><a href="/resource/Help:Installation#Important_Notes">Important Notes</a>
+			<ul>
+			<li>
+				<span id="Help:Installation_Shutting_Down_the_Information_Workbench">7.8.1.</span><a href="/resource/Help:Installation#Shutting_Down_the_Information_Workbench">Shutting Down the Information Workbench</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:PortalMode_Portal_mode">7.9.</span><a href="/resource/Help:PortalMode#Portal_mode">Portal mode</a>
+			<ul>
+			<li>
+				<span id="Help:PortalMode_Single_file_repository">7.9.1.</span><a href="/resource/Help:PortalMode#Single_file_repository">Single file repository</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Licensing_Licensing">8.</span><a href="/resource/Help:Licensing#Licensing">Licensing</a>
+		<ul>
+		<li>
+			<span id="Help:Licensing_License_Management">8.1.</span><a href="/resource/Help:Licensing#License_Management">License Management</a>
+			<ul>
+			<li>
+				<span id="Help:Licensing_Available_actions">8.1.1.</span><a href="/resource/Help:Licensing#Available_actions">Available actions</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Licensing_License_Checks">8.2.</span><a href="/resource/Help:Licensing#License_Checks">License Checks</a>
+		</li>
+		<li>
+			<span id="Help:Licensing_Requesting_a_license">8.3.</span><a href="/resource/Help:Licensing#Requesting_a_license">Requesting a license</a>
+		</li>
+		<li>
+			<span id="Help:Licensing_License_Types">8.4.</span><a href="/resource/Help:Licensing#License_Types">License Types</a>
+			<ul>
+			<li>
+				<span id="Help:Licensing_Information_Workbench">8.4.1.</span><a href="/resource/Help:Licensing#Information_Workbench">Information Workbench</a>
+			</li>
+			<li>
+				<span id="Help:Licensing_eDataCenter_Analyzer">8.4.2.</span><a href="/resource/Help:Licensing#eDataCenter_Analyzer">eDataCenter Analyzer</a>
+			</li>
+			<li>
+				<span id="Help:Licensing_eCloudManager">8.4.3.</span><a href="/resource/Help:Licensing#eCloudManager">eCloudManager</a>
+			</li>
+			<li>
+				<span id="Help:Licensing_Enduser_Portal_License_Types">8.4.4.</span><a href="/resource/Help:Licensing#Enduser_Portal_License_Types">Enduser Portal License Types</a>
+			</li>
+			<li>
+				<span id="Help:Licensing_eHybridCloudAnalyzer_&_eHybridCloudManager">8.4.5.</span><a href="/resource/Help:Licensing#eHybridCloudAnalyzer_%26_eHybridCloudManager">eHybridCloudAnalyzer &amp; eHybridCloudManager</a>
+			</li>
+			<li>
+				<span id="Help:Licensing_High_Availability_Cluster">8.4.6.</span><a href="/resource/Help:Licensing#High_Availability_Cluster">High Availability Cluster</a>
+			</li>
+			<li>
+				<span id="Help:Licensing_Other_features_and_modules">8.4.7.</span><a href="/resource/Help:Licensing#Other_features_and_modules">Other features and modules</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Licensing_Other_resources">8.5.</span><a href="/resource/Help:Licensing#Other_resources">Other resources</a>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:HighAvailability_fluidOps_HA_(High_Availability)">9.</span><a href="/resource/Help:HighAvailability#fluidOps_HA_%28High_Availability%29">fluidOps HA (High Availability)</a>
+		<ul>
+		<li>
+			<span id="Help:HighAvailability_Use_Case">9.1.</span><a href="/resource/Help:HighAvailability#Use_Case">Use Case</a>
+		</li>
+		<li>
+			<span id="Help:HighAvailability_Advantages">9.2.</span><a href="/resource/Help:HighAvailability#Advantages">Advantages</a>
+		</li>
+		<li>
+			<span id="Help:HighAvailability_Technical_Details">9.3.</span><a href="/resource/Help:HighAvailability#Technical_Details">Technical Details</a>
+		</li>
+		<li>
+			<span id="Help:HighAvailability_Setup_Guide">9.4.</span><a href="/resource/Help:HighAvailability#Setup_Guide">Setup Guide</a>
+			<ul>
+			<li>
+				<span id="Help:HighAvailability_High-Level_Setup">9.4.1.</span><a href="/resource/Help:HighAvailability#High-Level_Setup">High-Level Setup</a>
+			</li>
+			<li>
+				<span id="Help:HighAvailability_First_Machine">9.4.2.</span><a href="/resource/Help:HighAvailability#First_Machine">First Machine</a>
+			</li>
+			<li>
+				<span id="Help:HighAvailability_Install_fluidOps_Suite">9.4.3.</span><a href="/resource/Help:HighAvailability#Install_fluidOps_Suite">Install fluidOps Suite</a>
+			</li>
+			<li>
+				<span id="Help:HighAvailability_Secondary_Machine">9.4.4.</span><a href="/resource/Help:HighAvailability#Secondary_Machine">Secondary Machine</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:HighAvailability_Switch-Over_Tests">9.5.</span><a href="/resource/Help:HighAvailability#Switch-Over_Tests">Switch-Over Tests</a>
+		</li>
+		<li>
+			<span id="Help:HighAvailability_Advanced_Configuration">9.6.</span><a href="/resource/Help:HighAvailability#Advanced_Configuration">Advanced Configuration</a>
+		</li>
+		<li>
+			<span id="Help:HighAvailability_Upgrading_fluidOps_Suite_with_HA_Setup">9.7.</span><a href="/resource/Help:HighAvailability#Upgrading_fluidOps_Suite_with_HA_Setup">Upgrading fluidOps Suite with HA Setup</a>
+		</li>
+		<li>
+			<span id="Help:HighAvailability_fluidOps_Suite_performance_with_the_HA_Setup">9.8.</span><a href="/resource/Help:HighAvailability#fluidOps_Suite_performance_with_the_HA_Setup">fluidOps Suite performance with the HA Setup</a>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Scaleout_Data_store_scale-out">10.</span><a href="/resource/Help:Scaleout#Data_store_scale-out">Data store scale-out</a>
+		<ul>
+		<li>
+			<span id="Help:Scaleout_Cluster_DB_data_store">10.1.</span><a href="/resource/Help:Scaleout#Cluster_DB_data_store">Cluster DB data store</a>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Apps_Installing_Apps">11.</span><a href="/resource/Help:Apps#Installing_Apps">Installing Apps</a>
+		<ul>
+		<li>
+			<span id="Help:Apps_Installation_of_an_App">11.1.</span><a href="/resource/Help:Apps#Installation_of_an_App">Installation of an App</a>
+		</li>
+		<li>
+			<span id="Help:Apps_Managing_installed_Apps">11.2.</span><a href="/resource/Help:Apps#Managing_installed_Apps">Managing installed Apps</a>
+		</li>
+		<li>
+			<span id="Help:Apps_Discovery_of_additional_Apps">11.3.</span><a href="/resource/Help:Apps#Discovery_of_additional_Apps">Discovery of additional Apps</a>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Operations_Operations">12.</span><a href="/resource/Help:Operations#Operations">Operations</a>
+		<ul>
+		<li>
+			<span id="Help:Operations_Preparing_a_production_installation">12.1.</span><a href="/resource/Help:Operations#Preparing_a_production_installation">Preparing a production installation</a>
+			<ul>
+			<li>
+				<span id="Help:Operations_Adjust_memory_size">12.1.1.</span><a href="/resource/Help:Operations#Adjust_memory_size">Adjust memory size</a>
+			</li>
+			<li>
+				<span id="Help:Operations_Changing_HTTP_/_HTTPS_ports">12.1.2.</span><a href="/resource/Help:Operations#Changing_HTTP_%2F_HTTPS_ports">Changing HTTP / HTTPS ports</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Operations_Remote_debugging">12.2.</span><a href="/resource/Help:Operations#Remote_debugging">Remote debugging</a>
+			<ul>
+			<li>
+				<span id="Help:Operations_Enabling_remote_debugging">12.2.1.</span><a href="/resource/Help:Operations#Enabling_remote_debugging">Enabling remote debugging</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:OperationsConsole_Operations_Console">12.3.</span><a href="/resource/Help:OperationsConsole#Operations_Console">Operations Console</a>
+			<ul>
+			<li>
+				<span id="Help:OperationsConsole_Locations">12.3.1.</span><a href="/resource/Help:OperationsConsole#Locations">Locations</a>
+			</li>
+			<li>
+				<span id="Help:OperationsConsole_Basic_Data_visualization">12.3.2.</span><a href="/resource/Help:OperationsConsole#Basic_Data_visualization">Basic Data visualization</a>
+			</li>
+			<li>
+				<span id="Help:OperationsConsole_Extensions">12.3.3.</span><a href="/resource/Help:OperationsConsole#Extensions">Extensions</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SSL_HowTo_SSL_-_How_To">12.4.</span><a href="/resource/Help:SSL_HowTo#SSL_-_How_To">SSL - How To</a>
+			<ul>
+			<li>
+				<span id="Help:SSL_HowTo_Generating_and_Installing_a_new_Certificate">12.4.1.</span><a href="/resource/Help:SSL_HowTo#Generating_and_Installing_a_new_Certificate">Generating and Installing a new Certificate</a>
+			</li>
+			<li>
+				<span id="Help:SSL_HowTo_Creating_/_upgrading_a_trust_store">12.4.2.</span><a href="/resource/Help:SSL_HowTo#Creating_%2F_upgrading_a_trust_store">Creating / upgrading a trust store</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:AuthenticationAuditLog_Authentication_Audit_Log">12.5.</span><a href="/resource/Help:AuthenticationAuditLog#Authentication_Audit_Log">Authentication Audit Log</a>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Configuration_Configuration">13.</span><a href="/resource/Help:Configuration#Configuration">Configuration</a>
+		<ul>
+		<li>
+			<span id="Help:SystemConfiguration_System_Configuration">13.1.</span><a href="/resource/Help:SystemConfiguration#System_Configuration">System Configuration</a>
+			<ul>
+			<li>
+				<span id="Help:SystemConfiguration_Adjustment_of_the_Start_Page">13.1.1.</span><a href="/resource/Help:SystemConfiguration#Adjustment_of_the_Start_Page">Adjustment of the Start Page</a>
+			</li>
+			<li>
+				<span id="Help:SystemConfiguration_Authentication_Scheme">13.1.2.</span><a href="/resource/Help:SystemConfiguration#Authentication_Scheme">Authentication Scheme</a>
+			</li>
+			<li>
+				<span id="Help:SystemConfiguration_Keyword_Search_Skeleton">13.1.3.</span><a href="/resource/Help:SystemConfiguration#Keyword_Search_Skeleton">Keyword Search Skeleton</a>
+			</li>
+			<li>
+				<span id="Help:SystemConfiguration_Query_Timeouts">13.1.4.</span><a href="/resource/Help:SystemConfiguration#Query_Timeouts">Query Timeouts</a>
+			</li>
+			<li>
+				<span id="Help:SystemConfiguration_Labels">13.1.5.</span><a href="/resource/Help:SystemConfiguration#Labels">Labels</a>
+			</li>
+			<li>
+				<span id="Help:SystemConfiguration_Changing_ports_of_the_platform">13.1.6.</span><a href="/resource/Help:SystemConfiguration#Changing_ports_of_the_platform">Changing ports of the platform</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:ConfigurationForm_Configuration_Form">13.2.</span><a href="/resource/Help:ConfigurationForm#Configuration_Form">Configuration Form</a>
+			<ul>
+			<li>
+				<span id="Help:ConfigurationForm_Editing_lists_and_complex_structures">13.2.1.</span><a href="/resource/Help:ConfigurationForm#Editing_lists_and_complex_structures">Editing lists and complex structures</a>
+			</li>
+			<li>
+				<span id="Help:ConfigurationForm_Editing_SPARQL_queries">13.2.2.</span><a href="/resource/Help:ConfigurationForm#Editing_SPARQL_queries">Editing SPARQL queries</a>
+			</li>
+			<li>
+				<span id="Help:ConfigurationForm_Operator_input_form">13.2.3.</span><a href="/resource/Help:ConfigurationForm#Operator_input_form">Operator input form</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:WidgetConfiguration_Widget_Configuration">13.3.</span><a href="/resource/Help:WidgetConfiguration#Widget_Configuration">Widget Configuration</a>
+		</li>
+		<li>
+			<span id="Help:NamespaceConfig_Namespace_Configuration_Guide">13.4.</span><a href="/resource/Help:NamespaceConfig#Namespace_Configuration_Guide">Namespace Configuration Guide</a>
+			<ul>
+			<li>
+				<span id="Help:NamespaceConfig_Using_the_Namespace_Configuration_UI">13.4.1.</span><a href="/resource/Help:NamespaceConfig#Using_the_Namespace_Configuration_UI">Using the Namespace Configuration UI</a>
+			</li>
+			<li>
+				<span id="Help:NamespaceConfig_Manually_Configuring_Namespaces">13.4.2.</span><a href="/resource/Help:NamespaceConfig#Manually_Configuring_Namespaces">Manually Configuring Namespaces</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:RepositoryConfiguration_Repository_Configuration">13.5.</span><a href="/resource/Help:RepositoryConfiguration#Repository_Configuration">Repository Configuration</a>
+			<ul>
+			<li>
+				<span id="Help:RepositoryConfiguration_Sesame_Native_Store">13.5.1.</span><a href="/resource/Help:RepositoryConfiguration#Sesame_Native_Store">Sesame Native Store</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Sesame_Memory_Store">13.5.2.</span><a href="/resource/Help:RepositoryConfiguration#Sesame_Memory_Store">Sesame Memory Store</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Sesame_Remote_Repositories_and_HTTP_repositories">13.5.3.</span><a href="/resource/Help:RepositoryConfiguration#Sesame_Remote_Repositories_and_HTTP_repositories">Sesame Remote Repositories and HTTP repositories</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Public_SPARQL_Endpoints">13.5.4.</span><a href="/resource/Help:RepositoryConfiguration#Public_SPARQL_Endpoints">Public SPARQL Endpoints</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_A_remote_fluidOps_Platform_instance">13.5.5.</span><a href="/resource/Help:RepositoryConfiguration#A_remote_fluidOps_Platform_instance">A remote fluidOps Platform instance</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_fluidOps_Enterprise_DB">13.5.6.</span><a href="/resource/Help:RepositoryConfiguration#fluidOps_Enterprise_DB">fluidOps Enterprise DB</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_fluidOps_Scaleout_Cluster">13.5.7.</span><a href="/resource/Help:RepositoryConfiguration#fluidOps_Scaleout_Cluster">fluidOps Scaleout Cluster</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Ontotext_GraphDB">13.5.8.</span><a href="/resource/Help:RepositoryConfiguration#Ontotext_GraphDB">Ontotext GraphDB</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_SYSTAP_bigdata">13.5.9.</span><a href="/resource/Help:RepositoryConfiguration#SYSTAP_bigdata">SYSTAP bigdata</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Virtuoso_triple_store">13.5.10.</span><a href="/resource/Help:RepositoryConfiguration#Virtuoso_triple_store">Virtuoso triple store</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_MarkLogic_triple_store">13.5.11.</span><a href="/resource/Help:RepositoryConfiguration#MarkLogic_triple_store">MarkLogic triple store</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Oracle_Database_Semantic_Technologies">13.5.12.</span><a href="/resource/Help:RepositoryConfiguration#Oracle_Database_Semantic_Technologies">Oracle Database Semantic Technologies</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Federation_with_FedX">13.5.13.</span><a href="/resource/Help:RepositoryConfiguration#Federation_with_FedX">Federation with FedX</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryConfiguration_Using_Custom_Repositories">13.5.14.</span><a href="/resource/Help:RepositoryConfiguration#Using_Custom_Repositories">Using Custom Repositories</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SearchConfiguration_Search_Configuration">13.6.</span><a href="/resource/Help:SearchConfiguration#Search_Configuration">Search Configuration</a>
+			<ul>
+			<li>
+				<span id="Help:SearchConfiguration_Configuring_Search_Targets">13.6.1.</span><a href="/resource/Help:SearchConfiguration#Configuring_Search_Targets">Configuring Search Targets</a>
+			</li>
+			<li>
+				<span id="Help:SearchConfiguration_Full_Text_Search">13.6.2.</span><a href="/resource/Help:SearchConfiguration#Full_Text_Search">Full Text Search</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:FedX_FedX">13.7.</span><a href="/resource/Help:FedX#FedX">FedX</a>
+			<ul>
+			<li>
+				<span id="Help:FedX_Using_FedX_in_the_fluidOps_Suite">13.7.1.</span><a href="/resource/Help:FedX#Using_FedX_in_the_fluidOps_Suite">Using FedX in the fluidOps Suite</a>
+			</li>
+			<li>
+				<span id="Help:FedX_Managing_the_Federation_at_Runtime">13.7.2.</span><a href="/resource/Help:FedX#Managing_the_Federation_at_Runtime">Managing the Federation at Runtime</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:Admin_Administration">14.</span><a href="/resource/Help:Admin#Administration">Administration</a>
+		<ul>
+		<li>
+			<span id="Help:UserManagement_User_Management">14.1.</span><a href="/resource/Help:UserManagement#User_Management">User Management</a>
+			<ul>
+			<li>
+				<span id="Help:UserManagement_User_Concept">14.1.1.</span><a href="/resource/Help:UserManagement#User_Concept">User Concept</a>
+			</li>
+			<li>
+				<span id="Help:UserManagement_Authentication_Schemes">14.1.2.</span><a href="/resource/Help:UserManagement#Authentication_Schemes">Authentication Schemes</a>
+			</li>
+			<li>
+				<span id="Help:UserManagement_User_Registration">14.1.3.</span><a href="/resource/Help:UserManagement#User_Registration">User Registration</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:AccessControl_Access_Control">14.2.</span><a href="/resource/Help:AccessControl#Access_Control">Access Control</a>
+			<ul>
+			<li>
+				<span id="Help:AccessControl_Definitions">14.2.1.</span><a href="/resource/Help:AccessControl#Definitions">Definitions</a>
+			</li>
+			<li>
+				<span id="Help:AccessControl_Attaching_Roles_to_Users">14.2.2.</span><a href="/resource/Help:AccessControl#Attaching_Roles_to_Users">Attaching Roles to Users</a>
+			</li>
+			<li>
+				<span id="Help:AccessControl_High_Level_ACL_Process">14.2.3.</span><a href="/resource/Help:AccessControl#High_Level_ACL_Process">High Level ACL Process</a>
+			</li>
+			<li>
+				<span id="Help:AccessControl_ACL_Syntax">14.2.4.</span><a href="/resource/Help:AccessControl#ACL_Syntax">ACL Syntax</a>
+			</li>
+			<li>
+				<span id="Help:AccessControl_Resource-level_AC_Rules">14.2.5.</span><a href="/resource/Help:AccessControl#Resource-level_AC_Rules">Resource-level AC Rules</a>
+			</li>
+			<li>
+				<span id="Help:AccessControl_Functional-level_AC_Rules">14.2.6.</span><a href="/resource/Help:AccessControl#Functional-level_AC_Rules">Functional-level AC Rules</a>
+			</li>
+			<li>
+				<span id="Help:AccessControl_ACL_Specification">14.2.7.</span><a href="/resource/Help:AccessControl#ACL_Specification">ACL Specification</a>
+			</li>
+			<li>
+				<span id="Help:AccessControl_Role_Composition_&_Metadata">14.2.8.</span><a href="/resource/Help:AccessControl#Role_Composition_%26_Metadata">Role Composition &amp; Metadata</a>
+			</li>
+			<li>
+				<span id="Help:RoleMapping_Role_Mapping">14.2.9.</span><a href="/resource/Help:RoleMapping#Role_Mapping">Role Mapping</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Authentication_Authentication">14.3.</span><a href="/resource/Help:Authentication#Authentication">Authentication</a>
+			<ul>
+			<li>
+				<span id="Help:Authentication_Authentications_Modules">14.3.1.</span><a href="/resource/Help:Authentication#Authentications_Modules">Authentications Modules</a>
+			</li>
+			<li>
+				<span id="Help:Authentication_Editing_Authentication_Parameters">14.3.2.</span><a href="/resource/Help:Authentication#Editing_Authentication_Parameters">Editing Authentication Parameters</a>
+			</li>
+			<li>
+				<span id="Help:Authentication_Caching">14.3.3.</span><a href="/resource/Help:Authentication#Caching">Caching</a>
+			</li>
+			<li>
+				<span id="Help:Authentication_Certificate_based_client_authentication">14.3.4.</span><a href="/resource/Help:Authentication#Certificate_based_client_authentication">Certificate based client authentication</a>
+			</li>
+			<li>
+				<span id="Help:Authentication_SAML">14.3.5.</span><a href="/resource/Help:Authentication#SAML">SAML</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:WikiManagement_Wiki_Page_Management">14.4.</span><a href="/resource/Help:WikiManagement#Wiki_Page_Management">Wiki Page Management</a>
+			<ul>
+			<li>
+				<span id="Help:WikiManagement_Tabular_View_of_Wiki_Pages">14.4.1.</span><a href="/resource/Help:WikiManagement#Tabular_View_of_Wiki_Pages">Tabular View of Wiki Pages</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SpecialPages_Special_Pages">14.5.</span><a href="/resource/Help:SpecialPages#Special_Pages">Special Pages</a>
+			<ul>
+			<li>
+				<span id="Help:Constraints_Constraint_Validation">14.5.1.</span><a href="/resource/Help:Constraints#Constraint_Validation">Constraint Validation</a>
+			</li>
+			<li>
+				<span id="Help:WikiDiagnostics_Wiki_Diagnostics">14.5.2.</span><a href="/resource/Help:WikiDiagnostics#Wiki_Diagnostics">Wiki Diagnostics</a>
+			</li>
+			<li>
+				<span id="Help:TemplatePages_Wiki_Template_Page_Overview">14.5.3.</span><a href="/resource/Help:TemplatePages#Wiki_Template_Page_Overview">Wiki Template Page Overview</a>
+			</li>
+			<li>
+				<span id="Help:SPARQLFunctions_SPARQL_Functions_Overview">14.5.4.</span><a href="/resource/Help:SPARQLFunctions#SPARQL_Functions_Overview">SPARQL Functions Overview</a>
+			</li>
+			<li>
+				<span id="Help:QueryDiagnostics_Query_Diagnostics">14.5.5.</span><a href="/resource/Help:QueryDiagnostics#Query_Diagnostics">Query Diagnostics</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:HistoricalData_Historical_Data">14.6.</span><a href="/resource/Help:HistoricalData#Historical_Data">Historical Data</a>
+		</li>
+		<li>
+			<span id="Help:Upload_File_Management">14.7.</span><a href="/resource/Help:Upload#File_Management">File Management</a>
+			<ul>
+			<li>
+				<span id="Help:Upload_Uploading_Files">14.7.1.</span><a href="/resource/Help:Upload#Uploading_Files">Uploading Files</a>
+			</li>
+			<li>
+				<span id="Help:Upload_Overview_of_Uploaded_Files">14.7.2.</span><a href="/resource/Help:Upload#Overview_of_Uploaded_Files">Overview of Uploaded Files</a>
+			</li>
+			<li>
+				<span id="Help:Upload_Deleting_Uploaded_Files">14.7.3.</span><a href="/resource/Help:Upload#Deleting_Uploaded_Files">Deleting Uploaded Files</a>
+			</li>
+			<li>
+				<span id="Help:Upload_Using_Uploaded_Files_in_a_Wiki_Page">14.7.4.</span><a href="/resource/Help:Upload#Using_Uploaded_Files_in_a_Wiki_Page">Using Uploaded Files in a Wiki Page</a>
+			</li>
+			<li>
+				<span id="Help:Upload_Upload_Folder_Scanner_Functionality">14.7.5.</span><a href="/resource/Help:Upload#Upload_Folder_Scanner_Functionality">Upload Folder Scanner Functionality</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:CLI_CLI">14.8.</span><a href="/resource/Help:CLI#CLI">CLI</a>
+			<ul>
+			<li>
+				<span id="Help:CLI_Usage_of_the_CLI">14.8.1.</span><a href="/resource/Help:CLI#Usage_of_the_CLI">Usage of the CLI</a>
+			</li>
+			<li>
+				<span id="Help:CLI_Passing_arguments_to_the_CLI">14.8.2.</span><a href="/resource/Help:CLI#Passing_arguments_to_the_CLI">Passing arguments to the CLI</a>
+			</li>
+			<li>
+				<span id="Help:CLI_Common_Examples">14.8.3.</span><a href="/resource/Help:CLI#Common_Examples">Common Examples</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:RestApi_REST_API">14.9.</span><a href="/resource/Help:RestApi#REST_API">REST API</a>
+			<ul>
+			<li>
+				<span id="Help:RestApi_Scripting_via_REST">14.9.1.</span><a href="/resource/Help:RestApi#Scripting_via_REST">Scripting via REST</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:BackupDatabase_System_Backup_and_Restore">14.10.</span><a href="/resource/Help:BackupDatabase#System_Backup_and_Restore">System Backup and Restore</a>
+			<ul>
+			<li>
+				<span id="Help:BackupDatabase_Automatic_Backups">14.10.1.</span><a href="/resource/Help:BackupDatabase#Automatic_Backups">Automatic Backups</a>
+			</li>
+			<li>
+				<span id="Help:BackupDatabase_Manual_Backups">14.10.2.</span><a href="/resource/Help:BackupDatabase#Manual_Backups">Manual Backups</a>
+			</li>
+			<li>
+				<span id="Help:BackupDatabase_The_Backup_Page">14.10.3.</span><a href="/resource/Help:BackupDatabase#The_Backup_Page">The Backup Page</a>
+			</li>
+			<li>
+				<span id="Help:BackupDatabase_The_Backing_Up_Process">14.10.4.</span><a href="/resource/Help:BackupDatabase#The_Backing_Up_Process">The Backing Up Process</a>
+			</li>
+			<li>
+				<span id="Help:BackupDatabase_Restoring_Config_from_Backups">14.10.5.</span><a href="/resource/Help:BackupDatabase#Restoring_Config_from_Backups">Restoring Config from Backups</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:StatusPage_System_Status">14.11.</span><a href="/resource/Help:StatusPage#System_Status">System Status</a>
+		</li>
+		<li>
+			<span id="Help:Cache_Cache_management">14.12.</span><a href="/resource/Help:Cache#Cache_management">Cache management</a>
+			<ul>
+			<li>
+				<span id="Help:Cache_Managed_Caches">14.12.1.</span><a href="/resource/Help:Cache#Managed_Caches">Managed Caches</a>
+			</li>
+			<li>
+				<span id="Help:Cache_Special_Caches">14.12.2.</span><a href="/resource/Help:Cache#Special_Caches">Special Caches</a>
+			</li>
+			<li>
+				<span id="Help:Cache_DBIndex">14.12.3.</span><a href="/resource/Help:Cache#DBIndex">DBIndex</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:RepositoryManagement_Repository_Manager">14.13.</span><a href="/resource/Help:RepositoryManagement#Repository_Manager">Repository Manager</a>
+			<ul>
+			<li>
+				<span id="Help:RepositoryManagement_Registration_of_repositories">14.13.1.</span><a href="/resource/Help:RepositoryManagement#Registration_of_repositories">Registration of repositories</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryManagement_Operating_on_repositories">14.13.2.</span><a href="/resource/Help:RepositoryManagement#Operating_on_repositories">Operating on repositories</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryManagement_Accessing_repositories_with_the_SERVICE_keyword">14.13.3.</span><a href="/resource/Help:RepositoryManagement#Accessing_repositories_with_the_SERVICE_keyword">Accessing repositories with the SERVICE keyword</a>
+			</li>
+			<li>
+				<span id="Help:RepositoryManagement_Storage_of_repository_configurations">14.13.4.</span><a href="/resource/Help:RepositoryManagement#Storage_of_repository_configurations">Storage of repository configurations</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:OntologyManager_Ontology_Manager">14.14.</span><a href="/resource/Help:OntologyManager#Ontology_Manager">Ontology Manager</a>
+			<ul>
+			<li>
+				<span id="Help:OntologyManager_Ontology_Download">14.14.1.</span><a href="/resource/Help:OntologyManager#Ontology_Download">Ontology Download</a>
+			</li>
+			<li>
+				<span id="Help:OntologyManager_Ontology_Deletion">14.14.2.</span><a href="/resource/Help:OntologyManager#Ontology_Deletion">Ontology Deletion</a>
+			</li>
+			<li>
+				<span id="Help:OntologyManager_Ontology_Import">14.14.3.</span><a href="/resource/Help:OntologyManager#Ontology_Import">Ontology Import</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:QueryCatalog_Query_Catalog">14.15.</span><a href="/resource/Help:QueryCatalog#Query_Catalog">Query Catalog</a>
+			<ul>
+			<li>
+				<span id="Help:QueryCatalog_SPIN">14.15.1.</span><a href="/resource/Help:QueryCatalog#SPIN">SPIN</a>
+			</li>
+			<li>
+				<span id="Help:QueryCatalog_Query_Reference_and_Identifier">14.15.2.</span><a href="/resource/Help:QueryCatalog#Query_Reference_and_Identifier">Query Reference and Identifier</a>
+			</li>
+			<li>
+				<span id="Help:QueryCatalog_Query_validation">14.15.3.</span><a href="/resource/Help:QueryCatalog#Query_validation">Query validation</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:Reporting_Reporting">14.16.</span><a href="/resource/Help:Reporting#Reporting">Reporting</a>
+			<ul>
+			<li>
+				<span id="Help:Reporting_Conceptual_Overview">14.16.1.</span><a href="/resource/Help:Reporting#Conceptual_Overview">Conceptual Overview</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Installation">14.16.2.</span><a href="/resource/Help:Reporting#Installation">Installation</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Report_Management">14.16.3.</span><a href="/resource/Help:Reporting#Report_Management">Report Management</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Use_Case_Example:_scheduling_all_customer_reports">14.16.4.</span><a href="/resource/Help:Reporting#Use_Case_Example%3A_scheduling_all_customer_reports">Use Case Example: scheduling all customer reports</a>
+			</li>
+			<li>
+				<span id="Help:Reporting_Tutorial">14.16.5.</span><a href="/resource/Help:Reporting#Tutorial">Tutorial</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:PlatformSDK_The_fluidOps_Platform_SDK">15.</span><a href="/resource/Help:PlatformSDK#The_fluidOps_Platform_SDK">The fluidOps Platform SDK</a>
+		<ul>
+		<li>
+			<span id="Help:PlatformSDK_Overview">15.1.</span><a href="/resource/Help:PlatformSDK#Overview">Overview</a>
+			<ul>
+			<li>
+				<span id="Help:PlatformSDK_SDK_development_process">15.1.1.</span><a href="/resource/Help:PlatformSDK#SDK_development_process">SDK development process</a>
+			</li>
+			<li>
+				<span id="Help:PlatformSDK_SDK_components">15.1.2.</span><a href="/resource/Help:PlatformSDK#SDK_components">SDK components</a>
+			</li>
+			<li>
+				<span id="Help:PlatformSDK_App_Structure">15.1.3.</span><a href="/resource/Help:PlatformSDK#App_Structure">App Structure</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:PlatformSDK_Getting_started">15.2.</span><a href="/resource/Help:PlatformSDK#Getting_started">Getting started</a>
+		</li>
+		<li>
+			<span id="Help:PlatformSDK_Additional_Resources">15.3.</span><a href="/resource/Help:PlatformSDK#Additional_Resources">Additional Resources</a>
+		</li>
+		<li>
+			<span id="Help:PlatformSDK_Debugging">15.4.</span><a href="/resource/Help:PlatformSDK#Debugging">Debugging</a>
+		</li>
+		<li>
+			<span id="Help:PlatformSDK_JMX_/_RMI_Access">15.5.</span><a href="/resource/Help:PlatformSDK#JMX_%2F_RMI_Access">JMX / RMI Access</a>
+		</li>
+		<li>
+			<span id="Help:BuildingSolutions_Building_solutions">15.6.</span><a href="/resource/Help:BuildingSolutions#Building_solutions">Building solutions</a>
+			<ul>
+			<li>
+				<span id="Help:BuildingSolutions_Setting_up_a_solution_project_in_Eclipse">15.6.1.</span><a href="/resource/Help:BuildingSolutions#Setting_up_a_solution_project_in_Eclipse">Setting up a solution project in Eclipse</a>
+			</li>
+			<li>
+				<span id="Help:BuildingSolutions_Solution_structure">15.6.2.</span><a href="/resource/Help:BuildingSolutions#Solution_structure">Solution structure</a>
+			</li>
+			<li>
+				<span id="Help:BuildingSolutions_Development_of_the_solution">15.6.3.</span><a href="/resource/Help:BuildingSolutions#Development_of_the_solution">Development of the solution</a>
+			</li>
+			<li>
+				<span id="Help:BuildingSolutions_Build_and_deployment">15.6.4.</span><a href="/resource/Help:BuildingSolutions#Build_and_deployment">Build and deployment</a>
+			</li>
+			<li>
+				<span id="Help:BuildingSolutions_Version_Control">15.6.5.</span><a href="/resource/Help:BuildingSolutions#Version_Control">Version Control</a>
+			</li>
+			<li>
+				<span id="Help:BuildingSolutions_Development_and_deployment_best_practice">15.6.6.</span><a href="/resource/Help:BuildingSolutions#Development_and_deployment_best_practice">Development and deployment best practice</a>
+			</li>
+			<li>
+				<span id="Help:BuildingSolutions_Extracting_assets_from_a_development_system_into_the_eclipse_SDK">15.6.7.</span><a href="/resource/Help:BuildingSolutions#Extracting_assets_from_a_development_system_into_the_eclipse_SDK">Extracting assets from a development system into the eclipse SDK</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SDK-Bootstrap_Bootstrapping_the_Application">15.7.</span><a href="/resource/Help:SDK-Bootstrap#Bootstrapping_the_Application">Bootstrapping the Application</a>
+			<ul>
+			<li>
+				<span id="Help:SDK-Bootstrap_Ontology_bootstrap">15.7.1.</span><a href="/resource/Help:SDK-Bootstrap#Ontology_bootstrap">Ontology bootstrap</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SDK-SystemConfiguration_System_configuration">15.8.</span><a href="/resource/Help:SDK-SystemConfiguration#System_configuration">System configuration</a>
+			<ul>
+			<li>
+				<span id="Help:SDK-SystemConfiguration_Adjusting_config.prop">15.8.1.</span><a href="/resource/Help:SDK-SystemConfiguration#Adjusting_config.prop">Adjusting config.prop</a>
+			</li>
+			<li>
+				<span id="Help:SDK-SystemConfiguration_Adjusting_namespaces">15.8.2.</span><a href="/resource/Help:SDK-SystemConfiguration#Adjusting_namespaces">Adjusting namespaces</a>
+			</li>
+			<li>
+				<span id="Help:SDK-SystemConfiguration_Custom_providers_and_provider_configurations">15.8.3.</span><a href="/resource/Help:SDK-SystemConfiguration#Custom_providers_and_provider_configurations">Custom providers and provider configurations</a>
+			</li>
+			<li>
+				<span id="Help:SDK-SystemConfiguration_Configuring_data_sources">15.8.4.</span><a href="/resource/Help:SDK-SystemConfiguration#Configuring_data_sources">Configuring data sources</a>
+			</li>
+			<li>
+				<span id="Help:SDK-SystemConfiguration_Custom_task_configurations">15.8.5.</span><a href="/resource/Help:SDK-SystemConfiguration#Custom_task_configurations">Custom task configurations</a>
+			</li>
+			<li>
+				<span id="Help:SDK-SystemConfiguration_Custom_widgets_and_widget_configurations">15.8.6.</span><a href="/resource/Help:SDK-SystemConfiguration#Custom_widgets_and_widget_configurations">Custom widgets and widget configurations</a>
+			</li>
+			<li>
+				<span id="Help:SDK-SystemConfiguration_Customizing_ACLs">15.8.7.</span><a href="/resource/Help:SDK-SystemConfiguration#Customizing_ACLs">Customizing ACLs</a>
+			</li>
+			<li>
+				<span id="Help:SDK-CustomConfiguration_Custom_Configuration_Settings">15.8.8.</span><a href="/resource/Help:SDK-CustomConfiguration#Custom_Configuration_Settings">Custom Configuration Settings</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:SDK-Components_The_fluidOps_Platform_SDK_Components">16.</span><a href="/resource/Help:SDK-Components#The_fluidOps_Platform_SDK_Components">The fluidOps Platform SDK Components</a>
+		<ul>
+		<li>
+			<span id="Help:WidgetSDK_Widget_SDK">16.1.</span><a href="/resource/Help:WidgetSDK#Widget_SDK">Widget SDK</a>
+			<ul>
+			<li>
+				<span id="Help:WidgetSDK_Writing_Custom_Widgets">16.1.1.</span><a href="/resource/Help:WidgetSDK#Writing_Custom_Widgets">Writing Custom Widgets</a>
+			</li>
+			<li>
+				<span id="Help:WidgetSDK_Using_Custom_Widgets_in_the_fluidOps_Suite">16.1.2.</span><a href="/resource/Help:WidgetSDK#Using_Custom_Widgets_in_the_fluidOps_Suite">Using Custom Widgets in the fluidOps Suite</a>
+			</li>
+			<li>
+				<span id="Help:WidgetSDK_Building_and_Deploying_Extensions">16.1.3.</span><a href="/resource/Help:WidgetSDK#Building_and_Deploying_Extensions">Building and Deploying Extensions</a>
+			</li>
+			<li>
+				<span id="Help:WidgetSDK_AJAX_Components">16.1.4.</span><a href="/resource/Help:WidgetSDK#AJAX_Components">AJAX Components</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:DataManagementApi_Data_Management_API">16.2.</span><a href="/resource/Help:DataManagementApi#Data_Management_API">Data Management API</a>
+			<ul>
+			<li>
+				<span id="Help:DataManagementApi_Convenience_Functionality_for_Programming_with_RDF_data">16.2.1.</span><a href="/resource/Help:DataManagementApi#Convenience_Functionality_for_Programming_with_RDF_data">Convenience Functionality for Programming with RDF data</a>
+			</li>
+			<li>
+				<span id="Help:DataManagementApi_Read_Access">16.2.2.</span><a href="/resource/Help:DataManagementApi#Read_Access">Read Access</a>
+			</li>
+			<li>
+				<span id="Help:DataManagementApi_Write_Access">16.2.3.</span><a href="/resource/Help:DataManagementApi#Write_Access">Write Access</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:ProviderSDK_Provider_SDK">16.3.</span><a href="/resource/Help:ProviderSDK#Provider_SDK">Provider SDK</a>
+			<ul>
+			<li>
+				<span id="Help:ProviderSDK_Implementing_the_Provider">16.3.1.</span><a href="/resource/Help:ProviderSDK#Implementing_the_Provider">Implementing the Provider</a>
+			</li>
+			<li>
+				<span id="Help:ProviderSDK_Registering_Custom_Providers">16.3.2.</span><a href="/resource/Help:ProviderSDK#Registering_Custom_Providers">Registering Custom Providers</a>
+			</li>
+			<li>
+				<span id="Help:ProviderSDK_Example">16.3.3.</span><a href="/resource/Help:ProviderSDK#Example">Example</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:ProviderSDK_Persisting_credentials_&_secret_keys_securely">16.4.</span><a href="/resource/Help:ProviderSDK#Persisting_credentials_%26_secret_keys_securely">Persisting credentials &amp; secret keys securely</a>
+			<ul>
+			<li>
+				<span id="Help:ProviderSDK_User_credentials">16.4.1.</span><a href="/resource/Help:ProviderSDK#User_credentials">User credentials</a>
+			</li>
+			<li>
+				<span id="Help:ProviderSDK_Secret_keys">16.4.2.</span><a href="/resource/Help:ProviderSDK#Secret_keys">Secret keys</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:APIExtensions_API_extensions">16.5.</span><a href="/resource/Help:APIExtensions#API_extensions">API extensions</a>
+			<ul>
+			<li>
+				<span id="Help:APIExtensions_Implementation_of_the_service">16.5.1.</span><a href="/resource/Help:APIExtensions#Implementation_of_the_service">Implementation of the service</a>
+			</li>
+			<li>
+				<span id="Help:APIExtensions_Implementation_of_the_service_factory">16.5.2.</span><a href="/resource/Help:APIExtensions#Implementation_of_the_service_factory">Implementation of the service factory</a>
+			</li>
+			<li>
+				<span id="Help:APIExtensions_Registering_the_service">16.5.3.</span><a href="/resource/Help:APIExtensions#Registering_the_service">Registering the service</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:TaskExtensions_Task_extensions">16.6.</span><a href="/resource/Help:TaskExtensions#Task_extensions">Task extensions</a>
+			<ul>
+			<li>
+				<span id="Help:TaskExtensions_Implementation_of_the_task">16.6.1.</span><a href="/resource/Help:TaskExtensions#Implementation_of_the_task">Implementation of the task</a>
+			</li>
+			<li>
+				<span id="Help:TaskExtensions_Registering_the_task">16.6.2.</span><a href="/resource/Help:TaskExtensions#Registering_the_task">Registering the task</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:ValueResolverExtensions_Value_resolver_extensions">16.7.</span><a href="/resource/Help:ValueResolverExtensions#Value_resolver_extensions">Value resolver extensions</a>
+			<ul>
+			<li>
+				<span id="Help:ValueResolverExtensions_Implementation_of_the_value_resolver">16.7.1.</span><a href="/resource/Help:ValueResolverExtensions#Implementation_of_the_value_resolver">Implementation of the value resolver</a>
+			</li>
+			<li>
+				<span id="Help:ValueResolverExtensions_Implementation_of_the_value_resolver_factory">16.7.2.</span><a href="/resource/Help:ValueResolverExtensions#Implementation_of_the_value_resolver_factory">Implementation of the value resolver factory</a>
+			</li>
+			<li>
+				<span id="Help:ValueResolverExtensions_Registering_the_value_resolver">16.7.3.</span><a href="/resource/Help:ValueResolverExtensions#Registering_the_value_resolver">Registering the value resolver</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SDK-Workflows_Workflows">16.8.</span><a href="/resource/Help:SDK-Workflows#Workflows">Workflows</a>
+			<ul>
+			<li>
+				<span id="Help:SDK-Workflows_Executing_SSH_commands">16.8.1.</span><a href="/resource/Help:SDK-Workflows#Executing_SSH_commands">Executing SSH commands</a>
+			</li>
+			<li>
+				<span id="Help:SDK-Workflows_Using_the_Powershell">16.8.2.</span><a href="/resource/Help:SDK-Workflows#Using_the_Powershell">Using the Powershell</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:SDK-UsefulSnippets_Useful_snippets">16.9.</span><a href="/resource/Help:SDK-UsefulSnippets#Useful_snippets">Useful snippets</a>
+		</li>
+		<li>
+			<span id="Help:SDK-PostInstall_Pre_and_Post_Install_Logic">16.10.</span><a href="/resource/Help:SDK-PostInstall#Pre_and_Post_Install_Logic">Pre and Post Install Logic</a>
+			<ul>
+			<li>
+				<span id="Help:SDK-PostInstall_File_Location_and_Behavior">16.10.1.</span><a href="/resource/Help:SDK-PostInstall#File_Location_and_Behavior">File Location and Behavior</a>
+			</li>
+			<li>
+				<span id="Help:SDK-PostInstall_File_Sturcture">16.10.2.</span><a href="/resource/Help:SDK-PostInstall#File_Sturcture">File Sturcture</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:WebAppUICustomization_Customization_of_web_application_and_user_interface">17.</span><a href="/resource/Help:WebAppUICustomization#Customization_of_web_application_and_user_interface">Customization of web application and user interface</a>
+		<ul>
+		<li>
+			<span id="Help:WebappCustomization_Webapp_Customization">17.1.</span><a href="/resource/Help:WebappCustomization#Webapp_Customization">Webapp Customization</a>
+			<ul>
+			<li>
+				<span id="Help:WebappCustomization_Additional_files_&_images">17.1.1.</span><a href="/resource/Help:WebappCustomization#Additional_files_%26_images">Additional files &amp; images</a>
+			</li>
+			<li>
+				<span id="Help:WebappCustomization_Custom_CSS">17.1.2.</span><a href="/resource/Help:WebappCustomization#Custom_CSS">Custom CSS</a>
+			</li>
+			<li>
+				<span id="Help:WebappCustomization_Webapp_configuration">17.1.3.</span><a href="/resource/Help:WebappCustomization#Webapp_configuration">Webapp configuration</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:UICustomization_UI_Customization">17.2.</span><a href="/resource/Help:UICustomization#UI_Customization">UI Customization</a>
+			<ul>
+			<li>
+				<span id="Help:UICustomization_Content_UI_Customization">17.2.1.</span><a href="/resource/Help:UICustomization#Content_UI_Customization">Content UI Customization</a>
+			</li>
+			<li>
+				<span id="Help:UICustomization_Customizing_CSS">17.2.2.</span><a href="/resource/Help:UICustomization#Customizing_CSS">Customizing CSS</a>
+			</li>
+			<li>
+				<span id="Help:UICustomization_General_UI_Customization">17.2.3.</span><a href="/resource/Help:UICustomization#General_UI_Customization">General UI Customization</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:MenuExtensions_Menu_extensions">17.3.</span><a href="/resource/Help:MenuExtensions#Menu_extensions">Menu extensions</a>
+			<ul>
+			<li>
+				<span id="Help:MenuExtensions_Main_menu_extensions">17.3.1.</span><a href="/resource/Help:MenuExtensions#Main_menu_extensions">Main menu extensions</a>
+			</li>
+			<li>
+				<span id="Help:MenuExtensions_Extensions_to_Admin:Admin">17.3.2.</span><a href="/resource/Help:MenuExtensions#Extensions_to_Admin%3AAdmin">Extensions to Admin:Admin</a>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	<li>
+		<span id="Help:AppDevelopment_BestPractices_App_Development:_Best_Practices">18.</span><a href="/resource/Help:AppDevelopment_BestPractices#App_Development%3A_Best_Practices">App Development: Best Practices</a>
+		<ul>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Overview">18.1.</span><a href="/resource/Help:AppDevelopment_BestPractices#Overview">Overview</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Environments_and_systems">18.2.</span><a href="/resource/Help:AppDevelopment_BestPractices#Environments_and_systems">Environments and systems</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Recommended_environments">18.3.</span><a href="/resource/Help:AppDevelopment_BestPractices#Recommended_environments">Recommended environments</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Development_system">18.4.</span><a href="/resource/Help:AppDevelopment_BestPractices#Development_system">Development system</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Staging_system">18.5.</span><a href="/resource/Help:AppDevelopment_BestPractices#Staging_system">Staging system</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Production_system">18.6.</span><a href="/resource/Help:AppDevelopment_BestPractices#Production_system">Production system</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Installing_solutions">18.7.</span><a href="/resource/Help:AppDevelopment_BestPractices#Installing_solutions">Installing solutions</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Uninstalling_solutions">18.8.</span><a href="/resource/Help:AppDevelopment_BestPractices#Uninstalling_solutions">Uninstalling solutions</a>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_App_Development">18.9.</span><a href="/resource/Help:AppDevelopment_BestPractices#App_Development">App Development</a>
+			<ul>
+			<li>
+				<span id="Help:AppDevelopment_BestPractices_Development_system">18.9.1.</span><a href="/resource/Help:AppDevelopment_BestPractices#Development_system">Development system</a>
+			</li>
+			<li>
+				<span id="Help:AppDevelopment_BestPractices_Setup">18.9.2.</span><a href="/resource/Help:AppDevelopment_BestPractices#Setup">Setup</a>
+			</li>
+			<li>
+				<span id="Help:AppDevelopment_BestPractices_Development_Process">18.9.3.</span><a href="/resource/Help:AppDevelopment_BestPractices#Development_Process">Development Process</a>
+			</li>
+			<li>
+				<span id="Help:AppDevelopment_BestPractices_Integration_with_a_Version_Control_System">18.9.4.</span><a href="/resource/Help:AppDevelopment_BestPractices#Integration_with_a_Version_Control_System">Integration with a Version Control System</a>
+			</li>
+			<li>
+				<span id="Help:AppDevelopment_BestPractices_Resetting_the_environment">18.9.5.</span><a href="/resource/Help:AppDevelopment_BestPractices#Resetting_the_environment">Resetting the environment</a>
+			</li>
+			</ul>
+		</li>
+		<li>
+			<span id="Help:AppDevelopment_BestPractices_Additional_Resources">18.10.</span><a href="/resource/Help:AppDevelopment_BestPractices#Additional_Resources">Additional Resources</a>
+		</li>
+	</ul>
+	</li>
+</ul>

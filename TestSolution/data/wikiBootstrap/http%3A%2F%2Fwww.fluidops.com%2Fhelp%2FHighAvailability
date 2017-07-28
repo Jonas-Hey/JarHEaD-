@@ -1,0 +1,166 @@
+= fluidOps HA (High Availability) =
+
+
+fluidOps HA enables the use of a software solution entirely from fluidOps, avoiding the cost and complexity of maintaining additional cluster software.
+By reducing the software products necessary to coordinate and support, the overall manageability and availability of the system can be enhanced.
+fluidOps HA uses a shared instance storage for DB and configuration data, and a Quorum voting disk used for cluster election and to detect and resolve split brain scenarios. Both disks can be located on the same storage volume.
+
+== Use Case ==
+With fluidOps HA, you can provide a failover cluster to protect an instance from a system or server failure.
+The basic function of the failover cluster is to monitor an instance running on a server, and if a failure or outage is detected, to activate an active standby instance on a spare server in the cluster.
+
+== Advantages ==
+fluidOps HA provides these additional advantages over the basic architecture:
+- Automatic recovery of node and instance failures in seconds to minutes
+- Automatic reconnection of clients
+
+fluidOps HA Architecture
+
+<img src="../images/help/ha-setup/haArchitecture.png" width="500px" />
+
+== Technical Details ==
+The fluidOps HA instances share a common instance storage on a CIFS volume.
+In case of an instance failure or crash, an active secondary instance in the cluster will be elected and will provide the instance services to the clients.
+Note that in case an active instance is abruptly decoupled from the network or is powered off, the locks held on the shared storage volume need to time out before the secondary instance can take them over.
+This works as designed and might take some minutes to occur (depending on the underlying shared file system implementation and configuration).
+
+== Setup Guide ==
+
+=== High-Level Setup ===
+*Prepare two Windows 2012 Servers (english), e.g. as VMs
+*Prepare a domain user that is set as a local admin on the two HA machines
+*The HA setup uses a shared installation folder. This MUST be a '''CIFS share supporting cleanup of file locks''', i.e. a Windows 2012 Server. NFS or older versions of Windows may not properly cleanup file locks and are therefore NOT SUPPORTED!
+
+=== First Machine ===
+Log onto the first system (from here on called ''ecm-ha-1'') using a domain user. The user should be made a local admin as well on the machine.
+
+The best way to connect to the shared folder is to use a symbolic link. On the command line use something like this to connect:
+<source>
+mklink /d c:\sharedruntime \\fileserver\fluidops-ecm-ha-folder
+</source>
+
+c:\sharedruntime -> this is the path that gets created for accessing your fileshare
+
+=== Install {{PRODUCT}} ===
+*Install {{PRODUCT}} on the local file system directly, do not edit the destination folder in the installation step.
+*Specify the domain user from above in the installation
+*'''IMPORTANT TO NOT START {{PRODUCT}} after installation''' (remove checkbox during installation steps)
+*Go to the service control panel and change the following service properties:
+**Ensure that the service is running as the same domain user set as a local admin
+**Ensure that the service restarts automatically in case of a failure:
+
+<img src="../images/help/ha-setup/servicerestarts.png" width="500px" />
+
+*Navigate to the default installation folder ''C:\Program Files (x86)\fluid Operations\fluidOps Suite''
+*Select the entire content of the folder, except for the following files:
+**wrapper-linux-x86-64
+**wrapper-macosx-universal-32
+**wrapper-windows-x86-32.exe
+**backend.conf
+
+*Cut the selected files and paste them to the ''c:\sharedruntime\fluid Operations\fluidOps Suite''
+*The folder ''C:\Program Files (x86)\fluid Operations\fluidOps Suite'' should look like this afterwards:
+
+<img src="../images/help/ha-setup/fluidopsSuitefolder.PNG" width="500px" />
+
+*Create a two new folders ''c:\sharedruntime\fluid Operations\fluidOps Suite\logs\node1'' and ''c:\sharedruntime\fluid Operations\fluidOps Suite\logs\node2''
+*Create a new file called ''backend-user.conf'' in ''C:\Program Files (x86)\fluid Operations\fluidOps Suite''
+*Add the following content to the created file:
+<source>
+wrapper.working.dir=c:\sharedruntime\fluid Operations\fluidOps Suite
+wrapper.logfile=logs/node1/wrapper.log
+wrapper.java.additional.30=-Dcom.fluidops.logging.env=node1
+wrapper.java.additional.32=-Xloggc:logs/node1/garbageCollection.log
+</source>
+
+*Navigate to ''C:\sharedruntime\fluid Operations\fluidOps Suite\etc'' and rename the file ''log4j.properties'' to ''log4j-node1.properties''
+**The part of the file name ''node1'' corresponds to the setting of ''wrapper.java.additional.30=-Dcom.fluidops.logging.env=node1'' in ''backend.conf'' and ''backend-user.conf''
+
+*Open the File ''log4j-node1.properties'' 
+*Replace all occurrences of ''logs/'' with ''logs/node1/''
+*Save and close the file
+
+*Edit config.prop within the installation folder and add the follow setting:
+**''nodeHighAvailability=true'' This will enable the HA mode
+**Start the {{PRODUCT}} service (the service is called fluidOps Platform), log on using ''https://localhost:50443/'' and perform initial configuration, e.g. authentication setup.
+
+=== Secondary Machine ===
+*Log onto the second system (from here on called ''ecm-ha-2'') using the same domain user as on the first machine. The user should be made a local admin as well.
+*Open a Windows Explorer and connect to the shared installation folder using the symbolic link again like with ''ecm-ha-1''.
+*Create a new folder ''C:\Program Files (x86)\fluid Operations\fluidOps Suite'' on ''ecm-ha-2''
+*Create a new folder ''c:\sharedruntime\fluid Operations\fluidOps Suite\logs\Node2''
+*Copy the contents of ''C:\Program Files (x86)\fluid Operations\fluidOps Suite'' from ''ecm-ha-1'' and place in the same location with the same contents to ''ecm-ha-2''
+*Double-check, that both machines in the ''backend-user.conf'' file point to the same wrapper-working directory. The entry has to look like this in both:
+<source>
+wrapper.working.dir=c:\sharedruntime\fluid Operations\fluidOps Suite\
+</source>
+*Change the content of the ''backend-user.conf'' on ''ecm-ha-2'' to:
+<source>
+wrapper.working.dir=c:\sharedruntime\fluid Operations\fluidOps Suite\
+wrapper.logfile=logs/node2/wrapper.log
+wrapper.java.additional.30=-Dcom.fluidops.logging.env=node2
+wrapper.java.additional.32=-Xloggc:logs/node2/garbageCollection.log
+</source>
+
+*Open the ''backend.conf'' on the filesystem: 
+**Find and uncomment the following, and change ''xxx'' to ''node2''
+<source>
+wrapper.java.additional.14=-Dcom.fluidops.logging.env=xxx
+</source>
+**Then comment out this line:
+<source>
+wrapper.java.additional.14=
+</source>
+*Navigate to ''C:\sharedruntime\fluid Operations\fluidOps Suite\etc'' and copy the file ''log4j-node1.properties'' to a new file ''log4j-node2.properties'', then open the ''log4j-node2.properties'' file and replace ''logs/node1/'' with ''logs/node2/'' and save the file.
+
+*Open a command prompt as Admin (Start -> enter “cmd”, in the opening sub-menu right click on cmd.exe and run as Administrator). From here run the following commands:
+**Register the service:<source>sc create fluidPlatform binpath= "\"c:\fluid Operations\fluidOps Suite\wrapper-windows-x86-32.exe\" -s backend.conf" start= auto displayname= "fluidOps Platform" obj= "user.name@domain" password= "<password>"</source> 
+**Enable automatic service restart:<source>sc failure fluidPlatform reset= 300 actions= restart/1000/restart/1000/restart/1000</source>
+
+*Start the {{PRODUCT}} service (the service is called fluidOps Platform), log on using ''https://localhost:50443/'' and perform initial configuration, e.g. authentication setup.
+
+'''NOTE: This service may only be started after {{PRODUCT}} is properly setup on the first node!'''
+
+== Switch-Over Tests ==
+
+{{PRODUCT}} service should be started on both nodes. The active one is running the webinterface, e.g. on ''https://ecm-ha-1:50443/''. The inactive node can be accessed via ''https://ecm-ha-2:50443/'' when the first one is inactive. By killing or restarting the active service, the other node should automatically become active and be available after a short time (up to one minute). This time might be longer if (automatic) cleanup tasks like database recovery are performed during the takeover.
+
+== Advanced Configuration ==
+
+The ''quorum'' file can be placed at a different location. This can be configured using config property ''haNodeQuorumLocation'' in the ''config.prop''. The default value is file ''./haNodeQuorum/haNode'' within the installation folder.
+
+== Upgrading {{PRODUCT}} with HA Setup ==
+
+This process is a bit like the initial setup. When doing an upgrade, the installer will automatically create a backup of the previous version of {{PRODUCT}} so there is a backup of the initial HA configurations if you need to refer to them again. In this section, however, we will explain how you can complete the whole upgrade easily.
+
+* When you initiate the upgrade process, the first window to appear will show the current version and the version being installed initially, simply press '''Yes''' to continue. 
+<img src="../images/help/ha-setup/upgrade-initial-msg.png" width="500px" />
+
+* Make sure {{PRODUCT}} is selected as the product in the 'Installation Type' step. 
+* For the 'Choose Installation Location' please select the folder used where the product resides on the cifs share. As noted in the initial setup this should be '''C:\sharedruntime\fluid Operations\fluidOps Suite'''. 
+
+<img src="../images/help/ha-setup/Upgrade-installationfolder.png" width="500px" />
+
+* After this continue with the upgrade until the 'Define Administrative Service User'. In this step make sure to unselect the checkbox for '''Start fluidOps Suite after the installation is complete'''.
+
+<img src="../images/help/ha-setup/installation-servicecheckbox.png" width="500px" />
+
+* Finish the installation by selecting 'Done'.
+* Now go to the installation folder, you will find new copies the following files again in this folder, we need to remove them and replace the ones in both node machine's filesystem.
+**wrapper-linux-x86-64
+**wrapper-macosx-universal-32
+**wrapper-windows-x86-32.exe
+**backend.conf
+
+* Check that the information in the backend-user.conf is still valid and the working directory is correct and that in the logs folder, that the folders created during setup are still there, node1 and node2.
+*Check that the service is still operational in services.msc and that the path is set correctly. It might be easier to delete and re-install the fluidOps service. You can remove the service with the command:
+<source>
+sc delete "fluidOps Platform"
+</source>
+* You can re-add the service with the command above used previously for the Initial Setup.
+* Re-do the log4j.properties files where you create ''log4j-node1.properties'' and ''log4j-node2.properties'' from ''log4j.properties'' and modify the contents. See the steps noted already above in the Initial Setup.
+
+== {{PRODUCT}} performance with the HA Setup ==
+
+When using a HA setup with {{PRODUCT}}, it is important to note that performance issues can occur depending on your current storage setup, especially when {{PRODUCT}} is executing regular backups. If performance is slow and backups require 20-30 minutes to complete, please check the latency speeds of your storage system. 
+Normally backups should require no more than 5 minutes to complete.

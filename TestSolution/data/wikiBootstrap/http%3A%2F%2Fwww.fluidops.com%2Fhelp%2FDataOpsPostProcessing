@@ -1,0 +1,10 @@
+=== Post Processing ===
+
+Post processing of data is an optional last step in the [[Help:DataOps | three step data integration process]].
+It is used to consolidate data and improve its interlinking with other data already in the system.
+For example, if data from two sources produces identical instances with different IRIs, post processing rules can be used to identify and link or merge those identical instances based on their shared properties.
+
+Rules for post processing can be specified in any [[Help:Providers | data provider]] that has been created by the data integration process.
+When creating or editing the provider configuration, simply choose "Post Processor" to add rules.
+
+Please find the list of available post processors [[Help:TOC| here]].

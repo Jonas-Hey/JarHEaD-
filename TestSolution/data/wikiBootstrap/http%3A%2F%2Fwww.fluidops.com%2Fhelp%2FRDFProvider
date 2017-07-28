@@ -1,0 +1,21 @@
+=== RDF Provider ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.provider.RDFProvider
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Providers | Providers ]]
+
+==== Configuration Settings ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.provider.RDFProvider
+}}
+
+The RDF format of the source can be optionally specified and selected from the offered supported formats. If not specified explicitly, the ''RDFProvider'' inspects the HTTP content-type of the response or alternatively the extension of the file in the URL.
+
+==== Example ====
+
+Consider as an example that you want to import an RDF dump of the ''Mondial'' metadata.
+
+This can be achieved by configuring an ''RDFProvider'' on [[Admin:Providers]] with the source ''<nowiki>http://www.dbis.informatik.uni-goettingen.de/Mondial/Mondial-RDF/mondial-europe.rdf</nowiki>''

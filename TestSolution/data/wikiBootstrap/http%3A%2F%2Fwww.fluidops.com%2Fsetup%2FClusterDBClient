@@ -1,0 +1,27 @@
+__NOTOC__
+== Configuring a cluster client ==
+
+Here we describe how to configure an instance of {{PRODUCT}} to be a client in a [[Help:Scaleout | high-availability cluster]] setup. This client instance will then use the backend nodes combined into a cluster as its default triple store repository.
+
+In order to enable the current {{PRODUCT}} instance to connect to the cluster DB as a client, the following properties have to be set:
+<source>
+# Enable start-up as cluster client. 
+# The value must be "true"
+scaleOutClusterClient=true
+# Cluster seed node IPs. 
+# Must be the same as the ones defined on the backend nodes.
+clusterNodes=clusternode1\:47500..47529,clusternode2\:47500..47529
+# Custom repository factory which initializes connection to the cluster backend using RMI calls. 
+# Must be "class=com.fluidops.iwb.repository.fsail.FluidOpsRepositoryFactory"
+repositoryType=class=com.fluidops.iwb.repository.fsail.FluidOpsRepositoryFactory
+# Backend access credentials
+ecmUserName=admin
+ecmPasswordEnc=...
+ecmServerUrl=http://localhost
+</source>
+
+You can use the configuration dialog below to configure these settings at runtime (* ''only visible when logged in with respective permissions'').
+
+{{#widget: com.fluidops.iwb.widget.admin.InlineConfigurationWidget | 
+ configOptions = {{ 'scaleOutClusterClient' | 'clusterNodes' | 'repositoryType' | 'ecmServerUrl' | 'ecmUserName' | 'ecmPasswordEnc' }}
+}}

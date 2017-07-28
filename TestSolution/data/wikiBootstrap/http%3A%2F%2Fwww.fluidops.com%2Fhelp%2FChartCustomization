@@ -1,0 +1,70 @@
+=== Chart Customization ===
+
+There are several ways for customizing chart layouts. These range from additional configuration parameters to a unique settings file for each chart type.
+
+==== Widget Parameters ====
+
+The widget configuration offers several parameters for changing the layout of the chart.
+
+* Some chart types like the pie chart or the time graph support custom headers. By default, this value is set to ''Query Result''. If you want to use a custom header, set the argument '''title''' to the desired name.
+* Apart from the map configuration, the chart widget automatically fits the diagram to the page size. You can manually select the width of your chart with the '''width''' parameter. Arguments are treated in px format.
+* The chart height is set by default to 250 px. You can choose a custom parameter using the '''height''' argument.
+* You can define colors of charts in almost all chart widgets by entering values in hex format for the '''colors''' parameter in the widget configurations. If you have defined colors in the attached settings file (see [[#Settings Files | Settings Files]]) they will have priority over the colors in your widget configuration. If no colors are defined by the user, default values are used globally for all charts. The global default values for chart colors can be configured in [[ Admin:Config | System configuration ]] in the category '''Appearance'''. The highest and the lowest chart colors are defined with parameters '''chartColorHigh''' and '''chartColorLow'''. The '''chartColorLow''' is then the default value for a chart (e.g. the bars in the BarChart). If more than one color is needed for a chart (e.g. for the clustered bars in the BarChart or the slices in the PieChart) their RGB values will be calculated from the range between the '''chartColorLow''' and '''chartColorHigh'''.
+* Another way to define colors in charts is to have them provided in the query result in the '''color''' variable. Note that this only works if no other method to set the colors is used and if each color per graph (or a pie slice) is distinctly defined in the query.
+
+'''Examle'''
+<source>
+{{#widget: PieChart | 
+ input = 'category'
+ | output = {{ 'value' }}
+ | query = 'SELECT ?category ?value ?color WHERE { 
+        VALUES (?category ?value ?color)
+        { 
+          ("Category 1" 85 "#E73234")
+          ("Category 2" 60 "#7DB61C")
+          ("Category 3" 123 "#F7D523")
+   } }'
+ | styling = 
+   {{ width = '400'
+    | height = '200'
+   }}
+}}</source>
+
+
+{{#widget: PieChart | 
+ input = 'category'
+ | output = {{ 'value' }}
+ | query = 'SELECT ?category ?value ?color WHERE { 
+        VALUES (?category ?value ?color)
+        { 
+          ("Category 1" 85 "#E73234")
+          ("Category 2" 60 "#7DB61C")
+          ("Category 3" 123 "#F7D523")
+   } }'
+ | styling = 
+   {{ width = '400'
+    | height = '200'
+   }}
+}}
+<br/>
+==== Settings Files ====
+
+Charts can be customized using JSON settings files that follow the standards of the [http://extra.amcharts.com/editor/ amCharts chart engine]. While {{PRODUCT}} comes with a predefined set of these files (see [[ Help:Settings | here ]] for an overview), customized configurations can be easily defined (e.g. to change the colors of a chart) and activated for specific widgets. 
+
+Note: in previous versions of {{PRODUCT}} such configurations were done with XML setting files. As of version 6.2 these are deprecated, however, still functional.
+
+Customizations can be easily created using the [http://extra.amcharts.com/editor/ amCharts Visual Editor]. All settings performed in this editor can be used in {{PRODUCT}}. In fact you can simply copy paste any JSON code you have generated using the Visual Editor into a new wiki page prefixed with ''Settings:'' (e.g. Settings:NewSettingsFile). You may then reference the code embedded in this page as a settings file (e.g. settings = 'Settings:NewSettingsFile') from your widget configuration. 
+
+
+Hint: If you enclose the JSON code in the tag
+
+<pre>
+<source lang="json"> </source>
+</pre>
+
+the page will be rendered properly, on which you have included the code. 
+
+==== Customization example ====
+
+A short [[ Help:ChartCustomizationTutorial | chart customization tutorial ]] will show how to create a chart and configure it with a setting file.
+[[Help:ChartSamples | Here]] is a couple of examples of how a customized chart can be used as a progress bar component.

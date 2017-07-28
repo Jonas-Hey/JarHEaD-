@@ -1,0 +1,47 @@
+=== Delete Duplicates Post Processor ===
+
+{{PRODUCT}} ships a post processor for deleting duplicate statements.
+
+You must specify the RDF property which
+links to literals which are to be processed. For instance, if the provider gathers email addresses, 
+the property "example:email" is to be examined.
+
+Furthermore, you can specify whether the current provider is a primary or a secondary source: isSecondarySource.
+
+'''Important:''' Due to the nature of the applied detection algorithm this post-processor should only be used for small and medium-sized datasets.
+
+==== Example ====
+
+Consider as an example that your provider generates the following statement: (:x, example:email, "alice@ex.org").
+Furthermore, let's assume that the same statement is already present in the database (e.g. manually added by the user).
+Consequently, the statement would normally be duplicated, indicating that both the user and the provider state that
+x's email address is alice@ex.org. Sometimes, this information is important. In other cases, this is not desirable
+and can be avoided using this post processor:
+
+<source>
+sourceProperty = example:email
+isSecondarySource = false
+</source>
+
+In this case, {{PRODUCT}} checks the database for this statement. If another source
+already contributed this statement, the statement is removed by the post processor before it
+is added into the database. Consequently, the database would only contain the information about x's
+email address stated by the user.
+
+Sometimes a datasource is deemed to be unreliable and is only to be used in cases where
+noone else can make statements on the matter. Let's assume x's email is specified as bob@ex.org
+in the database and let's assume the statement comes from another (trusted) provider.
+y's email, on the other hand, is currently unknown to the database. Let's also assume
+that the provider generates two statements:
+(:x, example:email, "alice@ex.org") and (:y, example:email, "john@ex.org")
+
+<source>
+sourceProperty = example:email
+isSecondarySource = true
+</source>
+
+The post processor filters (:x, example:email, "alice@ex.org"), because x's email is known
+to be bob@ex.org and this information is preferred over our unreliable source.
+The post processor retains (:y, example:email, "john@ex.org"), since unreliable information
+in this case is better than no information.
+

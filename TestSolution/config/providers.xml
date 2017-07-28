@@ -1,8 +1,8 @@
 <list>
-  <com.fluidops.iwb.provider.R2RMLProvider secrets__id="http://www.fluidops.com/resource/StatistischesBundesamtDaten-provider" secrets__type="IWBProvider">
+  <com.fluidops.iwb.provider.R2RMLProvider secrets__id="http://www.fluidops.com/resource/Kaufkraft-provider" secrets__type="IWBProvider">
     <config class="com.fluidops.iwb.provider.R2RMLProvider$Config">
-      <dataSource class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten</dataSource>
-      <mappingIdentifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten/MappingCollection50496222048752114028654787252975</mappingIdentifier>
+      <dataSource class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Kaufkraft</dataSource>
+      <mappingIdentifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Kaufkraft/MappingCollection58275937826775679184119710053044</mappingIdentifier>
       <inMemory>true</inMemory>
     </config>
     <postProcessors/>
@@ -11,11 +11,11 @@
       <enabled>false</enabled>
       <pollInterval>0</pollInterval>
     </schedulingConfig>
-    <lastStartTime>2017-07-17 10:28:46.655 UTC</lastStartTime>
-    <lastUpdate>2017-07-17 10:30:12.245 UTC</lastUpdate>
-    <lastDuration>85590</lastDuration>
-    <providerID class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten-provider</providerID>
-    <size>274358</size>
+    <lastStartTime>2017-07-25 09:41:19.439 UTC</lastStartTime>
+    <lastUpdate>2017-07-25 09:41:20.691 UTC</lastUpdate>
+    <lastDuration>1252</lastDuration>
+    <providerID class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Kaufkraft-provider</providerID>
+    <size>80</size>
     <providerDataEditable>false</providerDataEditable>
     <userModified>true</userModified>
     <deleted>false</deleted>

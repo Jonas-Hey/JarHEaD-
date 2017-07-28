@@ -1,0 +1,287 @@
+=== Script Execution Widget ===
+
+==== Functionality ====
+This widget allows executing scripts and pass arguments to them.
+Scripts must reside in the scripts folder of the current installation.
+The following types of scripts are supported:
+* Windows CMD
+* Powershell (all powershell versions are supported, although it uses the locally configured powershell version of the system)
+* <nowiki>*</nowiki>nix shell
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = 'com.fluidops.iwb.widget.ScriptExecutionWidget'
+}}
+
+===== Type of Script =====
+The following script types can be selected:
+* '''Auto Detect''' will try to match the script to known script types based on the extension of its file
+* '''Command Line''' for Windows CMD
+* '''PowerShell''' for Powershell on Windows systems
+* '''Unix Shell''' for sh
+
+==== Manage scripts ====
+
+Scripts are files containing commands that are stored in the ''scripts/'' directory in the current installation on the system.
+
+Currently supported language types are:
+*'''Command Line''' - shell or cmd (depending on OS)
+**File extensions: sh, cmd, bat
+*'''Powershell'''
+**File extensions: ps1
+
+The script type can also be auto detected depending on the extension of the file, which has to match one of those listed above.
+
+All the scripts found in the scripts folder are made available for selection in the widget configuration form.
+The list of available scripts are cached for up to 5 minutes after a widget configuration form was opened.
+That is, you may experience a delay of up to 5 minutes between placing a new script in the scripts folder, and it becoming available in the configuration form.
+However, by editing the configuration of the widget manually and setting the path to the script (which must be relative to the scripts folder), the script will be immediately executable.
+
+===== Upload a script =====
+
+In order to enable scripts for execution, the script files need to be placed into the '''scripts''' folder in the installation directory on the system.
+This can be achieved by uploading the script on the system using, for example, a remote shell like RDP or SCP and placing the script into the scripts directory.
+Sub-directories inside the scripts directory are supported, and scripts nested into them at any level of depth will be available to use with this widget.
+
+Important: *nix shell scripts '''must''' have the executable flag set (see the ''chmod'' *nix command), otherwise their execution will fail with an error.
+
+===== Edit a script =====
+
+Editing scripts means directly modifying the script content on the system. A script may also be downloaded, modified and uploaded again to the same location in order to overwrite the previous version.
+New version of pre-existing scripts become available for execution as soon as they have been uploaded, and replace the overwritten version.
+
+===== Deleting a script =====
+
+The deletion of a script is performed by deleting the file from the file system using, for example, a remote shell like RDP or SCP.
+
+===== Execution Timeout =====
+
+All types of scripts support the specification of a timeout (in seconds) that will abort the execution of the scripts if reached.
+Notice, however, that any modification performed by the aborted script while running will '''not''' be automatically reverted.
+The termination of the process is performed by Java's [http://docs.oracle.com/javase/7/docs/api/java/lang/Process.html#destroy() Process.destroy()].
+On Unix systems this sends a TERM signal to the process running the script. Subprocesses launched from within the script are not affected by this.
+
+==== CMD examples with auto detect and execution timeout ====
+
+Example of script execution with script-type auto-detection and timeout being 5 minutes.
+===== Script content=====
+File resides in: scripts/local/print.cmd
+<source>
+@echo off
+date /t
+time /t
+echo "param 1:"
+echo %1
+echo "param 2:"
+echo %2
+echo "param 3:"
+echo %3
+echo "all parameters:"
+echo %*
+</source>
+
+===== Wiki content=====
+
+<source>
+{{#widget: ScriptExecution | 
+ args = {{ 'Constant' | $this.a$ | 42 }}
+ | label = 'AutoDetect Test'
+ | script = 'local/print.cmd'
+ | type = 'Auto Detect'
+ | executionTimeout = 300
+}}
+</source>
+
+==== Script Arguments ====
+
+Arguments can be specified using the {{PRODUCT}} operator notation in order to provide pre-calculated and hard-coded arguments to be passed to the script, or they can be collected dynamically as user input. 
+
+Please refer to the [[Help:AdvancedWidgetConfiguration| advanced widget configuration]] documentation for details on how to represent the actual arguments of the scripts, i.e. typing, casting tables and default values etc.
+
+===== User Input Configuration =====
+
+The widget allows specifying arguments to the script based on the user input by adding the userInput configuration entry.
+In this case, a component (e.g., textfield, combobox, etc.) appears, where the user can manually specify some of the required script arguments. 
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = 'com.fluidops.iwb.widget.BaseExecutionWidget$UserInputConfig'
+}}
+
+===== Parameters being passed to the scripts =====
+The following table depicts the value received by each of the supported script types for each of the argument data type. Where applicable also a possible way to parse the values is shown.
+
+{| class="wikitable"
+|-
+! Argument Data type    !! Example !! PowerShell  !! Windows CMD !!  Unix Shell 
+|-
+| Literal (xsd:boolean)    || "true"^^xsd:boolean   || true<br/>(use <code>[bool]::Parse($var)</code>) || true || true
+|-
+| Literal (xsd:string)     || "my value"^^xsd:string   || my value  || my value  || my value
+|-
+| Literal (xsd:integer) || "-11e3"^^xsd:integer || -11e3<br/>(use [int] conversion) || -11e3 || -11e3<br/>(e.g. <code>printf "%i" "$1"</code>)
+|-
+| Literal (xsd:float)         || "-5.3f"^^xsd:float || -5.3f<br/>(use [decimal] conversion) || -5.3f || -5.3f<br/>(e.g. <code>printf "%f" "${1:0:-1}"</code>)
+|-
+| Literal (xsd:dateTime)      || "2014-01-21T17:05:14.803+01:00"^^xsd:dateTime || 2014-01-21T17:05:14.803+01:00<br/>(use [datetime] conversion) || 2014-01-21T17:05:14.803+01:00 || 2014-01-21T17:05:14.803+01:00<br/>(e.g. <code>date --date="$1"</code>)
+|-
+| URI                    || <nowiki>http://www.fluidops.com/resource/A</nowiki> || <nowiki>http://www.fluidops.com/resource/A</nowiki> || <nowiki>http://www.fluidops.com/resource/A</nowiki>  || <nowiki>http://www.fluidops.com/resource/A</nowiki>  
+|-
+| List                    || ["a","b","c"] || 'a','b','c'<br/>(use string[] conversion) || ""a","b","c"" || a\nb\nc<br/>(e.g. <code>readarray -t array <<<"$1"</code>)
+|}
+
+===== Script argument examples =====
+
+'''a) Hard-coded and pre-calculated arguments '''
+The following example shows how to pass three arguments to the script. The first argument is a constant value, directly specified in the wiki.
+The second argument makes reference to a property of the current resource, whereas the third argument will be the result of a SPARQL query.
+
+<source>
+{{#widget: ScriptExecution | 
+ args = {{ 'Constant' | $this.stringProperty$ | $select ?x where { ?? ?p ?x } LIMIT 1$ }}
+ | label = 'Example hard-coded arguments'
+ | script = 'local/print.ps1'
+ | type = 'PowerShell'
+}}
+</source>
+
+'''b) User input arguments '''
+
+The following example shows how to specify arguments according to the user input. 
+The first argument presents a blank text field to the user.
+The second argument presents a checkbox which the user can check or uncheck, sending the result of the associated boolean operation.
+The third argument presents a dropdown where the user can select one of the available elements, which results of the operation specified on the selectValues parameter.
+
+<source>
+{{#widget: ScriptExecution | 
+ userInput = {{ 
+      {{ name = 'textfield'
+       | displayName = 'Test argument'
+       | required = true
+       | componentType = 'SIMPLE'
+      }} | 
+      {{ name = 'checkbox'
+       | displayName = 'Checkox argument'
+       | required = true
+       | componentType = 'CHECKBOX'
+       | presetValue = 'true'
+      }} | 
+      {{ name = 'dropdown'
+       | required = false
+       | componentType = 'DROPDOWN'
+       | selectValues = $select distinct ?type where { ?x rdf:type ?type }$
+      }} }}
+ | args = {{ '%textfield' | '%checkbox' | '%dropdown' }}
+ | label = 'Example user input arguments'
+ | script = 'local/print.bat'
+ | type = 'Command Line'
+ | render = 'inline'
+}}
+</source>
+
+'''c) Mixed arguments '''
+
+Notice that pre-calculated and hardcoded arguments could be mixed with user input arguments, as shown in the following example.
+
+<source>
+{{#widget: ScriptExecution | 
+ args = {{ 'Constant' | $this.stringProperty$ | '%textfield' }}
+ userInput = {{ 
+      {{ name = 'textfield'
+       | displayName = 'Test argument'
+       | required = true
+       | componentType = 'SIMPLE'
+      }} }}  
+ | label = 'Example mixed arguments'
+ | script = 'local/print.ps1'
+ | type = 'PowerShell'
+}}
+</source>
+
+'''d) Retrieve arguments from scripts '''
+In the following we present a widget configuration example in order to show how each of the supported script types can recover and handle the specified arguments.
+The example consist of a script aimed to test the reachibility of a host by using the Ping tool (i.e., to send ICMP request), where the host name is specified as a user input.
+
+<source>
+{{#widget: ScriptExecution | 
+ args = {{ '%hostname' }}
+ | userInput = {{ 
+      {{ name = 'hostname'
+       | required = true
+       | displayName = 'Host name'
+       | componentType = 'SIMPLE'
+      }} }}
+ | label = 'Test Ping'
+ | script = 'local/ping.bat'
+ | type = 'Auto Detect'
+}}
+</source>
+
+* Windows CMD
+
+ping.bat
+<source>
+@echo off
+ping %1
+</source>
+
+* Powershell (uses locally configured powershell version of the system)
+
+ping.ps1
+<source>
+Param(
+	[parameter(Mandatory=$true)]
+	[string]$hostname
+)
+
+Test-Connection $hostname
+</source>
+
+* <nowiki>*</nowiki>nix shell
+
+ping.sh
+<source>
+#!/bin/sh
+ping $1
+</source>
+
+==== Other examples ====
+
+'''Poweshell Script invocation + execute button label + confirmation message + redirect to resource'''
+
+<source>{{#widget: ScriptExecution | 
+ executionTimeout = 30
+ | onFinish = $this.a$
+ | label = 'Run Script'
+ | type = 'PowerShell'
+ | script = 'local/test.ps1'
+ | confirm = 'Success'
+}}</source>
+
+'''Batch Script invocation + confirmation message + popup'''
+
+<source>{{#widget: ScriptExecution | 
+ executionTimeout = 30
+ | onFinish = popup
+ | type = 'PowerShell'
+ | script = 'local/test.bat'
+ | confirm = 'Success'
+}}</source>
+
+'''Bash Script invocation + passing arguments to script + reload'''
+
+<source>{{#widget: ScriptExecution | 
+ executionTimeout = 30
+ | onFinish = reload
+ | args = {{ 'value1' | 'value2' | 'value3' }}
+ | type = 'PowerShell'
+ | script = 'local/test.sh'
+}}</source>
+
+==== Other Features ====
+
+The ScriptExecutionWidget offers similar features as the [[Help:CodeExecution | CodeExecutionWidget]], namely:
+* Rendering of the control as a button, a link, inline or as a image
+* Configurable confirmation messages
+* "On finish" actions that are executed upon successful completion of the scripts
+For documentation on these features, please head over to the [[Help:CodeExecution | CodeExecutionWidget Help page]].

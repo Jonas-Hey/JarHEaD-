@@ -1,0 +1,15 @@
+= The fluidOps Platform SDK Components =
+
+The fluidOps Platform constitutes the foundation for various apps and is designed with extensibility in mind. For this purpose the platform provides a comprehensive SDK (Software Development Kit) allowing developers to build customized applications, so-called '''apps''', targeting specific domains or use cases.
+
+The different SDK components are described in the following subsections.
+
+{{Help:WidgetSDK}}
+{{Help:DataManagementApi}}
+{{Help:ProviderSDK}}
+{{Help:APIExtensions}}
+{{Help:TaskExtensions}}
+{{Help:ValueResolverExtensions}}
+{{Help:SDK-Workflows}}
+{{Help:SDK-UsefulSnippets}}
+{{Help:SDK-PostInstall}}

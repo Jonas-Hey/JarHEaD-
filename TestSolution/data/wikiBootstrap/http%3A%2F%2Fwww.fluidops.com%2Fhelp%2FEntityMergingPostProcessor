@@ -1,0 +1,47 @@
+=== Entity Merging Post Processor ===
+
+The ''Entity Merging Post Processor'' is a lightweight module for entity reconciliation. It can be used to merge data of a provider for resource <tt>S'</tt> with existing resources <tt>S</tt> based on equality matching of a property.
+
+See also the [[Help:SilkPostProcessor| SILK post processor]] for advanced use-cases.
+
+==== Exmaple ====
+
+The following example illustrates the post processor.
+
+a) Statements available in the repository:
+
+<source>
+:p1	rdf:type	foaf:person
+:p1	foaf:name	"John Doe"
+
+:p2	rdf:type	foaf:person
+:p2	foaf:name	"Jane Doe"
+</source>
+
+b) Statements resulting from the provider:
+
+<source>
+:p1_new	rdf:type	foaf:person
+:p1_new	foaf:name	"John Doe"
+:p1_new	livesIn		"Heidelberg"
+
+:p3_new	rdf:type	foaf:person
+:p3_new	foaf:name	"Some one"
+:p3_new	livesIn		"Karlsruhe"
+</source>
+
+c) Resulting statements in the repository when configuring an entity merge with the predicate "foaf:name":
+
+<source>
+:p1	rdf:type	foaf:person
+:p1	foaf:name	"John Doe"
+:p1	livesIn		"Heidelberg"
+(:p1    rdf:type   	foaf:Person)   // duplicate in other named graph   
+
+:p2	rdf:type	foaf:person
+:p2	foaf:name	"Jane Doe"
+
+:p3_new	rdf:type	foaf:person
+:p3_new	foaf:name	"Some one"
+:p3_new	livesIn		"Karlsruhe"
+</source>

@@ -1,0 +1,46 @@
+=== Task Post Processor ===
+
+{{PRODUCT}} ships a post processor that allows triggering a [[Help:Tasks| tasks]] after a provider run.
+
+This feature can be used for the following use cases:
+
+* Identify expired items via a SPARQL query and notifying their owners about this via email
+* Automatically turning off an item in the infrastructure when it is no longer needed
+
+==== Configuration Options ====
+
+* task: specify the task to perform
+* sourceProperty: this specifies which resource the task is to be run on. Given the statements produced by the provider, the post processor filters the statements with the given source property and runs the task for all distinct subjects. Example: if the source property is ex:p and the provider yielded the statements (ex:a, ex:p, 'literal'), (other:a, other:b, other:c) and (ex:a, ex:p, 42), then the task gets run once with context ex:a.
+* mode: there are three modes:
+** NewResources (default): the task is only run for resources appearing in new statements (i.e. statements which were not delivered by the provider during the previous run). This allows for triggering a task only once during the first detection of the statement.
+** DeletedResources: the task is only run for resources disappearing from the new statements (i.e. statements which were delivered by the provider during the previous run but are not anymore). 
+** AllResources: the task is run for all resources, regardless of previous provider results
+
+
+==== Example: Identify expired items via a SPARQL query and notifying their owners about this via email ====
+
+<div class="sourceDiv">
+sourceProperty = dc:owner<br/>
+mode = NewResources<br/>
+task = email (note that the email task can retrieve the owner's email from the RDF context, i.e. via ''$''this.foaf:mbox<i>$</i>)
+</div>
+
+==== Use case scenario: create events for VMs with disk usage greater 80% + notifications ====
+
+The usage scenario for this example is to create events for all VMs that have a disk usage of more than 80% and then send an email notification if such VMs are encountered. Of course the scenario can be modified to any arbitrary task (see a few examples listed below).
+
+First the [[Help:EventProvider]] has to be configured with a suitable query. For this example we use the query below which computes all the VMs where the disk usage is greater than 80%. Of course any kind of restriction can be added (e.g. VMs in a particular compute infrastructure, say the production cluster).
+
+<source>
+SELECT ?vm ?diskSpaceUsedPercent WHERE { 
+   ?vm rdf:type :VM
+   OPTIONAL { ?vm host:diskSpaceUsed ?diskSpaceUsed . ?vm host:diskSize ?diskSizeInKB . BIND((?diskSpaceUsed / (?diskSizeInKB * 1024) * 100) AS ?diskSpaceUsedPercent)  }
+   FILTER (?diskSpaceUsedPercent > 80)
+}
+</source>
+
+Consider the following figures for the configuration of the [[Help:EventProvider]] and the corresponding [[Help:Tasks]].
+
+<img src="../images/help/provider/eventProviderVMDiskUsage80.png" style="width: 600px"/>
+
+<img src="../images/help/provider/eventProviderVMDiskUsage80-task.png" style="width: 600px"/>

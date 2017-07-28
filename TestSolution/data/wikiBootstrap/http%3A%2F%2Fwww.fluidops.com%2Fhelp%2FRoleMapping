@@ -1,0 +1,34 @@
+=== Role Mapping ===
+
+{{PRODUCT}} implements a powerful concept for access control by mapping users and groups to roles. A ''role'' defines a collection of permissions in the form of an Access Control List (ACL). A ''permission'' allows or denies access to a resource or action of a specific type. Please see section [[Help:AccessControl|Access Control]] for details on ACLs.
+
+Each user is mapped to a set of roles during login. The user is allowed access to a resource or action if any of his roles grants access. Role mappings are either ''static'' (i.e., independent of the context) or ''dynamic'' for a certain context. A ''context'' contains related resources, e.g. resources within the same namespace.
+Role mappings are defined on page [[Admin:Permissions|Access & Permission Management]]. This page also allows to reload the permissions and role mappings, invalidating the caches.
+
+==== Share Resource Dialog ====
+
+Dynamic role mappings for a specific resource can be managed from the page of the resource itself using the Share Resource dialog. This dialog can be opened by clicking on the share button <img src="../images/navigation/ico_acl_share.png"/>, which is located next to the resource name. This view shows which users/groups have the permission to the selected resource.
+
+Firstly, the dialog shows a table presenting the inherited permissions. These permissions are derived from resources considered as ancestor of the selected one. For instance, permissions of VM are affected by the permissions given to the cluster where the VM resides. This table shows the user or group icons depending on the target of the permission, the name of the user or group, the role which is mapped and the resource which the permission is applying to.
+
+A second table is included showing the permissions assigned to the current resource. It shows the icon that represents if the permissions is assigned to a user or group, the identifier of the user or group, the role which is mapped and finally a delete (or restore) icon aimed to delete (or restore) the assigned mapping.
+
+Note that, the role mappings are not removed when the delete button is clicked, but when the Save button at the bottom of the dialog is clicked. That allows clicking on the restore button if one mapping was deleted unintentionally.
+
+To add a new mapping, type the identifier of the user or group in the "Give Access To" text input and select whether the mapping is defined for a user or a group using the combo box. Then, select the desired role(s) from the role list. This role will be assigned to the specified user/group when he/they access the given resource.
+
+After clicking on the Add Permission button, the new role mapping would be added to the permission list. However, the mappings will not be stored until clicking on the Save Button. Clicking the Cancel button will discard any change and close the dialog.
+
+<img src="../images/help/acl-ShareResource.png"/>
+
+==== User ACLs Dialog ====
+
+The User ACLs dialog can be accessed via the [[Admin:Permissions|Access & Permission Management]] page. The dialog configures the permissions of the given user or group. 
+
+The permission list shows the mapping between the resource and roles that the user or group has. The delete (or restore) button allows to delete (or restore) a mapping. Note that, the role mappings are not removed when the delete button is clicked, but when the Save button at the bottom of the dialog is clicked. That allows clicking on the restore button if one mapping was deleted unintentionally.
+
+To add a new mapping, type the identifier of the resource which should to be mapped in the "Give Access To" text input. Alternatively, select "Everything" in the combo box to create a static mapping. Then, select the desired role(s) from the role list. This role will be assigned to the given user/group when he/they access the specified resource. 
+
+After clicking on the Add Permission button, the new role mapping would be added to the permission list. However, the mappings will not be stored until clicking on the Save Button. Clicking the Cancel button will discard any change and close the dialog.
+
+<img src="../images/help/acl-UserACLs.png"/>

@@ -1,0 +1,21 @@
+=== Event Trigger ===
+
+{{PRODUCT}} ships a post processor for sending emails.
+
+This post processor checks the data passed by the provider
+for instances of type ''System:Event''. The [[Help:SystemHealthProvider]]
+and the [[Help:EventProvider]] (to name a few examples) generate such kind of data.
+
+The event trigger only reacts to events that show up for the first time.
+These events are sent to the email address specified in the event.
+The only argument, namely the default email address
+to send events to, determines the recipient if no email is provided with the event data.
+
+
+==== Example use case ====
+
+Suppose you want to monitor the system health using the [[Help:SystemHealthProvider| system health provider]]. 
+
+In this case you can configure such provider to perform the desired health checks, and add an ''EventTrigger'' as post processor. If there are new events, an email is sent to the configured email address.
+
+Note: this example requires a functional [[Setup:Email| email setup]].

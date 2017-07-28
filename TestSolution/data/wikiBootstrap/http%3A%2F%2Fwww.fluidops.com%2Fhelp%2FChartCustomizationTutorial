@@ -1,0 +1,79 @@
+=== Chart Customization Tutorial ===
+
+This tutorial demonstrates how to create a chart and configure it with the help of a settings file.
+
+==== Required Data ====
+
+The data used in the example can be loaded as described in [[Help:ExampleData | Example Data]]. 
+
+==== Creating a chart ====
+
+Let's assume we would like to know and see on a chart what organizations are involved in more than 20 projects. The number of projects should be visualized as columns in a descending order. The query that will deliver the corresponding data looks as folows:
+
+<source>
+SELECT ?org (COUNT(?project) AS ?countProjects) WHERE 
+    { 
+      ?org rdf:type <http://xmlns.com/foaf/0.1/Organization> .
+      ?org rdfs:label ?label .
+      ?org <http://research.data.gov.uk/def/project/project> ?project
+    }
+    GROUP BY ?org 
+    HAVING(?countProjects > 20)
+    ORDER BY DESC(?countProjects)
+</source>
+
+Copy this query and try it on the <a href="../sparql">web-based SPARQL interface</a> . As a result you will see the data in a table. Additionaly you can see a bar chart visualizing the data by clicking the bar chart view on the left side of the page. On the top right of the page you can find an option to copy the widget. Copy the widget and paste this snippet on a wiki page where you would like to see the chart. 
+<source>
+{{#widget: BarChart 
+ | input = 'org'
+ | output = {{ 'countProjects' }}
+ | query = 'SELECT ?org (COUNT(?project) AS ?countProjects) WHERE 
+    { 
+      ?org rdf:type <http://xmlns.com/foaf/0.1/Organization> .
+      ?org rdfs:label ?label .
+      ?org <http://research.data.gov.uk/def/project/project> ?project
+    }
+    GROUP BY ?org 
+    HAVING(?countProjects > 20)
+    ORDER BY DESC(?countProjects)'
+}}
+</source>
+
+After you save the page the same bar chart as you have seen at the SPARQL interface will appear.
+
+<img src="../images/help/chart-settings-bar-default.png" />
+
+
+==== Customizing a chart ====
+The chart has default settings which you can easily change. One of the ways to do it is to define some parameters directly in the widget configuration form. To edit the widget configuration mark or click into the configuration in the wiki page and click the widget symbol on the editor menu. The parameters that you can enter directly are e.g. the colors, the bar type, the width and the height of the chart. But the recommended way to configure a chart is to create a settings file and enter the name of the file in the field '''Settings''' in the widget form.
+
+<img src="../images/help/chart-settings-field-in-configuration-form.png" />
+
+Let's assume we would like to see horizontal bars instead of the vertical ones, the bars should be in green and the titles of the chart and the value axis should be shown. The text in the balloon should be written in a human readable language. 
+
+Using the [http://live.amcharts.com/new/  live editor] offered by the Amcharts the customization configuration can be easily created. There you can change the appearence of the chart in the editor by adjusting the settings on the left and immediately see the effect.
+
+* Choose one of the 'Column' layout charts,  e.g., '''cluster'''
+* Click the '''Rotate''' setting in the 'General settings' tab
+* Replace the '''Colors''' with ''"#FCBA05"'' in the 'Appearance' tab to see the orange horizontal bars
+* Change the '''Title Text''' of the chart (e.g. to "Project activity") in the 'Titles' tab
+* Change the '''Axis Title''' of the chart (e.g. to "Number of projects") in the 'Value axes' tab
+
+When you like the result, copy the source code on the bottom right of the editor page and paste it into a wiki page ''../resource/Settings:myBarChart''. The code snippet will most probably include some unnecessary code like the Amchart example data, but it won't affect your chart. The settings code can be reduced to the following (the important lines are marked):
+
+<img src="../images/help/chart-settings-bar-json.png" />
+
+Hint: If you enclose the JSON code in the tag
+
+<pre>
+<source lang="json">
+ ....
+</source>
+</pre>
+
+the settings configuration will be rendered in a code-formatted block and not interfere with wiki syntax.
+
+Save the page and check if the settings file name is the same in the widget configuration. Now if you load the chart again you should see the targeted result:
+
+<img src="../images/help/chart-settings-bar-custom.png" />
+

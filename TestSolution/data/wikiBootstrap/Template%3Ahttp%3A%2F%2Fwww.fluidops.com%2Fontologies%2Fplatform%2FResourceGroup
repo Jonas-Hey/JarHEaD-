@@ -1,0 +1,32 @@
+__NOTOC__
+[[Admin:Admin|Settings]] > [[Admin:ResourceGroups|Resource Groups]] > {{#show: {{this}} | valueResolver=LABEL }}
+
+== Resource Group Members ==
+
+{{#widget: ActionableResult | 
+ numberOfDisplayedRows = 5
+ | query = 'select * where { ?Member Platform:isInResourceGroup ?? }'
+ | selectedRowActions = {{ 
+      {{ onFinish = 'reload'
+       | args = {{ $this$ | '?:Member' }}
+       | method = 'removeMembers'
+       | label = 'Remove Selected Members'
+       | clazz = 'com.fluidops.iwb.provider.GroupProvider'
+      }} }}
+}}
+<br/>
+
+== Specify Resource Group Members ==
+
+<br/>
+{{#widget: CodeExecution | 
+ onFinish = 'reload'
+ | userInput = {{ 
+      {{ name = 'member'
+       | componentType = 'SIMPLE'
+      }} }}
+ | args = {{ $this$ | '%member' }}
+ | method = 'addMember'
+ | label = 'Add Member'
+ | clazz = 'com.fluidops.iwb.provider.GroupProvider'
+}}

@@ -1,0 +1,34 @@
+<!-- 
+The tile shows values in a line chart. The graph names are in the 'dataset' variable.
+
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{query}}} - the query returning 'category', 'value', 'dataset' result set to be displayed in the chart (required)
+	the parameter {{{repository}}} - sets the selected repository for the query (optional)
+	the parameter {{{useQueryForColors}}} - defines if the colors values from the query result should be used for the graphs in the chart (optional)
+	the parameters {{{unit}}}, {{{minimum}}}, {{{maximum}}}, {{{precision}}}, {{{integersOnly}}} can be optionally used for the Amchart standard chart configuration.
+-->
+
+<div data-ss-colspan="2" class="tile2x1">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading|}}}| headingLink={{{headingLink|}}} | description={{{description|}}} }}
+<div class="tiledata">
+{{#widget: LineChart | 
+ input = 'category'
+ | output = {{ 'value' }}
+ | query = '{{{query|SELECT ("Example" as ?category) (0 as ?value) ("dataset" as ?dataset)  WHERE{}}}}'
+ | groupByDatasetVariable = true
+ | customMappings = 'useQueryForColors={{{useQueryForColors|}}},unit={{{unit|}}},minimum={{{minimum|0}}},maximum={{{maximum|}}},precision={{{precision|}}},integersOnly={{{integersOnly|}}},parseDates={{{parseDates|}}}'
+ | settings = 'Settings:linetile'
+ | repository = {{{repository|default}}}
+ | styling = 
+   {{ height = '250'
+   }}
+ | asynch = true
+}}
+</div>
+
+<div style="clear:left;"></div>
+
+</div>
+</div>

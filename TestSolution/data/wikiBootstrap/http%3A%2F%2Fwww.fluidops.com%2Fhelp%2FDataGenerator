@@ -1,0 +1,112 @@
+=== Data Generator ===
+
+==== Functionality ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.util.data.provider.DataGenerator
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Providers | Providers ]]
+
+==== Configuration Settings ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.util.data.provider.DataGenerator
+}}
+
+==== RecordSpecs and RDFMappings ====
+
+The structure of the generated tabular data is described using a <i>RecordSpec</i> and the mapping to RDF is defined using a <i>RDFMapping</i>. 
+The actually used record spec and RDF mapping can be defined by specifying a custom <i>RecordSpecProvider</i> and <i>RDFMappingProvider</i> respectively. 
+They can use convenience methods provided by utility class <i>com.fluidops.util.data.generators.Generators</i> and <i>com.fluidops.util.data.generators.RDFGenerators</i>.
+
+See below for an example.
+
+==== Example ====
+
+Create a script file <b>scripts/example/ExampleData.groovy</b> with the following contents:
+
+<pre>
+package example;
+
+import static com.fluidops.util.data.generators.Generators.*;
+import static com.fluidops.util.data.generators.RDFGenerators.*;
+
+import java.util.concurrent.Callable;
+
+import org.openrdf.model.vocabulary.RDF;
+import com.fluidops.iwb.model.Vocabulary.FOAF;
+import com.fluidops.iwb.util.RDFUtil;
+import com.fluidops.util.data.*;
+import com.fluidops.util.data.handlers.*;
+import com.fluidops.util.data.generators.*;
+import com.fluidops.util.data.provider.*;
+
+
+class ExampleData implements RecordSpecProvider, RDFMappingProvider {
+	@Override
+	public RDFMapping getRDFMapping()
+	{
+		String namespace = "urn:";
+		// @formatter:off
+		return new RDFMapping()
+				.setSubjectUriGenerator(fullUri(namespace, asString(lookup("Id"))))
+				.addMapping(RDF.TYPE, FOAF.PERSON)
+				.addMapping(RDFUtil.uri("<urn:Gender>"), literal(lookup("Gender")))
+				.addMapping(RDFUtil.uri("<urn:FirstName>"), literal(lookup("FirstName")))
+				.addMapping(RDFUtil.uri("<urn:LastName>"), literal(lookup("LastName")))
+				.addMapping(RDFUtil.uri("<urn:Country>"), literal(lookup("Country")))
+				.addMapping(RDFUtil.uri("<urn:Age>"), literal(lookup("Age")))
+				.addMapping(RDFUtil.uri("<urn:Email>"), literal(lookup("Email")))
+				.addMapping(RDFUtil.uri("<urn:Test>"), literal(value("Text")))
+				.addMapping(RDFUtil.uri("<urn:Test>"), RDFUtil.literal(42))
+				.addMapping(RDFUtil.uri("<urn:Field1>"), literal(lookup("Field1")))
+				.addMapping(RDFUtil.uri("<urn:Field2>"), literal(lookup("Field2")))
+				.addMapping(RDFUtil.uri("<urn:Field3>"), literal(lookup("Field3")))
+				.addMapping(RDFUtil.uri("<urn:Color>"), literal(lookup("Color")))
+				.addMapping(RDFUtil.uri("<urn:Dish>"), literal(lookup("Dish")))
+				.addMapping(RDFUtil.uri("<urn:Dummy>"), literal(lookup("DoesNotExist")));
+		// @formatter:on
+	}
+
+	@Override
+	public RecordSpec getRecordSpec()
+	{
+		return recordSpec(
+				// @formatter:off
+				fieldSpec("Id", recordId()),
+				fieldSpec("Gender", randomGender()),
+				fieldSpec("FirstName", randomFirstName(Generators.<String>lookup("Gender"))), 
+				fieldSpec("LastName", randomLastName()),
+				fieldSpec("Country", randomCountry()),
+				fieldSpec("Age", number(80)),
+				fieldSpec("Email", concat(toLower(lookup("FirstName")), value("."), 
+									toLower(lookup("LastName")), value("@"), 
+									randomDomainName())),
+				fieldSpec("Field1", toUpper(text(10))),
+				fieldSpec("Field2", alphaNumeric(20)),
+				fieldSpec("Field3", concat(value("f8-"), toLower(lookup(8)))),	// lookup by field index
+				fieldSpec("Number1", number(1000)),
+				fieldSpec("Number2", number(5000)),
+				fieldSpec("Number3", number(10000)),
+				fieldSpec("Number4", doubleNumber()),
+				fieldSpec("Number5", longNumber()),
+				fieldSpec("Number6", callable(new Callable<Integer>() {
+					@Override
+					public Integer call() throws Exception
+					{
+						return 42;
+					}})),
+				fieldSpec("Color", randomColor()),
+				fieldSpec("Dish", randomChoice( ["Salad", "Steak", "Fish"] ))
+				// @formatter:on
+				);
+	}
+}
+</pre>
+
+<b>Note:</b> the script is a Groovy script, which is mostly (but not completely) compatible with Java and can be edited 
+during run time. It is re-loaded after each provider run. Syntax errors etc are shown on the provider page as provider 
+errors.
+
+Now [[Admin:Providers | create a provider]] of type <b>DataGenerator</b> and configure it with an arbitrary record count (e.g. 10000) and the 
+class name <b>example.ExampleData</b> for both <i>recordSpecProviderClassName</i> and <i>rdfMappingProviderClassName</i>.

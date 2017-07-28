@@ -1,0 +1,21 @@
+<!-- 
+This template provides the possibility to generate external links on a wiki page.
+
+Use this syntax to include this template:
+
+{{Template:System:ExternalLink
+  |BaseURL=https://de.wikipedia.org/wiki/
+  |Parameter={{#show: {{this}} | rdfs:label }}
+  |Linkname=Semantic Web
+}}
+
+Parameter BaseURL, Parameter and Linkname are mandatory. Target is optionally and the default is "_blank". Image and Height are also optionally if you want to use an image instead of text.
+
+See help for more information: Help:ExternalLinkTemplate
+-->
+
+
+{{#if: {{{Image|}}} 
+ | <a href="{{{BaseURL}}}{{{Parameter}}}" target="{{{Target|_blank}}}" title="{{{Linkname}}}"><img src="{{{Image}}}" alt="{{{Linkname}}}" width="" {{#if: {{{Height|}}} | height="{{{Height}}}"}} border="0"/></a>
+ | <a href="{{{BaseURL}}}{{{Parameter}}}" target="{{{Target|_blank}}}" title="{{{Linkname}}}">{{{Linkname}}}</a>
+}}

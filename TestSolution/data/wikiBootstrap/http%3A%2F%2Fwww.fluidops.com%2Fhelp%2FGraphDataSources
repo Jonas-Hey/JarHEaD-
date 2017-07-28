@@ -1,0 +1,8 @@
+==== Graph Data Source (Graph) ====
+
+Graph data sources are a type of [[Help:DataSources | data source]] that access information, which is already available in graph form.
+
+Currently, however, the only graph based data source available out of the box is for RDF data.
+
+You may use this data source to access and import RDF from files or from a URL and create a provider that will update the information on a regular basis and may include [[Help:DataOpsPostProcessing | post processing]] steps for interlinking the imported data.
+For importing RDF data just once and without the need for post processing, however, normal [[Help:RDFImport | RDF import]] is generally the better option.

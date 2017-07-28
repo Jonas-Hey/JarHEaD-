@@ -1,0 +1,15 @@
+{{#widget: TabWidget | 
+ includes = {{ 
+      {{ pageUri = ':JarHEaD'
+       | title = 'JarHEaD Start'
+      }} | 
+      {{ pageUri = ':GEMEINDE'
+       | title = 'Gemeinden'
+      }} | 
+      {{ pageUri = ':Distributor'
+       | title = 'Distributor'
+      }} | 
+      {{ pageUri = ':Bundesland'
+       | title = 'Bundesland'
+      }} }}
+}}

@@ -1,0 +1,46 @@
+__NOTOC__
+[[Admin:Admin|Settings]] > [[Admin:DataSources|Data Sources]] > {{#show: {{this}} | valueResolver=LABEL }}
+
+== Data Source Configuration ==
+
+{{#widget: com.fluidops.iwb.widget.system.DataSourceConfigurationWidget | 
+ dataSource = $this$
+}}
+
+
+== Providers ==
+
+This data source is used by the following [[Admin:Providers|providers]]:
+
+{{#widget: ActionableResult | 
+ columnConfiguration = {{ 
+      {{ valueResolver = 'LABEL'
+       | variableName = 'Provider'
+      }} }}
+ | query = 'SELECT * WHERE { 
+ ?Provider Platform:hasDataSource ??
+}'
+ | rowActions = {{ 
+      {{ passContext = true
+       | args = {{ '?:Provider' }}
+       | method = 'configureProvider'
+       | label = 'Configure Provider'
+       | clazz = 'com.fluidops.iwb.datasource.ui.DataSourceExecution'
+       | render = 'img:/ajax/icons/edit.png'
+      }} }}
+ | noDataMessage = 'No provider available'
+}}
+
+{{#widget: CodeExecution | 
+ passContext = true
+ | args = {{ $this$ }}
+ | label = 'Create New Provider'
+ | method = 'createProvider'
+ | clazz = 'com.fluidops.iwb.datasource.ui.DataSourceExecution'
+}}
+
+
+{{#ifexpr: {{#sparql: ASK {  ?? Platform:dataSourceType Platform:TableDataSource } }} 
+ | {{Template:Platform:IncDataSource_Mapping}}
+}}
+

@@ -1,0 +1,48 @@
+== Useful snippets ==
+
+In the following we provide some useful code snippets that are typically required in solutions.
+
+
+==== Accessing a SPARQL Endpoint using HTTPS and Basic Authentication ====
+
+The following snippet shows how a SPARQL Endpoint can be accessed using HTTPS and basic authentication. 
+
+Note in particular that the following snippet trusts all SSL certificates.
+
+<source>
+// apache http client
+import org.apache.commons.httpclient.protocol.Protocol;
+import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
+
+// open RDF API
+import org.openrdf.query.QueryLanguage;
+import org.openrdf.query.TupleQuery;
+import org.openrdf.repository.RepositoryConnection;
+import org.openrdf.repository.sparql.SPARQLRepository;
+
+// located in fbase.jar - obtain it via the fluidOps client.zip
+import com.fluidops.api.security.ssl.EasySSLProtocolSocketFactory;
+
+
+
+Protocol easyhttps = new Protocol("https", (ProtocolSocketFactory)new EasySSLProtocolSocketFactory(), 8443);
+Protocol.registerProtocol("https", easyhttps);
+
+SPARQLRepository repo = new SPARQLRepository("https://localhost:8443/sparql");
+repo.setUsernameAndPassword("admin", "iwb");
+repo.initialize();
+
+RepositoryConnection conn = repo.getConnection();
+
+TupleQuery query = conn.prepareTupleQuery(QueryLanguage.SPARQL, "SELECT * WHERE { ?s ?p ?o } LIMIT 10");
+...
+</source>
+
+==== Sending Email ====
+
+Please make sure sending email is configured [[Setup:Email]].
+Sending email can be done via the following API:
+
+<source>
+com.fluidops.iwb.util.MailControl.sendEmail("to@example.org", "subject", "text");
+</source>

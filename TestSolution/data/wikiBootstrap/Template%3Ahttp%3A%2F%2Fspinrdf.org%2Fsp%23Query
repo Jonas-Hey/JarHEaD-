@@ -1,0 +1,83 @@
+[[sp:Query | Query Catalog]] > {{#show: {{this}} | rdfs:label}}
+
+<h1> {{#ifexpr: {{#sparql: ASK { {{this}} a sp:Select } }} 
+ | Select Query Template
+ | 
+}}
+
+{{#ifexpr: {{#sparql: ASK { {{this}} a sp:Ask} }} 
+ | Ask Query Template
+ | 
+}}
+
+{{#ifexpr: {{#sparql: ASK { {{this}} a sp:Describe} }} 
+ | Describe Query Template
+ | 
+}}
+
+
+{{#ifexpr: {{#sparql: ASK { {{this}} a sp:Construct} }} 
+ | Construct Query Template
+ | 
+}}
+</h1>
+{{#widget: TripleEditor | 
+ numberOfInitialValues = 4
+ | width = '800'
+ | editMode = 'READ_ONLY'
+ | clusterByDomain = false
+ | propertyConfiguration = {{ 
+      {{ minCardinality = 1
+       | showAlways = true
+       | property = 'rdfs:label'
+       | displayName = 'Label'
+       | maxCardinality = 1
+      }} | 
+      {{ showAlways = true
+       | property = 'rdfs:comment'
+       | datatype = 'xsd:string'
+       | displayName = 'Description'
+       | maxCardinality = 1
+       | componentType = 'TEXTAREA_LARGE'
+      }} | 
+      {{ minCardinality = 1
+       | showAlways = true
+       | property = 'sp:text'
+       | displayName = 'Query String'
+       | maxCardinality = 1
+       | componentType = 'SPARQLEDITOR'
+      }} | 
+      {{ values = $Select ?subject WHERE {?subject a skosCore04:Concept}$
+       | showAlways = true
+       | property = 'skosCore04:subject'
+       | datatype = 'rdfs:Resource'
+       | displayName = 'Tags'
+      }} }}
+ | limitProperties = true
+ | addNewProperties = false
+}}
+
+=== Queries using this template ===
+
+This template is used by the following queries.
+
+{{#widget: TableResult | 
+ columnConfiguration = {{ 
+      {{ variableName = 'query'
+       | columnWidth = 30
+       | displayName = 'Query'
+      }} | 
+      {{ variableName = 'comment'
+       | displayName = 'Comment'
+      }} }}
+ | query = 'PREFIX spin: <http://spinrdf.org/spin#>
+SELECT ?query ?comment
+WHERE {
+   ?query spin:body ??.
+   OPTIONAL { ?query rdfs:comment ?comment }
+}'
+ | labels = true
+ | width = '830'
+ | noDataMessage = 'This template is not used in any query'
+}}
+

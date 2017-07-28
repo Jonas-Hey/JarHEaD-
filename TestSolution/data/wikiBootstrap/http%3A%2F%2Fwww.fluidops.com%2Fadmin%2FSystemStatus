@@ -1,0 +1,4 @@
+{{#widget: IFrame | 
+ sourceURL = '/status'
+ | border = '0'
+}}

@@ -1,0 +1,29 @@
+=== Language Post Processor ===
+
+{{PRODUCT}} ships a post processor for providing literal statements with a language tag.
+
+This feature can be used for the following use cases:
+
+* during post processing update all object literals of the statements with a given property such that the literals contain the language
+* mapping of multiple columns containing language literals to a single property
+
+<br/>
+'''Example 1:''' Mapping multiple columns to a single property
+
+a) Input data from a tabular CSV file
+
+In this example the CSV table contains a column for the german literal and one for the english translation.
+
+<img src="../images/help/LanguagePostProcessor_csvDataSource.png" />
+
+b) Provider configuration with the language post processor
+
+Having created a basic mapping, the corresponding provider configuration including the language post processor looks as follows.
+
+<img src="../images/help/LanguagePostProcessor_providerConfiguration.png" style="border:1px solid black;"/>
+
+c) Provider run output
+
+The provider produces the statements below and maps the literals to a single property with the URI '':value''. Note particularly that the literals have the appropriate language tag (which can be see for instance in the triple editor).
+
+<img src="../images/help/LanguagePostProcessor_resultTable.png" />

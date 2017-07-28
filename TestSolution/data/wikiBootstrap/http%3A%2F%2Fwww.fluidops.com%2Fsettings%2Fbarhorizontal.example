@@ -1,0 +1,32 @@
+<source>
+{
+	"type": "serial",
+	"color": "#1C1C1C",
+        "rotate": true,
+        "colors": ["#2E658C","#129B06"],
+        "gridAboveGraphs": true,
+	"categoryAxis": {
+		"gridPosition": "start",
+	        "axisColor": "#1C4B7F",
+                "fontSize": 9,
+                "gridAlpha": 0
+	},
+        "valueAxes": [ {
+                "gridColor": "#FFFFFF",
+                "gridAlpha": 0.2,
+                "axisColor": "#1C4B7F",
+                "dashLength": 0
+         } ],
+	"trendLines": [],
+	"graphs": [
+		{
+                        "balloonText": "[[description]]: <b>[[value]]</b>",
+			"fillAlphas": 0.4,
+			"type": "column"
+		}
+	],
+	"guides": [],
+	"allLabels": [],
+	"balloon": {}
+}
+</source>

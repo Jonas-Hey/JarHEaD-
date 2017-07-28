@@ -42,12 +42,52 @@ public class DistributorProvider extends AbstractFlexProvider<DistributorProvide
 
 	@Override
 	public void gather(final List<Statement> res) throws Exception {
+			
 			List<URI> distributoren = Helper.getDistributor(RDFUtil.fullUri(Util.distributor));
 			List<URI> order=new ArrayList<URI>();
-			for (URI distributor:distributoren){	
-				if(Util.debug)System.out.println(distributor);
-				order=Helper.getNode(distributor,"select ?id where {?? :id ?id}","id");
-				if(Util.debug)System.out.println(distributor+" "+order);
+			String[] o;
+			int i=0;
+			double price=0;
+			String za;
+			for (URI distributor:distributoren){
+				
+				if(Util.debug)System.out.println(distributor+" ja ");
+				order=Helper.getNewURIs(distributor,"select ?orderid where {?? :orderid ?orderid}","orderid");
+				if(Util.debug)System.out.println(order);
+				if(Util.debug)System.out.println(distributor+" "+order.size());
+				if(order.size()==1){
+					if(Util.debug)System.out.println("Order1");
+					o= Helper.query(order.get(0),Util.srSPARQL,"srpempfohlenerpreis");
+					za=Helper.literalToString(o[0]);
+					price=Double.parseDouble(za);
+					System.out.println(price);
+				}else{
+				for (int x=0;x<order.size();x++){
+					o= Helper.query(order.get(x),Util.srSPARQL,"srpempfohlenerpreis");
+					System.out.println(o[0]+" O ");
+					za=Helper.literalToString(o[0]);
+					price=price+Double.parseDouble(za);
+					System.out.println(price);
+				}	}
+				if(order.size()==1){
+				res.add(ProviderUtils.createStatement(distributor, RDFUtil.uri("Es liegt eine Bestellungen vor mit einem Gesamtwert von "+price+"€"), order.get(0)));
+				}else{for (int x=0;x<order.size();x++){
+				res.add(ProviderUtils.createStatement(distributor, RDFUtil.uri("Es liegen "+order.size()+" Bestellungen vor mit einem Gesamtwert von "+price+"€"), order.get(x)));
+					
+				}}
+				
+				
+				
+				price=0;
+				}
+						
+					
+					
+					
+					
+				
+				//if(Util.debug)System.out.println(o[0]+" ");
+				//res.add(ProviderUtils.createStatement(distributor,(URI) order, distributor));
 			}
 			
 			
@@ -61,6 +101,7 @@ public class DistributorProvider extends AbstractFlexProvider<DistributorProvide
 		
 		//select * where {?x :personenid ?y}
 		//select ?id where {?? :id ?id}
+		//select ?id where {?? rdfs:label ?id}	
 		//select ?preis where {?? :srpempfohlenerpreis ?preis}
 		
 		   				
@@ -88,7 +129,7 @@ public class DistributorProvider extends AbstractFlexProvider<DistributorProvide
 				
 				
 			
-		}
+		
 
 		// that's all, the triples add to res will automatically added to the
 		// repository by the surrounding provider framework

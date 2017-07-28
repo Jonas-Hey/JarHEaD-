@@ -1,0 +1,65 @@
+<source>	
+{
+   "type":"serial",
+   "addClassNames":true,
+   "autoMargins": false,
+   "marginBottom": 0,
+   "marginTop": 10,
+   "fontFamily":"Arial",
+   "color":"#333333",
+   "outlineColor":"#FFFFFF",
+   "rotate":"true",
+   "categoryWidth": 45,
+   $if(decimalSeparator)$
+   "decimalSeparator": "$decimalSeparator$",
+   $endif$
+   $if(thousandsSeparator)$
+   "thousandsSeparator": "$thousandsSeparator$",
+   $endif$
+   $if(precision)$
+   "precision": $precision$,
+   $endif$
+   "outlineAlpha":1,
+   "colors":[
+      "#B0DB06",
+      "#D53548",
+      "#E8D92C"
+   ],
+   "categoryAxis":{
+    "inside": true,
+    "gridPosition": "start",
+    "gridAlpha": 0,
+    "tickPosition": "start",
+    "tickLength": 0,
+    "gridThickness":0,
+    "tickLength":0,
+    "axisAlpha":0
+   },
+   "trendLines":[
+
+   ],
+   "graphs":[
+      {
+         "balloonText":"<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
+         "color":"#000000",
+         "fillAlphas":1,
+         "lineAlpha":0.3,
+         "type":"column",
+         "fixedColumnWidth": 15,
+         "labelOffset":10,
+         "labelPosition":"right",
+         "labelText":"[[value]]",
+         "showAllValueLabels":true
+      }
+   ],
+   "valueAxes":[
+      {
+         "id":"ValueAxis-1",
+         "axisAlpha":0,
+         "stackType":"regular",
+         "labelsEnabled":false,
+         "gridAlpha":0
+      }
+   ]
+}
+</source>

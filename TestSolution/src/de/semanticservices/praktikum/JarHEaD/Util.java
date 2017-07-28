@@ -15,7 +15,8 @@ public class Util {
 	public static final String länge=":längengrad";
 	public static final String breite=":breitengrad";
 	public static final String distributor=":personenid";
-	public static boolean debug=false;
+	public static final String srSPARQL="select ?srpempfohlenerpreis where {?? :srpempfohlenerpreis ?srpempfohlenerpreis}";
+	public static boolean debug=true;
 	
 	/**
 	 * 	Takes two municipalities and calculates the distance between them

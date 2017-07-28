@@ -1,0 +1,7 @@
+= Query Diagnostics<sup>[[Help:QueryDiagnostics| <img width="19" src="../images/navigation/help_start.png" />]]</sup>=
+
+This page lists all SPARQL queries that are located on wiki pages i.e. queries that form part of widget definitions or SPARQL parser functions. The table below lists the corresponding page on which the query is found and its corresponding environment, for example the widget name.
+
+{{ #widget: com.fluidops.iwb.widget.admin.WikiQueryDiagnosticsWidget 
+| asynch = 'true'
+}}

@@ -1,0 +1,24 @@
+<!--
+This template shows the wiki pages that belong to the passed type and renders them based on the provided render style.
+
+Parameters:
+
+ - categoryType:= the fully qualified URI of the type (query resolvable)
+ - renderStyle:= the style for rendering of the subcategories as a list (ol, ul, none)
+-->
+
+{{#widget: QueryResult | 
+ query = '
+
+select distinct ?category ?order ?renderStyle WHERE {
+?category a {{{categoryType}}} .
+?category Platform:order ?order .
+?subItem Platform:hasParent ?category . 
+BIND (STR('{{{render}}}') AS ?renderStyle)
+} ORDER BY ?order
+
+'
+ | template = 'Template:Platform:SubcategoryTemplate'
+ | format = 'TEMPLATE_PAGE'
+ | repository = 'config'
+}}

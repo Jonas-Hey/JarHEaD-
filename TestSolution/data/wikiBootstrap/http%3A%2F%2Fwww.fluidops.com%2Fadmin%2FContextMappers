@@ -1,0 +1,7 @@
+== Context Mapper Overview ==
+
+The following table provides an overview of all available context mappers:
+
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.iwb.user.ContextMapperFactory#selectAllContextMappers'
+}}

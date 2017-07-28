@@ -1,0 +1,10 @@
+<!-- 
+
+Generic resource  header 
+
+Parameters:
+ PageTitle: (optional) => Page title to be used (otherwise use label)
+ HelpPage: (optional) => URI of a help page
+-->
+
+= {{#if: {{{PageTitle|}}} | {{{PageTitle}}} | {{#show: {{this}} | valueResolver=LABEL}} }} {{#if: {{{HelpPage|}}} | <sup>[[{{{HelpPage}}} | <img width="19" src="../images/navigation/help_start.png" />]]</sup> }} =

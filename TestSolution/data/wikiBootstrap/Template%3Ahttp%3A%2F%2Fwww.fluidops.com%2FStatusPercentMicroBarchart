@@ -1,0 +1,20 @@
+<!-- Requiered parameter: percent number (1 - 100) to show -->
+
+<div style="color:#5F5F5F; width:140px;height:18px;vertical-align: middle;">
+<div style="float:left;vertical-align: middle; display: inline-block; width: 100px; height: 18px;">
+{{#widget: BarChart | 
+ input = 'input'
+ | query = 'select ("input" as ?input) ?used ?free
+            where { BIND( {{{percent|0}}} as ?used) BIND(100 - {{{percent|0}}} as ?free)}'
+ | settings = 'Settings:barchart.micro.capacity'
+ | output = {{ 'used' | 'free' }}
+ | styling = 
+   {{ height = '18'
+    | width = '100'
+   }}
+ | customMappings = 'gradientColor=#ACAEAF'
+}}
+</div>
+<div style="vertical-align: middle;display: inline-block;height: 10px;margin-left:2px;">{{{percent|0}}}% </div>
+<div style="clear:both;" />
+</div>

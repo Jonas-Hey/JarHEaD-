@@ -1,0 +1,43 @@
+= Installing Apps =
+
+The {{PRODUCT}} can be configured, customized and extended in various ways, including:
+
+* Existing providers can be [[Help:Providers|added/configured]], custom providers can be [[Help:ProviderSDK|developed]].
+* Semantic data can be [[Help:RDFImport|imported]] along with [[Help:GettingStarted|namespace definitions]].
+* Wiki pages can be [[Help:Wiki|added]].
+* The system can be adapted to the environment by editing [[Help:Installation|property-configuration]] or other configuration files.
+
+While the {{PRODUCT}} easily allows to make use of these various configuration options, these customizations can also be packaged into a single artifact that can be installed all in one. For development information please refer to [[Help:PlatformSDK]] for details.
+
+The following sections describe how such an artifact can be retrieved and installed.
+
+== Installation of an App ==
+
+==== Installation at startup ====
+
+When the {{PRODUCT}} is started it checks the folder
+
+ apps
+
+for a zip-archive having the suffix <code>.zip</code>. The first one found is unpacked to a temporary folder and gets installed in the {{PRODUCT}}. After a successful installation the zip file is renamed to ''<nowiki><zipFile.zip></nowiki>.<nowiki><TIMESTAMP></nowiki>'' and moved to the ''apps/archived/'' folder.  The application is automatically restarted, if this is required to activate all changes of the solution. If the installation was only partially successful, the zip file is kept and the system will try to install again on the next (manual) restart.
+
+==== Installation at Runtime ====
+
+Apps can be installed at runtime from the [[Admin:Apps| apps dashboard]]. App artifacts can either be uploaded, retrieved from some URL, or manually put into the file system of the installation (i.e., the apps folder). Finally, the ''Install'' button can be used to trigger the installation.
+
+==== Installation using the API ====
+
+Given a URL of an app artifact it can be installed at runtime through the remote API of the {{PRODUCT}}. This could for example be accessed through the [[Help:CLI|CLI]]. Once logged into the CLI a solution can be installed as follows:
+
+ getSolutionService install -solutionArtifact http://host/path/solution.zip
+ 
+Even if the app requires a restart to become fully active, this restart is not triggered automatically. However it can be triggered manually by using the cli-command ''restart''. 
+ 
+
+== Managing installed Apps ==
+
+All installed apps and apps that are available for installation (e.g. bundled apps as the [[Help:Reporting| reporting]] functionality) can be managed from the [[Admin:Apps| apps dashboard]]. A table lists the information status of apps, version information and an installation history.
+
+== Discovery of additional Apps ==
+
+Additional apps are available in the [http://appcenter.fluidops.com Appcenter].

@@ -1,0 +1,379 @@
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix twitter: <http://twitter.com/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix r2rml: <http://www.w3.org/ns/r2rml#> .
+
+
+default:importR2RML01495329032630276576706059635065 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML47106631398967805713974890772769 ;
+	r2rml:predicateMap default:importR2RML88362998308668389988793311188065 .
+
+default:importR2RML03671247714241082645168583883492 a r2rml:PredicateMap ;
+	r2rml:constant default:postleitzahl .
+
+default:importR2RML04243682505197225120512319578165 a r2rml:ObjectMap ;
+	r2rml:column "BREITENGRAD" ;
+	r2rml:datatype xsd:decimal .
+
+default:importR2RML04309023574182352700914670063524 a r2rml:SubjectMap ;
+	r2rml:class default:GEMEINDE ;
+	r2rml:template "http://www.fluidops.com/resource/GEMEINDE_{GEMEINDENAME}" .
+
+default:importR2RML07107540580633234021293717452145 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214" .
+
+default:importR2RML07406006588325220272129673111108 a r2rml:ObjectMap ;
+	r2rml:column "GEMEINDENAME" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML08082535332116100427383975334451 a r2rml:TriplesMap ;
+	rdfs:label "GEMEINDE" ;
+	r2rml:logicalTable default:importR2RML72097657254909041938538547986635 ;
+	r2rml:predicateObjectMap default:importR2RML01495329032630276576706059635065 , default:importR2RML11066676858534514282407127506097 , default:importR2RML11998000681948754740430951010062 , default:importR2RML14058025201045238756363780550933 , default:importR2RML18665572931495961741609753075638 , default:importR2RML20015513253034107233517545852848 , default:importR2RML26336275629776922323785786395118 , default:importR2RML32417940360791043194565775595387 , default:importR2RML45742022721993209595076442229397 , default:importR2RML48178591618083928056989451702161 , default:importR2RML48267697336751100890038494981050 , default:importR2RML58385390138527211896737343902912 , default:importR2RML66838319137526057141316496933667 , default:importR2RML66854704210708209376583739218243 , default:importR2RML68509287750155492148114768375442 , default:importR2RML83384856199296407070212162001029 , default:importR2RML84719941369710746994430133231779 , default:importR2RML84776085365496981516125469918027 , default:predicateObjectMap03228603916110999681109231855294 ;
+	r2rml:subjectMap default:importR2RML04309023574182352700914670063524 .
+
+default:importR2RML11066676858534514282407127506097 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML78602326973028784950634403823306 ;
+	r2rml:predicateMap default:importR2RML74075560508965422328398882435487 .
+
+default:importR2RML11849496072017011949043596153276 a r2rml:PredicateMap ;
+	r2rml:constant default:land .
+
+default:importR2RML11998000681948754740430951010062 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML60919911963605442423156576815640 ;
+	r2rml:predicateMap default:importR2RML26631624700499790426525139280484 .
+
+default:importR2RML13376279282237497855338113975757 a r2rml:PredicateMap ;
+	r2rml:constant default:schlüssel .
+
+default:importR2RML14058025201045238756363780550933 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML14712524024223877778936762588317 ;
+	r2rml:predicateMap default:importR2RML72608204987149561794166938791768 .
+
+default:importR2RML14307609646039352070218226097131 a r2rml:PredicateMap ;
+	r2rml:constant default:bevölkerungmännlich .
+
+default:importR2RML14712524024223877778936762588317 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/KREIS_{LAND}{RB}{KREIS}" .
+
+default:importR2RML15429090594154520055164331772184 a r2rml:PredicateMap ;
+	r2rml:constant default:gemeindenummer .
+
+default:importR2RML15980923791994742178813517765018 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML66785886211886633653856147285696 ;
+	r2rml:predicateMap default:importR2RML13376279282237497855338113975757 .
+
+default:importR2RML17215163040542028493952897022296 a r2rml:TriplesMap ;
+	rdfs:label "Postleitzahl" ;
+	r2rml:logicalTable default:importR2RML67646676832972210110674601076226 ;
+	r2rml:predicateObjectMap default:importR2RML42085667095657263075559378053617 ;
+	r2rml:subjectMap default:importR2RML76048906449511859949366230119813 .
+
+default:importR2RML18665572931495961741609753075638 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML41231457772149759491975352010066 ;
+	r2rml:predicateMap default:importR2RML14307609646039352070218226097131 .
+
+default:importR2RML19033383050717438653738920005665 a r2rml:PredicateMap ;
+	r2rml:constant default:bevölkerungweiblich .
+
+default:importR2RML20015513253034107233517545852848 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML72750672439542843187679377290595 ;
+	r2rml:predicateMap default:importR2RML38681455512602552932166821600789 .
+
+default:importR2RML20867751587084000896033637029718 a r2rml:SubjectMap ;
+	r2rml:class default:GEMEINDE ;
+	r2rml:template "http://www.fluidops.com/resource/GEMEINDEVERBAND_{VB}" .
+
+default:importR2RML21988306577813311685212508882433 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214" .
+
+default:importR2RML22577669969100367133246707207889 a r2rml:PredicateMap ;
+	r2rml:constant default:name .
+
+default:importR2RML23774835680010558196997873181508 a r2rml:TriplesMap ;
+	rdfs:label "LAND" ;
+	r2rml:logicalTable default:importR2RML56089395239413416085420650067651 ;
+	r2rml:predicateObjectMap default:importR2RML15980923791994742178813517765018 ;
+	r2rml:subjectMap default:importR2RML76641296484284012332754245834450 .
+
+default:importR2RML24372936897575983204654187219832 a r2rml:PredicateMap ;
+	r2rml:constant default:name .
+
+default:importR2RML25386400820713728452333223111989 a r2rml:ObjectMap ;
+	r2rml:column "VB" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML25469377384164477195271853605290 a r2rml:ObjectMap ;
+	r2rml:column "Reisegebiet Bezeichnung" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML26336275629776922323785786395118 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML04243682505197225120512319578165 ;
+	r2rml:predicateMap default:importR2RML27461380643568825498873427105219 .
+
+default:importR2RML26350585002339128349449457427431 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/GEMEINDEVERBAND_{VB}" .
+
+default:importR2RML26631624700499790426525139280484 a r2rml:PredicateMap ;
+	r2rml:constant default:bevölkerunginsgesamt .
+
+default:importR2RML27461380643568825498873427105219 a r2rml:PredicateMap ;
+	r2rml:constant default:breitengrad .
+
+default:importR2RML27840584750173820677108586887431 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML60062747551579645582779404932653 ;
+	r2rml:predicateMap default:importR2RML75910953307155103547375742264419 .
+
+default:importR2RML28877337829333236796385003966549 a r2rml:ObjectMap ;
+	r2rml:column "GEMEINDENAME" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML31416415893501958547440890469835 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/REGIERUNGSBEZIRK_{RB}" .
+
+default:importR2RML32417940360791043194565775595387 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML71884389432849412203330291771675 ;
+	r2rml:predicateMap default:importR2RML11849496072017011949043596153276 .
+
+default:importR2RML35099111378909457312490915288693 a r2rml:PredicateMap ;
+	r2rml:constant default:verstädterung .
+
+default:importR2RML36791562384155458609448526079858 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214" .
+
+default:importR2RML38681455512602552932166821600789 a r2rml:PredicateMap ;
+	r2rml:constant default:längengrad .
+
+default:importR2RML39977825974643658667366400692282 a r2rml:PredicateMap ;
+	r2rml:constant default:satzart .
+
+default:importR2RML41231457772149759491975352010066 a r2rml:ObjectMap ;
+	r2rml:column "b männlich" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML42085667095657263075559378053617 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML28877337829333236796385003966549 ;
+	r2rml:predicateMap default:importR2RML94491107537464121303235525072273 .
+
+default:importR2RML44603492048779697097254607513095 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214" .
+
+default:importR2RML45742022721993209595076442229397 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML07406006588325220272129673111108 ;
+	r2rml:predicateMap default:importR2RML22577669969100367133246707207889 .
+
+default:importR2RML47106631398967805713974890772769 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/REISEGEBIET_{Reisegebiet: Schlüssel}" .
+
+default:importR2RML47865691624585497823217179073206 a r2rml:ObjectMap ;
+	r2rml:column "Grad der Verstädterung" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML48178591618083928056989451702161 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML53124411810425020821775293094236 ;
+	r2rml:predicateMap default:importR2RML74567670227640133871224055459564 .
+
+default:importR2RML48267697336751100890038494981050 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML47865691624585497823217179073206 ;
+	r2rml:predicateMap default:importR2RML35099111378909457312490915288693 .
+
+default:importR2RML49197113105641106294846054848636 a r2rml:PredicateMap ;
+	r2rml:constant default:regierungsbezirk .
+
+default:importR2RML49619810971408015600276746140807 a r2rml:PredicateMap ;
+	r2rml:constant default:schlüssel .
+
+default:importR2RML53124411810425020821775293094236 a r2rml:ObjectMap ;
+	r2rml:column "B je km2" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML54974402985802830272426792668145 a r2rml:ObjectMap ;
+	r2rml:column """Fläche km2
+am 31.12.2014 (Jahr) 1)""" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML55695844330719897851028503052417 a r2rml:TriplesMap ;
+	rdfs:label "Kreis" ;
+	r2rml:logicalTable default:importR2RML44603492048779697097254607513095 ;
+	r2rml:subjectMap default:importR2RML67273061092790327288856707818450 .
+
+default:importR2RML56089395239413416085420650067651 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214" .
+
+default:importR2RML56181829782587616110779406195573 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML25386400820713728452333223111989 ;
+	r2rml:predicateMap default:importR2RML49619810971408015600276746140807 .
+
+default:importR2RML57734854858336425901711837695241 a r2rml:PredicateMap ;
+	r2rml:constant default:gemeindeverband .
+
+default:importR2RML58385390138527211896737343902912 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML26350585002339128349449457427431 ;
+	r2rml:predicateMap default:importR2RML57734854858336425901711837695241 .
+
+default:importR2RML60062747551579645582779404932653 a r2rml:ObjectMap ;
+	r2rml:column "RB" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML60919911963605442423156576815640 a r2rml:ObjectMap ;
+	r2rml:column "Bevölkerung: insgesamt " ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML62782509007574666311453887290029 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML25469377384164477195271853605290 ;
+	r2rml:predicateMap default:importR2RML24372936897575983204654187219832 .
+
+default:importR2RML64970196507011567484986228643600 a r2rml:ObjectMap ;
+	r2rml:column "B weiblich" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML65736350785772676191440263369425 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" .
+
+default:importR2RML66785886211886633653856147285696 a r2rml:ObjectMap ;
+	r2rml:column "LAND" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML66838319137526057141316496933667 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML54974402985802830272426792668145 ;
+	r2rml:predicateMap default:importR2RML67587090608430041473629641287075 .
+
+default:importR2RML66854704210708209376583739218243 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML31416415893501958547440890469835 ;
+	r2rml:predicateMap default:importR2RML49197113105641106294846054848636 .
+
+default:importR2RML67273061092790327288856707818450 a r2rml:SubjectMap ;
+	r2rml:class default:Kreis ;
+	r2rml:template "http://www.fluidops.com/resource/KREIS_{LAND}{RB}{KREIS}" .
+
+default:importR2RML67587090608430041473629641287075 a r2rml:PredicateMap ;
+	r2rml:constant default:flächekm2 .
+
+default:importR2RML67646676832972210110674601076226 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214" .
+
+default:importR2RML68509287750155492148114768375442 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML65736350785772676191440263369425 ;
+	r2rml:predicateMap default:importR2RML03671247714241082645168583883492 .
+
+default:importR2RML70317341601761050303168364359798 a r2rml:TriplesMap ;
+	rdfs:label "Reisegebiet" ;
+	r2rml:logicalTable default:importR2RML07107540580633234021293717452145 ;
+	r2rml:predicateObjectMap default:importR2RML62782509007574666311453887290029 ;
+	r2rml:subjectMap default:importR2RML76933289230474931070867542470226 .
+
+default:importR2RML70700260420070674496062277683408 a r2rml:TriplesMap ;
+	rdfs:label "Regierungsbezirk" ;
+	r2rml:logicalTable default:importR2RML21988306577813311685212508882433 ;
+	r2rml:predicateObjectMap default:importR2RML27840584750173820677108586887431 ;
+	r2rml:subjectMap default:importR2RML85377515621524110249007639438915 .
+
+default:importR2RML71884389432849412203330291771675 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/LAND_{LAND}" .
+
+default:importR2RML72097657254909041938538547986635 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.ONLINEPRODUKTGEMEINDEN311214" .
+
+default:importR2RML72608204987149561794166938791768 a r2rml:PredicateMap ;
+	r2rml:constant default:kreis .
+
+default:importR2RML72750672439542843187679377290595 a r2rml:ObjectMap ;
+	r2rml:column "LÄNGENGRAD" ;
+	r2rml:datatype xsd:decimal .
+
+default:importR2RML74075560508965422328398882435487 a r2rml:PredicateMap ;
+	r2rml:constant default:kreis .
+
+default:importR2RML74567670227640133871224055459564 a r2rml:PredicateMap ;
+	r2rml:constant default:bevölkerungjekm2 .
+
+default:importR2RML75910953307155103547375742264419 a r2rml:PredicateMap ;
+	r2rml:constant default:schlüssel .
+
+default:importR2RML76048906449511859949366230119813 a r2rml:SubjectMap ;
+	r2rml:class default:GEMEINDE ;
+	r2rml:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" .
+
+default:importR2RML76641296484284012332754245834450 a r2rml:SubjectMap ;
+	r2rml:class default:LAND ;
+	r2rml:template "http://www.fluidops.com/resource/LAND_{LAND}" .
+
+default:importR2RML76933289230474931070867542470226 a r2rml:SubjectMap ;
+	r2rml:class default:Reisegebiet ;
+	r2rml:template "http://www.fluidops.com/resource/RESIEGEBIET_{Reisegebiet: Schlüssel}" .
+
+default:importR2RML78602326973028784950634403823306 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/KREIS_{KREIS}" .
+
+default:importR2RML83384856199296407070212162001029 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML84168252560370154678862653350448 ;
+	r2rml:predicateMap default:importR2RML39977825974643658667366400692282 .
+
+default:importR2RML84168252560370154678862653350448 a r2rml:ObjectMap ;
+	r2rml:column "Satz-art" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML84719941369710746994430133231779 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML64970196507011567484986228643600 ;
+	r2rml:predicateMap default:importR2RML19033383050717438653738920005665 .
+
+default:importR2RML84776085365496981516125469918027 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:importR2RML88908002340340419238745554934493 ;
+	r2rml:predicateMap default:importR2RML15429090594154520055164331772184 .
+
+default:importR2RML85377515621524110249007639438915 a r2rml:SubjectMap ;
+	r2rml:class default:Regierungsbezirk ;
+	r2rml:template "http://www.fluidops.com/resource/REGIERUNGSBEZIRK_{RB}" .
+
+default:importR2RML88362998308668389988793311188065 a r2rml:PredicateMap ;
+	r2rml:constant default:reisegebiet .
+
+default:importR2RML88908002340340419238745554934493 a r2rml:ObjectMap ;
+	r2rml:column "GEM" ;
+	r2rml:datatype xsd:string .
+
+default:importR2RML94491107537464121303235525072273 a r2rml:PredicateMap ;
+	r2rml:constant default:gemeindename .
+
+default:importR2RML98570148151339355018528729413854 a r2rml:TriplesMap ;
+	rdfs:label "Gemeindeverband" ;
+	r2rml:logicalTable default:importR2RML36791562384155458609448526079858 ;
+	r2rml:predicateObjectMap default:importR2RML56181829782587616110779406195573 ;
+	r2rml:subjectMap default:importR2RML20867751587084000896033637029718 .
+
+default:objectMap58923101732965539852774117691545 a r2rml:ObjectMap ;
+	r2rml:column "GEMEINDENAME" .
+
+default:predicateMap89056964985681568626626542968457 a r2rml:PredicateMap ;
+	r2rml:constant rdfs:label .
+
+default:predicateObjectMap03228603916110999681109231855294 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap58923101732965539852774117691545 ;
+	r2rml:predicateMap default:predicateMap89056964985681568626626542968457 .

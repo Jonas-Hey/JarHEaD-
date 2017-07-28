@@ -1,0 +1,30 @@
+<source>
+{
+	"type": "pie",
+	"dataType": "csv",
+	"color": "#1C1C1C",
+	$if(colors)$
+	"colors": $colors$,
+	$endif$
+	"balloonText": "$balloonText$",
+	$if(innerRadius)$
+	"innerRadius": "$innerRadius$",
+	$endif$ 
+	$if(radius)$
+	"radius": "$radius$",
+	$endif$ 
+	"startDuration": $growTime$,
+	$if(startEffect)$
+	"startEffect": "$startEffect$",
+	$endif$ 
+	"legend": {	
+		"enabled": $showLegend$,
+		"fontSize": 10,
+		"markerSize": 10,
+		"valueWidth": 20,
+		"markerType": "circle"
+	},
+	"labelsEnabled": true,
+	"labelText": "[[title]]"
+}
+</source>

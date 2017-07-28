@@ -1,0 +1,9 @@
+= Providers =
+
+Below the platform providers can be managed and configured. For the configuration of other tasks see the [[Admin:Tasks|Recurring Tasks]].
+
+<!-- extension point for data providers -->
+{{Admin:Providers_Data}}
+
+<!-- extension point for infrastructure providers -->
+{{Admin:Providers_Infrastructure}}

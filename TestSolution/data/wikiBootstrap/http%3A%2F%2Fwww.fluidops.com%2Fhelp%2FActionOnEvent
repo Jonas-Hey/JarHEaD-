@@ -1,0 +1,29 @@
+=== Setting up Action on Event Policies ===
+
+The task and the event functionalities can be combined in a powerful way, namely to setup action on event (ECA) rules. An example of an ECA rule would be: suspending a database VM that runs in the DMZ. This policy can be setup as follows:
+
+# Defining the task with an external schedule. See [[Help:TaskExtensions]] for details.
+# Detecting a policy violation via the [[Help:EventProvider]]. The event source attribute points to the VM which is identified as being in the DMZ and running a database application
+# The provider is configured with the [[Help:TaskPostProcessor]] which points to the task representing the action which is to be executed in order to remedy the situation (e.g. suspending the VM)
+
+==== Setting up the Task / Action ====
+
+The task is set up as follows:
+
+<img src="../images/help/actionOnEventTask.png" />
+
+Note that the schedule is set to "external", indicating that the task is not run on a fixed schedule but rather initiated from the provider. Also note that the task references the custom task "ActionOnEvent". The task parameter is defined to be ''$''this.event:eventSource''$'', i.e. from the task execution context defined by the post processor (the event), we traverse the property "http://www.fluidops.com/Event/eventSource" to get to the affected system.
+
+==== Setting up the Provider ====
+
+The provider is an [[Help:EventProvider | event provider]]. A query specifies the VMs in question. Note that only a single projection is allowed. One event is created for every VM that is detected by this query.
+
+<img src="../images/help/actionOnEvent.png" />
+
+==== Setting up the Post Processor ====
+
+The event provider is connected to the task via the task post processor. This post processor:
+
+* points to the action on event task
+* in the data obtained from the event provider, determines which data is to be passed to the task. In this case, we use the property "http://www.fluidops.com/Event/eventSource", which links event and affected system. Thus, the events will be passed to the task
+* is configured to only trigger the task for new events. This is obvious, since we do not want to re-initiate the task for all the VMs previously identified

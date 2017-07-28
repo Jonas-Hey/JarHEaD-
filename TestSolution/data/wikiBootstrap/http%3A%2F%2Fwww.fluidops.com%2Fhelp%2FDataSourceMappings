@@ -1,0 +1,9 @@
+=== Data Mappings ===
+
+Mappings are required to transform data from a legacy data format (e.g., relational databases, or XML files) into proper RDF.
+Mappings are applied as the second step of a [[Help:DataOps | three-step data integration process]], after accessing the data through a [[Help:DataSources | data source]] and before optional [[Help:DataOpsPostProcessing | post processing]] is applied.
+
+Depending on the type of data source, different types of mappings are required:
+* [[Help:R2RMLMappings | R2RML mappings]] for tabular datasources, such as relational databases, Excel spreadsheets and others.
+* [[Help:XmlMappings | XML mappings]] for tree based datasources, such as XML or JSON.
+* No specific mappings are required for data that already come in a [[Help:GraphDataSources | supported graph based format]].

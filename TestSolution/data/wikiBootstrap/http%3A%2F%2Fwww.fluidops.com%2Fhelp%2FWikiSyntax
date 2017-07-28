@@ -1,0 +1,1669 @@
+__TOC__
+You can format your text using wiki markup. This consists of normal characters like asterisks, single quotes or equation marks which have a special function in the wiki, sometimes depending on their position. For example, to format a word in ''italic'', you include it in two single quotes like <code><nowiki>''this''</nowiki></code>.
+
+== Text formatting markup ==
+
+{| class="wikitable"
+! Description !! You type !! You get
+|-
+! colspan="3" style="background:#ABE" | character (inline) formatting - ''applies anywhere''
+|-
+|Italic text
+| <code><nowiki>''italic''</nowiki></code>
+|''italic''
+|-
+| Bold text
+| <code><nowiki>'''bold'''</nowiki></code>
+|'''bold'''
+|-
+| Bold and italic
+| <code><nowiki>'''''bold & italic'''''</nowiki></code>
+|'''''bold & italic'''''
+|-
+|Escape wiki markup
+| <code><nowiki><nowiki>no ''markup''&lt;/nowiki></nowiki></code>
+|<nowiki>no ''markup''</nowiki>
+|-
+! colspan="3" style="background:#ABE" | section formatting - ''only at the beginning of the line''
+|-
+|Headings of different levels
+| <pre>=level 1=
+==level 2==
+===level 3===
+====level 4====
+=====level 5=====
+======level 6======</pre>
+An article with 4 or more headings automatically creates a table of contents.
+
+|<!-- hack to prevent Table of Contents viewing for h1 - h6 elements: their style is hardcopied here -->
+<div style="font-size: 188%; margin: 0; padding-top: .5em; padding-bottom: .17em; border-bottom: 1px solid #aaa">Level 1</div>
+<div style="font-size: 150%; margin: 0; padding-top: .5em; padding-bottom: .17em; border-bottom: 1px solid #aaa">Level 2</div>
+<div style="font-size: 132%; font-weight: bold">Level 3</div><!--
+--><b>Level 4</b><!--
+--><div style="font-size: 86%; font-weight: bold">Level 5</div><!--
+--><b style="font-size: 80%">Level 6</b>
+|-
+|Horizontal rule
+| <code>----</code>
+|
+----
+
+|-
+|Bullet list
+|
+<pre>
+* one
+* two
+* three
+** three point one
+** three point two
+</pre>
+Inserting a blank line will end the first list and start another.
+|
+* one
+* two
+* three
+** three point one
+** three point two
+|-
+|Numbered list
+|
+<pre>
+# one
+# two<br />spanning more lines<br />doesn't break numbering
+# three
+## three point one
+## three point two
+</pre>
+|
+# one
+# two<br />spanning more lines<br />doesn't break numbering
+# three
+## three point one
+## three point two
+|-
+|Definition list
+|<pre>
+;item 1
+: definition 1
+;item 2
+: definition 2-1
+: definition 2-2
+</pre>
+|
+;item 1
+: definition 1
+;item 2
+: definition 2-1
+: definition 2-2
+|-
+| Adopting definition list to indent text
+|
+<pre>: Single indent
+:: Double indent
+::::: Multiple indent</pre>
+This workaround may be controversial from the viewpoint of accessibility.
+|
+: Single indent
+:: Double indent
+::::: Multiple indent
+|-
+| Mixture of different types of list
+|
+<pre>
+# one
+# two
+#* two point one
+#* two point two
+# three
+#; three item one
+#: three def one
+# four
+#: four def one
+#: this rather looks like the continuation of # four
+#: and thus often used instead of <br />
+# five
+## five sub 1
+### five sub 1 sub 1
+## five sub 2
+
+;item 1
+:* definition 1-1
+:* definition 1-2
+:
+;item 2
+:# definition 2-1
+:# definition 2-2
+</pre>
+The usage of <code>#:</code> and <code>*:</code> for breaking a line within an item may also be controversial.
+|
+# one
+# two
+#* two point one
+#* two point two
+# three
+#; three item one
+#: three def one
+# four
+#: four def one
+#: this rather looks like the continuation of <code># four</code>
+#: often used instead of <code>&lt;br /></code>
+# five
+## five sub 1
+### five sub 1 sub 1
+## five sub 2
+;item 1
+:* definition 1-1
+:* definition 1-2
+:
+;item 2
+:# definition 2-1
+:# definition 2-2
+|-
+|-
+|Preformatted text
+|
+<pre>
+ preformatted text is done with
+ a '''space''' at the
+ ''beginning'' of the line
+</pre>
+This way of preformatting only applies to section formatting, and character formatting markups are still effective.
+|
+ preformatted text is done with
+ a '''space''' at the
+ ''beginning'' of the line
+|}
+
+== Paragraphs ==
+MediaWiki ignores single line breaks. To start a new paragraph, leave an empty line. You can force a line break within a paragraph with the HTML tags <code>&lt;br /></code>.
+
+== HTML ==
+Some HTML tags are allowed in MediaWiki, for example <code>&lt;code></code>, <code>&lt;div></code>, <code><nowiki><span></nowiki></code> and <code><nowiki><font></nowiki></code>. These apply anywhere you insert them.
+
+{| class="wikitable"
+!Description
+!You type
+!You get
+|-
+| Underscore
+| <code><nowiki><u>underscore</u></nowiki></code>
+|<u>underscore</u>
+|-
+| Strikethrough
+| <code>&lt;del>Strikethrough&lt;/del></code> or <code>&lt;s>Strikethrough&lt;/s></code>
+|<del>Strikethrough</del>
+|- style="white-space:nowrap"
+|Fixed width text
+| <code>&lt;tt>Fixed width text&lt;/tt></code> or <code>&lt;code>source code&lt;/code></code>
+| <tt>Fixed width text</tt> or <code>source code</code>
+|-
+|Blockquotes
+| <code>
+text text text text text text text text text text text text
+text text text text text text text text text text text text
+&lt;blockquote>  quote quote quote quote quote quote &lt;/blockquote>
+text text text text text text text text text text text text
+</code>
+| text text text text text text text text text text text text text text text text text text text text text text text text <blockquote>  quote quote quote quote quote quote </blockquote> text text text text text text text text text text text text
+|-
+|Comment
+| <code>&lt;!-- This is a comment --></code>
+Text can only be viewed in the edit window.
+|
+<!-- This is a real invisible comment -->
+|-
+|Completely preformatted text
+|
+<code><nowiki><pre>this way, all markups are '''ignored'''</pre></nowiki></code>
+|
+<pre> this way, all markups are '''ignored'''.</pre>
+|-
+|'''Customized''' preformatted text
+|
+<code><nowiki><pre style="CSS text">this way, all markups are '''ignored''' and formatted with a CSS text</pre></nowiki></code>
+|
+<pre style="CSS text">this way, all markups are '''ignored''' and formatted with a CSS text</pre>
+|}
+
+== Links ==
+
+=== Internal Links ===
+
+To add an internal link, enclose the name of the page you want to link to in double square brackets. When you save the page, you'll see the new link pointing to your page. 
+(If you want to link to the current page, you probably want to link to a specific ''section'' or to an ''anchor''; see examples below.)
+
+The first letter of the target page is usually case-insensitive, unless configured otherwise by wiki admins, meaning links can be capitalized or not. The case of every subsequent letter must match exactly. Spaces in the page title may be represented as underscores (i.e., typing an underscore in a link will have the same effect as typing a space), but using underscores in links is not recommended since they will be visible in the page text (this can be prevented by using a ''pipe''; again, examples are shown below).
+
+{| class="wikitable"
+!Description
+!You type
+!You get
+|-
+| Internal link
+| <code><nowiki>[[Main Page]]</nowiki></code> <br/> <code><nowiki>[[Help:Contents]]</nowiki></code> <br/>  <code><nowiki> [[Extension:DynamicPageList (Wikimedia)]] </nowiki></code>
+|[[Main Page]] <br/> [[Help:Contents]] <br/> [[Extension:DynamicPageList (Wikimedia)]]
+|-
+| Piped link
+| <code><nowiki>[[Help:Editing pages|editing help]] </nowiki></code> <br/> <code><nowiki> [[Help:Editing pages#Preview|previewing]] </nowiki></code>
+|[[Help:Editing pages|editing help]] <br/> [[Help:Editing pages#Preview|previewing]]
+|- style="white-space:nowrap"
+| Pipe trick
+|  <code><nowiki>[[Manual:Extensions|]]</nowiki></code> <br/> <code><nowiki>[[User:John Doe|]]</nowiki> <br/> <code><nowiki> [[Extension:DynamicPageList (Wikimedia)|]] </nowiki></code> <br/> <code><nowiki> [[Extension:DynamicPageList (third-party)|]]  </nowiki></code> <br/>
+| [[Manual:Extensions|]]<br/>[[User:John Doe|]]<br/>[[Extension:DynamicPageList (Wikimedia)|]] <br/> [[Extension:DynamicPageList (third-party)|]]
+|-
+| Word-ending links
+| <code><nowiki> [[Help]]s </nowiki></code> <br/> <code><nowiki> [[Help]]ing </nowiki> <br/> <code><nowiki> [[Help]]ers </nowiki></code> <br/> <code><nowiki> [[Help]]almostanylettersyoulikehere </nowiki></code> <br/>
+| [[Help]]s <br/> [[Help]]ing <br/> [[Help]]ers  <br/> [[Help]]almostanylettersyoulikehere 
+|-
+| Avoiding word-ending links
+|<code><nowiki> [[Help]]<nowiki />ful advice </nowiki></code> <br></br>
+<code><nowiki>[[wikipedia:GNU General Public License|GPL]]<nowiki />v3 </nowiki></code>
+| [[Help]]<nowiki />ful advice <br/> [[wikipedia:GNU General Public License|GPL]]<nowiki />v3
+|-
+| Redirect
+| <code><nowiki> #REDIRECT [[Home]] </nowiki></code>
+| #REDIRECT [[Home]]
+|-
+| Internal link to an anchor
+| <code><nowiki> [[#Lists]] </nowiki></code>
+| [[#Lists]] Lists
+|-
+| Internal link to an anchor from different text
+| <code><nowiki> [[#Lists|different text]] </nowiki></code>
+| [[#Lists|different text]]
+|-
+| Setting an internal link anchor
+| <code><nowiki> <div id="Unique anchor name 1">optional text</div> </nowiki></code> <br/> <code><nowiki> <span id="Unique anchor name 2">optional text</span> </nowiki></code>
+| <div id="Unique anchor name 1">optional text</div> <br/> <span id="Unique anchor name 2">optional text</span>
+|-
+| Setting an anchor in a section heading
+| <code><nowiki> ==<span id="Alternate Section Title"></span>Section heading== </nowiki></code> 
+| <h2><span id="Alternate Section Title"></span>Section heading<h2>
+|-
+| Internal link to an anchor at another page
+| <code><nowiki> [[Help:Images#Supported media types for images]]  </nowiki></code>
+| [[Help:Images#Supported media types for images]]
+|-
+| Internal link to the current page's talk page
+| <code><nowiki> [[{{TALKPAGENAME}}|Discussion]] </nowiki></code>
+| [[{{TALKPAGENAME}}|Discussion]]
+|-
+| Internal link to a subpage
+| <code><nowiki> [[/example]] </nowiki></code>
+| [[/example]]
+|-
+| Internal link to a subpage without the leading slash
+| <code><nowiki> [[/example/]] </nowiki></code>
+| [[/example/]]
+|-
+| Internal link to a category page
+| <code><nowiki> [[:Category:Help]] </nowiki></code>
+| [[:Category:Help]]
+|-
+| Internal link to an image or media file without displaying the file contents
+| <code><nowiki> [[:File:example.jpg]] </nowiki></code> <br/> <code><nowiki> [[:File:example.jpg|this example]] </nowiki></code> <br/> <code><nowiki> [[media:example.jpg]] </nowiki></code>
+| [[:File:example.jpg]] <br/> [[:File:example.jpg|this example]] <br/> [[media:example.jpg]] 
+|-
+| Internal link to the reader's own user page
+| <code><nowiki> [[Special:MyPage]] </nowiki></code>
+| [[Special:MyPage]]
+|-
+| Internal link to the reader's own talk page
+| <code><nowiki> [[Special:MyTalk]] </nowiki></code>
+| [[Special:MyTalk]]
+|}
+
+=== External links ===
+
+To add an external link, enclose the URL followed by space and the name of the page you want to link to in single square brackets. When you save the page, you'll see the new link pointing to your page, with an arrow icon after it to show that it was coded with single bracket external link syntax, and thus may lead to another site.
+
+{| class="wikitable"
+!Description
+!You type
+!You get
+|-
+| External link
+| <code><nowiki>https://mediawiki.org</nowiki></code> 
+| https://mediawiki.org
+|-
+| External link with different label 	
+| <code><nowiki>[https://mediawiki.org MediaWiki] </nowiki></code> 
+| [https://mediawiki.org MediaWiki]
+|- 
+| Numbered external link 	
+| <code><nowiki> [https://mediawiki.org] </nowiki></code> 
+| [https://mediawiki.org] [[Extension:DynamicPageList (third-party)|]]
+|-
+| Protocol-relative external link 	
+| <code><nowiki> [//en.wikipedia.org Wikipedia] </nowiki></code> <br/> <code><nowiki> [//en.wikipedia.org //en.wikipedia.org] </nowiki></code>
+| [//en.wikipedia.org Wikipedia]<br/> [//en.wikipedia.org //en.wikipedia.org] 
+|-
+| External link to the same host 	
+| <code><nowiki> https://{{SERVERNAME}}/pagename </nowiki></code>
+| https://{{SERVERNAME}}/pagename
+|-
+| External link to other host passing the pagename 	
+| <code><nowiki> https://google.com/search?q={{PAGENAMEE}} </nowiki></code>
+| https://google.com/search?q={{PAGENAMEE}}
+|-
+| Mailto link 	
+| <code><nowiki> [mailto:info@example.org email me] </nowiki></code>
+| [mailto:info@example.org email me]
+|}
+
+=== External links to internal pages ===
+
+To add a link to a page on the same wiki using URL query parameters, you may need to use external link syntax.
+
+{| class="wikitable"
+!Description
+!You type
+!You get
+|- style="white-space:nowrap"
+| External link to the current page's edit page 	
+| <code><nowiki> [https://www.mediawiki.org/w/index.php?title=Help:Links&action=edit Edit this page] </nowiki></code> <br/>  <code><nowiki> [{{fullurl:{{FULLPAGENAME}}|action=edit}} Edit this page] </nowiki></code>
+| [https://www.mediawiki.org/w/index.php?title=Help:Links&action=edit Edit this page] <br/> [{{fullurl:{{FULLPAGENAME}}|action=edit}} Edit this page]
+|-
+| External link to the current page's edit page, and styled to look like an internal link 	
+| <code><nowiki> <span class="plainlinks">[https://www.mediawiki.org/w/index.php?title=Help:Links&action=edit Edit this page] </span></nowiki></code> 
+| <span class="plainlinks">[https://www.mediawiki.org/w/index.php?title=Help:Links&action=edit Edit this page]</span>
+|}
+
+== Lists == 
+
+=== List basics ===
+
+Three types of lists: '''ordered lists''', '''unordered lists''', and '''definition lists'''. In the following sections, ordered lists are used for examples. Unordered lists would give corresponding results.
+To add an external link, enclose the URL followed by space and the name of the page you want to link to in single square brackets. When you save the page, you'll see the new link pointing to your page, with an arrow icon after it to show that it was coded with single bracket external link syntax, and thus may lead to another site.
+
+{|class="wikitable"
+! Wikitext !! Rendering
+|-  <ins>Sandbox<ins>
+|<pre>
+* Lists are easy to do:
+** start every line
+* with a star
+** more stars mean
+*** deeper levels </pre>
+||
+* Lists are easy to do:
+** start every line
+* with a star
+** more stars mean 
+*** deeper levels
+|-
+|<pre>
+* A newline
+* in a list  
+marks the end of the list. 
+Of course
+* you can
+* start again.</pre>
+|
+
+* A newline
+* in a list  
+marks the end of the list.
+Of course
+* you can
+* start again.
+|-
+|<pre>
+# Numbered lists are good
+## very organized
+## easy to follow</pre>
+|
+
+# Numbered lists are good
+## very organized
+## easy to follow
+|-
+|<pre>
+* You can also
+** break lines
+** like this</pre>
+|
+
+* You can also
+**break lines
+**like this
+|-
+|<pre>
+; Definition lists
+; item : definition
+; semicolon plus term
+: colon plus definition</pre>
+|
+
+; Definition lists
+; item : definition
+; semicolon plus term
+: colon plus definition
+|-
+|<pre>
+; Mixed definition lists
+; item 1 : definition
+:; sub-item 1 plus term
+:: two colons plus definition
+:; sub-item 2 : colon plus definition
+; item 2 
+: back to the main list</pre>
+|
+; Mixed definition lists
+; item 1 : definition
+:; sub-item 1 plus term
+:: two colons plus definition
+:; sub-item 2 : colon plus definition
+; item 2 
+: back to the main list
+|-
+|<pre>
+* Or create mixed lists
+*# and nest them
+*#* like this
+*#*; definitions
+*#*: work:
+*#*; apple
+*#*; banana
+*#*: fruits</pre>
+|
+* Or create mixed lists
+*# and nest them
+*#* like this
+*#*; definitions
+*#*: work: 
+*#*; apple
+*#*; banana
+*#*: fruits
+|}
+
+=== Paragraphs in lists ===
+
+For simplicity, list items in wiki markup cannot be longer than a paragraph. A following blank line will end the list and reset the counter on ordered lists. Separating un-ordered list items usually has no noticeable effects.
+
+For a list with items of more than one paragraph long, adding a blank line between items may be necessary to avoid confusion.
+
+=== Continuing a list item after a sub-item ===
+
+In HTML, a list item may contain several sublists, not necessarily adjacent; thus there may be parts of the list item not only before the first sublist, but also between sublists, and after the last one; however, in wiki-syntax, sublists follow the same rules as sections of a page: the only possible part of the list item not in sublists is before the first sublist.
+
+In the case of an unnumbered first-level list in wikitext code this limitation can be overcome by splitting the list into multiple lists; indented text between the partial lists may visually serve as part of a list item after a sublist; however, this may give, depending on CSS, a blank line before and after each list, in which case, for uniformity, every first-level list item could be made a separate list.
+
+Numbered lists illustrate that what should look like one list may, for the software, consist of multiple lists; unnumbered lists give a corresponding result, except that the problem of restarting with 1 is not applicable.
+ 
+
+{| style="border:1px;border-spacing:1px;background-color:white;" cellpadding="5"
+|- style="background-color:white;"
+|{|class="wikitable"
+  |<pre><ol>
+  <li> list item  A1</li>
+    <ol>
+      <li> list item  B1</li>
+      <li> list item  B2</li>
+    </ol> continuing list item  A1
+  </li>
+  <li> list item  A2</li>
+</ol></pre>
+| <ol>
+  <li> list item  A1
+    <ol>
+      <li> list item  B1</li>
+      <li> list item  B2</li>
+    </ol> continuing list item  A1
+  </li>
+  <li> list item  A2</li>
+</ol> 
+|} 
+|- style="background-color:#E0E0E0;font-weight:bold;text-align:center;"
+| colspan="2" | vs.
+|- style="background-color:white;"
+|{|class="wikitable" 
+|<pre> 
+#list item A1
+##list item B1
+##list item B2
+#:continuing list item A1
+#list item A2 </pre>
+| 
+#list item A1
+##list item B1
+##list item B2
+#:continuing list item A1
+#list item A2 
+|}
+|}
+
+One level deeper, with a sublist item continuing after a sub-sublist, one gets even more blank lines; however, the continuation of the first-level list is not affected:
+ 
+<pre> 
+#list item A1
+##list item B1
+###list item C1
+##:continuing list item B1
+##list item B2
+#list item A2
+</pre>
+
+gives
+
+#list item A1
+##list item B1
+###list item C1
+##:continuing list item B1
+##list item B2
+#list item A2 
+
+=== Changing the list type ===
+
+The list type (which type of marker appears before the list item) can be changed in CSS by setting the list-style-type property:
+
+{|class="wikitable"
+!  Wikitext  !!  Rendering 
+|-
+| <pre><ol style="list-style-type:lower-roman">
+  <li> About the author </li>
+  <li> Foreword to the first edition </li>
+  <li> Foreword to the second edition </li>
+</ol></pre>
+| <ol style="list-style-type:lower-roman">
+  <li> About the author </li>
+  <li> Foreword to the first edition </li>
+  <li> Foreword to the second edition </li>
+</ol>
+|-
+|}
+
+=== Extra indentation of lists ===
+
+In a numbered list in a large font, some browsers do not show more than two digits, unless extra indentation is applied (if there are multiple columns: for each column). This can be done with CSS: 
+ ol { margin-left: 2cm}
+ or alternatively, like below.
+ 
+{|class="wikitable"
+!  Wikitext  !!  Rendering  
+! style="width: 40%" |  Comments 
+|-
+|<pre>
+:#abc
+:#def
+:#ghi
+ </pre>
+|
+:#abc
+:#def
+:#ghi
+|  A list of one or more lines starting with a colon creates a definition list without definition terms, and with the items as definition descriptions, hence indented. However, if the colons are in front of the codes "*" or "#" of an unordered or ordered list, the list is treated as one definition description, so the whole list is indented. 
+|-
+|<pre>
+<ul>
+  <ol>
+    <li>abc</li>
+    <li>def</li>
+    <li>ghi</li>
+  </ol>
+</ul>
+</pre>
+|
+<ul>
+  <ol>
+    <li>abc</li>
+    <li>def</li>
+    <li>ghi</li>
+  </ol>
+</ul>
+|  MediaWiki translates an unordered list (ul) without any list items (li) into a div with a <tvar|margin-left><code>style="margin-left: 2em"</code></>, causing  indentation of the contents. This is '''the most versatile method''', as it allows starting with a number other than 1, see below. 
+|-
+|<pre>
+<ul>
+#abc
+#def
+#ghi
+</ul>
+</pre>
+|
+<ul>
+#abc
+#def
+#ghi
+</ul>
+| Like above, with the content of the "unordered list without any list items", which itself is an ordered list, expressed with # codes. The HTML produced, and hence the rendering, is the same. This is the '''recommended''' method when starting the list at 1. 
+|}
+
+=== Specifying a starting value ===
+
+Specifying a starting value is possible with HTML syntax.
+ 
+{|class="wikitable"
+| <pre>
+<ol start="9">
+<li> Amsterdam </li>
+<li> Rotterdam </li>
+<li> The Hague </li>
+</ol>
+</pre>
+|
+<ol start="9">
+<li> Amsterdam </li>
+<li> Rotterdam </li>
+<li> The Hague </li>
+</ol>
+|}
+
+ Or: 
+
+{| class="wikitable"
+| style="width: 50%" |
+<pre>
+<ol>
+<li value="9"> Amsterdam </li>
+<li value="8"> Rotterdam </li>
+<li value="7"> The Hague </li>
+</ol>
+</pre>
+|
+<ol>
+<li value="9"> Amsterdam </li>
+<li value="8"> Rotterdam </li>
+<li value="7"> The Hague </li>
+</ol>
+|}
+
+ 
+=== Comparison with a table ===
+
+Apart from providing automatic numbering, the numbered list also aligns the contents of the items, comparable with using table syntax:
+ 
+
+<pre>
+{|
+|-
+| align=right |  9.||  Amsterdam 
+|-
+| align=right | 10.||  Rotterdam 
+|-
+| align=right | 11.||  The Hague 
+|}
+</pre>
+gives
+{|
+|-
+| align=right |  9.||  Amsterdam 
+|-
+| align=right | 10.||  Rotterdam 
+|-
+| align=right | 11.||  The Hague 
+|}
+
+ 
+This non-automatic numbering has the advantage that if a text refers to the numbers, insertion or deletion of an item does not disturb the correspondence.
+
+=== Multi-column lists ===
+
+==== Multi-column bulleted list ====
+
+<pre>
+<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+ 
+* apple
+* carpet
+* geography
+* mountain
+* nowhere
+* postage
+* ragged
+* toast
+ 
+</div>
+</pre>
+
+ gives: 
+
+<div style="column-count:2;-moz-column-count:2;-webkit-column-count:2">
+ 
+* apple
+* carpet
+* geography
+* mountain
+* nowhere
+* postage
+* ragged
+* toast
+ 
+</div>
+
+<pre>
+<div style="column-count:3;-moz-column-count:3;-webkit-column-count:3">
+ 
+* apple
+* carpet
+* geography
+* mountain
+* nowhere
+* postage
+* ragged
+* toast
+ 
+</div>
+</pre>
+
+ gives: 
+
+<div style="column-count:3;-moz-column-count:3;-webkit-column-count:3">
+ 
+* apple
+* carpet
+* geography
+* mountain
+* nowhere
+* postage
+* ragged
+* toast
+ 
+</div>
+ 
+====Multi-column numbered list====
+ 
+<pre>
+<div style="column-count:3;-moz-column-count:3;-webkit-column-count:3">
+
+#apple
+#carpet
+#geography
+#mountain
+#nowhere
+#postage
+#ragged
+#toast
+</div>
+</pre>
+
+gives: 
+
+<div style="column-count:3;-moz-column-count:3;-webkit-column-count:3">
+ 
+#apple
+#carpet
+#geography
+#mountain
+#nowhere
+#postage
+#ragged
+#toast
+ 
+</div>
+<br/>
+
+ 
+=== Streamlined style or horizontal style ===
+
+It is also possible to present short lists using very basic formatting, such as:
+ 
+
+<pre> ''Title of list:'' example 1, example 2, example 3 </pre>
+
+ ''Title of list:'' example 1, example 2, example 3 
+
+ 
+This style requires less space on the page, and is preferred if there are only a few entries in the list, it can be read easily, and a direct edit point is not required. The list items should start with a lowercase letter unless they are proper nouns.
+
+===Tables===
+
+A one-column table is very similar to a list, but it allows sorting. If the wikitext itself is already sorted with the same sortkey, this advantage does not apply.
+A multiple-column table allows sorting on any column.
+
+=== Changing unordered lists to ordered ones ===
+
+With the CSS 
+ ul { list-style: decimal }
+ 
+unordered lists are changed to ordered ones. This applies (as far as the CSS selector does not restrict this) to all ul-lists in the HTML source code:
+
+*those produced with *
+*those with <tvar|ul><nowiki><ul></nowiki></> in the wikitext
+*those produced by the system
+
+Since each special page, like other pages, has a class based on the pagename, one can separately specify for each type whether the lists should be ordered. However, it does not seem possible to make all page history lists ordered (unless one makes ''all'' lists ordered), because the class name is based on the page for which the history is viewed. 
+
+== Images ==
+
+=== Rendering a single image ===
+
+==== Syntax ====
+
+The full syntax for displaying an image is:
+ 
+ <nowiki>[[</nowiki>File:''filename.extension''|''options''|''caption'']] 
+
+where ''options'' can be zero or more of the following, separated by pipes ('''|'''):
+
+* ''Format'' option: one of '''border''' and/or '''frameless''', '''frame''', '''thumb''' (or '''thumbnail''');  
+*: Controls how the rendered image is formatted and embedded in the rest of the page. 
+* ''Resizing'' option: one of 
+** ''{width}'''''px''' — Resizes the image to fit within the given maximum width in pixels, without restricting its height; 
+** '''x'''''{height}'''''px''' — Resizes the image to fit within the given maximum height in pixels, without restricting its width; 
+** ''{width}'''''x'''''{height}'''''px''' — Resizes the image to fit within the given width and height in pixels; 
+** '''upright''' — Resizes an image to fit within reasonable dimensions, according to user preferences (suitable for images whose height is larger than width). 
+*: Note that the image will always retain its aspect ratio, and can only be reduced (not increased) in size unless it's in a scalable media type (bitmap images cannot be scaled up).  
+*: The default maximum size depends on the ''format'' and the internal image dimensions (according to its media type). 
+* ''Horizontal alignment'' option: one of '''left''', '''right''', '''center''', '''none'''; 
+*: Controls the horizontal alignment (and inline/block or floating styles) of the image within a text (no default value). 
+* ''Vertical alignment option'': one of '''baseline''', '''sub''', '''super''', '''top''', '''text-top''', '''middle''', '''bottom''', '''text-bottom'''; 
+*: Controls the vertical alignment of a non-floating inline image with the text before or after the image, and in the same block (the default vertical alignment is '''middle'''). 
+* ''Link option'': one of 
+** '''link='''''{target}'' — Allows to change the target (to an arbitrary page title, or URL) of the generated link, activable on the rendered image surface; e.g. <code><nowiki>[[File:Example.jpg|20px|link=http://www.wikipedia.org]]</nowiki></code> renders to an external link, or <code><nowiki>[[File:Example.jpg|20px|link=Help:Help]]</nowiki></code> renders to an internal link. 
+** '''link=''' (with an empty value) — Displays an image without any actionable link; e.g. <code><nowiki>[[</nowiki>File:Example.jpg|20px|link=]]</code>
+*** '''!''' for MW 1.24 and lower: If you set <code>|link=|</code> (empty), then no <code>title</code> will be rendered. 
+* Other specific options: 
+** '''alt='''''{alternative text}'' — Defines the alternative text (maps to the HTML attribute <code>alt="..."</code> of the generated <code>&lt;img /&gt;</code> element) of an image that will be rendered if either the referenced image cannot be downloaded and embedded, or if the support media must use the alternative description text (e.g. when using a Braille reader or with accessibility options set by the user in its browser). 
+** '''page='''''{number}'' — Renders the specified page number (currently only applicable when showing a .djvu or .pdf file). 
+** '''class='''''{html class}'' — Defines classes (maps to the HTML attribute <code>class="..."</code> of the generated <code>&lt;img /&gt;</code> element). 
+** '''lang='''''{language code}'' — For SVG files containing [http://www.w3.org/TR/SVG/struct.html#SwitchElement &lt;switch&gt;] statements varying on a ''systemLanguage'' attribute, selects what language to render the file in. The default is always English, even on non-English wikis.
+
+If a parameter does not match any of the other possibilities, it is assumed to be the caption text. 
+ 
+Caption text shows below the image in '''thumb''' and '''frame''' formats, or as tooltip text in any other format. 
+ 
+Caption text displayed in the '''thumb''' and '''frame''' formats may contain wiki links and other formatting. 
+
+If 'alt' is not specified and a caption is provided, the alternative text will be created automatically from the caption, stripped of formatting.
+
+==== Format ====
+
+When the height of an image in thumbnail is bigger than its width (i.e. in portrait orientation rather than landscape) and you find it too large, you may try the option <code>upright=N</code>, where N is the image's aspect ratio (its width divided by its height, defaulting to 0.75). 
+
+The alternative is to specify the desired maximum height (in pixels) explicitly.
+
+Note that by writing <code>thumb={filename}</code>, you can use a different image for the thumbnail.
+ 
+==== Size and frame ====
+
+Among different formats, the effect of the size parameter may be different, as shown below.
+
+* For how it appears when its size is not specified, see [[#Format|Format]] section above. 
+
+* When the format is not specified, or only <code>border</code>ed, the size can be both reduced and enlarged to any specified size. 
+
+* In the examples below, the original size of the image is 400 × 267 pixels. 
+
+* An image with <code>frame</code> always '''ignores''' the size specification, the original image will be reduced if it exceeds the maximum size defined in user preferences. 
+
+* The size of an image with <code>thumb</code> can be reduced, but can not be enlarged beyond the original size of the image.
+
+==== Horizontal alignment ====
+
+Note that when using the <code>frame</code> or <code>thumb[nail]</code> formats, the default horizontal alignment will be <code>right</code>.
+
+==== Vertical alignment ==== 
+
+The vertical alignment options take effect only if the image '''is''' rendered as an inline element and '''is not''' floating. 
+
+They alter the way the inlined image will be vertically aligned with the text present in the same block before and/or after this image on the same rendered row.
+
+Note that the rendered line of text where inline images are inserted (and the lines of text rendered after the current one) may be moved down (this will increase the line-height conditionally by additional line spacing, just as it may occur with spans of text with variable font sizes, or with superscripts and subscripts) to allow the image height to be fully displayed with this alignment constraint.
+ 
+To show the alignment result more clearly, the text spans are overlined and underlined, the font-size is increased to 200%, and the paragraph block is outlined with a thin border; additionally images of different sizes are aligned:
+ 
+Notes:
+
+# The "middle" vertical alignment position of the image (which is also the default) usually refers to the middle between the x-height and the baseline of the text (on which the vertical middle of the image will be aligned, and on which usually the text may be over-stroked), but not to the middle of the line-height of the font-height that refers to the space between the "text-top" and "text-bottom" positions ; the font-height excludes: 
+#* the additional line separation spacing normally divided equally into two line-margins (here 0.5em, according to line-height set to 200%) above and below the font-height). 
+#* the additional line spacing which may be added by superscripts and subscripts. 
+# However, if the image height causes its top or bottom position to go above or below the normal full line-height of text, the middle position will be adjusted after the increasing the top and/or bottom line-margins so that the image can fit and align properly, and all images (including those with smaller heights) will be vertically centered on the adjusted middle position (for computing the effective line-height, the text of each rendered row with the larger font-height will be considered). 
+# The "text-top" and "text-bottom" alignment positions also excludes the extra line spacing added by superscripts and subscripts, but not the additional line-spacing defined by the line-height. 
+# The "top" and "bottom" alignment positions take into account all these extra line spacings (including superscripts and subscripts, if they are present in a rendered line span).    When the image alignment constrains the image to grow above or below the normal line-spacing, and the image is not absolutely positioned, the image will cause the "top" and "bottom" positions to be adjusted (just like superscripts and subscripts), so the effective line-height between rendered lines of text will be higher. 
+# The "underline", "overline" and "overstrike" text-decoration positions should be somewhere within these two limits and ''may'' depend on the type and height of fonts used (the superscript and subscript styles may be taken into account in some browsers, but usually these styles are ignored and the position of these decorations may not be adjusted); so these decorations normally don't affect the vertical position of images, relatively to the text.
+
+==== Stopping the text flow ====
+
+On occasion it is desirable to stop text (or other inline non-floating images) from flowing around a floating image. 
+ 
+
+Depending on the web browser's screen resolution and such, text flow on the right side of an image may cause a section header (for instance, <nowiki>== My Header ==</nowiki>) to appear to the right of the image, instead of below it, as a user may expect. 
+ 
+
+The text flow can be stopped by placing '''<nowiki><br clear=all></nowiki>''' (or if you prefer, <nowiki><div style="clear: both"></div></nowiki>) before the text that should start below the floating image. 
+ 
+
+(This may also be done without an empty line by wrapping the section with the floating images with <nowiki><div style="overflow: hidden">…</div></nowiki>, which clears all floats inside the <code>div</code> element.)
+
+All images rendered as blocks (including non-floating '''center'''ed images, '''left'''- or '''right'''-floating images, as well as '''framed''' or '''thumbnail'''ed floating images) are implicitly breaking the surrounding lines of text (terminating the current block of text before the image, and creating a new paragraph for the text after them). 
+ 
+
+They will then stack vertically along their left or right alignment margin (or along the center line between these margins for '''center'''ed images).
+ 
+==== Altering the default link target ====
+
+The following table shows how to alter the link target (whose default is the image description page) or how to remove it. 
+
+Changing the link does not alter the format described in the previous sections.
+ 
+{|class="wikitable plainlinks"
+|-
+!Description 
+! You type  
+|-
+| internal link
+| <nowiki> ... text text text
+[[File:example.jpg|</nowiki>'''link=Main Page'''<nowiki>|caption]]
+text text text ... </nowiki>
+|-
+| external link
+| <nowiki>... text text text
+[[File:example.jpg|</nowiki>'''link=http://wikipedia.org/wiki/Test'''<nowiki>|caption]]
+text text text ...</nowiki>
+|-
+| no link (external or file page)
+| <nowiki> ... text text text
+[[File:example.jpg| </nowiki>'''link='''<nowiki>|caption]]
+text text text ...  </nowiki>
+|}
+
+=== Link behavior ===
+By default an image links to its file description page. 
+
+The "link=" option modifies this behavior to link to another page or website, or to turn off the image's linking behavior.
+
+Alternatively, you can create a text link to a file description page or to the file itself. 
+
+==== Display image, link it to another page or website ==== 
+
+Use "link=" option to link image to another page or website:
+
+Clicking on the image that is used for this, will take you internally to [[Help:Help]]:
+
+ <nowiki>[[</nowiki>File:Example.jpg|50px|link=Help:Help]]
+
+
+Clicking on the image that is used for this, will take you externally to ''example.com'':
+
+ <nowiki>[[</nowiki>File:Example.jpg|50px|link=http://example.com]]
+
+
+==== Display image, turn off link ====
+
+Use "link=" option with no value assigned to turn link off entirely:
+
+ <nowiki>[[</nowiki>File:Example.jpg|50px|link=]]
+
+
+== Tables ==
+
+=== Wiki table markup summary === 
+
+{| class="wikitable" style="width:60%"
+| style="padding: 10px;" | &#123;|
+| style="padding: 5px;" |  '''table start''', ''required''
+|-
+| style="padding: 10px;"| <big><nowiki>|+</nowiki></big>
+| style="padding: 5px;" |  table '''caption''', ''optional;'' only between '''table start''' and '''table row'''
+|-
+| style="padding: 10px;"| <big><nowiki>|-</nowiki></big>
+| style="padding: 5px;" |  '''table row''', ''optional on first row''—wiki engine assumes the first row
+|-
+| style="padding: 10px;"| <big><nowiki>!</nowiki></big> 
+| style="padding: 5px;" |  '''table header''' cell, ''optional.''  Consecutive '''table header''' cells may be added on same line separated by double marks (&#33;&#33;) or start on new lines, each with its own single mark (<code>!</code>).
+|- 
+| style="padding: 10px;"| <big><nowiki>|</nowiki></big>
+| style="padding: 5px;" |  '''table data''' cell, ''optional''.  Consecutive '''table data''' cells may be added on same line separated by double marks (&#124;&#124;) or start on new lines, each with its own single mark (&#124;).
+|-
+| style="padding: 10px;"| <big><nowiki>|}</nowiki></big>
+| style="padding: 5px;" |  '''table end''', ''required''
+|}
+
+
+*The above marks must '''start on a new line''' except the double <code>||</code> and <code>!!</code> for optionally adding consecutive cells to a line. However, blank spaces at the beginning of a line are ignored.
+*''' XHTML attributes.'''  Each mark, except table end, optionally accepts one or more XHTML attributes.  Attributes must be on the same line as the mark.  Separate attributes from each other with a single space.
+**Cells and caption (<code>|</code> or <code>||</code>, <code>!</code> or <code>!!</code>, and <code>|+</code>) hold content.  So separate any attributes from content with a single pipe (<code>|</code>).  Cell content may follow on same line or on following lines.
+**Table and row marks (<code>{|</code> and <code>|-</code>) do not directly hold content.  Do ''not'' add pipe (<code>|</code>) after their optional attributes.  If you erroneously add a pipe after attributes for the table mark or row mark the parser will delete it ''and'' your final attribute if it was touching the erroneous pipe!
+
+*'''Content''' may (a) follow its cell mark on the same line after any optional XHTML attributes or (b) on lines below the cell mark. Content that uses wiki markup that itself needs to start on a new line, such as lists, headings, or nested tables, must be on its own new line.
+**'''Pipe character as content.''' 
+To insert a pipe (<code>|</code>) character into a table, use the &lt;nowiki&gt;<code>|</code>&lt;/nowiki&gt; escaping markup or if that fails to work, use the HTML character escaping code e.g. the pipe character code is <nowiki>&#124;</nowiki> and this can be added to a wiki page and will be rendered accordingly.
+
+===Basics=== 
+
+The following table lacks borders and good spacing but shows the simplest wiki markup table structure.
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{|
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+</pre>
+| style="padding: 5px;"| 
+{|
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+|}
+
+The cells in the same row can be listed on one line separated by <code>||</code> (two pipe symbols). 
+
+
+If the text in the cell should contain a line break, use <code><nowiki><br /></nowiki></code> instead.
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{|
+| Orange|| Apple|| more
+|-
+| Bread|| Pie|| more
+|-
+| Butter|| Ice<br />cream|| and<br />more
+|}
+</pre>
+| style="padding: 5px;"|
+{|
+| Orange|| Apple|| more
+|-
+| Bread|| Pie|| more
+|-
+| Butter|| Ice<br />cream|| and<br />more
+|}
+|}
+
+
+
+Extra spaces within cells in the wiki markup, as in the wiki markup below, do not affect the actual table rendering.
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{|
+|   Orange ||  Apple ||  more
+|-
+|    Bread ||  Pie ||  more
+|-
+|    Butter ||  Ice cream ||  and more
+|}
+</pre>
+| style="padding: 5px;"|
+{|
+|   Orange ||  Apple ||  more
+|-
+|    Bread ||  Pie ||  more
+|-
+|    Butter ||  Ice cream ||  and more
+|}
+|}
+
+
+
+You can have longer text or more complex wiki syntax inside table cells, too:
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{|
+|Lorem ipsum dolor sit amet, 
+consetetur sadipscing elitr, 
+sed diam nonumy eirmod tempor invidunt
+ut labore et dolore magna aliquyam erat, 
+sed diam voluptua. 
+
+At vero eos et accusam et justo duo dolores
+et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum
+dolor sit amet. 
+|
+* Lorem ipsum dolor sit amet
+* consetetur sadipscing elitr
+* sed diam nonumy eirmod tempor invidunt
+|}
+</pre>
+| style="padding: 5px;"|
+{|
+|Lorem ipsum dolor sit amet, 
+consetetur sadipscing elitr, 
+sed diam nonumy eirmod tempor invidunt
+ut labore et dolore magna aliquyam erat, 
+sed diam voluptua. 
+
+At vero eos et accusam et justo duo dolores
+et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum
+dolor sit amet. 
+|
+* Lorem ipsum dolor sit amet
+* consetetur sadipscing elitr
+* sed diam nonumy eirmod tempor invidunt
+|}
+|}
+
+
+==== Table headers ==== 
+
+
+Table headers can be created by using "<code>!</code>" (exclamation mark) instead of "<code>|</code>" (pipe symbol). 
+
+
+Headers usually show up bold and centered by default.
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{|
+! style="text-align:left;"|  Item
+!  Amount
+!  Cost
+|-
+| Orange
+|10
+|7.00
+|-
+| Bread
+|4
+|3.00
+|-
+| Butter
+|1
+|5.00
+|-
+! Total
+|
+|15.00
+|}
+</pre>
+| style="padding: 5px;"|
+{|
+! style="text-align:left;"|  Item
+!  Amount
+!  Cost
+|-
+| Orange
+|10
+|7.00
+|-
+| Bread
+|4
+|3.00
+|-
+| Butter
+|1
+|5.00
+|-
+! Total
+|
+|15.00
+|}
+|}
+
+
+'''Note:''' When using attributes as in the heading 'Item' a vertical bar '|' is used for separation. 
+
+
+Not an exclamation character '!'.
+
+====Caption====
+
+
+A '''table caption''' can be added to the top of any table as follows.
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{|
+|+ Food complements
+|-
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+</pre>
+| style="padding: 5px;"|
+{|
+|+  Food complements
+|-
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+|}
+
+
+==== class="wikitable" ====
+
+Basic styling (light gray background, borders, padding and align left) can be achieved by adding class="wikitable".
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{| class="wikitable"
+|+ Food complements
+|-
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+</pre>
+| style="padding: 5px;"|
+{| class="wikitable"
+|+  Food complements
+|-
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+|}
+
+
+====HTML colspan and rowspan==== 
+
+
+You can use HTML '''colspan''' and '''rowspan''' attributes on cells for advanced layout.
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{| class="wikitable"
+!colspan="6"| Shopping List
+|-
+|rowspan="2"| Bread & Butter
+| Pie
+| Buns
+| Danish
+|colspan="2"| Croissant
+|-
+| Cheese
+|colspan="2"| Ice cream
+| Butter
+| Yogurt
+|}
+</pre>
+| style="padding: 5px;"|
+{| class="wikitable"
+!colspan="6"| Shopping List
+|-
+|rowspan="2"| Bread & Butter
+| Pie
+| Buns
+| Danish
+|colspan="2"| Croissant
+|-
+| Cheese
+|colspan="2"| Ice cream
+| Butter
+| Yogurt
+|}
+|}
+
+
+=== XHTML attributes === 
+
+
+You can add XHTML attributes to tables. 
+
+
+==== Attributes on tables ====
+
+
+Placing attributes after the table start tag (<code>{|</code>) applies attributes to the entire table.
+
+{| style="width:100%"
+! style="width: 50%;"|  You type
+! style="width: 50%;"|  You get
+|-
+| style="padding: 5px;"|
+<pre>
+{| class="wikitable" style="text-align: center; color: green;"
+| Orange
+| Apple
+|12,333.00
+|-
+| Bread
+| Pie
+|500.00
+|-
+| Butter
+| Ice cream
+|1.00
+|}
+</pre>
+| style="padding: 5px;"|
+{| class="wikitable" style="text-align: center; color: green;"
+| Orange
+| Apple
+|12,333.00
+|-
+| Bread
+| Pie
+|500.00
+|-
+| Butter
+| Ice cream
+|1.00
+|}
+|}
+
+
+==== Attributes on cells ==== 
+
+
+You can put attributes on individual '''cells'''. 
+
+
+For example, numbers may look better aligned right.
+
+{| style="width:100%"
+! style="width: 50%;"|  You type
+! style="width: 50%;"|  You get
+|-
+| style="padding: 5px;"|
+<pre>
+{| class="wikitable"
+|  Orange
+|  Apple
+| style="text-align:right;" | 12,333.00
+|-
+|  Bread
+|  Pie
+| style="text-align:right;" | 500.00
+|-
+|  Butter
+|  Ice cream
+| style="text-align:right;" | 1.00
+|}
+</pre>
+| style="padding: 5px;"|
+{| class="wikitable" style="text-align:center"
+|  Orange
+|  Apple
+| style="text-align:right;" | 12,333.00
+|-
+|  Bread
+|  Pie
+| style="text-align:right;" | 500.00
+|-
+|  Butter
+|  Ice cream
+| style="text-align:right;" | 1.00
+|}
+|}
+
+
+
+You can also use '''cell''' attributes when you are listing multiple '''cells''' on a single line. 
+
+
+Note that the '''cells''' are separated by <code>||</code>, and within each '''cell''' the attribute(s) and value are separated by <code>|</code>.
+
+{| style="width:100%"
+! style="width: 50%;"|  You type
+! style="width: 50%;"|  You get
+|-
+| style="padding: 5px;"|
+<pre>
+{| class="wikitable"
+| Orange ||  Apple     || style="text-align:right;" | 12,333.00
+|  Bread ||  Pie       || style="text-align:right;" | 500.00
+|-
+|-
+|  Butter ||  Ice cream || style="text-align:right;" | 1.00
+|}
+</pre>
+| style="padding: 5px;"|
+{| class="wikitable"
+|  Orange ||  Apple     || style="text-align:right;" | 12,333.00
+|-
+|  Bread ||  Pie       || style="text-align:right;" | 500.00
+|-
+|  Butter ||  Ice cream || style="text-align:right;" | 1.00
+|}
+|}
+
+==== Attributes on rows ==== 
+
+
+You can put attributes on individual '''rows''', too.
+
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{| class="wikitable"
+|  Orange
+|  Apple
+| style="text-align:right;"| 12,333.00
+|-
+|  Bread
+|  Pie
+| style="text-align:right;"| 500.00
+|- style="font-style: italic; color: green;"
+|  Butter
+|  Ice cream
+| style="text-align:right;"| 1.00
+|}
+</pre>
+| style="padding: 5px;"|
+{| class="wikitable"
+|  Orange
+|  Apple
+| style="text-align:right;"| 12,333.00
+|-
+|  Bread
+|  Pie
+| style="text-align:right;"| 500.00
+|- style="font-style: italic; color: green;"
+|  Butter
+|  Ice cream
+| style="text-align:right;"| 1.00
+|}
+|}
+
+
+====Simple one-pixel table border==== 
+
+
+An example of a one-pixel table border:
+
+
+{| style="width:100%"
+|-
+! style="width:50%" |  You type 
+! style="width:50%" |  You get 
+|-
+| style="padding: 5px;" |
+<pre>
+{| border="1" style="border-collapse:collapse"
+|  Orange
+|  Apple
+|-
+|  Bread
+|  Pie
+|}
+</pre>
+| style="padding: 20px;"|
+{| border="1" style="border-collapse:collapse"
+|  Orange
+|  Apple
+|-
+|  Bread
+|  Pie
+|}
+|}
+
+
+====Border width==== 
+
+
+If "border-width:" has only one number, it is for all four border sides:
+
+{| style="width:100%"
+|-
+! style="width:50%" |  You type 
+! style="width:50%" |  You get 
+|-
+| style="padding: 5px;" |
+<pre>
+{|style="border-style: solid; border-width: 20px"
+|
+ Hello
+|}
+</pre>
+| style="padding: 20px;"|
+{|style="border-style: solid; border-width: 20px"
+|
+ Hello
+|}
+|}
+
+
+
+If "border-width:" has more than one number, the four numbers are for '''top, right, bottom, left (REMEMBER this order)''': 
+
+{| style="width:100%"
+|-
+! style="width:50%" |  You type 
+! style="width:50%" |  You get 
+|-
+| style="padding: 5px;" |
+<pre>
+{|style="border-style: solid; border-width: 10px 20px 100px 0"
+|
+ Hello
+|}
+</pre>
+| style="padding: 20px;"|
+{|style="border-style: solid; border-width: 10px 20px 100px 0"
+|
+ Hello
+|}
+|}
+
+
+When there are fewer than 4 values, the value for left takes its default from the value for right, the value for bottom takes its default from the value for top, and the value for right takes its default from the value for top.
+
+
+
+Another method to define the widths of the four sides of a cell is to use ''"border-left", "border-right", "border-top" and "border-bottom"'':
+<div style="width: 100%; overflow:auto;">
+{| style="width:100%"
+|-
+! style="width:50%" |  You type 
+! style="width:50%" |  You get 
+|-
+| style="padding: 5px;" |
+<pre>
+{|style="border-left:solid 10px black;border-right:solid 20px black;border-top:solid 30px black;border-bottom:solid 40px black;" align="center" 
+|
+ Hello
+|}
+</pre>
+| style="padding: 20px;"|
+{|style="border-left:solid 10px black;border-right:solid 20px black;border-top:solid 30px black;border-bottom:solid 40px black;" align="center" 
+|
+ Hello
+|}
+|}
+</div>
+
+The HTML attributes (such as "width=", "border=", "cellspacing=", "cellpadding=") do not need any length unit (the pixel unit is assumed).  They are also invalid in HTML 5. 
+
+
+The CSS style properties (which override the HTML attributes) require an explicit length unit (if the value is not 0) such as "px" for the pixel.
+
+
+===With HTML attributes and CSS styles=== 
+
+
+CSS style attributes can be added with or without other HTML attributes.
+
+{| style="width:100%"
+! style="width: 50%;"| You type
+! style="width: 50%;"| You get
+|-
+| style="padding: 5px;"|
+<pre>
+{| class="wikitable" style="color:green; background-color:#ffffcc;" cellpadding="10"
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+</pre>
+| style="padding: 5px;"|
+{| class="wikitable" style="color:green; background-color:#ffffcc;" cellpadding="10" 
+| Orange
+| Apple
+|-
+| Bread
+| Pie
+|-
+| Butter
+| Ice cream 
+|}
+|}

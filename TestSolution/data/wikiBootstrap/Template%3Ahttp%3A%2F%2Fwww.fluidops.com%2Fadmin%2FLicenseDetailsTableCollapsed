@@ -1,0 +1,12 @@
+{{#widget: CollapsibleWidget | 
+ pageUri = '<Template:http://www.fluidops.com/admin/LicenseDetailsTable>'
+ | namedParameters = {{ 
+      {{ name = 'feature'
+       | value = '"{{{feature}}}"'
+      }} }}
+ | appearance = 
+   {{ isExpanded = false
+    | collapsedLabel = '"{{{feature}}}"'
+    | expandedLabel = '"{{{feature}}}"'
+   }}
+}}

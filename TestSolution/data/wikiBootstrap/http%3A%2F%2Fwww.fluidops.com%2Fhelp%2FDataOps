@@ -1,0 +1,15 @@
+== Integrating Data Sources ==
+
+External data sources such as relational databases, CSV files, Excel spreadsheets, XML files or JSON can be easily integrated into the {{PRODUCT}}.
+
+A three-step process assists the integration of external data sources:
+# [[Help:DataSources | Configure a data source]] to read external data.
+# [[Help:DataSourceMappings | Specify a mapping]] to transform the data into RDF and fit your ontologies.
+# [[Help:DataOpsPostProcessing | optionally add post-processing]] to improve the linking with existing data.
+
+This process can also create a [[Help:Providers | data provider]] that automatically updates external data on a periodic basis.
+
+To get started, [[Help:DataSources | create a data source]].
+
+
+<img src="../images/help/DataOps/dataops_process.png" style="max-width:800px" />

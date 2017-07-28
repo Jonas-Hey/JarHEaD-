@@ -1,0 +1,138 @@
+=== Heat Map Widget ===
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.HeatMapWidget
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+
+Using the HeatMap widget you can create heat maps populated with information from the database. The setup for map charts works very similar to the chart types introduced previously, however map specific settings need to be taken into account. For a brief example, consider the widget configuration below. This definition shows a map of the United Kingdom divided into its regions. The regions are highlighted in different colors according to the total amount of research grants, projects have received in a particular region.
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.HeatMapWidget
+}}
+
+==== Usage ====
+
+For this chart type we have to set an additional parameter called '''map'''. This argument parses the actual map used in this widget. These maps are .swf files located in ''\webapps\ROOT\amchart\ammap\maps'' of your {{PRODUCT}} installation directory. For an overview of all available maps see the section below. {{PRODUCT}} is preloaded with a handful of geographical maps. If you seek other maps, download the [http://flex.ammap.com/download Map pack for amMap Flex component]. This archive contains geographical maps of numerous countries and regions. Simply copy any map you are interested in from the ''..\maps'' folder and it is ready for use. 
+
+The parameters ''query'', ''input'' and ''output'' are again defined as in the other charts, however (just like in the [[Help:StockChart| StockChart widget]]) the '''input''' parameter expects data of a specific format. When taking a closer look at the query, we can see that ''input'' requires the regions of the map displayed. Each region has a specific identifier, a string value, by which the chart widget addresses it inside the map. Again {{PRODUCT}} is preloaded with a set of these identifiers. For our case the regions of our tutorial dataset (<nowiki>http://research.data.gov.uk/def/project/region</nowiki>) have already been linked to these identifiers via the predicate ''<nowiki>http://ammap.com/region/name</nowiki>''. If you want to display custom entities in a map, you need to link your entities to the correct identifiers. All identifiers can be obtained by downloading the [http://flex.ammap.com/download Map pack for amMap Flex component]. The data directory of this archive contains .mxml files, in which the identifiers are located. For example look at the file ''united_kingodm_regions.mxml''. This file contains a line, which reads
+
+<pre>
+<ammap:MapArea instanceName="GB_UKI" title="London"/>
+</pre>
+
+''GB_UKI'' would be the identifier of the region London. Other regions are referenced in the same way. ''instanceName'' defines the identifier and ''title'' the name of the region. For an overview of all identifiers and resources linked to these available from the [[Help:GettingStarted| getting started tutorial]] in {{PRODUCT}}, look at the table below.
+
+{|class="wikitable sortable"
+|-
+! Resource
+! Predicate
+! Value (Identifier)
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/NorthEast</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKC
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/NorthWest</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKD
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/YorkshireHumberside</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKE
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/EastMidlands</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKF
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/WestMidlands</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKG
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/EastOfEngland</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKH
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/London</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKI
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/SouthEast</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKJ
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/SouthWest</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKK
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/Wales</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKL
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/Scotland</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKM
+|-
+| <nowiki>http://research.data.gov.uk/regions/rda/NorthernIreland</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || GB_UKN
+|-
+| <nowiki>http://dbpedia.org/resource/Baden-W%C3%BCrttemberg</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_BW
+|-
+| <nowiki>http://dbpedia.org/resource/Bavaria</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_BY
+|-
+| <nowiki>http://dbpedia.org/resource/Berlin</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_BE
+|-
+| <nowiki>http://dbpedia.org/resource/Brandenburg</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_BB
+|-
+| <nowiki>http://dbpedia.org/resource/Bremen</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_HB
+|-
+| <nowiki>http://dbpedia.org/resource/Hamburg</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_HH
+|-
+| <nowiki>http://dbpedia.org/resource/Hesse</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_HE
+|-
+| <nowiki>http://dbpedia.org/resource/Mecklenburg-Vorpommern</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_MV
+|-
+| <nowiki>http://dbpedia.org/resource/Lower_Saxony</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_NI
+|-
+| <nowiki>http://dbpedia.org/resource/North_Rhine-Westphalia</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_NW
+|-
+| <nowiki>http://dbpedia.org/resource/Rhineland-Palatinate</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_RP
+|-
+| <nowiki>http://dbpedia.org/resource/Saarland</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_SL
+|-
+| <nowiki>http://dbpedia.org/resource/Saxony</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_SN
+|-
+| <nowiki>http://dbpedia.org/resource/Saxony-Anhalt</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_ST
+|-
+| <nowiki>http://dbpedia.org/resource/Schleswig-Holstein</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_SH
+|-
+| <nowiki>http://dbpedia.org/resource/Thuringia</nowiki> || <nowiki>http://ammap.com/region/name</nowiki> || DE_TH
+|}
+
+==== Example ====
+<source>
+{{#widget: HeatMap
+  | query = 'SELECT (SUM(<http://www.w3.org/2001/XMLSchema#integer>(?grant)) AS ?sumGrant) ?regionname WHERE {
+      ?role <http://research.data.gov.uk/def/project/grant> ?grant .
+      ?role <http://research.data.gov.uk/def/project/region> ?region . 
+      ?region <http://ammap.com/region/name> ?regionname .
+      }
+    GROUP BY ?regionname '
+  | input = 'regionname'
+  | output = {{ 'sumGrant' }}
+  | width = '400'
+  | height = '400'
+  | map = 'united_kingdom_regions'
+}}
+</source>
+
+<img src="../images/help/Heatmap.PNG" width="300px" />
+
+
+
+{|class="wikitable sortable"
+|-
+!Map Name
+!Description
+|-
+| continents || World map divided into continents.
+|-
+| europe || Map of Europe divided into countries.
+|- 
+| germany || Map of Germany divided into regions.
+|-
+| united_kingdom || Map of the United Kingdom divided into countries (e.g. England, Wales, etc. )
+|-
+| united_kingodm_regions || Map of the United Kingdom divided into its regions
+|-
+| usa || Map of the USA divided into states including Hawaii and Alaska
+|-
+| usa_mercator || Map of the USA divided into states including capitals without Hawaii and Alaska
+|-
+| world || World map divided into countries
+|-
+| world_with_antarctica || World map map divided into countries including Antarctica
+|}
+
+
+

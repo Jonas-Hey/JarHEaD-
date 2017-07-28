@@ -1,0 +1,38 @@
+== Menu Items ==
+
+The table provides a detailed view of the ''Categories'' of the main menu. For each ''Sub Category'' the ''Required Features'', ''Required Products'' and ''License Status'' are shown.
+
+A category or sub category is considered licensed if at least one of the required features or products is either fully licensed or within the trial period. Information on which features are fully licensed and which features only have a trial license can be found on [[Admin:License]].
+
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.iwb.ui.templates.MenuBuilder#viewMenuItems'
+ | columnConfiguration = {{ 
+      {{ variableName = 'category'
+       | displayName = 'Category'
+      }} | 
+      {{ variableName = 'subCategory'
+       | displayName = 'Sub Category'
+      }} | 
+      {{ variableName = 'description'
+       | displayName = 'Description'
+      }} | 
+      {{ variableName = 'wikiResource'
+       | displayName = 'Wiki Resource'
+      }} | 
+      {{ variableName = 'menuResource'
+       | displayName = 'Menu Resource'
+      }} | 
+      {{ variableName = 'requiredFeatures'
+       | tooltip = 'Only one of the required features or products needs to be licensed.'
+       | displayName = 'Required Features'
+      }} | 
+      {{ variableName = 'requiredProducts'
+       | tooltip = 'Only one of the required features or products needs to be licensed.'
+       | displayName = 'Required Products'
+      }} | 
+      {{ variableName = 'licensed'
+       | tooltip = 'Categories are listed as "Licensed" if one of the required features or products is either fully licensed or within the trial period.'
+       | valueResolver = 'IMAGE'
+       | displayName = 'Licensed'
+      }} }}
+}}

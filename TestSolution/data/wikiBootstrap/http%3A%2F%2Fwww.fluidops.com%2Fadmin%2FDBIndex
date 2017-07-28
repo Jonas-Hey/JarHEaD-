@@ -1,0 +1,23 @@
+= DBIndex =
+
+The following table lists the various indices for quick access to infrastructure objects
+ 
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.iwb.util.DBIndexControl#getDBIndexStats'
+ | columnConfiguration = {{ 
+      {{ variableName = 'cacheid'
+       | displayName = 'Cache Id'
+      }} | 
+      {{ variableName = 'size'
+       | displayName = 'Size'
+      }} | 
+      {{ variableName = 'type'
+       | displayName = 'Type'
+      }} }}
+}}
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.DBIndexControl'
+ | method = 'clearDBIndex'
+ | label = 'Clear DBIndexes'
+ | onFinish = 'reloadComponent'
+}}

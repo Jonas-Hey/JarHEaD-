@@ -1,0 +1,23 @@
+== Personalization ==
+
+Besides the possibility to customize {{PRODUCT}} for all users (see [[Help:UICustomization]]), there is also the option for an individual user to adjust the UI to his or her personal preferences. This can be done on [[Settings:UserPreferences]]. You can navigate to this page by clicking on the user name on the bottom left and then following the ''Preferences'' link.
+
+<img src="../images/help/UserPreferences.png" style="border:1px solid black" />
+
+=== Preferred Language ===
+
+Currently, German and English are supported languages. Select your preferred language (''de'' for German, ''en'' for English) and confirm with ''Set Locale''. If the user has not set any preference, the language defined in the global config parameter ''preferredLanguage'' will be used.
+
+Note that German is currently only available for Self Service pages.
+
+{{#ifeq: {{PRODUCT}} | Information Workbench | |
+
+=== Breadcrumbs ===
+
+Breadcrumbs show different paths to a specific resource. The following image shows as an example different paths to a VM. The paths all start with the Compute Infrastructure and then make their way to the VM via other resources like the Cluster or the Folder.
+
+<img src="../images/help/Breadcrumbs.png" style="border:1px solid black" />
+
+By default, these breadcrumbs are shown on the top left of an eligible wiki page. However, a user may choose to disable breadcrumbs by deselecting ''Enable breadcrumbs'' in the user preferences and confirming with ''Set breadcrumbs''.
+
+}}

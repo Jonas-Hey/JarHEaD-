@@ -1,0 +1,22 @@
+=== System Health Provider ===
+
+This provider checks a number of key system performance parameters and raises events if thresholds are exceeded.
+Use the checkboxes to activate a given check (e.g. checking for high disk latency). 
+The checks create events which can be viewed here [[Admin:Events]].
+You can also define a person to be notified via mail. Use the [[Help:EventTrigger]] to do so.
+Note that you need to setup your mail server here [[Setup:Email]].
+You can also define other tasks to be executed in case of an event. Please see [[Help:Tasks]] for more information.
+
+==== Functionality ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.ecm.provider.SystemHealthProvider
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Providers | Providers ]]
+
+==== Configuration Settings ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.ecm.provider.SystemHealthProvider
+}}
+

@@ -1,0 +1,24 @@
+=== Wiki Popup Widget ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.WikiPopupWidget
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.WikiPopupWidget
+}}
+
+
+==== Simple Example: show the Help:Start page upon clicking a button ====
+
+<source>
+{{#widget: com.fluidops.iwb.widget.WikiPopupWidget | 
+ pageUri = 'Help:Start'
+ | label = 'Show Help:Start'
+}}
+</source>

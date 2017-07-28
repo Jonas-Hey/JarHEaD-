@@ -39,23 +39,6 @@
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "Kreise und kreisfreie Städte" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:kreiseundkreisfreieStdte
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/DG_{COLUMN0}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:DG
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
                 rr:column "Kreise und kreisfreie Städte"
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
@@ -78,16 +61,22 @@
                 rr:constant default:einkommenprokopf
             ]
         ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Kreise und kreisfreie Städte" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:name
+            ]
+        ] ;
         rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/KREIS_{Kreise und kreisfreie Städte}" ;
-            rr:class default:EinkommenDaten
+            rr:template "http://www.fluidops.com/resource/KREIS_{COLUMN0}" ;
+            rr:class default:Kreis
         ]
     ] .
 
-<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/EinkommenDaten" ;
-    rrx:dataSource default:EinkommenDaten ;
-    rrx:sourceSchema <http://www.fluidops.com/resource/EinkommenDaten/MetaData> ;
-    rrx:containsTriplesMap [ a rr:TriplesMap ;
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rrx:containsTriplesMap [ a rr:TriplesMap ;
         rdfs:label "DG" ;
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
             rr:tableName "PUBLIC.TBL666514"
@@ -111,11 +100,14 @@
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
             rr:template "http://www.fluidops.com/resource/DG_{COLUMN0}" ;
-            rr:class default:EinkommenDaten
+            rr:class default:DG
         ]
     ] .
 
-<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rrx:containsTriplesMap [ a rr:TriplesMap ;
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/EinkommenDaten" ;
+    rrx:dataSource default:EinkommenDaten ;
+    rrx:sourceSchema <http://www.fluidops.com/resource/EinkommenDaten/MetaData> ;
+    rrx:containsTriplesMap [ a rr:TriplesMap ;
         rdfs:label "Einkommen insgesamt" ;
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
             rr:tableName "PUBLIC.TBL666514"
@@ -139,7 +131,7 @@
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
             rr:template "http://www.fluidops.com/resource/EINKOMMENINSGESAMT2014_{Einkommen Haushalte insgesamt 2014}" ;
-            rr:class default:EinkommenDaten
+            rr:class default:EINKOMMENINSGESAMT
         ]
     ] .
 
@@ -167,6 +159,26 @@
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
             rr:template "http://www.fluidops.com/resource/EINKOMMENJEEINWOHNER2014_{Einkommen Haushalte je Einwohner 2014}" ;
-            rr:class default:EinkommenDaten
+            rr:class default:EINKOMMENJEEINWOHNER
+        ]
+    ] .
+
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> rrx:containsTriplesMap [ a rr:TriplesMap ;
+        rdfs:label "Kreis" ;
+        rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
+            rr:tableName "PUBLIC.TBL666514"
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "Kreise und kreisfreie Städte" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:kreisname
+            ]
+        ] ;
+        rr:subjectMap [ a rr:SubjectMap ;
+            rr:template "http://www.fluidops.com/resource/KREIS_{COLUMN0}" ;
+            rr:class default:Kreis
         ]
     ] .

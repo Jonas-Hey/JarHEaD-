@@ -1,0 +1,6 @@
+
+<http://www.fluidops.com/resource/Gemeindeverzeichnis/MappingCollection51239208485603716630683718282185> a <http://www.fluidops.com/ontologies/r2rmlExtension/TriplesMapCollection> ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Mapping Collection for Data Source http://www.fluidops.com/resource/Gemeindeverzeichnis" ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/sourceSchema> <http://www.fluidops.com/resource/Gemeindeverzeichnis/MetaData> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/dataSource> <http://www.fluidops.com/resource/Gemeindeverzeichnis> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/containsTriplesMap> <http://www.fluidops.com/resource/importR2RML70317341601761050303168364359798> , <http://www.fluidops.com/resource/importR2RML17215163040542028493952897022296> , <http://www.fluidops.com/resource/importR2RML23774835680010558196997873181508> , <http://www.fluidops.com/resource/importR2RML70700260420070674496062277683408> , <http://www.fluidops.com/resource/importR2RML55695844330719897851028503052417> , <http://www.fluidops.com/resource/importR2RML08082535332116100427383975334451> , <http://www.fluidops.com/resource/importR2RML98570148151339355018528729413854> .

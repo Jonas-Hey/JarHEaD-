@@ -1,0 +1,6 @@
+
+<http://www.fluidops.com/resource/Kaufkraft/MappingCollection58275937826775679184119710053044> a <http://www.fluidops.com/ontologies/r2rmlExtension/TriplesMapCollection> ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Mapping Collection for Data Source http://www.fluidops.com/resource/Kaufkraft" ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/sourceSchema> <http://www.fluidops.com/resource/Kaufkraft/MetaData> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/dataSource> <http://www.fluidops.com/resource/Kaufkraft> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/containsTriplesMap> <http://www.fluidops.com/resource/triplesMap82287401501611884228907973124467> .

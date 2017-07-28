@@ -1,0 +1,198 @@
+== SSL - How To ==
+
+In this tutorial we describe how to setup SSL in {{PRODUCT}}.
+
+<h2>Introduction</h2>
+
+{{PRODUCT}} Instances can be set up to authenticate and communicate securely amongst themselves using SSL certificates. These can be publically signed or self-signed certificates from your own CA. In the case of publically signed certificates, internet access may be required to verify the authenticity of the certificate against the CA.
+
+{{PRODUCT}} can make use of any certificates compatible with X509 & Java, but we highly recommend the use of PEM certificates. The certificates are stored in a local Java keystore in each installation instance.
+
+In {{PRODUCT}} we distinguish between certificates of the HTTP(S) webserver and internal API communication. For both configurations distinct sets of keystores are used. See [[Setup:SSLConfiguration]] for details.
+
+=== Generating and Installing a new Certificate ===
+
+In the following we document how a new certificate can be generated, how a ''Certificate Sign Request'' (CSR) and how to install the certificate in {{PRODUCT}}.
+
+Certificates can be generated in many different ways. We recommend using [http://portecle.sourceforge.net/ Portecle] a graphical UI for the Java Keytool. Of course the Java keytool can also be used, similarly to OpenSSL tools. See below for the relevant commands for the Java Keytool.
+
+==== The Portecle way ====
+
+To generate and install a new certificate in {{PRODUCT}} with ''Portecle'' follow the steps below:
+
+'''1) Open Portecle'''
+
+'''2) Create a new "JKS" keystore (File -> New Keystore)'''
+
+<img src="../images/help/ssl/step1-portecle-newjks.png" />
+
+'''3) Generate a new key pair (Tools -> Generate Key Pair)'''
+
+Note: it is recommended to use RSA with a size of 2048 bits
+
+<img src="../images/help/ssl/step2-portecle-generatepair.png" />
+
+'''4) Configure certificate settings'''
+
+In the next dialog the certificate settings can be configured.
+
+'''Important:'''
+
+* It is recommended to use SHA256withRSA (or stronger) as ''signature algorithm''. MD5 or SHA-1 RC4 are no longer supported by modern browsers
+* For valid days choose a suitable value, e.g. 1460 for 4*365 = 4 years
+* The '''CN'' should be the fully qualified hostname to access {{PRODUCT}} (e.g. ecm.mycompany.com)
+* The remaining settings are optional and can be configured as needed
+
+<img src="../images/help/ssl/step3-portecle-generatekey.png" />
+
+'''5) Enter the alias ''jetty'''''
+
+Note: we recommend using ''jetty'' as alias though this is not strictly required. The actual alias that is used by the webserver can be externally configured.
+
+<img src="../images/help/ssl/step4-portecle-alias.png" />
+
+'''6) Enter key pair password (e.g. "fluidops")'''
+
+'''Important:''' the password of the keystore and the key need to be the same
+
+'''7) Check the certificate details'''
+
+<img src="../images/help/ssl/step5-portecle-keyDetails.png" />
+
+'''8) Generate CSR (right-click on the certificate -> Generate Certification Request)'''
+
+Note: you can also use your own CA to create a self-signed certificate or do not sign the certificate at all.
+
+<img src="../images/help/ssl/step6-portecle-generateCSR.png" />
+
+'''9) Send the CSR to a certificate authority and let it be signed'''
+
+'''10) Import the CSR response (right click on the certificate -> Import CA Reply)'''
+
+Note: if your CA is not globally trusted (i.e., if you see an error message like "could not establish trust" while importing the CA reply) you need to import the CA certificate as trusted certificate (Tools -> Import trusted certificate).
+
+<img src="../images/help/ssl/step7-portecle-importCSRReply.png" />
+
+'''11) Save the keystore (e.g. as "mykeystore") and use the same password as for the key (e.g. "fluidops")'''
+
+Once the keystore is created in can be activated as follow:
+
+'''1.''' place the keystore into the "etc" folder of the installation (e.g. etc/mykeystore)
+
+'''2.''' Adjust the config.prop settings
+
+<source>
+httpKeyStore=etc/mykeystore
+httpKeyStorePassword=fluidops
+</source>
+
+See also [[Setup:SSLConfiguration]] for details and advanced settings.
+
+The key for the RMI communication can be generated and installed accordingly. Be aware that the key (or the CA) has to be part of the corresponding truststore to establish the SSL trust.
+
+
+==== Using the Java Keytool ====
+
+The Java Keytool is a commandline tool for certificate management bundled with the JDK. Note that {{PRODUCT}} bundles a JRE in the installation folder.
+
+'''Generate Keys''
+
+This will create a new key pair in a new or existing Java Keystore, which can be used to create a CSR, and obtain an SSL certificate from a Certificate Authority.
+
+The following command generates a 2048-bit RSA key pair, under the specified alias (domain), in the specified keystore file (keystore.jks):
+
+<source>
+keytool -genkeypair -alias <domain> -keyalg RSA -keystore keystore
+</source>
+
+If the specified keystore does not already exist, it will be created after the requested information is supplied. This will prompt for the keystore password (new or existing), followed by a Distinguished Name prompt (for the private key), then the desired private key password.
+
+
+'''Generate CSR For Existing Private Key'''
+
+Use this method if you want to generate a CSR that you can send to a CA to request the issue of a CA-signed SSL certificate. It requires that the keystore and alias already exist; you can use the previous command to ensure this.
+
+This command creates a CSR (domain.csr) signed by the private key identified by the alias (domain) in the (keystore.jks) keystore:
+
+<source>
+keytool -certreq -alias <domain> -file <domain.csr> -keystore keystore
+</source>
+
+After entering the keystore's password, the CSR will be generated.
+
+'''Import Signed/Root Certificate'''
+
+Use this method if you want to import a signed certificate, e.g. a certificate signed by a CA, into your keystore; it must match the private key that exists in the specified alias. You may also use this same command to import root or intermediate certificates that your CA may require to complete a chain of trust. Simply specify a unique alias, such as root instead of domain, and the certificate that you want to import.
+
+The following command imports the certificate (domain.crt) into the keystore (keystore), under the specified alias (domain). If you are importing a signed certificate, it must correspond to the private key in the specified alias:
+
+<source>
+keytool -importcert -trustcacerts -file <domain.crt> -alias <domain> -keystore keystore
+</source>
+
+You will be prompted for the keystore password, then for a confirmation of the import action.
+
+Note: At this point make sure that the original certificate used to create the CSR is removed from the keystore, otherwise it will be confused with the imported signed certificate!
+
+Note: You may also use the command to import a CA's certificates into your Java truststore, which is typically located in $JAVA_HOME/jre/lib/security/cacerts assuming $JAVA_HOME is where your JRE or JDK is installed.
+
+
+'''Generate Self-Signed Certificate in New/Existing Keystore'''
+
+Use this command if you want to generate a self-signed certificate for your Java applications. This is actually the same command that is used to create a new key pair, but with the validity lifetime specified in days.
+
+The following command generates a 2048-bit RSA key pair, valid for 365 days, under the specified alias (domain), in the specified keystore file (keystore):
+
+<source>
+keytool -genkey -alias <domain> -keyalg RSA -validity 365 -keystore keystore
+</source>
+
+If the specified keystore does not already exist, it will be created after the requested information is supplied. This will prompt for the keystore password (new or existing), followed by a Distinguished Name prompt (for the private key), then the desired private key password.
+
+
+'''Converting a certificate in pfx format to pem and importing it to the keystore'''
+
+The keytool alone is capable of doing this using the following command:
+
+<source>
+keytool -importkeystore -srckeystore ECMTEST_BAP.pfx -srcstoretype pkcs12 -destkeystore clientcert.jks -deststoretype JKS
+</source>
+
+'''Listing the contents of a keystore'''
+
+To list the keystore contents, use this command (the fluidOps keystore password is: fluidops):
+
+<source>
+keytool -list keystore keystore
+Enter keystore password:
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+jetty, Feb 4, 2009, PrivateKeyEntry,
+Certificate fingerprint (SHA1): 5B:4D.....
+</source>
+
+
+'''To import another certificate:'''
+
+<source>
+keytool -keystore keystore -import -alias jetty -file YOURCERTIFICATE -trustcacerts
+</source>
+
+Alternatively, you can also import another keystore:
+
+<source>
+keytool -importkeystore -srckeystore YOURKEYSTORE -srcstoretype PKCS12 -destkeystore keystore
+</source>
+
+
+=== Creating / upgrading a trust store ===
+
+A ''trust store'' defines the certificates of authorities that are generally trusted. {{PRODUCT}} ships a default API trust store (i.e. ''fluidops.ca'') which contains the root certificates of the JDK, as well as the self-signed ''fluidops'' certificate used in default installations.
+
+It is best practice to create such trust store based on an existing trust store (e.g., either by using the bundled ''fluidops.ca'' as a basis, or by taking the trust store from the JDK).
+
+Note: during upgrades of {{PRODUCT}} custom trust stores are copied over to the new installation. Unmodified bundled trust stores (i.e. ''fluidops.ca'') are automatically upgraded. If during an upgrade the installer detects that ''fluidops.ca'' was modified, it is copied over to the new installation, and the new version is kept as ''fluidops.ca.original''.

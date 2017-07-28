@@ -1,0 +1,81 @@
+=== PowerShell ===
+
+In {{PRODUCT}} it is possible to execute Powershell scripts both on the local system and a remote system using the Script Execution Widget. PowerShell scripting is also possible in other parts of {{PRODUCT}}, like Patch Plans where they can be executed on freshly deployed systems. 
+
+<img src="../images/help/script-execution-widget.png"/>
+Script Execution Widget
+
+==== Remote PowerShell Execution ====
+
+In this section it is explained how to execute a PowerShell script remotely via {{PRODUCT}}.
+
+===== Script Execution Widget =====
+It is possible to configure, from scratch, a Script Execution Widget to automatically execute a script on a chosen system with the entered credentials. This method can be used, for example, on a setup/personalized page in {{PRODUCT}}. 
+
+'''Example'''
+
+Here is an example of a Script Execution Widget configuration setup to execute a PowerShell script on a remote system.  Place the remote script in the scripts folder of the {{PRODUCT}} on the file system, this script will then be select-able in the widget configuration.
+
+Mandatory arguments/selections for executing PowerShell remotely:
+* remote_host
+* remote_user
+* remote_password
+* Select type: '''RemotePowerShell'''
+
+<source>
+{{#widget: ScriptExecution | 
+ script = 'PSScriptTest.ps1'
+ | type = 'RemotePowerShell'
+ | executionTimeout = 10
+ | label = 'Execute Remote Script'
+ | args = {{ '%remote_host' | '%remote_user' | '%remote_password' }}
+ | userInput = {{ 
+      {{ name = 'remote_host'
+       | componentType = 'SIMPLE'
+       | displayName = 'Remote Host'
+       | description = 'Hostname/IP Address of remote System where Script is executed.'
+       | required = true
+       | presetValue = 'Winsystem1'
+      }} | 
+      {{ name = 'remote_user'
+       | componentType = 'SIMPLE'
+       | displayName = 'Remote User'
+       | description = 'Remote User to be used for executing Script on Remote System.'
+       | required = true
+       | presetValue = 'Administrator'
+      }} | 
+      {{ name = 'remote_password'
+       | componentType = 'PASSWORD'
+       | displayName = 'Remote Password'
+       | description = 'Remote User Password to be used for executing Script on Remote System.'
+       | required = true
+       | presetValue = 'password'
+      }} }}
+ | onFinish = 'inlineHTML'
+ | useJob = true
+}}
+</source>
+ 
+{{Help:RemotePowershellVMActionsButton}}
+
+===== Prepare Local & Remote Systems =====
+
+In order to prepare for any type of remote PowerShell execution the local and remote systems must be setup to allow for it. If this has not yet been setup just execute the following steps.
+
+First, execute this PowerShell command on the remote system to enable it for PowerShell remoting:
+
+<source>
+enable-psremoting -force
+</source>
+
+It is possible to also execute on systems in a separate domain, you need to execute this command on the remote system. Changing this registry item allows remote users who are members of the Administrators group to run with Administrator privileges in a different domain, by default these users in another domain will only be allowed basic user rights and not admin rights.
+
+<source>
+New-Itemproperty -name LocalAccountTokenFilterPolicy -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -propertyType DWord -value 1
+</source>
+
+If using an IP address and the system is in another domain or uses a local user, execute this PowerShell command to allow for all systems to be added to the local machines trusted host list:
+
+<source>
+wsman:localhost\client\trustedhosts -Value *<domain>
+</source>

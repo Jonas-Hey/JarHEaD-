@@ -1,0 +1,8 @@
+Mapping rules need to know what part of the source data to use.
+Please choose or create a 'logical table' that specifies the input data for this mapping rule.
+
+{{#widget: com.fluidops.iwb.r2rml.widget.LogicalTableEditorWidget | 
+ reloadOnSave = true
+ | triplesMapURI = $this$
+ | collectionId = '{{{collectionid}}}'
+}}

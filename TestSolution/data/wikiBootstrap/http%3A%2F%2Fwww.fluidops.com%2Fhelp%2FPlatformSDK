@@ -1,0 +1,138 @@
+= The fluidOps Platform SDK =
+
+The fluidOps Platform constitutes the foundation for various apps and is designed with extensibility in mind. For this purpose the platform provides a comprehensive SDK (Software Development Kit) allowing developers to build customized applications, so-called '''apps''', targeting specific domains or use cases.
+
+In the following we will give an overview about the particular SDK components and present an app development process on top of the platform.
+
+
+== Overview ==
+
+The Platform SDK comprises various components serving as customization and extension points in different dimensions, including data related components, the Semantic Wiki Engine, as well as core APIs making it possible to configure and access system functionality. These components can be used to build apps on top of the platform, which convert a raw installation of the core platform into a domain-specific, end-user oriented application. Apps are highly reusable artifacts that can be seamlessly deployed through a RESTful API or by placing the zipped app file into a dedicated deployment directory.
+
+=== SDK development process ===
+
+The SDK also brings best practices and guides for app development, which are summarized in the development process sketched in the following. Beyond mechanisms for versioning and upgrading apps, there are guidelines for collaborative development, maintenance, and staging during the development process. The platform offers, for instance, a dedicated UI facility for [[Help:WikiManagement| exporting wiki pages]] from a running system, as well as as an automated backup process for restoring old app versions on demand.
+
+Details about this process are available in the [[Help:BuildingSolutions| building apps]] section.
+
+=== SDK components ===
+Apps typically require customization and changes amongst several system components. The following table describes the individual components of the APIs and gives a short introduction for each of them.
+
+{| class="wikitable" width="90%"
+! SDK !! Description
+|-
+| [[Help:SDK-Bootstrap| Wiki pages and Data bootstrap]] || This SDK component makes it possible to bootstrap data, ontologies, and pre-customized wiki pages. This way, it becomes possible to bootstrap the data that is required for you application, define ontologies that describe the domain of interest, and to set up a rich UI using user-facing Wiki pages, including a custom start page for your application.
+|-
+| [[Help:SDK-SystemConfiguration| System configuration]] || Apps may define configuration settings, which drive the behavior of the system behavior at runtime. These settings include a variety of options spanning various dimensions of the system, including database configuration, authentication settings, UI behavior, etc.
+|-
+| [[Help:WidgetSDK| Widget SDK]] || Using the Widget SDK it becomes possible to include new custom widgets into apps, which can be embedded into Semantic Wiki pages. Although the Platform comes with a multitude of widgets for visualization, interactive exploration, analytics, and the authoring of data, this is a vital feature for domain-specific applications with very specific requirements. 
+|-
+| [[Help:ProviderSDK| Provider SDK]] || The Provider SDK makes it possible to include new custom providers into apps. Again, although the Platform comes with a large number of data providers supporting the extraction of data from data sources such as relational databases, CSV, and XML files, it may be necessary to write dedicated custom providers to extract data from legacy systems that are not supported by the platform.
+|-
+| [[Help:APIExtensions|API extensions]] || The API extension SDK makes it possible to easily define and hook in new services into the Platform, which can be exposed via the Platform's REST endpoint or via the command line interface. These APIs can either be stand-alone modules or based on general system functionalities.
+|-
+| [[Help:ValueResolverExtensions| Value Resolver extensions]] || Value Resolvers enable the formatting and post-processing of data items, in order to enable seamless display of data items in the Wiki-based UI. Using the Value Resolver SDK component, it is possible to define new Value Resolvers and embed them into an app.
+|-
+| [[Help:UICustomization| UI customization]] || The SDK comes with mechanism to pre-customize the User Interface. This can be done by adding predefined Wiki pages based on the platforms template system, customizing the views for triple editing, graphs, and Pivot, and setting up widgets that show up based on the semantics of the underlying data.
+|-
+| [[Help:SDK-Workflows| Workflows]] || Using the SDK, it becomes easy to define custom, data-driven workflows that can be triggered from the UI.
+|}
+
+The SDK documentation also provides some [[Help:SDK-UsefulSnippets| useful snippets]] that are relevant for app development.
+
+=== App Structure ===
+Essentially, an app comes with a predefined structure defining where to place which SDK-based extensions. In the following, we describe the basic structure of apps, referring back to the SDK components listed above. Details about the structure can then be found in the detailed API documentation.
+The general app installation procedure produces an overlay of the app file structure and that of the base installation.
+Libraries, scripts, web assets etc. are copied. Name clashes between apps should be avoided if the Apps should
+work together (i.e. a user installs and uses both of them in the same platform instance). If an app overrides
+a platform file (e.g. the product logo), apps must be re-installed after a platform upgrade.
+Various configuration settings such as the list of available widgets or the list of registered providers are merged, i.e.
+the result is the union of platform and apps.
+
+==== File ''config.prop'' ====
+The top-level configuration file is located in the root directory of the app, see [[Help:SDK-SystemConfiguration| System configuration]] for detailed configuration.
+
+==== Folder ''config'' ====
+The ''config'' folder contains various configuration options, including the registration of new widgets and providers, namespaces, and ACL sections. A detailed description can be found in the [[Help:SDK-SystemConfiguration| System configuration]] section.
+
+==== Folder ''data'' ====
+The ''data'' folder contains all data that is required by the app, including data to be bootstrapped, ontologies to be bootstrapped, as well as the wiki page definitions themselves. A more detailed description can be found in the [[Help:SDK-Bootstrap| Wiki pages and Data bootstrap]] section.
+
+==== Folder ''lib'' ====
+The ''lib'' folder is the place where you can put additional libraries required by your app. It is recommended to add one subdirectory for every library, containing the library .jar file as well as a .lic file describing licensing information.
+
+==== Folder ''scripts'' ====
+The ''scripts'' folder is the default place for groovy scripts that are referenced by apps, e.g. as part of the [[Help:SDK-Workflows| Workflows]] API.
+
+==== Folder ''src'' ====
+The ''src'' folder is the right place to store additional Java source files. For instance, this is the place where you should store additional widgets (developed as described in the [[Help:WidgetSDK| Widget SDK]]) or providers (developed as described in the [[Help:ProviderSDK| Provider SDK]]).
+
+==== Folder ''webapps'' ====
+The ''webapp'' folder of an app allows to add additional configuration such as CSS files, logos and images, etc. used by the platform web application. As such, it is of high relevance for [[Help:UICustomization| UI customization]].
+
+== Getting started ==
+
+The following tutorial shows how a simple app project can be set-up, customized and deployed. 
+
+Note: this tutorial assumes that you have the fluidOps platform installed into the directory <nowiki><APPLICATION-WORKINGDIR></nowiki>, and that it has already been started once. Furthermore, we assume that the IDE Eclipse is available.
+<br><img src="../images/error.png" height="16" /> On Windows make sure to install the platform in a directory (i.e. other than <i>C:\Program Files</i>) where write access is enabled.
+
+# Run the SDK setup script ''setup.cmd/sh'' contained in the distribution in the application working directory (i.e., fiwb/sdk/* or fecm/sdk/*). This script creates a pre-configured Eclipse project for your app in the selected workspace. 
+# Follow the instructions and enter a project location of your choice (called <nowiki><SOLUTION-PATH></nowiki> in the following)
+# Run Eclipse and import the just created project into your workspace
+# Import the contents of the sample app (<nowiki><APPLICATION-WORKINGDIR></nowiki>/{fiwb|fecm}/sdk/DemoSolution.zip) into this project
+# Run the launch configuration ''<nowiki><SOLUTION-PATH></nowiki>/Start_%ProjectName%.launch'' (Right-Click => Run-As) 
+
+You can see the automatically deployed app in your local instance by navigating to the instance at https://localhost:50443.
+
+To create a app artifact, please use the launch configuration ''Build Solution Artifact'' available in ''<nowiki><SOLUTION-PATH></nowiki>/build/launch''.
+
+For further details and actions please refer to the section on [[Help:BuildingSolutions| building apps]]
+
+== Additional Resources ==
+
+A video demonstrating this feature can be found [https://www.youtube.com/watch?v=MnOMcZT7ox8&rel=0 here] 
+<br/>
+
+== Debugging ==
+
+Once the eclipse project is setup and IWB started in development mode you can start debugging:
+
+# Create a Code Execution Widget on an empty wiki page (see [[Help:CodeExecution]] for details)
+# Write the backend code referenced in the widget (do not forget the callable from widget annotation along with an authorization name which can be referenced from ACLs: @CallableFromWidget(authorization="test.auth") public void callMe(...) )
+# Set a breakpoint in the code (by double clicking to the left of the line)
+# Point your browser to the wiki page and start the code execution
+# Eclipse will jump to the breakpoint, halt the execution and display the stack and variables
+# Note that you can change variables and even the code while debugging
+# Optionally, you can track the job execution on the Job page in the browser (if the widget CodeExecutionWithJob is used)
+
+When using Groovy instead of java, make sure you install the respective plugins like Greclipse (http://groovy.codehaus.org/Eclipse+Plugin).
+In order to use remote debugging, you can activate the debug ports using the JVM options. 
+The following lines should be copied into new file backend-user.conf 
+(with the exact numbers, as this overwrites the corresponding dummy entries in backend-conf):
+
+<source>
+wrapper.java.additional.11=-debug 
+wrapper.java.additional.12=-Xrunjdwp:transport=dt_socket,address=50081,server=y,suspend=n
+</source>
+
+The file backend-user.conf is preserved over upgrades and can be used to add user-specific entries.
+
+== JMX / RMI Access ==
+
+In the Java world, there are several tools which allow performance measurements and debugging such as JConsole
+which is shipped with the standard JDK. These tools often use JMX to connect to Java processes.
+The fluidOps platform supports these management protocols. To enable then, start the platform with the following
+system parameters:
+
+<source>
+-Dcom.sun.management.jmxremote 
+-Djava.rmi.server.hostname=[IP address to bind RMI services to]
+</source>
+
+The first enables JMX. The second deactivates RMI multi-homing. This is a feature which instructs the RMI service to 
+bind itself to multiple NICS if the backend is setup with more than one network interface.
+The setting above makes sure the backend only connects locally, making sure that local tools
+get access to the service via JMX.
+
+Note that the config option "enableJMX" exposes additional MBeans.

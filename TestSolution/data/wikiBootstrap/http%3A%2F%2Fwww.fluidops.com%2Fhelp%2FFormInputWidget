@@ -1,0 +1,171 @@
+=== Form Input Widget ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = 'com.fluidops.iwb.widget.FormInputWidget'
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = 'com.fluidops.iwb.widget.FormInputWidget'
+}}
+
+Many times, especially when working with the [[Help:WizardWidget|WizardWidget]], data from user input needs to be somehow put into the repository to be used for queries or other kind of further processing. This can be achieved with the FormInputWidget. The widget can be configured to show a set of input fields in typical HTML form style, which means, that each input parameter is shown as a row, consisting of a label on the left and its input component on the right side. Available input components can be found [[#InputComponents|below]].
+
+==== Modes ====
+The FormInputWidget can be run in two different modes, stand-alone or wizard mode.
+
+===== Stand-Alone Mode =====
+In this mode, the FormInputWidget will create statements with the current resource used as subject. The following example illustrates this.<br/>
+If there is a parameter <tt>param1="someValue"</tt> and the widget is placed on the wiki page <tt>:myPage</tt>the resulting statement would be (with URIs being created in the default namespace)
+<source>:myPage :field1 "someValue"</source>
+
+===== Wizard Mode =====
+In contrast to the stand-alone mode, the wizard mode sets the subject of resulting statements to the URI of the wizard instance, where the FormInputWidget is used.
+
+<span id="InputComponents"/>
+==== Input Components ====
+Sufficient for most use cases a set of standard components is provided, which can be used to enter data in different manners. Most of the components allow to define default or pre-selected values (''Preset Value''). For custom input fields (i.e. a different data input representation), the component type ''CUSTOM'' is selectable in the configuration. Components can be configured to be ''required''. Optionally, for each component a custom validator can be applied to check for specific data validation.
+
+=====SIMPLE=====
+<img src="../images/help/FormInputWidget/simple.png"/>
+<br/>
+This component is rendered as a standard text input field where the user can enter short Strings (for longer text input see TEXTAREA) or even URIs. The component allows to pre-define values for the user to select from or a pre-defined value to be set as default.
+
+=====PLAIN=====
+If the input string is supposed to be rendered and saved as a plain text value without evaluation of the [[Help:AdvancedWidgetConfiguration#Dynamic_Operators| operator syntax]] the PLAIN component should be used.
+
+=====LIST=====
+<img src="../images/help/FormInputWidget/list.png"/>
+<br/>
+If you have more than one value, that should be saved for a specific predicate, this component would be your choice. Values can be added with the "+" icon and removed by clicking on the "X" icon.
+
+=====CONFIG=====
+A configuration consists of a custom set of input fields and is defined by a custom class (''component class'' needs to point to the FQDN of the config class), which contains public fields, annotated by ''com.fluidops.iwb.model.ParameterConfigDoc''. The following example shows how it's to be used.
+<br/>
+* Wiki Source of a FormInputWidget, that uses a custom CONFIG class
+<source>{{#widget: com.fluidops.iwb.widget.FormInputWidget | 
+ userInput = {{ 
+      {{ name = 'customConfig'
+       | componentClass = 'some.package.MyCustomFormConfig'
+       | componentType = 'CONFIG'
+      }} }}
+}}</source>
+* Java Source of the custom CONFIG class
+<source>public class MyCustomFormConfig
+{
+	@ParameterConfigDoc(type=Type.SIMPLE, displayName="param1", desc = "some desc")
+	public int number;
+
+	@ParameterConfigDoc(type=Type.SIMPLE, displayName="param2", desc = "some desc")
+	public String text;
+}</source>
+* Rendered result
+<img src="../images/help/FormInputWidget/config.png"/>
+=====DROPDOWN=====
+<img src="../images/help/FormInputWidget/dropdown.png"/>
+<br/>
+The dropdown component allows the user to select one single value from a list, that's pre-populated by the ''Select Values'' parameter, which can either be constant values or calculated by a query.
+=====TEXTAREA=====
+<img src="../images/help/FormInputWidget/textarea.png"/>
+<br/>
+The text area can be used for storing long inputs of textual data.
+=====CHECKBOX=====
+<img src="../images/help/FormInputWidget/checkbox.png"/>
+<br/>
+The check box component can be used to input boolean data, which can either be ''True'' or ''False''.
+=====PASSWORD=====
+<img src="../images/help/FormInputWidget/password.png"/>
+<br/>
+To enter secret data, the password component can be used. Since data put into the password field creates a triple in the repository (which is queriable) the created triple only consists of a reference to an entry from the secret storage, where passwords are stored encrypted (see pictures).
+<div align="center">
+<img src="../images/help/FormInputWidget/passwordStore.png" style="margin: 5px;"/>
+<img src="../images/help/FormInputWidget/passwordRetrieve.png" style="margin: 5px;"/>
+</div>
+=====CUSTOM=====
+Apart from the default set of components, custom components can be added to the form as well. In this case the ''Component Class'' parameter has to be set to the FQDN of your custom component's class. The class needs to be derived from ''com.fluidops.iwb.ui.configuration.CustomConfigurationFormElementFactory''.
+
+====Input Validation====
+
+Each input field can be configured to use a specific input validator which checks for proper input values. This is achieved by entering a ''Validator'' and its corresponding ''Validator Parameters'' in the ''Validator Config'' of an input field's configuration. There is a default set of validators to choose from; alternatively, custom validators can be specified by entering their fully qualified class name. A custom validator needs to extend ''com.fluidops.ajax.components.FForm$Validator'' and provide either a default constructor or one with only String parameters (which is invoked with the parameters from the configuration).
+
+{| class="wikitable"
+! Validator
+! Parameters
+! Description
+|-
+| RangeValidator
+| lowerBound, upperBound
+| Checks for numbers in a range, defined by an upper and a lower bound (inclusive)
+|-
+| NumberValidator
+| ''none''
+| Checks for input value being a number
+|-
+| FloatValidator
+| ''none''
+| Checks for input value being a float value
+|-
+| EmailValidator
+| ''none''
+| Checks for input value being a valid email address
+|-
+| NotEmptyValidator
+| ''none''
+| Checks for input value being not empty
+|-
+| PosNumberValidator
+| ''none''
+| Checks for input value being a positive number (can be ''0'')
+|-
+| PosNumberNullValidator
+| ''none''
+| Checks for input value being a positive number (must not be ''0'')
+|-
+| NoCommaValidator
+| ''none''
+| Checks for input value not containing any commas
+|-
+| BooleanValidator
+| ''none''
+| Checks for input value being a boolean value
+|-
+| LongValidator
+| ''none''
+| Checks for input value being a number in the range of java's ''long'' primitive
+|-
+| URLValidator
+| ''none''
+| Checks for input value being a valid URL
+|}
+
+====Basic Example====
+<source>{{#widget: com.fluidops.iwb.widget.FormInputWidget | 
+ userInput = {{ 
+      {{ name = 'field1'
+       | required = true
+       | componentType = 'CHECKBOX'
+      }} | 
+      {{ selectValues = $SELECT ?user WHERE { ?user a foaf:Person }$
+       | name = 'field2'
+       | required = true
+       | componentType = 'DROPDOWN'
+      }} | 
+      {{ selectValues = {{ '"literal"' | ':uri' }}
+       | name = 'listValue'
+       | componentType = 'LIST'
+      }} | 
+      {{ name = 'field4'
+       | componentType = 'PASSWORD'
+      }} | 
+      {{ name = 'field6'
+       | componentType = 'TEXTAREA'
+      }} | 
+      {{ name = 'field7'
+       | componentType = 'SIMPLE'
+       | presetValue = 'Hello World'
+      }} }}
+}}</source>

@@ -1,0 +1,6 @@
+
+<http://www.fluidops.com/resource/ZuordnungPLZ/MappingCollection07328227079564684190861525479721> a <http://www.fluidops.com/ontologies/r2rmlExtension/TriplesMapCollection> ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Mapping Collection for Data Source http://www.fluidops.com/resource/ZuordnungPLZ" ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/sourceSchema> <http://www.fluidops.com/resource/ZuordnungPLZ/MetaData> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/dataSource> <http://www.fluidops.com/resource/ZuordnungPLZ> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/containsTriplesMap> <http://www.fluidops.com/resource/triplesMap90645830674038074805100814524406> .

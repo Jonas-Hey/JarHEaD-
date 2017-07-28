@@ -1,0 +1,43 @@
+=== Groovy Task ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.GroovyTask
+| type = 'DESCRIPTION'
+}}
+
+The groovy script requires the method: '''go()'''
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.GroovyTask
+| type = CONFIGURATION
+}}
+
+==== Quick guide ====
+
+Save this code example as groovy file(e.g. example.groovy) in the scripts folder.
+
+<source>
+public void go() throws Exception{
+	throw new Exception("Example");
+}
+</source>
+
+Note: The Groovy script needs into the folder: "scripts"
+* Go to [[Admin:Tasks|Recurring Tasks]]
+* Click '''Add Task'''
+# Choose in '''Task''': GroovyTask
+# Enter in '''Identifer''' a name(e.g. exampleTask)
+# Enter in '''Scheduler''' the time in minutes(e.g. 60)
+# Enter/Choose in '''Script''' the script relative to the scripts folder (e.g. Example.groovy)
+# Click '''Submit'''
+<img src="../images/help/TaskScheduler/AddGroovyTask.png" alt="IMAGE:Add Groovy Task" style="border:1px solid black;"/>
+
+Note: It is possible to create the go() method with arguments:
+<source>
+public void go(String s) throws Exception{
+	throw new Exception(s);
+}
+</source>

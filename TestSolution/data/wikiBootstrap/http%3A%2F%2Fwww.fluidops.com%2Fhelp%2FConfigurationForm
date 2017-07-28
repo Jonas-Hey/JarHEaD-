@@ -1,0 +1,100 @@
+== Configuration Form ==
+The common configuration interface is used to specify parameters of different system components, in particular:
+* Active providers specified on the [[ Admin:Providers | Data Providers ]] page.
+* Widgets embedded to wiki pages using the [[ Help:Widgets | wiki editor ]].
+* Widgets linked to semantic resources on the [[ Admin:Widgets | Widget Configuration ]] page.
+
+<img src="../images/help/configuration-form.png" width="700px" />
+
+The example above shows configuration parameters of a widget to be added to a wiki page.
+The configuration form shows the type of the edited widget on top (in this case ''TableResult'') and the list of its configuration parameters. 
+The name of each configuration parameter is shown on the left, while its corresponding edit control is displayed on the right. 
+The information about the meaning of the parameter is shown in a tooltip when hovering the mouse cursor over the information sign (displayed as the ''i'' symbol next to the parameter's edit control). 
+The example above shows the information tooltip for the ''Query Parameters'' setting.
+
+Depending on the type of the widget/provider, some configuration parameters are required to have a value (their names are marked with the star '*' sign, like for the 'query' parameter in the example above), while others are optional and can be left unspecified.
+
+The edit control for each parameter depends on its type: e.g., boolean or multiple-choice parameters are set using a drop-down box instead of the default text edit field. 
+Furthermore, the input of the text edit boxes gets validated for its conformance to the expected datatype: e.g., entering ''abcdef'' if a numeric value is expected will make the configuration invalid. Edit boxes with invalid values are displayed in red, while green indicates that the value is in an acceptable format.
+
+Experienced users can switch to the advanced mode to find certain additional settings that are applicable for the respective widget (e.g., in the case of the TableResultWidget it is possible to specify the target repository).
+
+=== Editing lists and complex structures ===
+Some parameters can themselves be composite, for example containing lists of values or complex structures including different sub-parameters. In the example above, the parameters ''rowActions'' and ''selectedRowActions'' represent lists of such multi-parameter structures. 
+For lists, new items can be added by clicking on the '+' icon shown under the last element. 
+A list can be expanded/collapsed by clicking on the 'show' and 'hide' icons shown on top of the list.
+
+If a parameter value represents a complex structure, instead of a single input element (text edit box, drop-down box, or text area) a sub-form is shown, which displays edit controls for all sub-parameters. 
+The values can be entered in the sub-form in the same way as in the top-level form.
+
+=== Editing SPARQL queries ===
+Sometimes, a SPARQL query or a query template is expected as a value of a parameter  (e.g., the ''query'' parameter in the example above). Such a query can be edited as a usual text field in its corresponding text area.
+In addition, the following advanced tools are available:
+
+==== Graphical Query Editor ====
+
+The graphical query editor allows composing queries interactively based on ontologies and the live data
+stored in the system. The editor contains the following elements:
+
+* Selecting the base type: this is the first action you take. Selecting a base type lists all instances of this type initially.
+* Distinct results: removes duplicate entries from the result table. 
+* Limit results: applies a limit to the number of rows retrieved. Use this setting for large databases.
+* Select variable: once other columns are added to the result, this combo box allows selecting a column for other operations.
+* Optional: declares the selected variable to be optional (a result is still included, even if the variable in not present for a given result row).
+* Hide in results: the selected variable is removed from the results, however, it can still be used to filter rows or join other columns.
+* Filter: adds a filter expression such as '''?size=XL'''. Possible examples are shown in the pop up.
+* Rename: renames the selected column
+* Sort: sorts the result on the selected column
+* Aggregate: aggregates the selected column. All visible, unselected columns are used for grouping. Consider the following example: employees and projects are listed in the result. The variable employee is selected and aggregation count is chosen. Then, the result shows the number of employees per project.
+* Add to result: allows adding additional columns to the result. The choices offered in the dropdown take incoming and outgoing relationships of the selected column into account.
+* Undo last change: undoes the last change to the query and corresponding result.
+* Result preview: shows the result of the query on the current database contents. Note that the preview is limited to 100 results (unless a LIMIT in the query is set, in which case this is used)
+* Composed query: shows the native SPARQL query.
+
+Note that the graphical query editor does not support the full expressiveness of the SPARQL language.
+For instance, sub queries are not supported. However, most queries can be can be created and edited.
+Note that queries can be changed using the textual editor afterwards. If you do this, you might
+not be able to use the graphical editor anymore.
+
+===== Graphical Query Editor Advanced Use: Template parameters =====
+
+The graphical query editor supports '??' as a placeholder for the 'this' argument in Template pages.
+
+As '?? in a template is not bound to a value, by default the query preview is not able to show any results.
+
+However, the query editor can be given a hint which instance to use for preview in the query comment:
+<code>
+ #?? instanceUri
+</code>
+
+Example: we want to edit a query which should be included on a user instance page.
+So the '??' will represent the user for which the template is rendered.
+Therefore we set the instance to use for preview to sample user 'admin':
+
+<code>
+ #?? <http://www.fluidops.com/User/byName/admin>
+ SELECT * WHERE
+ {
+   ?? rdfs:label ?label
+ }
+</code>
+
+==== Query Catalog ====
+
+Frequently used queries can be stored and maintained in the query catalog in order to avoid
+copying the same query string multiple times in the platform. If a catalog query is to be used
+in a configuration form, it can simply be selected from a table which pops up when pressing the catalog button.
+
+==== Native SPARQL Editor ====
+
+The native ''SPARQL editing dialog'' supports syntax highlighting, query validation, and content autosuggestion. The dialog can be opened using 'SPARQL' button 
+
+<img src="../images/help/sparql-dialog.png" width="800px" />
+
+The dialog allows editing a SPARQL query in the same way as using the [[Help:SPARQLEndpoint | SPARQL endpoint interface]].
+The parameter value is set when you click on the 'Done' button.
+
+=== Operator input form ===
+An alternative way to specify parameter values is to use the [[Help:AdvancedWidgetConfiguration#Dynamic_Operators| dynamic operators]] to specify how to select the values automatically from the underlying data store. 
+
+A dynamic operator can include a SPARQL SELECT query which defines the values of the parameters. To open this dialog for a given configuration option, click on the <img src="../images/widget/op.png"/> button. The dialog contains the SPARQL query editing form as well as list of parameters, which can be used as projections in the query to define the respective config setting. Consider the example given on [[Help:GMap]] for illustration, where the markers are retrieved via a SELECT query.

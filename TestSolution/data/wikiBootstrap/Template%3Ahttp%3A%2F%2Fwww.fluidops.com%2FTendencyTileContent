@@ -1,0 +1,25 @@
+<!-- 
+Inner template used by the Template:TendencyTile.
+
+Parameters: 
+    the parameter {{{label}}}' - short description for the numerical values
+    the parameter {{{tendency}}} - one of 'up', 'down' or 'neutral'
+    the parameter {{{percent}}} - number between 0 and 100, 
+    the parameter {{{diff}}} - the absolute difference (optional)
+    the parameter {{{value}}} - the absolute number
+-->
+<div class="tendency__row"> 
+    <div class="tendency__mrow {{{tendency}}}"> 
+        <div class="tendency__col"><div class="tendency-icon"></div></div>  
+        <div class="tendency__col">
+            <div>{{{label}}}</div>
+            <div class="tendency-relative-values">
+                <span class="tendency-percent-value">{{{percent}}}</span>
+                <span class="tendency-diff-value">{{#if: {{{diff|}}} | ({{{diff}}}) }}</span>
+            </div>
+        </div>  
+    </div> 
+    <div class="tendency__mrow"> 
+        <div class="tendency__nr">{{{value}}}</div>  
+    </div> 
+</div>

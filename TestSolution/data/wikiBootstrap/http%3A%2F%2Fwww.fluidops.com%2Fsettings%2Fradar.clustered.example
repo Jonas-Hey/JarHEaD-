@@ -1,0 +1,24 @@
+<source>
+{
+	"type": "radar",
+        "color": "#5D5F60",
+        "colors": ["#FCA105","#129B06"],
+        "valueAxes": [ {
+                   "minimum": 0,
+                   "autoGridCount": false,
+                   "axisAlpha": 0.2,
+                   "fillAlpha": 0.1,
+                   "fillColor": "#FFFFFF",
+	           "dashLength": 4,
+                   "gridAlpha": 0.4
+                   } ],
+        "graphs": [ {
+                   "balloonText": "[[category]]: [[value]]",
+                   "bullet": "round",
+                   "bulletSize": 4,
+                   "fillAlphas": 0.3
+                   } ],
+	"allLabels": [],
+	"balloon": {}
+}
+</source>

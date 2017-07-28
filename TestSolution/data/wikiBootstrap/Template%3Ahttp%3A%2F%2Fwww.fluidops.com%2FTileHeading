@@ -1,0 +1,19 @@
+<!-- 
+The template for a tile heading
+
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+-->
+
+<div class="heading">
+{{#if: {{{headingLink|}}}
+ | [[{{{headingLink}}}|{{{heading|Tile Heading}}}]]
+ | {{{heading|Tile Heading}}}
+}}
+</div>
+{{#if: {{{description|}}}
+ | <div class="tileDescription">
+{{Template:fluidops:TileDescription | description={{{description|}}} }}
+</div>
+ | 
+}}

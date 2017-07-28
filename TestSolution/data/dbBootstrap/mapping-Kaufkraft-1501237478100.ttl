@@ -1,0 +1,77 @@
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix twitter: <http://twitter.com/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix r2rml: <http://www.w3.org/ns/r2rml#> .
+
+
+default:logicalTable01216298521207345341379346909494 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TABELLE1" .
+
+default:objectMap00344655598795276944659072361471 a r2rml:ObjectMap ;
+	r2rml:column "KAUFKRAFT" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap28774117147291720749940637493604 a r2rml:ObjectMap ;
+	r2rml:column "GESAMTEINKOMMEN" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap95744734216922069361211082458648 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/BUNDESLAND_{BUNDESLAND}" .
+
+default:predicateMap22695353118304774863385825332739 a r2rml:PredicateMap ;
+	r2rml:constant default:gesamteinkommen .
+
+default:predicateMap34375237387009503439091112219835 a r2rml:PredicateMap ;
+	r2rml:constant default:kaufkraft .
+
+default:predicateMap44207559176832850114993503055830 a r2rml:PredicateMap ;
+	r2rml:constant default:bundesland .
+
+default:predicateObjectMap45407133146571747247341346896426 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap28774117147291720749940637493604 ;
+	r2rml:predicateMap default:predicateMap22695353118304774863385825332739 .
+
+default:predicateObjectMap57966875348452000728159199003781 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap00344655598795276944659072361471 ;
+	r2rml:predicateMap default:predicateMap34375237387009503439091112219835 .
+
+default:predicateObjectMap93655570781824961592334937669914 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap95744734216922069361211082458648 ;
+	r2rml:predicateMap default:predicateMap44207559176832850114993503055830 .
+
+default:subjectMap44668182961827989756854297940044 a r2rml:SubjectMap ;
+	r2rml:class default:KAUFKRAFT ;
+	r2rml:template "http://www.fluidops.com/resource/BUNDESLAND_{BUNDESLAND}" .
+
+default:triplesMap82287401501611884228907973124467 a r2rml:TriplesMap ;
+	rdfs:label "Kaufkraft" ;
+	r2rml:logicalTable default:logicalTable01216298521207345341379346909494 ;
+	r2rml:predicateObjectMap default:predicateObjectMap45407133146571747247341346896426 , default:predicateObjectMap57966875348452000728159199003781 , default:predicateObjectMap93655570781824961592334937669914 ;
+	r2rml:subjectMap default:subjectMap44668182961827989756854297940044 .

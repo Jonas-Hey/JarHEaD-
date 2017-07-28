@@ -1,0 +1,18 @@
+=== Trigger Task ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.TriggerTask
+| type = 'DESCRIPTION'
+}}
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.TriggerTask
+| type = CONFIGURATION
+}}
+
+==== Quick guide ====
+
+This task evaluates a SPARQL select query. Subsequently, the task provided is run for each resource in the result set (the first column of the result table). The tasks are run with the context of the respective resource (also see [[Help:Tasks]]).

@@ -1,0 +1,51 @@
+{{#widget: ActionableResult | 
+ query = 'Java:com.fluidops.iwb.util.LoggerManager#getLoggers'
+ | rowActions = {{ 
+      {{ clazz = 'com.fluidops.iwb.util.LoggerManager'
+       | method = 'setLogLevel'
+       | passContext = false
+       | render = 'btn'
+       | label = 'Change Log Level'
+       | args = {{ '?:loggerName' | '%level' }}
+       | userInput = {{ 
+            {{ name = 'level'
+             | componentType = 'DROPDOWN'
+             | displayName = 'Log Level'
+             | required = true
+             | dataType = 'xsd:string'
+             | presetValue = '?:inheritedLevel'
+             | selectValues = {{ '"OFF"' | '"FATAL"' | '"ERROR"' | '"WARN"' | '"INFO"' | '"DEBUG"' | '"TRACE"' | '"ALL"' }}
+            }} }}
+       | onFinish = 'reloadComponent'
+      }} }}
+ | selectedRowActions = {{ 
+      {{ clazz = 'com.fluidops.iwb.util.LoggerManager'
+       | method = 'setLogLevels'
+       | showForEmptyTable = false
+       | passContext = false
+       | render = 'btn'
+       | label = 'Change Log Levels'
+       | args = {{ '?:loggerName' | '%level' }}
+       | userInput = {{ 
+            {{ name = 'level'
+             | componentType = 'DROPDOWN'
+             | displayName = 'Log Level'
+             | required = true
+             | dataType = 'xsd:string'
+             | presetValue = '?:inheritedLevel'
+             | selectValues = {{ '"OFF"' | '"FATAL"' | '"ERROR"' | '"WARN"' | '"INFO"' | '"DEBUG"' | '"TRACE"' | '"ALL"' }}
+            }} }}
+       | onFinish = 'reloadComponent'
+      }} }}
+ | numberOfDisplayedRows = 10
+ | columnConfiguration = {{ 
+      {{ variableName = 'loggerName'
+       | displayName = 'Logger'
+      }} | 
+      {{ variableName = 'level'
+       | displayName = 'Level'
+      }} | 
+      {{ variableName = 'inheritedLevel'
+       | displayName = 'Inherited Level'
+      }} }}
+}}

@@ -1,0 +1,14 @@
+== Data Analytics ==
+
+Data Analytics describes a process where data from the central system is extracted and fed though an external engine or service in order to generate new information.
+This information is then integrated into the system again via the provider mechanism.
+
+Some functionalities are build into {{PRODUCT}} 
+
+* [[Help:FormulaProvider]]
+* [[Help:SPARQLEndpointProvider]]
+
+In addition, there are a number of 3rd party apps which can be used. Follow the links
+to get more information including screenshots of the integrated solution:
+
+* <a href="https://appcenter.fluidops.com/resource/?uri=http%3A%2F%2Fwww.fluidops.com%2Fapplication%2FStatisticalDataManager">Statistical Data Manager</a>

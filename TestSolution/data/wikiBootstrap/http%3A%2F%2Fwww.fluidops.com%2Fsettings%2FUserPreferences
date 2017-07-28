@@ -1,0 +1,71 @@
+= User preferences =
+
+On this page, the user's preferences can be set.
+
+== Preferred language ==
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.user.UserPreferencesUIUtil'
+ | method = 'setLocale'
+ | passContext = true
+ | render = 'inline'
+ | label = 'Set Locale'
+ | args = {{ '%locale' }}
+ | userInput = {{ 
+      {{ name = 'locale'
+       | componentType = 'PLAIN'
+       | displayName = 'Preferred language'
+       | description = 'User's preferred language'
+       | dataType = 'xsd:string'
+       | presetValue = $Java:com.fluidops.iwb.util.user.UserPreferencesUIUtil#getLocaleAsTupleQueryResult$
+       | selectValues = {{ '"en"' | '"de"' }}
+      }} }}
+ | onFinish = 'reloadComponent'
+}}
+
+{{Settings:Breadcrumbs}}
+
+
+
+<!--
+== Table Personalization (turn on/off) ==
+
+Table personalization setting enables user-customizable table settings, such as number of item per page, sorting by column etc. If this feature is turned on, the user can customize these settings. 
+
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.user.UserPreferencesUIUtil'
+ | method = 'setTablePersonalizationEnabled'
+ | render = 'inline'
+ | label = 'Set table personalization'
+ | args = {{ '%tablePersonalizationEnabled' }}
+ | userInput = {{ 
+      {{ name = 'tablePersonalizationEnabled'
+       | componentType = 'CHECKBOX'
+       | displayName = 'Enable table personalization'
+       | description = 'Table personalization enabled/disabled'
+| presetValue = $Java:com.fluidops.iwb.util.user.UserPreferencesUIUtil#isTablePersonalizationEnabledAsTupleQueryResult$
+      }} }}
+ | onFinish = 'reloadComponent'
+}}
+
+
+== Filter Personalization (turn on/off) ==
+
+Filter personalization setting enables user-customizable filter settings, such as number of selection of certain values. If this feature is turned on, the user can customize filters. 
+
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.user.UserPreferencesUIUtil'
+ | method = 'setFilterPersonalizationEnabled'
+ | render = 'inline'
+ | label = 'Set filter personalization'
+ | args = {{ '%filterPersonalizationEnabled' }}
+ | userInput = {{ 
+      {{ name = 'filterPersonalizationEnabled'
+       | componentType = 'CHECKBOX'
+       | displayName = 'Enable fitler personalization'
+       | description = 'Filter personalization enabled/disabled'
+| presetValue = $Java:com.fluidops.iwb.util.user.UserPreferencesUIUtil#isFilterPersonalizationEnabledAsTupleQueryResult$
+      }} }}
+ | onFinish = 'reloadComponent'
+}}
+
+-->

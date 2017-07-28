@@ -1,0 +1,228 @@
+=== Instance Creation Widget ===
+
+==== Functionalities ====
+The Instance Creation Wizard allows the creation of new instances of a specific
+type. The type is specified in the widget configuration or is assigned as the
+URI of the page in which the widget is embedded. The URI of the newly created
+instance is constructed according to the URI pattern provided in the configuration and the instance ID entered by the user.
+The widget checks whether an entity with the desired name is already
+contained in the database to prevent overwriting of existing resources. 
+The widget allows configuring properties to be assigned to the newly created instance: 
+either entered by the user, pre-assigned with special values (e.g., creator, creation date, label), or 
+assigned with arbitrary pre-configured values. An arbitrary post-saving action can be specified to be executed 
+after creation of the statements. 
+ 
+The component can be styled using the CSS class "InstanceCreationWidget".
+
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.InstanceCreationWidget
+}}
+
+==== Examples ====
+
+===== Widget rendered directly on the wiki page =====
+Creating new instance with an automatically added back-link property and three user-added initial properties. The widget is rendered directly on the wiki page. 
+<source>
+{{#widget: InstanceCreation | 
+   userDefinedProperties = {{ 
+     {{ showAlways = true
+      | property = 'testProperty1'
+      | datatype = 'rdfs:Literal'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty2'
+      | datatype = 'rdfs:Resource'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty3'
+      | datatype = 'rdfs:Resource'
+     }} }}
+ | uri = 'http://research.data.gov.uk/def/project/$name$'
+ | title= 'a title'
+ | render = 'block'
+}}
+</source>
+
+Result:
+
+<img src="../images/help/InstanceCreation/block.png"/>
+
+===== Widget rendered in a popup window =====
+The same widget shown as a popup window opening when the user clicks a button. 
+The URI is created using both the user-entered name and a random character sequence.
+ 
+<source>
+{{#widget: InstanceCreation | 
+  userDefinedProperties = {{ 
+     {{ showAlways = true
+      | property = 'testProperty1'
+      | datatype = 'rdfs:Literal'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty2'
+      | datatype = 'rdfs:Resource'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty3'
+      | datatype = 'rdfs:Resource'
+     }} }}
+  | title = 'Create new instance'
+  | render = 'btn'
+  | uri = 'http://www.example.org/$name$_$uuid$'
+}}
+</source>
+
+Result:
+
+<img src="../images/help/InstanceCreation/popup.png"/>
+ 
+===== Widget rendered on wiki page without the background form =====
+The widget shown on the wiki page in the 'inline' mode.
+<source>
+{{#widget: InstanceCreation | 
+   userDefinedProperties = {{ 
+     {{ showAlways = true
+      | property = 'testProperty1'
+      | datatype = 'rdfs:Literal'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty2'
+      | datatype = 'rdfs:Resource'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty3'
+      | datatype = 'rdfs:Resource'
+     }} }}
+  | render = 'inline'
+}}
+</source>
+
+Result:
+
+<img src="../images/help/InstanceCreation/inline.png"/>
+
+==== Generating the URI of the newly created instance ====
+
+The URI of the new instance can be generated in several ways, depending on either the instance name provided by the user or a randomly generated string.
+
+===== URI generated from the instance name =====
+
+If no ''uri'' has been provided, the URI will be constructed from the default namespace and the name entered by the user: $default_namespace$$name$.
+<source>
+{{#widget: InstanceCreation
+}}
+</source>
+
+===== URI generated using a custom pattern =====
+
+A custom URI pattern (parameter ''uri'') can be used to generate URIs according to a pre-defined custom scheme.
+A URI pattern should define a full (non-abbreviated) URI.
+The URI pattern can contain one or more of the following special variables:
+<ul>
+<li>'''$name$''': This variable is replaced with the instance name provided by the user</li>
+<li>'''$uuid$''': This variable is replaced with a randomly-generated UUID</li>
+<li>'''$fluidRandom$''': This variable is replaced with a randomly-generated string of 32 digits</li>
+</ul>
+The above-listed variables can be used multiple times in the pattern.
+Every occurrence of '''$name$''' will be transformed in the same instance name provided by the user.
+Multiple usages of the '''$uuid$''' and '''$fluidRandom$''' variables will result every time in a difference random sequence.
+
+<source>
+{{#widget: InstanceCreation 
+ | uri = 'http://example.org/newInstance_$name$_$uuid$'
+}}
+</source>
+
+==== Specifying properties to be automatically instantiated ====
+
+The parameter ''preDefinedProperties'' can specify one or several properties which will be automatically created together with the new instance. 
+For each such property one can specify the property URI and a set of values. The ''inverse'' flag determines whether the newly created instance will be the subject of the property (''inverse''=''false'') or the object (''inverse''=''true''). Note that you can also use the ''$''this<i>$</i> placeholder to create the links between the current instance and the new one.
+
+For example, the following widget will create a statement
+(''#newInstance'', ''myProperty'', "testValue").
+
+<source>
+{{#widget: InstanceCreation | 
+ title = 'a title'
+ | preDefinedProperties = {{ 
+      {{ values = {{ '"testValue"' }}
+       | inverse = false
+       | property = 'myProperty'
+      }} }}
+ | uri = 'http://example.org/$name$'
+ | render = 'block'
+}}
+</source>
+
+==== Specifying properties to be edited by the user ====
+
+The parameter ''userDefinedProperties'' can specify one or several properties, whose value can be provided by the user. 
+Each property can be configured in the same way as it is done in the [[ Help:TripleEditorWidget | TripleEditorWidget ]]: i.e., you can restrict the target datatype, type of the edit control, set of values available for autosuggestion in a drop-down list, minimal and maximal cardinality for the property, etc.
+
+<source>
+{{#widget: InstanceCreation | 
+  userDefinedProperties = {{ 
+     {{ showAlways = true
+      | property = 'testProperty1'
+      | datatype = 'rdfs:Literal'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty2'
+      | datatype = 'rdfs:Resource'
+     }} | 
+     {{ showAlways = true
+      | property = 'testProperty3'
+      | datatype = 'rdfs:Resource'
+     }} }}
+  | title = 'Create new instance'
+  | render = 'btn'
+  | uri = 'http://www.example.org/$name$_$uuid$'
+}}
+</source>
+
+==== Saving a label ====
+
+While the manually entered resource name can be used as a part of the generated URI, it can also be saved as the value of some label property.
+The ''labelProperty'' parameter specifies this property.
+
+<source>
+{{#widget: InstanceCreation | 
+ labelProperty = 'rdfs:label'
+ | uri = 'http://example.org/$uuid$'
+}}
+</source>
+
+==== Saving provenance information ====
+
+Optionally, you can attach the provenance information such as the ID of the creator and the creation date to the newly generated instance.
+For this, you should set the corresponding flags ''saveCreator'' and ''saveCreationDate'' to ''true''. 
+The creator will be saved as the value of the ''dcterms:creator'', while ''dc:date'' will be used for the creation date/time.
+
+<source>
+{{#widget: InstanceCreation | 
+ saveCreationDate = true
+ | saveCreator = true
+ | uri = 'http://example.org/$uuid$'
+}}
+</source>
+
+==== Post-saving actions ====
+
+It is possible to define additional post-processing actions which will be performed immediately after the new instance gets saved. 
+In particular, the ''redirect'' flag redirects the browser to the page of the new instance.
+The ''afterSave'' parameter determines an arbitrary method which will be called after the instance is saved. You can specify the name of the Java class, its method which shall be called, and the list of arguments to pass
+(see [[ Help:CodeExecution | Help:CodeExecution ]]). Note that you can pass as an argument the URI of the current wiki page (referenced as ''$''this<i>$</i>) as well as the URI of the newly created instance (referenced as %newURI).
+
+<source>
+{{#widget: InstanceCreation |
+  onSave = {{ 
+    passContext = true 
+    | args = {{ '%newURI' | 'constant' }} 
+    | method = 'testWithCtx' 
+    | clazz = 'com.fluidops.iwb.widget.InstanceCreationWidgetTest' 
+  }}
+}}
+</source>

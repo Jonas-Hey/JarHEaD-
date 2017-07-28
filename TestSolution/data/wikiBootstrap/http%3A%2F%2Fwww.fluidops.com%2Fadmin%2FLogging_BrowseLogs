@@ -1,0 +1,30 @@
+{{#widget: ActionableResult | 
+ query = 'Java:com.fluidops.iwb.util.LoggerManager#getLogs'
+ | rowActions = {{ 
+      {{ clazz = 'com.fluidops.iwb.util.LoggerManager'
+       | method = 'downloadLog'
+       | passContext = true
+       | render = 'btn'
+       | label = 'Download'
+       | args = {{ '?:fileName' }}
+      }} }}
+ | numberOfDisplayedRows = 10
+ | columnConfiguration = {{ 
+      {{ variableName = 'fileName'
+       | displayName = 'File Name'
+      }} | 
+      {{ variableName = 'size'
+       | valueResolver = 'BYTE2KB'
+       | displayName = 'Size'
+      }} | 
+      {{ variableName = 'lastModified'
+       | valueResolver = 'DATETIME'
+       | displayName = 'Last Modified'
+      }} | 
+      {{ variableName = 'type'
+       | displayName = 'Type'
+      }} }}
+ | appearance = 
+   {{ sortByColumn = 'fileName'
+   }}
+}}

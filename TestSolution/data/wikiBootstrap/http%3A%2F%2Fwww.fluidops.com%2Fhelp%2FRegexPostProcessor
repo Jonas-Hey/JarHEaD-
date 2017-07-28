@@ -1,0 +1,39 @@
+=== Regular Expression Post Processor ===
+
+{{PRODUCT}} ships a post processor for modifying or adding literals using regular expressions.
+
+You must specify the RDF property which
+links to literals which are to be processed. For instance, if the provider gathers SNMP
+switch information, the property "switch:version" is to be examined.
+
+Furthermore, a list of Matcher configurations can be added. A matcher contains the following properties:
+
+* regex: The regular expression to apply. Please refer to <a href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html">Java regular expression patterns</a> for more information on possible regular expression structures.
+* targetProperty: The target property the new literal is written to. Default: same as sourceProperty, i.e. the statement is replaced and not added.
+* datatype: Defines the target datatype for the new literal. Supported options are XSD_BOOLEAN, XSD_INTEGER and XSD_DOUBLE. The default is XSD_STRING.
+* object: The object of the new statement. Matches from the regex can be referenced via (1), (2).
+
+==== Example ====
+
+Consider as an example that you want to extract the version number of switches from their version strings. A sample version string obtained from an SNMP datasource might look like this: "HP J4903A ProCurve Switch 2824, revision I.07.31, ROM I.07.01 (/sw/code/build/mako(m03))". First, the sourceProperty selects all statements to be examined. The following matcher can be applied to retrieve the manufacturer:
+
+<source>
+regex = .*HP.*
+targetProperty = switch:vendor
+datatype = XSD_STRING
+object = HP
+</source>
+
+This generates the new statement (switch, switch:vendor, "HP").
+
+
+The version information can be extracted by using parenthesis:
+
+<source>
+regex = ProCurve(.*)revision (.*),
+targetProperty = switch:version
+datatype = XSD_STRING
+object = (2)
+</source>
+
+The object definition (2) is replaced with the second matching group in the input string. In our example, this would be "I.07.31". Thus, the statement (switch, switch:version, "I.07.31") is generated.

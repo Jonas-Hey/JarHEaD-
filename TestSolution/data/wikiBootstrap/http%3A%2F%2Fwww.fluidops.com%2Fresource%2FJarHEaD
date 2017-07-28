@@ -1,0 +1,9 @@
+== '''Start''' ==
+
+{{#widget: GMap |
+  query = 'Select ?lat ?lng where {?? :breitengrad ?lat. ?? :längengrad ?lng }'
+}}
+
+{{#widget: TableResult | 
+ query = 'select * where {?? ?p ?o}'
+}}

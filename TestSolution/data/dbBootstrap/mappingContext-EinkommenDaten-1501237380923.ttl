@@ -1,0 +1,6 @@
+
+<http://www.fluidops.com/resource/EinkommenDaten/MappingCollection52358027415431692040762500293264> a <http://www.fluidops.com/ontologies/r2rmlExtension/TriplesMapCollection> ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Mapping Collection for Data Source http://www.fluidops.com/resource/EinkommenDaten" ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/sourceSchema> <http://www.fluidops.com/resource/EinkommenDaten/MetaData> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/dataSource> <http://www.fluidops.com/resource/EinkommenDaten> ;
+	<http://www.fluidops.com/ontologies/r2rmlExtension/containsTriplesMap> <http://www.fluidops.com/resource/triplesMap54061487181106505323426580299705> , <http://www.fluidops.com/resource/triplesMap25485500906973392079264985067074> , <http://www.fluidops.com/resource/triplesMap64497163527168014471287000399187> , <http://www.fluidops.com/resource/triplesMap58327905129169741830771058540534> , <http://www.fluidops.com/resource/triplesMap72790838426042633785307163757798> .

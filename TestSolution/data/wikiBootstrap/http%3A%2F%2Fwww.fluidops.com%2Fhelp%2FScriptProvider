@@ -1,0 +1,20 @@
+=== Script Provider ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.provider.ScriptProvider
+| type = 'DESCRIPTION'
+}}
+
+Please note that the preferred method for integrating tabular data is now our [[Help:DataOps | three-step data integration process]], as it adds additional flexibility over the older provider methods, including Groovy scripts.
+This provider is kept mostly for purposes of backwards compatibility.
+
+Go back to [[Help:Providers | Providers ]]
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.provider.ScriptProvider
+}}
+
+==== Writing Script ====
+A detailed documentation by example on how to write Groovy scripts for this provider is available [[Help:Groovy | on a separate page]].

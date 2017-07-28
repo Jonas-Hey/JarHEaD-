@@ -1,0 +1,86 @@
+[[sp:Query | Query Catalog]] > Query reference: <b>Query:{{#show: {{this}} | valueResolver=PREFIXED_URI}} </b>
+
+=== Query: {{#show: {{this}} | valueResolver=LABEL }} ===
+
+{{#widget: TripleEditor | 
+ limitProperties = true
+ | numberOfInitialValues = 4
+ | clusterByDomain = false
+ | styling = 
+   {{ width = '800'
+   }}
+ | editMode = 'GROUPWISE'
+ | addNewProperties = false
+ | propertyConfiguration = {{ 
+      {{ minCardinality = 1
+       | displayName = 'Label'
+       | property = 'rdfs:label'
+       | showAlways = true
+       | maxCardinality = 1
+      }} | 
+      {{ componentType = 'TEXTAREA_LARGE'
+       | datatype = 'xsd:string'
+       | displayName = 'Description'
+       | property = 'rdfs:comment'
+       | showAlways = true
+       | maxCardinality = 1
+      }} | 
+      {{ datatype = 'rdfs:Resource'
+       | displayName = 'Tags'
+       | values = $Select ?subject WHERE {?subject a skosCore04:Concept}$
+       | property = 'skosCore04:subject'
+       | showAlways = true
+      }} }}
+}}
+
+
+{{#widget: TripleEditor | 
+ numberOfInitialValues = 4
+ | limitProperties = true
+ | clusterByDomain = false
+ | styling = 
+   {{ width = '800'
+   }}
+ | editMode = 'GROUPWISE'
+ | addNewProperties = false
+ | uri = $this.<http://spinrdf.org/spin#body>$
+ | propertyConfiguration = {{ 
+      {{ minCardinality = 1
+       | componentType = 'SPARQLEDITOR'
+       | displayName = 'Query String'
+       | property = 'sp:text'
+       | showAlways = true
+       | maxCardinality = 1
+      }} }}
+}}
+
+
+
+
+''Please specify query variables that should be parameterized (replaced) before executing the query:''
+{{Template:http://www.fluidops.com/ontologies/spin/Templateactions}}
+
+=== Actions ===
+
+<div class="queryCatalogButton"">
+<div style="float:left">
+{{#widget: CodeExecution | 
+ passContext = true
+ | onFinish = 'none'
+ | args = {{ $this$ }}
+ | method = 'startQueryExecution'
+ | label = 'Execute Query'
+ | clazz = 'com.fluidops.iwb.query.catalog.QueryCatalog'
+}}
+</div>
+<div style="float:left">
+{{#widget: CodeExecution | 
+ passContext = true
+ | args = {{ $this$ }}
+ | label = 'Export Query'
+ | method = 'exportQuery'
+ | clazz = 'com.fluidops.iwb.query.catalog.QueryCatalog'
+}}
+</div>
+</div>
+</div>

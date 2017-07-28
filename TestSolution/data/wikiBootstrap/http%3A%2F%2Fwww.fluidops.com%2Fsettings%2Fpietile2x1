@@ -1,0 +1,53 @@
+<source>
+{
+   "type":"pie",
+   "addClassNames":true,
+   "startDuration":0,
+   "labelRadius":5,
+   "pieY": 100,
+   "pieX": 150,
+   "labelText":"[[title]]: [[value]]",
+   "labelsEnabled":false,
+   "balloonText":"[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+   $if(!useQueryForColors)$
+   "colors":[
+      "$schemeColor1$",
+      "$schemeColor2$",
+      "$schemeColor3$",
+      "$schemeColor4$",
+      "$schemeColor5$",
+      "$schemeColor6$",
+      "$schemeColor7$",
+      "$schemeColor8$"
+   ],
+   $endif$
+   "outlineAlpha":1,
+   "radius":"85",
+   "fontFamily":"Arial",
+   "color":"#333333",
+   "labelTickAlpha":0,
+   "titleField":"category",
+   "valueField":"column-1",
+   "fontSize":14,
+   $if(decimalSeparator)$
+   "decimalSeparator": "$decimalSeparator$",
+   $endif$
+   $if(thousandsSeparator)$
+   "thousandsSeparator": "$thousandsSeparator$",
+   $endif$
+   "legend":{
+      "enabled":true,
+      "align":"center",
+      "top": 0,
+      "left": 150,
+      "color":"#333333",
+      "fontSize":10,
+      "maxColumns": 1,
+      "markerSize":8,
+      "labelWidth":70,
+      "valueWidth":30,
+      "position": "absolute",
+      "spacing":10
+   }
+}
+</source>

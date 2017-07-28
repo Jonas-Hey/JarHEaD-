@@ -1,0 +1,419 @@
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix twitter: <http://twitter.com/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix r2rml: <http://www.w3.org/ns/r2rml#> .
+
+
+default:logicalTable12061090852306541308205561609550 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TABELLE3" .
+
+default:logicalTable59480682971825040935337797536488 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TABELLE3" .
+
+default:logicalTable64402111901713204256695554529180 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TABELLE3" .
+
+default:logicalTable88303048103976363762951303761272 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TABELLE3" .
+
+default:objectMap01972558023123526962276814984423 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/ORDER_{ID}" .
+
+default:objectMap02574285318049372848650454231327 a r2rml:ObjectMap ;
+	r2rml:column "STAAT" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap04477532193537649372869267962623 a r2rml:ObjectMap ;
+	r2rml:column "Sponsor ID" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap05026323282689817196013372873770 a r2rml:ObjectMap ;
+	r2rml:column "Name:Person" .
+
+default:objectMap05522106419942385577250931947625 a r2rml:ObjectMap ;
+	r2rml:column "ID 2" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap07476860539999375999573802509358 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/ID_{ID 2}" .
+
+default:objectMap07612885510434618424572199914335 a r2rml:ObjectMap ;
+	r2rml:column "MONAT" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap16109337934780213661147621579983 a r2rml:ObjectMap ;
+	r2rml:column "ADRESSE" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap16554206507438171433987718686719 a r2rml:ObjectMap ;
+	r2rml:column "ADRESSE" .
+
+default:objectMap16895428735934917978739594277573 a r2rml:ObjectMap ;
+	r2rml:column "ID" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap17718615544701109753616398439128 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" .
+
+default:objectMap19292210651926120772994254309541 a r2rml:ObjectMap ;
+	r2rml:column "  WHS" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap28839238559442813327024203952080 a r2rml:ObjectMap ;
+	r2rml:column "TYPE" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap33178931538368838754098826172673 a r2rml:ObjectMap ;
+	r2rml:column "ID 2" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap42988761340963818545872320417326 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}" .
+
+default:objectMap43457408875580779777804927866918 a r2rml:ObjectMap ;
+	r2rml:column "GEMEINDENAME" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap43528706450280602406066775610556 a r2rml:ObjectMap ;
+	r2rml:column "GEMEINDENAME" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap44173965608727260976494644462909 a r2rml:ObjectMap ;
+	r2rml:column "TAG" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap45016452730483664587425063160960 a r2rml:ObjectMap ;
+	r2rml:column "GEBIET" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap53801640347676621281146613441775 a r2rml:ObjectMap ;
+	r2rml:column "D Monat" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap59438859977286831680305047867565 a r2rml:ObjectMap ;
+	r2rml:column "ADRESSE" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap61328583237214179654264550303077 a r2rml:ObjectMap ;
+	r2rml:column "  CCs" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap63600714326804739293699500140980 a r2rml:ObjectMap ;
+	r2rml:column "JAHR" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap65565404903831538459503818739112 a r2rml:ObjectMap ;
+	r2rml:column "LEVEL" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap68946706095068326846919635834828 a r2rml:ObjectMap ;
+	r2rml:column "Monat O" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap76877955607241978755124895264301 a r2rml:ObjectMap ;
+	r2rml:column "Jahr O" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap77308018555988007735705387120108 a r2rml:ObjectMap ;
+	r2rml:column "Name:Person" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap83212110268151763733854506453241 a r2rml:ObjectMap ;
+	r2rml:column "Name:Person" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap83256983967897593732754301349986 a r2rml:ObjectMap ;
+	r2rml:column "  NDP" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap92086582687454551461873751015418 a r2rml:ObjectMap ;
+	r2rml:column "JAHR1" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap97331811134943378788112198934708 a r2rml:ObjectMap ;
+	r2rml:column "  SRP(Empfohlener Preis)" ;
+	r2rml:datatype xsd:string .
+
+default:predicateMap00217562023362362684813905374224 a r2rml:PredicateMap ;
+	r2rml:constant default:gemeindename .
+
+default:predicateMap03472165790377772357497400238188 a r2rml:PredicateMap ;
+	r2rml:constant default:adresse .
+
+default:predicateMap06533063086005541110469236663404 a r2rml:PredicateMap ;
+	r2rml:constant default:jahr1 .
+
+default:predicateMap18102057259800316089100620387477 a r2rml:PredicateMap ;
+	r2rml:constant default:orderid .
+
+default:predicateMap20570636341005404876226983593675 a r2rml:PredicateMap ;
+	r2rml:constant default:sponsorID .
+
+default:predicateMap23663256819274382411616365335856 a r2rml:PredicateMap ;
+	r2rml:constant rdfs:label .
+
+default:predicateMap27688494319825713280366297847181 a r2rml:PredicateMap ;
+	r2rml:constant default:id .
+
+default:predicateMap28862734144988347071718792779193 a r2rml:PredicateMap ;
+	r2rml:constant <name:person> .
+
+default:predicateMap31692878193918687322718297577408 a r2rml:PredicateMap ;
+	r2rml:constant default:tag .
+
+default:predicateMap33041617285191283114038845628806 a r2rml:PredicateMap ;
+	r2rml:constant default:adresse .
+
+default:predicateMap34215249181022073597774241880074 a r2rml:PredicateMap ;
+	r2rml:constant <name:person> .
+
+default:predicateMap38661132150419426391441608402945 a r2rml:PredicateMap ;
+	r2rml:constant default:level .
+
+default:predicateMap41183281418837953064300921167927 a r2rml:PredicateMap ;
+	r2rml:constant default:dmonat .
+
+default:predicateMap43686152575026992838351687635533 a r2rml:PredicateMap ;
+	r2rml:constant default:jahr .
+
+default:predicateMap46054707264709156564985925412262 a r2rml:PredicateMap ;
+	r2rml:constant default:gebiet .
+
+default:predicateMap46150859125835525762944948119432 a r2rml:PredicateMap ;
+	r2rml:constant default:gemeindename .
+
+default:predicateMap49525810014323236715636634484576 a r2rml:PredicateMap ;
+	r2rml:constant default:ndp .
+
+default:predicateMap49530585175298106271495623202973 a r2rml:PredicateMap ;
+	r2rml:constant default:srpempfohlenerpreis .
+
+default:predicateMap55300242607110455125034299196972 a r2rml:PredicateMap ;
+	r2rml:constant default:jahrO .
+
+default:predicateMap56064257925439953188847238444123 a r2rml:PredicateMap ;
+	r2rml:constant rdfs:label .
+
+default:predicateMap60821928245384750486435211082708 a r2rml:PredicateMap ;
+	r2rml:constant default:orderid .
+
+default:predicateMap60997778018967374163061007987188 a r2rml:PredicateMap ;
+	r2rml:constant default:monatO .
+
+default:predicateMap62500145178488617302019043772806 a r2rml:PredicateMap ;
+	r2rml:constant default:staat .
+
+default:predicateMap68803455985318716008690568349673 a r2rml:PredicateMap ;
+	r2rml:constant default:adresse .
+
+default:predicateMap70393284199232840932425616350655 a r2rml:PredicateMap ;
+	r2rml:constant default:type .
+
+default:predicateMap73224444649155845478456238969955 a r2rml:PredicateMap ;
+	r2rml:constant default:monat .
+
+default:predicateMap73971514498403410118979985679203 a r2rml:PredicateMap ;
+	r2rml:constant default:postleitzahl .
+
+default:predicateMap83444624357495901039101663877063 a r2rml:PredicateMap ;
+	r2rml:constant default:id2 .
+
+default:predicateMap84129299208786771424658008484588 a r2rml:PredicateMap ;
+	r2rml:constant default:ccs .
+
+default:predicateMap94811693431063411565937501116327 a r2rml:PredicateMap ;
+	r2rml:constant default:whs .
+
+default:predicateMap98824335095706651888373646390309 a r2rml:PredicateMap ;
+	r2rml:constant default:personenid .
+
+default:predicateObjectMap02847503183379675841543782023134 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap07612885510434618424572199914335 ;
+	r2rml:predicateMap default:predicateMap73224444649155845478456238969955 .
+
+default:predicateObjectMap03042383555747936896193988230131 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap44173965608727260976494644462909 ;
+	r2rml:predicateMap default:predicateMap31692878193918687322718297577408 .
+
+default:predicateObjectMap04127110112424547295912257205300 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap16109337934780213661147621579983 ;
+	r2rml:predicateMap default:predicateMap33041617285191283114038845628806 .
+
+default:predicateObjectMap05779088219302578900737174282813 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap63600714326804739293699500140980 ;
+	r2rml:predicateMap default:predicateMap43686152575026992838351687635533 .
+
+default:predicateObjectMap08009121206343597364923172021902 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap83256983967897593732754301349986 ;
+	r2rml:predicateMap default:predicateMap49525810014323236715636634484576 .
+
+default:predicateObjectMap15443862726317269195467172736409 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap77308018555988007735705387120108 ;
+	r2rml:predicateMap default:predicateMap34215249181022073597774241880074 .
+
+default:predicateObjectMap16120055234805849328629407803648 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap59438859977286831680305047867565 ;
+	r2rml:predicateMap default:predicateMap68803455985318716008690568349673 .
+
+default:predicateObjectMap16234219895583642861521575905924 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap16554206507438171433987718686719 ;
+	r2rml:predicateMap default:predicateMap23663256819274382411616365335856 .
+
+default:predicateObjectMap17295571525180821195070584167581 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap33178931538368838754098826172673 ;
+	r2rml:predicateMap default:predicateMap83444624357495901039101663877063 .
+
+default:predicateObjectMap18015396804312684612392395975833 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap28839238559442813327024203952080 ;
+	r2rml:predicateMap default:predicateMap70393284199232840932425616350655 .
+
+default:predicateObjectMap21441062424638274918159935709492 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap05522106419942385577250931947625 ;
+	r2rml:predicateMap default:predicateMap27688494319825713280366297847181 .
+
+default:predicateObjectMap27319468566225465272216140328774 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap76877955607241978755124895264301 ;
+	r2rml:predicateMap default:predicateMap55300242607110455125034299196972 .
+
+default:predicateObjectMap32387130445981253934203585160904 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap45016452730483664587425063160960 ;
+	r2rml:predicateMap default:predicateMap46054707264709156564985925412262 .
+
+default:predicateObjectMap32515347402699001218325634523028 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap97331811134943378788112198934708 ;
+	r2rml:predicateMap default:predicateMap49530585175298106271495623202973 .
+
+default:predicateObjectMap34796991482521016216131646927958 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap07476860539999375999573802509358 ;
+	r2rml:predicateMap default:predicateMap98824335095706651888373646390309 .
+
+default:predicateObjectMap35608968826338713391810388508513 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap61328583237214179654264550303077 ;
+	r2rml:predicateMap default:predicateMap84129299208786771424658008484588 .
+
+default:predicateObjectMap38514295736788340789493078057425 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap19292210651926120772994254309541 ;
+	r2rml:predicateMap default:predicateMap94811693431063411565937501116327 .
+
+default:predicateObjectMap47549104477979164886342238456133 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap68946706095068326846919635834828 ;
+	r2rml:predicateMap default:predicateMap60997778018967374163061007987188 .
+
+default:predicateObjectMap50143942963041776393817966940101 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap05026323282689817196013372873770 ;
+	r2rml:predicateMap default:predicateMap56064257925439953188847238444123 .
+
+default:predicateObjectMap56265730452929828365155068427313 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap17718615544701109753616398439128 ;
+	r2rml:predicateMap default:predicateMap73971514498403410118979985679203 .
+
+default:predicateObjectMap62941278943633842034254159519696 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap02574285318049372848650454231327 ;
+	r2rml:predicateMap default:predicateMap62500145178488617302019043772806 .
+
+default:predicateObjectMap68537037176707489919478538379660 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap04477532193537649372869267962623 ;
+	r2rml:predicateMap default:predicateMap20570636341005404876226983593675 .
+
+default:predicateObjectMap72494944386400183319814659892196 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap42988761340963818545872320417326 ;
+	r2rml:predicateMap default:predicateMap03472165790377772357497400238188 .
+
+default:predicateObjectMap77855256504351391819478374098719 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap43528706450280602406066775610556 ;
+	r2rml:predicateMap default:predicateMap00217562023362362684813905374224 .
+
+default:predicateObjectMap80306993580885226598500151097474 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap92086582687454551461873751015418 ;
+	r2rml:predicateMap default:predicateMap06533063086005541110469236663404 .
+
+default:predicateObjectMap82665370283541584423977085331135 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap53801640347676621281146613441775 ;
+	r2rml:predicateMap default:predicateMap41183281418837953064300921167927 .
+
+default:predicateObjectMap84655031078614475114962501025630 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap43457408875580779777804927866918 ;
+	r2rml:predicateMap default:predicateMap46150859125835525762944948119432 .
+
+default:predicateObjectMap93565022395190607626796810838674 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap01972558023123526962276814984423 ;
+	r2rml:predicateMap default:predicateMap60821928245384750486435211082708 .
+
+default:predicateObjectMap93897460995633014577871982830209 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap83212110268151763733854506453241 ;
+	r2rml:predicateMap default:predicateMap28862734144988347071718792779193 .
+
+default:predicateObjectMap95003302656316929050425881205491 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap65565404903831538459503818739112 ;
+	r2rml:predicateMap default:predicateMap38661132150419426391441608402945 .
+
+default:predicateObjectMap98794517253325553549071458390032 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap16895428735934917978739594277573 ;
+	r2rml:predicateMap default:predicateMap18102057259800316089100620387477 .
+
+default:subjectMap22367894152098415176179715911439 a r2rml:SubjectMap ;
+	r2rml:class default:ORDER ;
+	r2rml:template "http://www.fluidops.com/resource/ORDER_{ID}" .
+
+default:subjectMap71659957699449460646425460003456 a r2rml:SubjectMap ;
+	r2rml:class default:POSTLEITZAHL ;
+	r2rml:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" .
+
+default:subjectMap94168763464814052745447861218131 a r2rml:SubjectMap ;
+	r2rml:class <NAME:PERSON> ;
+	r2rml:template "http://www.fluidops.com/resource/ID_{ID 2}" .
+
+default:subjectMap96028155711838246313773450903480 a r2rml:SubjectMap ;
+	r2rml:class default:ADRESSE ;
+	r2rml:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}" .
+
+default:triplesMap09392800552967789820680626374940 a r2rml:TriplesMap ;
+	rdfs:label "Name:Person" ;
+	r2rml:logicalTable default:logicalTable88303048103976363762951303761272 ;
+	r2rml:predicateObjectMap default:predicateObjectMap04127110112424547295912257205300 , default:predicateObjectMap15443862726317269195467172736409 , default:predicateObjectMap21441062424638274918159935709492 , default:predicateObjectMap50143942963041776393817966940101 , default:predicateObjectMap93565022395190607626796810838674 ;
+	r2rml:subjectMap default:subjectMap94168763464814052745447861218131 .
+
+default:triplesMap19910225037862550045330703506565 a r2rml:TriplesMap ;
+	rdfs:label "Postleitzahl" ;
+	r2rml:logicalTable default:logicalTable59480682971825040935337797536488 ;
+	r2rml:predicateObjectMap default:predicateObjectMap77855256504351391819478374098719 ;
+	r2rml:subjectMap default:subjectMap71659957699449460646425460003456 .
+
+default:triplesMap72874360460368100092278615382744 a r2rml:TriplesMap ;
+	rdfs:label "Adresse" ;
+	r2rml:logicalTable default:logicalTable64402111901713204256695554529180 ;
+	r2rml:predicateObjectMap default:predicateObjectMap16120055234805849328629407803648 , default:predicateObjectMap16234219895583642861521575905924 , default:predicateObjectMap93897460995633014577871982830209 ;
+	r2rml:subjectMap default:subjectMap96028155711838246313773450903480 .
+
+default:triplesMap84507333616110714994534362768307 a r2rml:TriplesMap ;
+	rdfs:label "KundenDaten" ;
+	r2rml:logicalTable default:logicalTable12061090852306541308205561609550 ;
+	r2rml:predicateObjectMap default:predicateObjectMap02847503183379675841543782023134 , default:predicateObjectMap03042383555747936896193988230131 , default:predicateObjectMap05779088219302578900737174282813 , default:predicateObjectMap08009121206343597364923172021902 , default:predicateObjectMap17295571525180821195070584167581 , default:predicateObjectMap18015396804312684612392395975833 , default:predicateObjectMap27319468566225465272216140328774 , default:predicateObjectMap32387130445981253934203585160904 , default:predicateObjectMap32515347402699001218325634523028 , default:predicateObjectMap34796991482521016216131646927958 , default:predicateObjectMap35608968826338713391810388508513 , default:predicateObjectMap38514295736788340789493078057425 , default:predicateObjectMap47549104477979164886342238456133 , default:predicateObjectMap56265730452929828365155068427313 , default:predicateObjectMap62941278943633842034254159519696 , default:predicateObjectMap68537037176707489919478538379660 , default:predicateObjectMap72494944386400183319814659892196 , default:predicateObjectMap80306993580885226598500151097474 , default:predicateObjectMap82665370283541584423977085331135 , default:predicateObjectMap84655031078614475114962501025630 , default:predicateObjectMap95003302656316929050425881205491 , default:predicateObjectMap98794517253325553549071458390032 ;
+	r2rml:subjectMap default:subjectMap22367894152098415176179715911439 .

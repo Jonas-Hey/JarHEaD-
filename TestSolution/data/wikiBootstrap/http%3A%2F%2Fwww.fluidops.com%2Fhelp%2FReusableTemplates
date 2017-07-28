@@ -1,0 +1,9 @@
+== Reusable Wiki Templates ==
+
+This page lists available reusable wiki templates.
+
+''Note: for template pages see the wiki text for documentation and examples.''
+
+* [[Help:ExternalLinkTemplate| External Link Template]]: a template for rendering external links (including image and parameter support)
+* [[Template:System:ResourceHeader]]: a template for rendering the wiki header of a resource (type)
+* [[Template:System:ResourceInstanceHeader]]: a template for rendering the wiki header of a resource (instance)

@@ -1,0 +1,30 @@
+<!-- This is the unified template for foaf:Person and :User -->
+
+__NOTOC__
+
+= {{#show: System:User | valueResolver=DEFAULT }}: ''{{#ifexpr: {{#sparql: ASK { {{this}} foaf:firstName ?firstName . {{this}} foaf:lastName ?lastName . } }} | {{#show: {{this}} | foaf:firstName}} {{#show: {{this}} | foaf:lastName }} | {{#show: {{this}} | valueResolver=LABEL}} }}'' =
+
+<a class="icon--preferences" href="/resource/Settings:UserPreferences" title="User preferences" style="text-decoration: none">
+</a>
+
+{{<http://www.fluidops.com/include/PersonDetails>}}
+
+{{<http://www.fluidops.com/include/PersonControls> | person={{this}} }}
+
+{{<http://www.fluidops.com/include/PersonOrganizations>}}
+
+== Events ==
+
+{{<http://www.fluidops.com/include/ResourceEvents> | ResourceClass = Person}}
+
+{{<http://www.fluidops.com/include/PersonResponsibilities>}}
+
+{{#ifexpr: {{#sparql: ASK { ?? a :User} }}
+| {{<http://www.fluidops.com/include/UsersInclude>}}
+}}
+
+{{<http://www.fluidops.com/include/SocialMedia>}}
+
+<!-- The Person count is currently not persisted in the historic database
+{{<http://www.fluidops.com/include/PersonsReporting>}}
+-->

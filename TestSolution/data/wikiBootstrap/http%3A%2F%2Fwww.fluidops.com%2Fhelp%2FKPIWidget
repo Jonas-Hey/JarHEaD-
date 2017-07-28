@@ -1,0 +1,78 @@
+=== KPI Widget ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.KPIWidget
+| type = 'DESCRIPTION'
+}}
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.KPIWidget
+| type = CONFIGURATION
+}}
+
+==== Examples ====
+* Example with static values:
+<source>
+{{#widget: com.fluidops.iwb.widget.KPIWidget | 
+ styling = 
+   {{ cssClass = 'eventSummary'
+   }}
+ | kpi = {{ 
+      {{ cssClass = 'error'
+       | resource = 'MyEventPage'
+       | description = 'Errors'
+       | label = 'Error'
+       | params = {{ 
+            {{ name = 'type'
+             | value = 'ERROR'
+            }} }}
+       | value = '100'
+      }} | 
+      {{ cssClass = 'warning'
+       | description = 'Warnings'
+       | label = 'Warning'
+       | value = '1'
+      }} | 
+      {{ cssClass = 'info'
+       | description = 'Infos'
+       | label = 'Info'
+       | value = '1'
+      }} }}
+}}
+</source>
+
+The result looks like this:
+<img src="../images/help/KPIWidget/exampleKPI.png" alt="IMAGE:Example result"/>
+
+* Example with query values:
+<source>
+{{#widget: com.fluidops.iwb.widget.KPIWidget | 
+ styling = 
+   {{ cssClass = 'eventSummary'
+   }}
+ | kpi = {{ 
+      {{ cssClass = 'error'
+       | resource = 'EventDetailPage'
+       | description = 'Errors'
+       | label = 'Error'
+       | params = {{ 
+            {{ name = 'type'
+             | value = 'ERROR'
+            }} }}
+       | value = $SELECT (COUNT(?event) AS ?cnt) WHERE { ?event event:eventSource ?? . ?event event:classification "ERROR" }$
+      }} | 
+      {{ cssClass = 'warning'
+       | description = 'Warnings'
+       | label = 'Warning'
+       | value = $SELECT (COUNT(?event) AS ?cnt) WHERE { ?event event:eventSource ?? . ?event event:classification "WARNING" }$
+      }} | 
+      {{ cssClass = 'info'
+       | description = 'Infos'
+       | label = 'Info'
+       | value = $SELECT (COUNT(?event) AS ?cnt) WHERE { ?event event:eventSource ?? . ?event event:classification "INFORMATION" }$
+      }} }}
+}}
+</source>

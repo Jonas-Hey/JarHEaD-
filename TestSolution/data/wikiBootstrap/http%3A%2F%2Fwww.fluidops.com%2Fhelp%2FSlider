@@ -1,0 +1,33 @@
+=== Slider Widget ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.wizard.SliderWidget
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.wizard.SliderWidget
+}}
+
+
+==== Example ====
+
+<source>
+{{
+#widget: Slider
+| min = 0
+| max = 100
+| property = 'sliderValue'
+}}
+</source>
+
+<img src="../images/help/Slider.png" width="500px" />
+
+
+In the example above, a new slider is created with which one can select a value in the range between 0 and 100.
+If the Slider is used within a Step of a [[Help:WizardWidget | WizardWidget]] upon proceeding to the next step, its value will be saved using "sliderValue" as property.
+

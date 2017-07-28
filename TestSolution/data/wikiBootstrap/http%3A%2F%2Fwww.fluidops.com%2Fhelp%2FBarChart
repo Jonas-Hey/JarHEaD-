@@ -1,0 +1,169 @@
+=== Bar Chart Widget ===
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.BarChartWidget
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.BarChartWidget
+}}
+
+==== BarChart Examples ====
+===== Vertical Bars =====
+<source>
+{{#widget: BarChart | 
+ input = 'Org'
+ | query = '
+    SELECT ?Org ?projects WHERE { 
+        VALUES (?Org ?projects)
+        { 
+          ("Org 1" 23)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 20)
+          ("Org 6" 15)
+   } }'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</source>
+
+{{#widget: BarChart | 
+ input = 'Org'
+ | query = '
+    SELECT ?Org ?projects WHERE { 
+        VALUES (?Org ?projects)
+        { 
+          ("Org 1" 23)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 20)
+          ("Org 6" 15)
+   } }'
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+
+===== Horizontal Bars =====
+<source>
+{{#widget: BarChart | 
+ input = 'Org'
+ | query = '
+    SELECT ?Org ?projects WHERE { 
+        VALUES (?Org ?projects)
+        { 
+          ("Org 1" 23)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 20)
+          ("Org 6" 15)
+   } }'
+ | colors = {{ '#8CBACE' }}
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+ | barType = 'bar'
+}}
+</source>
+{{#widget: BarChart | 
+ input = 'Org'
+ | query = '
+    SELECT ?Org ?projects WHERE { 
+        VALUES (?Org ?projects)
+        { 
+          ("Org 1" 23)
+          ("Org 2" 56)
+          ("Org 3" 33)
+          ("Org 4" 87)
+          ("Org 5" 20)
+          ("Org 6" 15)
+   } }'
+ | colors = {{ '#8CBACE' }}
+ | output = {{ 'projects' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+ | barType = 'bar'
+}}
+
+===== Clustered Bars =====
+
+<source>
+{{#widget: BarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'started projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'closed projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB )
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+          ("Org 6" 15 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 6 3)
+   } }'
+ | output = {{  'projectsA'| 'projectsB' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+</source>
+
+{{#widget: BarChart | 
+ input = 'Org'
+ | variableConfiguration = {{ 
+      {{ variableName = 'projectsA'
+       | displayName = 'started projects'
+      }} | 
+      {{ variableName = 'projectsB'
+       | displayName = 'closed projects'
+      }} }}
+ | query = '
+    SELECT ?Org ?projectsA ?projectsB WHERE { 
+        VALUES (?Org ?projectsA ?projectsB )
+        { 
+          ("Org 1" 23 3)
+          ("Org 2" 56 45)
+          ("Org 3" 33 12)
+          ("Org 4" 87 65)
+          ("Org 5" 20 8)
+          ("Org 6" 15 10)
+          ("Org 7" 90 32)
+          ("Org 8" 55 40)
+          ("Org 9" 6 3)
+   } }'
+ | output = {{  'projectsA'| 'projectsB' }}
+ | styling = 
+   {{ height = '200'
+    | width = '400'
+   }}
+}}
+
+Look in [[Help:SettingsGallery | Chart Settings Gallery]] for more chart examples.

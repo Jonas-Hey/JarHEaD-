@@ -1,0 +1,10 @@
+= Platform Resources =
+
+On this page you find quick access links for platform resources.
+
+== Downloads ==
+* <a href="/apidoc" target="_blank">Javadoc documenting the {{PRODUCT}} SDK</a>
+* <a href="/client.zip">Package containing some sample clients (RMI, REST, etc.) that can be used to interact with the {{PRODUCT}} backend</a>
+* <a href="/sapAgent.zip">fluidOps agent (typically installed on the VLM) needed to provide the monitoring functionality for a Virtual Landscape</a>
+* <a href="/remoteCliAgent.zip">fluidOps agent needed to communicate and interact with the EMC Symmetrix</a>
+

@@ -1,0 +1,35 @@
+== Bootstrapping the Application ==
+
+This section explains how the application can be bootstrapped with ''data'', ''ontologies'' and ''wiki pages''.
+
+As described in [[Help:BuildingSolutions]], the solution structure offers the possibility to locate bootstrap files in the ''data'' directory of the solution, in particular
+
+* '''data/dbBootstrap''': a folder containing RDF files in any supported format (e.g. N-Triples)
+** '''data/dbBootstrap/&lt;repoId&gt;''' subfolders may contain RDF files to be loaded into a [[Help:RepositoryManagement| managed repository]] with the ''repoId'' (e.g. the ''config'' repository)
+* '''data/ontologies''': ontology files in any supported serialization format (e.g. *.owl|rdf|nt|n3|ttl )
+* '''data/wikiBootstrap''': a set of wiki pages or templates, one file for each page (Filenames are assumed to be URL-encoded resource-URIs)
+* '''data/upload''': a set of images that can be embedded in the wiki as well as files which are managed by the platform
+
+Files located in one of these directories will be automatically bootstrapped at startup time of the application or at installation time of the solutions. Please refer to [[Help:BuildingSolutions]] (section for wiki pages) for details and best practices of wiki page development.
+
+=== Ontology bootstrap ===
+
+The Ontology Bootstrap mechanism imports ontology files from the folder '''data/ontologies''' into the database. Different serialization formats such as OWL, RDF/XML, N-Triples, N3 and Turtle are supported, 
+however, it is important that the default file extensions are being used (i.e. *.owl|rdf|nt|n3|ttl) and match the respective serialization format.
+Versioning information within the ontologies is used to decide about an update of the existing data.
+
+
+Each provided ontology file is queried for two properties: <code>owl:versionInfo</code> and <code>owl:versionIRI</code>. <code>owl:versionInfo</code> should refer to  a literal which is interpreted as <b>positive integer</b> (including 0) whereas <code>owl:versionIRI</code> should refer to a URI which matches the following pattern: <code>anyURI]/[yyyymmdd]</code>. The trailing 8 characters are interpreted as date encoded as digits (yyyy=year, mm=month, dd=day). Version <code>A</code> of ontology <code>O</code> is newer than Version <code>B</code> of <code>O</code> if and only if, the version literal or version date (as Integer) of <code>A</code> are greater than the version literal or the version date (as Integer) of <code>B</code>. If an ontology contains both a version literal and a version date, then the version date is preferred.
+
+
+A given file version <code>A</code> of ontology <code>O</code> is imported if
+* <code>O</code> is not present in the database or
+* database version <code>B</code> of <code>O</code> has no version information or
+* <code>A</code> is newer than database version <code>B</code> or
+* version Literal and IRI of <code>A</code> and of database version <code>B</code> cannot be interpreted as Integer. 
+
+A given file version <code>A</code> of ontology <code>O</code> is not imported if <code>A</code> has no version information and the database version <code>B</code> of <code>O</code> has version information. The context of an imported ontology is always <code><nowiki>http://www.fluidops.com/ontologyContext/</nowiki></code> with the file name appended (e.g. <code><nowiki>http://www.fluidops.com/ontologyContext/test.owl</nowiki></code>).
+
+Fur further information about OWL versioning please refer to:
+* [http://www.w3.org/TR/owl-ref/#VersionInformation OWL1 Version Information]
+* [http://www.w3.org/TR/owl2-syntax/#Ontology_IRI_and_Version_IRI OWL2 Version IRI]

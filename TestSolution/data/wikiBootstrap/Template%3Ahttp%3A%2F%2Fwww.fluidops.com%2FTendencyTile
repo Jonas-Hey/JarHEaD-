@@ -1,0 +1,39 @@
+<!-- 
+The template can show numeric values as neutral, positive or negative tendency
+
+The requirements for the status tile:
+1x1 tile (colspan 1) can show maximum 2 tendency objects
+2x1 tile (colspan 2) can show maximum 4 tendency objects
+Icon Tendency: 35 x 35px
+Border: 250 x 1px (BxH) • #E6E9E7
+Headline: Arial • Regular • 18px • #839088
+Label: Arial • Regular • 16px • #333333
+Tendency (in %): Arial • Regular 16px
+Value: Arial • Bold • 36px • #333333
+
+Parameters: 
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{query}}} - the query returning 'label-tendency-percent-value' binding sets (required), where 'label' is a short description for the numerical values, 'tendency' is one of 'up', 'down' or 'neutral', 'percent' is a number between 0 and 100, 'diff' is optionally the absolute difference and 'value' is the absolute number.
+	the parameter {{{valueValueResolver}}} - the value resolver used for the value binding of the query result
+	the parameter {{{percentValueResolver}}} - the value resolver used for the percent binding of the query result. Uses PERCENT_NOCONVERT by default.
+	the parameter {{{diffValueResolver}}} - the value resolver used for the value binding of the query result. Uses the valueValueResolver if not specified.
+	the parameter {{{colspan}}} - the tile size: 1 or 2. Default is 1 (optional)
+	the parameter {{{reverseColors}}} - set this to color 'up' as red and 'down' as green (default is green for 'up' and red for 'down')
+-->
+
+<div data-ss-colspan="{{{colspan|1}}}" class="tendencytile tile{{{colspan|1}}}x1 {{#if: {{{reverseColors|}}} | reverseColors}}">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading|}}}| headingLink={{{headingLink|}}} | description={{{description|}}} }}
+<div class="tiledata">
+
+{{#sparql: {{{query|SELECT ("Example" as ?category) (5 as ?error)  (3 as ?warning)  (15 as ?ok) WHERE{}}}} | format=template | template=Template:TendencyTileContent |
+valueResolvers=percent={{{percentValueResolver|PERCENT_NOCONVERT}}},value={{{valueValueResolver|DEFAULT}}},diff={{{diffValueResolver|{{{valueValueResolver|DEFAULT}}}}}}
+|noDataMessage=<div class="WidgetEmbeddingError no_data">{{#i18n: general#label_no_data_available | No data available}}</div>
+}}
+</div>
+
+<div style="clear:left;"></div>
+
+</div>
+</div>

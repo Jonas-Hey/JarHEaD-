@@ -1,0 +1,521 @@
+= Installation =
+				
+Installing the Information Workbench on Windows can be done easily using the Windows installer. Alternatively, it can be installed manually from the distribution:
+
+1) Download the distribution of the Information Workbench.
+
+2) Unpack the distribution into a directory of your choice  (e.g. /opt/fluidOps/fluidops-suite). In the following, we will refer to the absolute pathname of this directory by <nowiki><IWB_HOME_DIRECTORY></nowiki>.
+
+== Installation Requirements ==
+
+We recommend installing the backend on a Virtual Machine. 
+For productive environments we recommend the use of a second server for staging platform customizations such as 
+dashboards, custom workflows etc. 
+The resources recommended for the VM are shown in the following table.
+
+Recommended VM parameters for the backend installation:
+
+
+{| class="wikitable" width="600"  
+|-
+!<br>
+!Version
+|-
+| Operating System
+| Windows / Linux Server - 64 Bit
+|-
+| (virtual) CPUs
+| 2 (for bigger installations 4)
+|-
+| RAM
+| 8GB (for bigger installations 16-24GB)
+|-
+| Disk
+| SSD, Disk I/O 5000 IOPS<br/>
+Size: 50GB (dedicated data partition without OS)<br/>
+Estimated usage: installation 1GB, database: 1-5GB, backups: 10GB, logs: 10GB
+|}
+
+The platform is accessed using a standard web browser. Please use an up-to-date version of
+either Internet Explorer, Firefox, Chrome or Safari. Javascript and cookies need to be active.
+Microsoft Silverlight is required on the browser client to access the pivot function. 
+This product is not supplied by fluidOps.
+
+
+The following tables describe the in- and out-bound communication channels that may be required for the 
+platform to function properly:
+
+{| class="wikitable" width="650" 
+|-
+! Incoming Communication Path
+! Ports
+! Comments
+|-
+| From client to platform
+| TCP/ 50080 TCP/ 50443
+| http(s)
+|-
+| From CLI client to platform
+| TCP/ 63036 
+| optional, CLI can use http(s) as well
+|}
+
+{| class="wikitable" width="650" 
+|-
+!Outgoing Communication Path
+! style="width:120px" | Ports
+!Comments
+|-
+| From platform to LDAP/Active Directory (not required if the machine is part of a windows domain)
+| TCP+UDP/389, TCP/636,<br>UDP/137 TCP/139
+| LDAP Authentication, <br>LDAP SSL, <br/>Active Directory
+|-
+| From platform to remote SPARQL endpoint
+| TCP/ 80,443
+| Depends on the remote DB configuration. Optional, since a local DB can be used
+|-
+| From platform to remote JDBC database
+| TCP/ 3306
+| Depends on the remote DB configuration. Optional, only required if JDBC datasources are to be used
+|-
+| From platform to remote web services
+| TCP/ 80,443
+| Depends on the remote service configuration. Optional, only required if a web service (VMware vCenter, Salesforce, etc..) are to be used
+|}
+
+
+== Installing the Information Workbench ==
+
+The Information Workbench supports both Windows and Linux based operating systems.
+
+=== The Windows Installer for the backend ===
+
+The setup executable will install the software. 
+In several steps you can specify the installation parameters, such as installation path 
+Windows user and IP/Hostname. It must be run as administrator, so that it can copy files and start properly.
+
+==== Product Selection ====
+
+This step allows to specify if you want to use the Information Workbench only or 
+Information Workbench with a bundled App preinstalled (i.e. eDataCenterAnalyzer or eCloudManager).
+Note that eDataCenterAnalyzer and eCloudManager are bundled and can always be activated at a later point in time.
+
+==== License Agreement ====
+
+You need to accept the end user license agreement.
+
+==== Setting the Destination Folder ====
+
+In the first step, the Destination Folder is set. 
+The Destination Folder is the path the software will be installed to. 
+It will run from this folder completely standalone, which means no extra software needs to be installed. 
+If there is already an existing installation, the installer will not overwrite it. It will create a backup of 
+the old installation instead. The old one is stopped, but remains intact.
+
+==== IP/Hostname selection step ====
+
+the IP/Hostname selection step specifies at which address the service 
+will be available in the internal network. Choices include current IP addresses and hostnames.
+
+==== Administrative User ====
+
+The Administrative User setup step requires you to enter a set of valid user 
+credentials of a user who is member of the administrators group. 
+This is required to enable windows user authentication, which means users from the local system 
+(can also be active directory users) are able to login to the system with their credentials.
+
+==== Progress ====
+
+If an upgrade happens and the service of 
+the existing installation is still running, the user will be prompted to either stop the processor 
+have the installer stop it instead.
+
+==== Finish ====
+
+The final installation screen is displayed once the installation is finished. 
+From here, the user can now go straight to the product and/or open the Readme Page, 
+which also contains links to the web URL through which the system is available.
+
+=== Silent Installation ===
+
+The Installation can also be triggered from the CLI. To do this, the ''/S'' flag has to be passed on the command line.
+The following installation parameters can be set in this mode:
+
+- ''/SERVERURL'': IP or hostname where system will be reachable<br>
+- ''/SERVICEDOMAIN'': domain of the user that will be used to run the service<br>
+- ''/SERVICEUSER'': name of the user that will be used to run the service<br>
+- ''/SERVICEPASS'': password of the user that will be used to run the service<br>
+- ''/STARTSERVICE'': Whether the service should be started after the installation. 1 for starting, 0 for not starting. Default is 1.<br>
+- ''/INSTALLTYPE'': Installation type i.e. which platform needs to be installed eCM, IWB or eDA. Default is eCM.<br>
+
+'''Note:''' In case of an upgrade, stop the fluid platform service (if running). Also close all programs or windows using the installation directory, e.g. Windows Explorer to avoid problems with moving or deleting the previous installation.
+
+An example of how the complete command can look:
+
+<source>
+setup.exe /S /SERVERURL=10.212.0.128 /SERVICEDOMAIN=. /SERVICEUSER=Administrator /SERVICEPASS=secret /STARTSERVICE=0 /INSTALLTYPE=IWB
+</source>
+
+'''Note:''' "setup.exe" needs to be replaced with the installer name, and also that the command needs to be executed in the very same directory.
+
+For windows a hardcoded batch script also can be used like the one given in the example below:
+<source>
+echo Silent installation started It may take some time so please be patient
+setup.exe /S /SERVICEDOMAIN=. /SERVICEUSER=Administrator /SERVICEPASS=secret /STARTSERVICE=0 /INSTALLTYPE=IWB
+IF %ERRORLEVEL% NEQ 0 (
+	echo An error %ERRORLEVEL% occurred during the update.
+	echo contact support for more info
+)
+IF %ERRORLEVEL% EQU 0 (
+	echo Update finished successfully.
+)
+ECHO.&ECHO.Press any key to end the application.
+PAUSE>NUL&GOTO:EOF
+</source>
+=== Windows===
+
+It is recommended to use a 64bit Windows operating system with a 64Bit Java SE Runtime Environment in version 1.8 (taken from the JDK). The reference version shipped with this release is JRE SE ''1.8.0_60 64bit''. This is also the version used in steps a) and b) below.
+
+
+==== a) Running the installed service ====
+
+
+If you installed the Information Workbench as a service with the provided installer, you can start/stop the application using the Windows ''services'' configuration tool (i.e. Start->Run->services.msc). The Information Workbench service is called ''fluidOps Platform''.
+
+	
+==== b) Running the Information Workbench as executable ====
+	
+If you downloaded the distribution or if you want to execute the Information Workbench manually, we provide a ''start.cmd'' script in the Information Workbench home directory (i.e. the install location).
+
+Once the Information Workbench is running (which may take up to a few minutes), navigate to the application entry page: https://localhost:50443
+
+=== Linux===
+
+To run the Information Workbench under Linux a Java SE Runtime Environment version 1.8 (taken from the JDK) must be installed. Note that the Information Workbench does not ship a reference version bundled with the release.
+
+* Download and install [http://www.oracle.com/technetwork/java/javase/downloads/index.html Java SE 64-Bit JDK version 1.8].
+* Make sure the java command is added to the command-path of the user root.
+
+
+====a) Running as service====
+
+* Create a user under which the iwb shall run, e.g. "fluid" (in the following we will refer to this user as <IWB_USER>).
+* Execute the script linux-install.sh in <IWB_HOME_DIRECTORY> as user root, like follows: 
+  bash -eu linux-install.sh <nowiki><IWB_USER></nowiki>
+		
+
+This installs an init-script as <code>/etc/init.d/fops</code> and starts the application. To make sure this script is executed on reboot create corresponding links in the run-level specific directories. Depending on your distribution, this can be done with: 
+<code>chkconfig -a fops</code> or with <code>insserv fops</code>
+
+The application can be started with the following command:
+
+* Run /etc/init.d/fops start
+
+		
+
+=== Opening the Information Workbench===
+
+Once the Information Workbench is running (which may take up to a few minutes), it can be accessed at https://localhost:50443. On the default start page you can find a tutorial with some first steps as well as links to important pages (such as the detailed user documentation).
+
+By default, an administrator account with credentials '''admin/iwb''' is created. It is highly recommended to change the password in the Admin area after the first login.
+
+== Post Installation Steps ==
+
+This section describes optional customizations which can be performed after the standard installation or upgrade.
+
+=== License Management ===
+
+After an installation it is recommended to check the license status of the system. Please see [[Help:Licensing]] for the documentation.
+
+=== Enabling HTTP ===
+		
+By default the system is configured to use the confidential mode (i.e. HTTPS):
+The application server will automatically redirect each request to the secure confidential HTTPS handler.
+		
+Support for HTTP can be enabled by means of the system configuration setting "enableHttp".
+		
+=== Changing the Web Server HTTP(S) Port ===
+
+The ports 50080 (http) and 50443 (https) have been chosen to avoid collisions on ports 80 and 443 which 
+are often used by other applications. Sometimes, corporate firewalls require management services to 
+run on a certain predefined port. The ports can be changed by using the config options "httpPort"
+and "httpSslPort". Change these on the main config page: [[Admin:Config]] and restart the service.
+
+See [[Help:Operations]] for details.
+
+
+=== Installing a Custom HTTPS Certificate ===
+
+The software ships with standard HTTPs certificates to provide an additional layer of security. In particular all web services (UI, REST, etc.) are protected using the application server's infrastructure, while the API is configured to use its own certificate. 
+
+To install your own set of certificates, change these config settings (Hint: see [[Setup:SSLConfiguration]] for a UI driven setup page):
+
+{| class="wikitable" width="600"
+|-
+! '''Property'''
+! '''Value'''
+|-
+| httpTrustStore
+| location of the trustStore to be used, e.g. etc/truststore
+|-
+| httpTrustStorePassword 
+| password corresponding to the provided httpTrustStore
+|-
+| httpKeyStore 
+| location of the keyStore to be used, e.g. etc/keystore
+|-
+| httpKeyStorePassword
+| password corresponding to the provided httpKeyStore
+|-
+| httpKeyStoreServerCertificateAlias
+| alias of the server's identification certificate
+|}
+
+In case the keystore contains multiple certificates, the configuration property ''httpKeyStoreServerCertificateAlias'' can be used to specify the alias referencing the server's identification certificate.
+
+The keystore is located in IWB_HOME/etc/keystore. This keystore can be managed with the java keytool (http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html - also see http://portecle.sourceforge.net/ for a graphical keystore management tool). 
+
+See [[Help:SSL_HowTo| here]] for a detailed SSL tutorial describing how to generate and install a certificate.
+
+Note that you can use the configuration property 'httpKeyStore' listed above to point to your custom keystore. Use the 'httpKeyStorePassword' property to set a custom password on your keystore.
+
+Note that you need to restart the service for the changes to take effect.
+
+=== Changing API certificates ===
+
+The API distinguishes between internal and external communication and different certificates can be provided.
+
+- External: external communication is all communication that takes place between client and backend, i.e. by using the API through the available endpoints.<br>
+- Internal: internal communication in contrast specifies the communication taking place between the backend and remote agents, i.e. various data providers.<br>
+
+For the default configuration, a trusted fluidOps certificate is provided. The server is set up to use ''fluidops.key'' as its keystore and the client applies the corresponding truststore ''fluidops.ca''. Both stores are shipped within the release.
+
+For both types mentioned before, it is possible to adjust the SSL related configuration separately using the following configuration settings. Note that the internal configuration properties are the ones concatenated with 'Int', e.g. trustStoreInt and trustStorePasswordInt.
+
+
+{| class="wikitable" width="600"
+|-
+! '''Property'''
+! '''Value'''
+|-
+| trustStore
+| location of the trustStore to be used, e.g. fluidops.ca
+|-
+| trustStorePassword 
+| password corresponding to the provided trustStore
+|-
+| keyStore 
+| location of the keyStore to be used, e.g. fluidops.key
+|-
+| keyStorePassword
+| password corresponding to the provided keyStore
+|-
+| keyStoreServerCertificateAlias
+| alias of the certificate for RMI endpoint
+|}
+
+In case the keystore contains multiple certificates, the configuration property ''keyStoreServerCertificateAlias'' can be used to specify the alias of a certificate for RMI endpoint.
+
+=== Common Error messages ===
+
+In the current release, client authentication is disabled by default meaning that during SSL handshaking only the server's certificate is validated against the client's trustStore. If this validation fails, for some reason, the clients terminate with an appropriate error message. The following listing contains a few error messages that can occur during testing.
+
+* ''java.io.IOException'': Keystore was tampered with, or password was incorrect (The password provided for the trustStore / keyStore was wrong.)
+* ''java.io.FileNotFoundException'': fluidops1.ca (The trustStore or keyStore cannot be found at the providedlocation.)
+* ''javax.net.ssl.SSLHandshakeException'': sun.security.validator.ValidatorException: No trusted certificate found. (The server's certificate cannot be validated with the provided trustStore.)
+* ''java.rmi.ConnectIOException'': Error during JRMP connection establishment. (This is the root exception in case of any connection problems; look at nested exceptions for further details.)
+* ''java.net.SocketException'': Software caused connection abort: recv failed. (This exception occurs when the client is providing a wrong certificate. In some cases there is an additional message saying "fatal error: bad_certificate".)
+
+'''Advanced Settings'''
+
+The communication facilities are designed to be configurable. For RMI via SSL this means that for each provided SSL configuration (i.e. EXTERNAL and INTERNAL) exactly one port is reserved. By default EXTERNAL uses port 60501 while INTERNAL runs on port 63036. Note that these ports can be controlled by the properties ''backendServicePort'' and ''vlmAgentPort, ''respectively. However, it is highly recommended to keep these values as is.
+
+Client authentication for external and internal communication can be controlled with the boolean properties ''clientAuthEnabled'' and ''clientAuthEnabledInt'', respectively. Note that the keyStore and trustStore settings must be provided in a mutually similar way.
+
+=== Increasing the Strength of the SSL Cipher ===
+
+The standard jetty configuration can also be used to further harden the system against
+potential security vulnerabilities such as the BEAST attack. For more information consult these links:
+
+* http://www.eclipse.org/jetty/documentation/current/configuring-ssl.html
+* https://community.qualys.com/blogs/securitylabs/2013/09/10/is-beast-still-a-threat
+
+This is a sample config which includes all RC4 cipher suites by using a regex:
+
+<source>
+<Set name="IncludeCipherSuites">
+  <Array type="String">
+      <Item>.*RC4.*</Item>
+  </Array>
+</Set>
+</source>
+
+Exclude all non RC4 cipher suites:
+
+<source>
+<Set name="ExcludeCipherSuites">
+  <Array type="String">
+    <Item>SSL_RSA_WITH_DES_CBC_SHA</Item>
+    <Item>SSL_DHE_RSA_WITH_DES_CBC_SHA</Item>
+    <Item>SSL_DHE_DSS_WITH_DES_CBC_SHA</Item>
+    <Item>SSL_RSA_EXPORT_WITH_RC4_40_MD5</Item>
+    <Item>SSL_RSA_EXPORT_WITH_DES40_CBC_SHA</Item>
+    <Item>SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA</Item>
+    <Item>SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA</Item>
+    <Item>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256</Item>
+    <Item>TLS_RSA_WITH_AES_128_CBC_SHA</Item>
+    <Item>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</Item>
+    <Item>TLS_RSA_WITH_AES_128_CBC_SHA256</Item>
+    <Item>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</Item>
+    <Item>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</Item>
+    <Item>TLS_RSA_WITH_3DES_EDE_CBC_SHA</Item>
+    <Item>TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA</Item>
+    <Item>TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA</Item>
+    <Item>RSA_WITH_3DES_EDE_CBC_SHA</Item>
+  </Array>
+</Set>
+</source>
+
+Note that custom changes need to be re-applied after an upgrade, since a new
+version might make changes to the default jetty config.
+
+
+== Update ==
+
+If the software was already installed and the installer is executed again (e.g. newer version), 
+it will update the current installation. It will use the same settings and data as the old version. 
+The installer will recognize the intended update and gives feedback, as shown in the following figure.
+
+=== Old version is running ===
+
+If the old version is still active during an upgrade, the installer will prompt the user to either stop 
+the process manually or have the installer stop it instead. This is shown in the figure mentioned below.
+
+By Selecting :
+
+- "No"- The user can now stop the service manually by going to the windows services ("Start" -&gt; "run" -&gt; "services.msc")<br>
+
+
+In the services window that opens, locate the fluidOps service and stop it by right-clicking on the service and selecting stop
+
+If the service was not stopped, this dialog will show up again.
+
+
+- "Yes"- The Installer stops the service and installation continues.
+
+''While installation takes place and files get copied, it may occur that some files are locked and the installer tries to update them but fails. 
+
+- ''Retry: Will try to update the files again.''<br>
+- ''Cancel: Will stop the installation and exit.''<br>
+
+''Recommendation:'''' Close opened files, check Windows services e.g. if an Agent service is running stop it, and then hit "Retry".''
+
+=== Upgrading the Information Workbench on Linux ===
+
+To upgrade the current Information Workbench do the following:
+
+1) stop the service by running the following command:
+* /etc/init.d/fops stop
+
+2) move the existing installation to a backup directory <nowiki><IWB_HOME_DIRECTORY>_OLDVERSION</nowiki>
+
+3) unzip the new installation to the path of the current installation <nowiki><IWB_HOME_DIRECTORY></nowiki>
+
+4) cd into <nowiki><IWB_HOME_DIRECTORY></nowiki> and call ./installer.sh postUpgrade <nowiki><IWB_HOME_DIRECTORY>_OLDVERSION <IWB_HOME_DIRECTORY></nowiki> newversion oldversion
+
+e.g. > ./installer.sh postUpgrade /opt/fluidOps/fluidOps-Suite_v7.0.0.2805 /opt/fluidOps/fluidOps-Suite_v7.1.0.2826 7.1.0.2826 7.0.0.2805
+
+After the upgrade execute the script linux-install.sh in <nowiki><IWB_HOME_DIRECTORY></nowiki> as user root, like follows: 
+  bash -e linux-install.sh <nowiki><IWB_USER></nowiki>
+
+=== License Migration ===
+
+Old licenses will be kept. The installer detects them and automatically suggests the path to the licenses, as shown in the following figure. You can select the checkbox and it will use the previously installed licenses for the new installation.
+
+
+=== Backup of the Old Version ===
+
+The existing version gets backed up. If a name clash happens, the existing version gets backed up into another folder called [ old folder]_[ old version number], as shown in the following figure.
+
+
+If the version to be replaced is still in use, which means files are still open or executing, you are prompted to close them, otherwise it will overwrite them and no backup will happen.
+
+=== Keystore Migration ===
+
+The keystore file is migrated from the old installation. 
+
+== Non-standard Installations ==
+
+This section contains some information about how to configure and run the Information Workbench using special configurations.
+
+
+=== Extending the Application Through an App ===
+
+After startup the application installs a customization artifact found in the application's <code>apps</code> folder. While this is an automatic procedure, it is also possible to manually install Apps from the [[Admin:Apps| apps UI]]. A detailed documentation can be found [[Help:Apps|here]].
+
+
+== Using the Information Workbench SDK  ==
+
+Please see [[Help:PlatformSDK| Developer's guide]] for details.
+
+
+== Troubleshooting ==
+				
+'''Where can I find additional information''' 
+		
+=== Log Files ===
+
+Messages related to the platform are logged to specific log files in ''Install Folder''/logs. 
+The ''wrapper.log'' contains information pertaining to the service start. 
+The ''startup.log'' shows the product version and start parameters for the jvm in which the system runs. 
+The ''service.log'' shows all current messages relating to the started and running service, 
+and is the main source of information for troubleshooting. The ''service.log.#'' are older 
+incarnations which are cycled through 20 files before being deleted automatically. 
+The ''job.log'' lists all transactions performed by the system and can be used for auditing purposes. 
+The ''datestamp''-request.log shows UI page requests. The ''performance.log.#'' details 
+performance statistics relating to the service. The ''rule-engine.log.#'' shows rule engine runs and 
+the time required for them to complete. The ''install.log'' records information from updating the system 
+or when installing a solution.
+The number of log files to keep before recycling them can be changed with the 
+parameter "MaxBackupIndex" in the file ''Install Folder''/etc/log4j.properties.
+
+=== Diagnostic Reports ===
+
+The diagnostic report can be triggered from the "Diagnostics" section in [[Admin:Admin]].
+It is a general purpose tools which streamlines the interaction with fluidOps support.
+
+The backend service runs within a java virtual machine, which in turn runs within a service 
+wrapper which ensures that the jvm is kept running. The service is normally started and stopped 
+via the Windows services.msc or by a Linux service init script. 
+If the service has completely stopped responding, first attempt to connect to the service via the CLI and, 
+if this is possible, produce a diagnostic feedback zip (which causes the in-memory DB to be persisted) with the command 
+
+<pre>getDiagnosticService createDiagnosticFeedback -addMemoryDump false</pre>
+
+The diagnostic zip file is written to the /webapps/ROOT/diag folder and is named 
+"diag+ ''timestamp''.zip". This causes the in-memory DB and the RDF triple store to be written to disk. 
+Then try to restart the service within the CLI using the ''restartService'' command, or, if all else fails, 
+shutdown the OS cleanly and restart. The database is always written in a consistent way, so it should always be readable.
+
+
+=== Java VM Parameters ===
+
+The main Java VM parameters are defined in the file backend.conf. 
+It can be found in the following folder: %INSTALL_DIR%/backend.conf. 
+
+
+The most frequent use case is to assign more memory to the backend process.
+ 
+* wrapper.java.additional.10=-Xmx3G
+* wrapper.java.additional.4=-XX:MaxPermSize=256m
+
+It is recommended to apply user changes in a file ''backend-user.conf'' by defining new values for the respective settings.
+
+
+==Important Notes==
+=== Shutting Down the Information Workbench ===
+
+* '''Windows Service:''' Go to the Services configuration tool and stop the service
+* '''Linux Daemon:''' Invoke /etc/init.d/fops stop
+* '''Command line:''' Exit the Information Workbench by clicking in the command line window and pressing Ctrl + c.
+* '''IMPORTANT:''' Never exit the Information Workbench by closing the command line window without proper shutdown. This can result in corrupting the data store and loss of data.

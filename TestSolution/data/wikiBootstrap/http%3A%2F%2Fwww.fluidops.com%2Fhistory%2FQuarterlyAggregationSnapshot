@@ -1,0 +1,16 @@
+== Quarterly Aggregates in History ==
+ 
+{{#widget: TableResult |
+query = '
+SELECT ?snapshotId ?provider ?year ?quarter ?date
+WHERE {
+  GRAPH history:MetaContext {
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historyAggregationSnapshot:type history:QuarterlyAggregationSnapshot .
+    ?snapshotId dc:date ?date .
+    ?snapshotId historySnapshot:year ?year .
+    ?snapshotId historySnapshot:quarter ?quarter .
+  }
+}' |
+repository = 'history'
+}}

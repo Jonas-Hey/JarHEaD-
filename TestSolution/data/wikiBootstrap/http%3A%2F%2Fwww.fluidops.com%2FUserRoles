@@ -1,0 +1,3 @@
+=== {{#i18n: widgets#btn_user_roles | User Roles}} ===
+
+{{#widget: com.fluidops.iwb.user.widget.UserRolesWidget}}

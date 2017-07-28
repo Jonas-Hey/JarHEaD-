@@ -1,0 +1,23 @@
+<source>
+{
+	"type": "pie",
+	"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+	"alpha": 0.5,
+	$if(colors)$
+	"colors": $colors$,
+	$endif$
+	"color": "#535364",
+	"marginBottom": 0,
+	"startEffect": "easeInSine",
+	"marginTop": 0,
+	"marginLeft": 0,
+	"outlineAlpha": 0.94,
+	"outlineColor": "#174667",
+	"radius": 50,
+        "maxLabelWidth": 80,
+	"outlineThickness": 0.5,
+	"titleField": "category",
+	"allLabels": [],
+	"balloon": {}
+}
+</source>

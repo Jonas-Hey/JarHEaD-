@@ -1,0 +1,142 @@
+{{#widget: ActionableResult | 
+ query = 'Java:com.fluidops.iwb.api.provider.ProvidersList#listProviders'
+ | rowActions = {{ 
+      {{ clazz = 'com.fluidops.iwb.api.provider.ProvidersList'
+       | method = 'editProvider'
+       | passContext = true
+       | render = 'img:/ajax/icons/edit.png'
+       | label = 'Edit provider configuration'
+       | args = {{ '?:Identifier' }}
+       | onFinish = 'none'
+       | useJob = false
+      }} | 
+      {{ clazz = 'com.fluidops.iwb.api.provider.ProvidersList'
+       | method = 'runProvider'
+       | passContext = false
+       | render = 'img:/ajax/icons/refresh.png'
+       | label = 'Run provider'
+       | args = {{ '?:Identifier' }}
+       | onFinish = 'reloadComponent'
+       | useJob = true
+      }} | 
+      {{ clazz = 'com.fluidops.iwb.api.provider.ProvidersList'
+       | method = 'deleteProvider'
+       | passContext = false
+       | render = 'img:/ajax/icons/delete.png'
+       | label = 'Delete provider'
+       | args = {{ '?:Identifier' }}
+       | onFinish = 'reloadComponent'
+       | confirm = 'Do you really want to delete this provider?'
+       | useJob = true
+      }} | 
+      {{ clazz = 'com.fluidops.iwb.widget.WikiPopupWidget'
+       | method = 'openWikiInDialog'
+       | passContext = true
+       | render = 'img:/images/icons/16x16/info.png'
+       | label = 'Information'
+       | args = {{ '<Template:http://www.fluidops.com/admin/Providers_InfoPopup>' | '?:Identifier' | 'Provider Info' }}
+       | onFinish = 'none'
+       | useJob = false
+      }} }}
+ | selectedRowActions = {{ 
+      {{ clazz = 'com.fluidops.iwb.api.provider.ProvidersList'
+       | method = 'runProviders'
+       | showForEmptyTable = false
+       | passContext = false
+       | render = 'btn'
+       | label = 'Run'
+       | args = {{ '?:Identifier' }}
+       | onFinish = 'reloadComponent'
+       | confirm = 'Do you really want to run all selected providers?'
+       | useJob = true
+      }} | 
+      {{ clazz = 'com.fluidops.iwb.api.provider.ProvidersList'
+       | method = 'deleteProviders'
+       | showForEmptyTable = false
+       | render = 'btn'
+       | label = 'Delete'
+       | args = {{ '?:Identifier' }}
+       | onFinish = 'reloadComponent'
+       | confirm = 'Do you really want to delete all selected providers?'
+       | useJob = true
+      }} | 
+      {{ clazz = 'com.fluidops.iwb.api.provider.ProvidersList'
+       | method = 'addDataProvider'
+       | showForEmptyTable = true
+       | passContext = true
+       | render = 'btn'
+       | label = 'Add Data Provider'
+      }} | 
+      {{ clazz = 'com.fluidops.iwb.api.provider.ProvidersList'
+       | method = 'addInfrastructureProvider'
+       | showForEmptyTable = true
+       | passContext = true
+       | render = 'btn'
+       | label = 'Add Infrastructure Provider'
+      }} }}
+ | numberOfDisplayedRows = 10
+ | columnConfiguration = {{ 
+      {{ variableName = 'Identifier'
+       | tooltip = 'Identifier. For accessing the provider data, see the dialog that is triggered via the info action.'
+       | valueResolver = 'LABEL'
+       | displayName = 'Provider ID'
+      }} | 
+      {{ variableName = 'CategoryUri'
+       | visibility = 'HIDDEN'
+      }} | 
+      {{ variableName = 'Category'
+       | visibility = 'HIDDEN'
+      }} | 
+      {{ variableName = 'Provider'
+       | tooltip = 'Provider type'
+       | displayName = 'Provider'
+      }} | 
+      {{ variableName = 'Location'
+       | tooltip = 'Location or address, e.g. URL or path'
+       | displayName = 'Location'
+      }} | 
+      {{ variableName = 'User'
+       | visibility = 'HIDDEN'
+      }} | 
+      {{ variableName = 'LastDuration'
+       | tooltip = 'Duration of last provider update (in ms)'
+       | displayName = 'Last duration'
+      }} | 
+      {{ variableName = 'LastUpdate'
+       | tooltip = 'Timestamp of last provider update'
+       | displayName = 'Last update'
+       | datatype = 'xsd:dateTime'
+      }} | 
+      {{ variableName = 'ResultSize'
+       | tooltip = 'Number of returned result objects or statements'
+       | displayName = 'Result Size'
+      }} | 
+      {{ variableName = 'Schedule'
+       | tooltip = 'Schedule for provider updates; either a time interval, a cron expression, 'external' or 'disabled''
+       | displayName = 'Schedule'
+      }} | 
+      {{ variableName = 'Status'
+       | tooltip = 'Status of provider or result of last update'
+       | displayName = 'Status'
+      }} | 
+      {{ variableName = 'LastError'
+       | visibility = 'HIDDEN'
+       | displayName = 'Last error'
+      }} }}
+ | appearance = 
+   {{ sortByColumn = 'Identifier'
+   }}
+ | noDataMessage = 'No providers found'
+ | queryParameters = {{ 
+      {{ name = 'includeCategoryUri'
+       | value = $SELECT ({{{includeCategoryUri| ?res}}} as ?val) WHERE { BIND('' as ?res) . }$
+      }} | 
+      {{ name = 'includeDataProviders'
+       | value = {{{includeDataProviders|true}}}
+      }} | 
+      {{ name = 'includeInfrastructureProviders'
+       | value = {{{includeInfrastructureProviders|true}}}
+      }} }}
+}}
+<div class="clearBoth">&nbsp;</div>
+

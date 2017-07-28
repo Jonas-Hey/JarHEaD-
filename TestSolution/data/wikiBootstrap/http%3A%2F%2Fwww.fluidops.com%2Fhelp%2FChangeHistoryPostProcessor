@@ -1,0 +1,83 @@
+=== Change History Post Processor ===
+
+{{PRODUCT}} ships a post processor for logging changes to the data.
+
+This post processor is usually used in conjunction with the [[Help:DatabaseSnapshotProvider]].
+The post processor logs any new or deleted statement observed in the provider's result.
+If a value is changed (i.e. a state changes from off to on), a single modification
+log entry is written. The logs have the following fields:
+
+* subject: subject of the statement that is affected
+* predicate: predicate of the statement that is affected
+* object: object of the statement that is affected (in case of a modification, it is the new value - the old one can also be found in a different log entry)
+* timestamp: the time when the change was observed
+* status: new, modify, or delete
+* reason: an optional reason that caused the change
+
+The post processor has the following two configuration parameters: The datasource setting allows
+choosing a datasource to be used for logging. At the moment, JDBC datasources are supported.
+For information on how to create a new data source see [[Help:DataSources]].
+If no datasource is provided, the log output is written to the log files in the logs directory.
+
+The job window minutes setting is also optional. If set, the system checks for [[Help:Jobs]]
+which reference the current subject in a status message and hence are likely to be the cause
+of the change.
+
+==== Example ====
+
+Assume the [[Help:DatabaseSnapshotProvider]] is setup as follows:
+
+<source>
+property = host:power
+targetRepository = history
+</source>
+
+The post processor is set to:
+
+<source>
+datasource = log
+jobWindowMinutes = 60
+</source>
+
+Finally, the datasource log is configured to be a local H2 database:
+
+<source>
+id = log
+connectionString = jdbc:h2:mem/log
+driverClass = org.h2.Driver
+schemaNames = log
+</source>
+
+The post processor sets up a table called "log" automatically. If a VM is stopped, the following
+entry is written to the database:
+
+* subject: http://www.fluidops.com/Host/byName/model%3Asimdc/simdc%2Fvm-19
+* predicate: http://www.fluidops.com/Host/power
+* object: "poweredOff"
+* ts: 2016-10-31T19:23:25.146+01:00
+* status: modify
+* reason: http://www.fluidops.com/86f290f0-984f-4043-8b6c-4865d4f812ca
+
+The reason points to the ID of the job which triggered the change.
+
+Note that the log can be displayed using [[Help:PolyglotWidgets]]:
+
+<source>
+{{#widget: TableResult | 
+ query = 'select * from log order by ts desc'
+ | repository = 'log'
+}}
+</source>
+
+If the widget is to be included on the subject's page, the following configuration can be provided:
+
+<source>
+{{#widget: TableResult | 
+ query = 'select * from log where subject = '?:subject' order by ts desc'
+ | repository = 'log'
+ | queryParameters = {{ 
+      {{ name = 'subject'
+       | value = '$this$'
+      }} }}
+}}
+</source>

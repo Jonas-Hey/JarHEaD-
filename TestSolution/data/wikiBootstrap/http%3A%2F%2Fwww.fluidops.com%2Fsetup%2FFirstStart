@@ -1,0 +1,38 @@
+__NOTOC__
+
+= Welcome to {{PRODUCT}} =
+
+This page will guide you through the initial setup of your {{PRODUCT}} installation.
+
+When you are done with the changes, revert to the <a href="/" title="Default Home page">default Home page</a>
+
+{{#widget: CodeExecution | 
+ args = {{ true }}
+ | confirm = 'Do you really want to revert to the default Home page?'
+ | method = 'resetStartPage'
+ | passContext = true
+ | label = 'Revert Home page'
+ | onFinish = ''
+ | clazz = 'com.fluidops.iwb.util.UIUtil'
+}}
+
+{{#ifeq: {{PRODUCT}} | Information Workbench | | 
+=== User Management Service ===
+
+In order to use the Self-Service Portal, a User Management Service needs to be configured, and at least one organization should exist in the system.
+
+For configuring the User Management Service, see [[Setup:UserManagementService]].
+}}
+=== Authentication ===
+
+The platform has created a '''default user''' ''admin'' with '''default password''' during installation. Please make sure to <span style="color:red">'''change the password or remove the user'''</span> on [[Admin:UserManagement]].
+
+For configuring the authentication modules offered by the platform (such as LDAP or Windows Authentication), see [[Setup:Authentication]]. 
+
+
+=== Frontend/Portal Setup ===
+
+If this Instance of {{PRODUCT}} is to be as a Frontend/Portal which is to connect to an {{PRODUCT}} Backend then use the configurations [[Setup:Portal | here]] to modify the system accordingly.
+
+<!-- app specific include -->
+{{http://www.fluidops.com/include/UseCases}}

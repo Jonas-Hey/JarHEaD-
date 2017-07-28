@@ -1,0 +1,97 @@
+= FAQs =
+''Frequently Asked Questions''
+
+This is a collection of frequently asked questions about the {{PRODUCT}}.
+
+
+<br />
+
+
+=== I have a question. Where do I ask? ===
+
+Send your question to the {{PRODUCT}} [http://groups.google.com/group/iwb-discussion/subscribe mailing list]. For commercial support please contact our [http://www.fluidops.com/support/ support team].
+
+=== I've found a bug or want a new feature. What should I do? ===
+
+Consider first discussing it on the [http://groups.google.com/group/iwb-discussion/subscribe mailing list]. This will likely help characterize the issue and we can file it as a bug report or a feature request. 
+
+=== I installed the {{PRODUCT}} but the service doesn’t start. What can be the problem? ===
+
+The best way to understand the problem is to analyze the logs that can be found in the ''logs'' directory of your installation (particularly ''wrapper.log'' and ''service.log''). Possible causes include the unavailability of the configured repository (e.g. the remote SPARQL endpoint is not reachable), or one of the required ports is already locked.
+
+=== Upon Service Shutdown, Windows Service Control Manager reports a crash/timeout of the {{PRODUCT}} service ===
+
+This can sometimes happen for large installations when the shutdown procedure simply takes a longer time.
+Simply wait for the service to terminate. Alternatively, you can increase the timeout in Windows Service Control Manager:
+<a href="https://support.microsoft.com/en-us/kb/146092">https://support.microsoft.com/en-us/kb/146092</a>.
+
+=== How can I create a new wiki page? ===
+
+To open a new wiki page just enter a new page name following the ''..resource/'' part in your address bar (e.g. ''..resource/myNewPage'') and open the URL. The wiki page is persisted as soon as you save some content in this page. If you are interested in creating new structured data (each resource gets an associated wiki page) you might find the [[Help:TripleEditor | Authoring Semantic Data]] and [[Help:InstanceCreation | Instance Creation Widget]] help sections useful. 
+
+=== How do I get back to the start page? ===
+
+You can always return to your start page by clicking on the product logo on the top menu. Both, the URL of the [[Help:SystemConfiguration|start page]] and the logo, can be replaced for [[Help:UICustomization|customizing purposes]].
+
+=== How do I get data into my system? ===
+
+There are several ways to get data into the {{PRODUCT}}. Depending on the data source and application workflow you may consider importing data directly using the [[Help:RDFImport| Data Import UI]] or importing data on the regular basis using the [[Help:Providers | Data Providers Mechanism]]. 
+
+=== How can I delete data? ===
+
+You can find all contexts available in your repository on the [[Help:ContentOverview| Content Overview Page]] where you will see the meta information about the contexts and the button to delete data in a specific context.
+
+=== How can I add custom CSS rules in the {{PRODUCT}}? ===
+
+The best practice to define custom CSS rules is to provide an ''extensions.css'' file in your app artifact, which gets installed with the app. For details, please refer to the [[Help:PlatformSDK|platform SDK]].
+
+=== I have data in my own (external) repository. Can I use the {{PRODUCT}} to visualize it? ===
+
+As long as the existing repository exposes its data as a SPARQL endpoint, or as a Sesame compatible SAIL, you can use it with the {{PRODUCT}}. See [[Help:RepositoryConfiguration | Repository Configuration]] for more details.
+
+=== I have several repositories. Is it possible to use them at the same time? ===
+
+Yes. For this purpose you can use [[Help:FedX | FedX]]. It is a framework for efficient federated query processing involving multiple distributed Linked Data sources.
+
+=== Can I create my own widget/provider? ===
+
+Developers can implement custom providers and widgets using the [[Help:ProviderSDK | Provider SDK]] and [[Help:WidgetSDK | Widget SDK]], and build customized applications using the [[Help:PlatformSDK | Platform SDK]].
+
+=== What is a "context"? ===
+
+A context is basically the same as a named graph, where a set of statements are identified by a URI. Contexts created in the {{PRODUCT}} additionally include meta data, such as information about the creator, creation time, whether the data is editable or not etc. Find out more about the available contexts in the repository in [[Help:ContentOverview | Content Overview]].
+
+=== The GMap widget shows an error message asking for an API Key ===
+
+If the widget shows this error message:
+<source>
+Google API Key needs to be provided in your system configuration to be able to use Google Maps Service
+</source>
+you need to generate an API Key as described in [https://developers.google.com/maps/documentation/javascript/tutorial#api_key] and note the generated Key using ''googleApiKey'' parameter in the system configuration as described in [[Help:GMap]].
+
+=== How do I specify the proxy settings for accessing an external repository/downloading an external file? ===
+
+The proxy settings should be specified in the file "backend.conf". After the block
+
+<source>
+wrapper.java.additional.[X]=...
+</source>
+
+where [X] are increasing numbers, 
+you can add the following lines:
+
+<source>
+wrapper.java.additional.[X+1]=-Dhttp.proxyHost=your.proxy.host
+wrapper.java.additional.[X+2]=-Dhttp.proxyPort=your.proxy.port
+</source>
+and, if needed for proxy authentication:
+<source>
+wrapper.java.additional.[X+3]=-Dhttp.proxyUser=yourProxyUsername
+wrapper.java.additional.[X+4]=-Dhttp.proxyPassword=yourProxyPassword
+</source>
+
+
+=== I have data available in XML format, Excel, CSV, or in a relational database. How can I import such data into the {{PRODUCT}}? ===
+
+There are various ways to convert the data to RDF format before it is loaded into the repository. A simple one-shot tool (for Excel, CSV, XML, and other formats) which can be used for this purpose is [[Help:OpenRefine | Open Refine]]. In more advanced use cases you can consider using a [[Help:ScriptProvider | Script Provider]]. If a custom approach is needed for your project, please contact the [http://www.fluidops.com/sales-contact/ fluid Operations' sales team] for more information.
+

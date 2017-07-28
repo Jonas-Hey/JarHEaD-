@@ -1,9 +1,9 @@
 <list>
   <com.fluidops.iwb.datasource.XLSTable>
     <config class="com.fluidops.iwb.datasource.XLSTable$Config">
-      <location>./data/dataops/20170706-141734</location>
+      <location>./data/dataops/20170725-101828</location>
     </config>
-    <identifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten</identifier>
-    <metaDataURI class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/StatistischesBundesamtDaten/MetaData</metaDataURI>
+    <identifier class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Kaufkraft</identifier>
+    <metaDataURI class="org.openrdf.model.impl.URIImpl">http://www.fluidops.com/resource/Kaufkraft/MetaData</metaDataURI>
   </com.fluidops.iwb.datasource.XLSTable>
 </list>

@@ -38,24 +38,6 @@
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "UID" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:uid
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                rr:column "ID" ;
-                rr:datatype xsd:string
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:id
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
                 rr:column "JAHR" ;
                 rr:datatype xsd:string
             ] ;
@@ -144,8 +126,6 @@
                 rr:constant default:dmonat
             ]
         ] ;
-        rdfs:label "KundenDaten" ;
-        a rr:TriplesMap ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
                 rr:column "Jahr O" ;
@@ -155,6 +135,8 @@
                 rr:constant default:jahrO
             ]
         ] ;
+        rdfs:label "KundenDaten" ;
+        a rr:TriplesMap ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
                 rr:column "Monat O" ;
@@ -220,14 +202,6 @@
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:template "http://www.fluidops.com/resource/NAME:PERSON_{Name:Person}"
-            ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:namePerson
-            ]
-        ] ;
-        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
                 rr:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}"
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
@@ -242,16 +216,30 @@
                 rr:constant default:postleitzahl
             ]
         ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/ID_{ID 2}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:personenid
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ID" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:orderid
+            ]
+        ] ;
         rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" ;
-            rr:class default:KundenDaten
+            rr:template "http://www.fluidops.com/resource/ORDER_{ID}" ;
+            rr:class default:ORDER
         ]
     ] .
 
-<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/Kundendaten" ;
-    rrx:dataSource default:Kundendaten ;
-    rrx:sourceSchema <http://www.fluidops.com/resource/Kundendaten/MetaData> ;
-    rrx:containsTriplesMap [ a rr:TriplesMap ;
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rrx:containsTriplesMap [ a rr:TriplesMap ;
         rdfs:label "Name:Person" ;
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
             rr:tableName "PUBLIC.TABELLE3"
@@ -282,13 +270,33 @@
                 rr:constant rdfs:label
             ]
         ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:column "ID 2" ;
+                rr:datatype xsd:string
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:id
+            ]
+        ] ;
+        rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                rr:template "http://www.fluidops.com/resource/ORDER_{ID}"
+            ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                rr:constant default:orderid
+            ]
+        ] ;
         rr:subjectMap [ a rr:SubjectMap ;
-            rr:template "http://www.fluidops.com/resource/NAME:PERSON_{Name:Person}" ;
-            rr:class default:KundenDaten
+            rr:template "http://www.fluidops.com/resource/ID_{ID 2}" ;
+            rr:class <NAME:PERSON>
         ]
     ] .
 
-<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rrx:containsTriplesMap [ a rr:TriplesMap ;
+<http://www.fluidops.com/resource/Kundendaten/MappingCollection97643889177143068417581743178385> rdfs:label "Mapping Collection for Data Source http://www.fluidops.com/resource/Kundendaten" ;
+    rrx:dataSource default:Kundendaten ;
+    rrx:sourceSchema <http://www.fluidops.com/resource/Kundendaten/MetaData> ;
+    rrx:containsTriplesMap [ a rr:TriplesMap ;
         rdfs:label "Adresse" ;
         rr:logicalTable [ a rr:BaseTableOrView , rr:LogicalTable ;
             rr:tableName "PUBLIC.TABELLE3"
@@ -321,7 +329,7 @@
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
             rr:template "http://www.fluidops.com/resource/ADRESSE_{ADRESSE}" ;
-            rr:class default:KundenDaten
+            rr:class default:ADRESSE
         ]
     ] .
 
@@ -332,15 +340,15 @@
         ] ;
         rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                rr:column "POSTLEITZAHL" ;
+                rr:column "GEMEINDENAME" ;
                 rr:datatype xsd:string
             ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                rr:constant default:postleitzahl
+                rr:constant default:gemeindename
             ]
         ] ;
         rr:subjectMap [ a rr:SubjectMap ;
             rr:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" ;
-            rr:class default:KundenDaten
+            rr:class default:POSTLEITZAHL
         ]
     ] .

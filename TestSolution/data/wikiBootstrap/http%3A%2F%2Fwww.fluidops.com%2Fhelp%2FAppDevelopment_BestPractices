@@ -1,0 +1,143 @@
+= App Development: Best Practices  =
+
+== Overview ==
+
+The fluidOps Platform constitutes the foundation for various apps and is designed with extensibility in mind. For this purpose the platform provides a comprehensive SDK (Software Development Kit) allowing developers to build customized applications, so-called apps, targeting specific domains or use cases.
+
+An app (or solution) is a bundle that may contain data, content (e.g. wiki pages), configuration (e.g. providers, data mappings, data sources), code (e.g. custom providers, post processors, UI glue code) that can be deployed as a single unit into Information Workbench. 
+
+As an example, eCloudManager and eDataCenterAnalyzer, the data center and cloud management components offered by fluid Operations, are also implemented as apps on top of Information Workbench.
+
+This document describes best practices for implementing apps and covers the following topics:
+
+* Required environments and systems
+* SDK Development
+
+== Environments and systems ==
+
+An environment consists of the various systems which together are set up to implement and run the desired application or service. This might involve just a single Information Workbench installation or multiple installations working together, e.g. in a frontend-backend scenario or a HA setup. See the Deployment Scenarios guide for more information on possible scenarios.
+
+== Recommended environments ==
+
+When developing applications and content the following structure is recommended:
+(Note: the figure below assumes a frontend-backend scenario. If this is not the target scenario, simply ignore the additional frontend system in each environment)
+
+<img src="../images/help/SDK/development-structure.png" style="width:600px;"/>
+
+Development is performed on a separate VM or developer‘s notebook and the installation can be created (and re-created) on demand. This installation usually contains an Integrated Development Environment (IDE) such as Eclipse and is connected to a Version Control System (VCS) such as Git or Subversion.
+The staging environment should be close to the production environment and be used to verify development artifacts (so-called Apps or Solutions) with real data. This environment is usually a (stripped-down) copy of the production environment.
+If everything works as desired, the solution is installed in the production environment for general use.
+
+== Development system ==
+
+Developing an app usually involves coding, wiki editing, configuration and often enough a lot of trial and error requiring system restarts or frequent re-configuration of the system. This means that a development system usually cannot easily be shared between multiple developers, so development is best performed on a separate VM or developer‘s notebook.
+
+An exception to this rule is simple content authoring (i.e. writing wiki pages), where no restarts or reconfiguration are performed and therefore other users are not disturbed. Concurrent editing and content authoring can also be performed on a staging system.
+
+When running on a developer’s machine or a separate VM, an IWB or eCloudManager installation can easily be restored or brought to a known good state by simply re-creating the IWB or eCloudManager installation or restoring it from a backup or copy.
+
+When multiple people are working together collaboratively or even independent from each other, there can be multiple development systems. 
+
+The artifacts created as part of the development process is a single app or a set of apps which contain all relevant parts of a solution, e.g. custom providers, configuration, content (wiki pages), and data. An app is bundled as a single ZIP file including some meta data such as name and version. This file can be used to install the app on another system, e.g. the staging system.
+
+== Staging system ==
+
+The staging environment is used to verify functionality created on a development system in a clean system with real data and free of left-overs and partial configuration usually found in a development system. Also, it can be used to integrate apps and solutions from multiple sources, e.g. multiple independent development teams.
+
+The staging environment should be close to the production environment, i.e. contain real data, have a similar size and configuration. This environment is usually a (sometimes stripped-down) copy of the production environment.
+
+When installing artifacts created in a development system, the solutions should be pre-tested, as it is difficult to completely uninstall a solution (see above). If a staging environment has accumulated too many intermediate versions of apps it may be re-created from a backup or even as a fresh copy of the production environment to bring it back to a good known state or get new data from the production system.
+
+Depending on the use case the staging system may have the same set of providers running as the production system, so external systems integrated via providers may be accessed from two environments concurrently. Alternatively, the providers in the staging environment can be disabled, and the data copied from the production system. That way external systems are not queried from two environments but data is not as up-to-date.
+
+After installing an Information Workbench or eCloudManager upgrade there are a couple of diagnostic and cleanup steps that can be performed, e.g. removing all manually edited pages (they should rather be part of a solution). The steps are listed on the page Setup:Upgrade which is automatically set as start page after an system upgrade. The same steps might also be advisable when installing a solution from the development system.
+
+== Production system ==
+
+The production system contains all main systems for productive use. Restarts and downtime should be avoided or at least kept as short as possible, so when installing an app on a production system, it should be tested properly in the staging environment to minimize the risk of failures.
+
+Note: apps with simple content (e.g. just containing wiki pages or data) can be installed without restart and therefore service interruption.
+
+== Installing solutions ==
+
+Solutions or Apps can be installed from the Apps Dashboard (page Admin:Apps) within an Information Workbench or eCloudManager system. Simply upload and install all required apps and restart the system once if required.
+
+Note: apps with simple content (e.g. just containing wiki pages or data) can be installed without restart and therefore service interruption.
+
+== Uninstalling solutions ==
+
+Solutions or Apps cannot easily be un-installed, as data, content and configuration is merged into the installation. Also, reverting to a previous state is not easily done for the same reason.
+
+If un-installation is required, the environment is usually re-created from a clean state. This is usually only possible for development or test systems, which is why best practices involves the environments listed above.
+
+== App Development ==
+=== Development system ===
+
+Developing an app usually involves coding, wiki editing, configuration and often enough a lot of trial and error requiring system restarts or frequent re-configuration of the system. This means that a development system usually cannot easily be shared between multiple developers, so development is best performed on a separate VM or developer‘s notebook.
+
+An exception to this rule is simple content authoring (i.e. writing wiki pages or providing RDF data), where no restarts or reconfiguration are performed and therefore other users are not affected. Concurrent editing and content authoring can also be performed on a staging system, but when using a source control system it should rather be done on a development system.
+
+
+=== Setup ===
+
+A development installation usually contains an Integrated Development Environment (IDE) such as Eclipse and is connected to a Version Control System (VCS) such as Git or Subversion.
+
+Eclipse is required for custom providers and other artifacts requiring custom development in the Java programming language. We recommend the Eclipse package Eclipse IDE for Java EE Developers.
+
+After installing Eclipse and Information Workbench or eCloudManager on a system, a workspace needs to be created to hold the solution-in-development. The workspace is a base folder and contains one folder for the solution. To create the workspace follow the steps described in the online help.
+
+=== Development Process ===
+
+An app consists of artifacts of the following types:
+
+* Content such as
+** Wiki pages
+** RDF Data 
+* Modules such as
+** Custom providers
+** Post Processors
+* Meta data
+* Configuration
+
+The development process runs in iterations and consists of roughly the following steps:
+* Iteration
+** Development and/or authoring
+** Local tests, reviews and debugging
+* Repeat with next iteration
+
+When a sufficient level of functionality has been reached, the app can be packaged as a Zip file using the provided build script and installed for integration testing on a staging system.
+
+=== Integration with a Version Control System ===
+
+Version Control Systems (VCS) are used to permanently store all versions of an artifact such as a source file, wiki content or data file.  All changes are tracked and periodically committed to the so-called repository. Each commit contains meta-data like the author, a timestamp, a unique version number or hash, and a commit comment which ideally describes the changes in detail. 
+
+Widely used VCS are Git or Subversion. These systems are usually tightly integrated into the IDE. For Git, the EGit integration module is shipped with the Eclipse package Eclipse IDE for Java EE Developers, for Subversion one of the two available plugins Subversive or Subclipse have to be installed. 
+
+Both types of VCS are usually configured to connect to a central server, so such a server is also required. For Git, the widely used shared internet service Github can also be used.
+
+=== Resetting the environment ===
+
+When running on a developer’s machine or a separate VM, an IWB or eCloudManager installation can easily be restored or brought to a known good state by simply re-creating the installation or restoring it from a backup or copy.
+
+
+== Additional Resources ==
+
+All steps required for developing apps are documented in our online documentation:
+*http://help.fluidops.com/resource/Help:BuildingSolutions
+*http://help.fluidops.com/resource/Help:PlatformSDK
+*http://help.fluidops.com/resource/Help:SDK-Components
+
+Video showing how to use the Software Development Kit (SDK)
+*https://www.youtube.com/watch?v=MnOMcZT7ox8
+ 
+Eclipse IDE for Java EE Developers
+*http://www.eclipse.org/
+ 
+Git Version Control System
+*https://git-scm.com/
+ 
+Subversion Version Control System
+*https://subversion.apache.org/
+ 
+Java programming language
+*https://www.java.com/

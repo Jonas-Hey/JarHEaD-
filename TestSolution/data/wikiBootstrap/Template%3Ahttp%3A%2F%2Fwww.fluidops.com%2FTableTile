@@ -1,0 +1,33 @@
+<!-- 
+The tile shows a query result in a table. 
+The tile of the size (colspan) 1 can show up to 5 lines and 2 columns.
+The tile of the size (colspan) 2 can show up to 5 lines and 5 columns.
+
+The requirements for the tile:
+
+Tableheader: 250 x 30px #5A5A5A
+Line border: 250 x 1px (BxH) • #E6E9E7
+Headline: Arial • Regular • 18px • #839088
+Label: Arial • Regular • 14px • #FFFFFF
+Value: Arial • Regular • 14px • #333333
+
+Parameters:
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{query}}} - the query returning a result set to be displayed in the chart (required)
+	the parameter {{{colspan}}} - the tile size: 1 or 2. Default is 1 (optional)
+-->
+
+<div data-ss-colspan="{{{colspan|1}}}" class="tabletile tile{{{colspan|2}}}x1">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading|}}}| headingLink={{{headingLink|}}} | description={{{description|}}} }}
+<div class="tiledata">
+{{#widget: TableResult | 
+ | query = '{{{query|SELECT ("Example" as ?Column1) (0 as ?Column2) WHERE{}}}}'
+}}
+</div>
+
+<div style="clear:left;"></div>
+
+</div>
+</div>

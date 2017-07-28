@@ -1,0 +1,54 @@
+=== Available Platform Roles ===
+
+{{PRODUCT}} defines a set of global roles as well as a set of predefined roles that allow for fine-granular sharing of resources. The available roles are summarized in the following.
+
+{| class="sortable flTable2" style="width:800px;"
+|-
+!style="background-color: #E9E9E9"| Role
+!style="background-color: #E9E9E9" |Description
+|-
+|style="background-color: white"| admin:
+|style="background-color: white"| Platform admin with full permissions
+|-
+|style="background-color: #EEEEEE; border-right: 0"| user:
+|style="background-color: #EEEEEE"| Role for general user permissions
+|-
+|style="background-color: white"| guest:
+|style="background-color: white"| Platform guest with limited functionality
+|-
+|style="background-color: #EEEEEE; border-right: 0"| file-admin:
+|style="background-color: #EEEEEE"| Access to download files (including user uploads, all streaming downloads, as well as backup and config files)
+|-
+|style="background-color: white"| file-user:
+|style="background-color: white"| Access to download files (including user uploads and public streaming downloads)
+|-
+|style="background-color: #EEEEEE; border-right: 0"| permission-admin:
+|style="background-color: #EEEEEE"| Permission admin with full rights for permission management
+|-
+|style="background-color: white"| permission-domainadmin:
+|style="background-color: white"| Permission domain admin with domain-restricted rights for permission management
+|-
+|style="background-color: #EEEEEE; border-right: 0"| permission-assigner:
+|style="background-color: #EEEEEE"| Permission assigner has access to the share resource UI
+|-
+|style="background-color: white"| sparql-query:
+|style="background-color: white"| Role permitting the execution of SPARQL SELECT and CONSTRUCT queries
+|-
+|style="background-color: #EEEEEE; border-right: 0"| sparql-update:
+|style="background-color: #EEEEEE"| Role permitting the execution of SPARQL UPDATE queries
+|-
+|style="background-color: white"| wiki-admin:
+|style="background-color: white"| Wiki admin granting write access to resources as well as revision management
+|-
+|style="background-color: #EEEEEE; border-right: 0"| wiki-editor:
+|style="background-color: #EEEEEE"| Wiki editor granting limited write access (e.g. no widgets) to resources
+|-
+|style="background-color: white"| wiki-view:
+|style="background-color: white"| Wiki view granting read access to general resources
+|-
+|style="background-color: #EEEEEE; border-right: 0"| platform-base:
+|style="background-color: #EEEEEE"| Base role for platform functionality that can be used for role composition
+|-
+|style="background-color: white"| platform-views:
+|style="background-color: white"| Role for giving access to standard platform views (i.e., table, graph and pivot)
+|}

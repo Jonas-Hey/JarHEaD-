@@ -1,0 +1,31 @@
+= Jobs =
+
+Every operation that is initiated creates a job. The overview page is hyperlinked from [[Admin:Admin]].
+
+Jobs contain the following properties:
+* Description: Overall description of what the job accomplishes
+* Runtime: Elapsed job runtime
+* Start: Job start time
+* Progress: Percent complete while the job is running, job status (DONE, CANCELLED, ERROR) otherwise
+* Messages: Fine grained messages of what the job did last or is about to do
+
+Jobs can be nested. 
+Therefore, an overall job (e.g. automate big data process) has subjobs (e.g. create jdbc database). 
+These subjobs can be expanded using the tree table. The tree table columns represent the fields shown above. 
+A job is considered DONE when all its subjobs are done. 
+It gets the status ERROR if one of its subjobs ends with the status ERROR.
+
+The job overview page displays running and completed jobs in a tree table. 
+It is updated automatically every five seconds, so the user never loses track about all currently 
+running jobs and their progress. 
+
+The following actions can be performed on jobs:
+* Cancel: If the job is still running, it will be cancelled as soon as possible after clicking the cancel button. Note that cancelled jobs do not clean up intermediate artifacts. If the create datastore job is cancelled after the volume creation, the volume will not be deleted.
+* Acknowledge: Once jobs are complete or error out, jobs can be acknowledged which moves them to the history tab.
+* Remove: Once jobs are acknowledged, they can be removed from the user interface. Jobs are persisted on disk as part of our in-memory database until removed from the UI. Removed jobs are then persisted in the audit log, which can be found in the logs folder of the installation directory.
+
+If a job finished with an error, detailed information about the error is displayed when clicking on the 
+error-message (the text in red). This opens a popup window which contains a detailed stack trace of 
+the error cause, as shown in the following figure. The details are not stored permanently; a restart will 
+lead to a loss of the detailed error information.
+

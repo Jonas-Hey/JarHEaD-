@@ -1,0 +1,106 @@
+<source>
+{
+   "type":"serial",
+   "fontFamily":"Arial",
+   "borderAlpha":0,
+   "color":"#333333",
+   "fontSize":14,
+   "zoomOutButtonAlpha": 0,
+   "zoomOutButtonImage": "",
+   "zoomOutText": "",
+   "plotAreaBorderAlpha":0,
+   $if(decimalSeparator)$
+   "decimalSeparator": "$decimalSeparator$",
+   $endif$
+   $if(thousandsSeparator)$
+   "thousandsSeparator": "$thousandsSeparator$",
+   $endif$
+    $if(!useQueryForColors)$
+   "colors":[
+      "$schemeColor1$",
+      "$schemeColor2$",
+      "$schemeColor3$",
+      "$schemeColor4$",
+      "$schemeColor5$",
+      "$schemeColor6$",
+      "$schemeColor7$",
+      "$schemeColor8$"
+   ],
+   $endif$
+   "categoryAxis":{
+      "gridPosition":"start",
+      "axisAlpha":0.7,
+      "autoWrap":true,
+      "axisColor":"#ccc",
+      "axisThickness":1,
+      "gridThickness":0,
+      "fontSize":10,
+      "boldLabels": true,
+      "tickLength":0,
+      $if(parseDates)$
+      "parseDates": $parseDates$,
+      $endif$
+      "startOnAxis":true
+   },
+   "valueAxes":[
+      {
+         "axisAlpha":0,
+         "boldLabels": true,
+         $if(integersOnly)$
+         "integersOnly": $integersOnly$,
+         $endif$
+         $if(precision)$
+         "precision": $precision$,
+         $endif$
+         $if(maximum)$
+         "maximum": $maximum$,
+         $endif$
+         $if(minimum)$
+         "minimum": $minimum$,
+         $endif$
+         $if(unit)$
+         "unit": " $unit$",
+         $endif$
+         "fontSize":10
+      }
+   ],
+   "chartCursor":{
+      "valueLineEnabled":true,
+      "zoomable": false
+   },
+   "graphs":[
+      {
+         "balloonText":"[[description]]<br><b>value: [[value]]</b>",
+         "bullet":"round",
+         "bulletBorderAlpha":1,
+         "bulletBorderColor":"#FFFFFF",
+         "hideBulletsCount":50,
+         "lineThickness":1
+      }
+   ],
+   "guides":[
+
+   ],
+   "legend":{
+      "enabled":true,
+      "useGraphSettings": true,
+      "color":"#333333",
+      "markerType":"square",
+      "labelWidth":150,
+      "valueWidth":0,
+      "markerSize":10,
+      "bottom":20,
+      "equalWidths":false,
+      "autoMargins":false,
+      "spacing":3,
+      "maxColumns":3,
+      "fontSize":10
+   },
+   "allLabels":[
+
+   ],
+   "balloon":{
+
+   }
+}
+</source>

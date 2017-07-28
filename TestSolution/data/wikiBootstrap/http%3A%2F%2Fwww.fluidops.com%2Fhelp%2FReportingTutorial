@@ -1,0 +1,108 @@
+= Reporting Tutorial =
+
+This tutorial is a step by step example on how to set up a [[Help:Reporting | Reporting]] task, which sends custom emails to users. In this example, reports are sent to all users, who are responsible for at least one VM. The report consists of a table including all VMs the respective user is responsible for. Note that this tutorial is only applicable for eCM.
+
+'''Prerequisites:'''
+* Several users (of type foaf:Person) must already exist and they must have a first and last name and an email address. (Note that these users will receive emails if you follow this tutorial.)
+* Some users must be responsible for VMs. (The responsible person for a VM can be set on the page of the respective VM in the section "Configure Responsible".)
+
+== Provider ==
+
+Report documents are based on wiki pages. Therefore, it is necessary to instantiate a wiki page for each user that should receive a report. This can be automated with help of a provider as a manual setup of wiki pages would be rather tedious. We use the provider to create new resources. In the next step, we will then define a template for these resources.
+
+Go to [[Admin:Providers]] and add a Data Provider. Select '''SPARQLEndpointProvider''' as provider and make the following entries:
+
+<img src="../images/help/report/Tutorial-Provider.png" style="width: 700px"/>
+
+For convenience, you can copy and paste the query:
+<source>
+CONSTRUCT {
+  ?report rdf:type :VMResponsibleReport .
+  ?report :responsible ?user .
+} WHERE {
+ ?user a foaf:Person .
+ ?vm a  :VM .
+ ?vm :responsible ?user .
+ ?user foaf:firstName ?firstname .
+ ?user foaf:lastName ?lastname .
+ BIND (IRI(CONCAT("http://www.fluidops.com/reports/vmreport/report_", ?firstname, ?lastname)) AS ?report )
+}
+</source>
+
+The query searches for all users, who are responsible for at least one VM. It then creates a new resource of type "VMResponsibleReport" based on the name of the user and sets the user as responsible for this entity.
+
+== Wiki Template ==
+
+As next step, we need to define a template for objects of type "VMResponsibleReport". This way, wiki pages are instantiated for all resources that were created in the previous step. Go to [[Template:VMResponsibleReport]]. Click on the "edit" icon and then on "edit" to edit the wiki page. Enter the following text and save:
+
+<source>
+= Customer VM Report: {{#show: {{this}} | :responsible}} =
+
+{{#widget: TableResult | 
+ columnConfiguration = {{ 
+      {{ variableName = 'power'
+       | displayName = 'Power status'
+      }} | 
+      {{ variableName = 'vm'
+       | displayName = 'Virtual Machine'
+      }} | 
+      {{ variableName = 'cluster'
+       | displayName = 'Cluster'
+      }} | 
+      {{ variableName = 'memoryUtilization'
+       | displayName = 'Memory utilization'
+      }} | 
+      {{ variableName = 'storageUtilization'
+       | displayName = 'Storage Utilization'
+      }} | 
+      {{ variableName = 'cpus'
+       | displayName = 'vCPUs'
+      }} }}
+ | imageFile = 'images.prop'
+ | query = 'SELECT ?vm ?cluster ?power ?memoryUtilization ?storageUtilization ?cpus WHERE 
+{
+    ?? :responsible ?responsible .
+    ?vm a :VM .
+    ?vm :responsible ?responsible .
+    OPTIONAL {?cluster a :Cluster .
+    ?cluster cluster:physicalHost ?physicalHost .
+    ?physicalHost physicalHost:vm ?vm .}
+    OPTIONAL { ?vm rdfs:label ?vmLabel }
+    OPTIONAL { ?vm host:power ?power }
+    OPTIONAL { ?vm host:memoryUsed ?memoryUsed }
+    OPTIONAL { ?vm host:memory ?memory }
+    OPTIONAL { ?vm host:memoryUsedPercent ?memoryUsedPercent }
+    BIND (concat(str(round(?memoryUsed/1024/1024/1024*100)/100), ' / ', str(round(?memory/1024/1024/1024*100)/100), 'GB (', str(?memoryUsedPercent), '%)' ) as ?memoryUtilization) .
+    OPTIONAL { ?vm host:diskSpaceUsed ?diskSpaceUsed }
+    OPTIONAL { ?vm host:diskSize ?diskSize }
+    BIND(round(?diskSpaceUsed * 100 * 100/ (?diskSize*1024)) / 100 AS ?diskUtilization)
+    BIND (concat(str(round(?diskSpaceUsed/1024/1024/1024*100)/100), ' / ', str(round(?diskSize/1024/1024*100)/100), 'GB (', str(?diskUtilization), '%)' ) as ?storageUtilization) .
+    OPTIONAL { ?vm host:cpus ?cpus}
+} ORDER BY (fn:lower-case(str(?vmLabel)))'
+}}
+</source>
+
+The resulting wiki page for a user will look like this:
+
+<img src="../images/help/report/Tutorial-ReportMaxMustermann.png" style="width: 700px"/>
+
+== Report Task ==
+
+The last step is to create PDF documents using these wiki pages and send them to the respective user. Go to [[Admin:Tasks]] and add a new task. Select the '''ReportTask''', click on "Advanced" and make the following entries:
+
+<img src="../images/help/report/Tutorial-ReportTask1.png" style="width: 700px"/>
+
+<img src="../images/help/report/Tutorial-ReportTask2.png" style="width: 700px"/>
+
+Again, you may copy the query:
+<source>
+SELECT ?report ?name ?email WHERE{
+  ?report rdf:type :VMResponsibleReport .
+  ?report :responsible ?responsible .
+  ?responsible foaf:mbox ?email .
+  ?responsible rdfs:label ?name .
+}
+</source>
+This query returns all objects of type "VMResponsibleReport" with the name and email address of the respective user. The results of this query are used as parameters in the task. The wiki pages of all objects of type VMResponsibleReport are used to create reports, which are sent to the email address of the responsible person. The name of the person is used in the subject and the body of the email.
+
+When you click "Submit", a second task will be created automatically: A trigger task that performs the query and then executes the Report Task for all results. Every time the trigger task runs, all users who are responsible for VMs will receive an email with a report on their VMs.

@@ -1,0 +1,55 @@
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix twitter: <http://twitter.com/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix r2rml: <http://www.w3.org/ns/r2rml#> .
+
+
+default:logicalTable86347883492944444162900850846345 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.WORKSHEET" .
+
+default:objectMap61873758630510506417405206310174 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/GEMEINDE_{STADT}" .
+
+default:predicateMap31999566706681146475960041269292 a r2rml:PredicateMap ;
+	r2rml:constant default:gemeindename .
+
+default:predicateObjectMap80054807930592390772930808245954 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap61873758630510506417405206310174 ;
+	r2rml:predicateMap default:predicateMap31999566706681146475960041269292 .
+
+default:subjectMap51026419799851028491091871814540 a r2rml:SubjectMap ;
+	r2rml:class default:POSTLEITZAHL ;
+	r2rml:template "http://www.fluidops.com/resource/POSTLEITZAHL_{POSTLEITZAHL}" .
+
+default:triplesMap90645830674038074805100814524406 a r2rml:TriplesMap ;
+	rdfs:label "Postleitzahlen" ;
+	r2rml:logicalTable default:logicalTable86347883492944444162900850846345 ;
+	r2rml:predicateObjectMap default:predicateObjectMap80054807930592390772930808245954 ;
+	r2rml:subjectMap default:subjectMap51026419799851028491091871814540 .

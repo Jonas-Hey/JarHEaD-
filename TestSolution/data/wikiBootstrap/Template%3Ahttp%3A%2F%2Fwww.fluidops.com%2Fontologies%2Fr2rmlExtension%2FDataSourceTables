@@ -1,0 +1,17 @@
+<!--
+Template page for showing available data source tables
+
+Parameters:
+
+tm := the full URI string of the triples map, e.g. http://www.fluidops.com/resource/triplesMap02396804691085673358000240344559
+-->
+
+The following table lists the names of available JDBC tables which can for instance be used to define the SQL query of the logical table.
+
+{{#widget: TableResult | 
+ queryParameters = {{ 
+      {{ name = 'tm'
+       | value = $SELECT * WHERE { BIND(<{{{tm}}}> AS ?tm) }$
+      }} }}
+ | query = 'Java:com.fluidops.iwb.datasource.ui.DataSourcePreviewUtil#getJDBCTables'
+}}

@@ -1,0 +1,38 @@
+=== Meta Query Provider ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.ecm.provider.MetaQueryProvider
+| type = 'DESCRIPTION'
+}}
+
+Go back to [[Help:Providers | Providers ]]
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.ecm.provider.MetaQueryProvider
+}}
+
+==== Functionality ====
+
+The MetaQueryProvider identifies a set of target resources by executing a query against the 
+specified or default repository. The result of the query must be a list of URIs (i.e., the query must have a single projection). The repository 
+against which the query is evaluated can be specified using configuration parameter repository.
+The query can be specified in configuration parameter query and either directly contains the
+SPARQL query or the name of a named query defined in the [[Help:QueryCatalog| query catalog]]. 
+
+For each returned resource, an instance of the configured provider class is created, configured, and finally executed.  
+The target provider is configured using its associated configuration class which is filled by reading 
+statements from the target resource.
+
+The provider runs for each target resource are executed in parallel based on the value of config  
+parameter parallelRequests. The results of all providers are aggregated and returned. 
+
+==== Example ====
+
+Configure application monitoring
+
+<source>
+query = select * where { ?si a :SystemInstance . ?si systemInstance:monitoringActive true }
+provider = com.fluidops.iwb.ecm.provider.ApplicationMonitoringProvider
+</source>

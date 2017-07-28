@@ -1,0 +1,21 @@
+[[Admin:Admin|Settings]] > [[Admin:DataSources|Data Sources]]
+
+= Data Sources <sup>[[Help:DataSources | <img width="19" src="../images/navigation/help_start.png" />]]</sup> =
+
+The following data sources are known to the system.
+
+{{#widget: ActionableResult 
+ | query = 'SELECT ?DataSource WHERE { ?DataSource rdf:type Platform:DataSource }'
+ | rowActions = {{ 
+      {{ onFinish = 'reload'
+       | args = {{ '?:DataSource' }}
+       | label = 'Delete'
+       | method = 'deleteDatasource'
+       | clazz = 'com.fluidops.iwb.datasource.util.ActionableDataSource'
+       | confirm = 'Do you really want to remove this data source from the system?'
+       | render = 'img:/ajax/icons/delete.png'
+      }} }}
+}}
+
+<br/>
+[[Admin:CreateDataSource| Create New Data Source]]

@@ -1,0 +1,136 @@
+== System configuration ==
+
+The solution mechanism allows to adjust the system configuration at installation time. The following configuration types can be customized:
+
+* '''config.prop''': General system configuration
+* '''config/namespaces.prop''': Namespace configuration
+* '''config/providers.prop''': Provider registration
+* '''config/providers/*''': Provider configuration
+* '''config/datasources/*''': Data source configuration
+* '''config/tasks/*''': Task configuration
+* '''config/widgets.prop''': Widget registration
+* '''config/widgets.xml''': Widget configuration
+* '''config/acl/*''': ACL configurations
+
+In the following we explain these in detail.
+
+=== Adjusting config.prop ===
+
+The <code>config.prop</code> file contains system wide configuration switches as defined on [[Help:SystemConfiguration]]. Configuration options are given as key-value pairs as illustrated in the following example:
+
+<source>
+labelProperties=rdfs:label,dc:title,foaf:name
+preferredLanguage=de
+</source>
+
+The content of this file is merged with the application's config.prop file and written to the application's file. The "merge" result contains the following properties:
+
+* all properties (key, value) from the zip-file
+* all properties (key, value) from the application where key is not defined by the zip-files.
+
+Some properties contain comma seperated lists. In this case, the following syntax allows an app to add an entry:
+
+<source>
+addToCommaProperty("additionalProviders","org.example.Provider")
+</source>
+
+=== Adjusting namespaces ===
+
+The <code>namespaces.prop</code> maps namespace-prefixes to full URIs. The namespaces defined in this file are registered with the application's namespace service. 
+
+Solutions can provide additional namespaces by adding key-value pairs (one item per line) as illustrated in the following example:
+
+<source>
+example=http://example.org/ontology/
+</source>
+
+
+=== Custom providers and provider configurations ===
+
+The file <code>providers.prop</code> lists those providers that can be configured using the UI. The classes are registered with the application's provider service.
+
+Custom providers (e.g., providers added in solutions through the [[Help:ProviderSDK]]) need to be registered as illustrated in the following example (one provider per line):
+
+<source>
+com.fluidops.iwb.provider.MyCustomProvider=true
+</source>
+
+To automatically configure a provider from a solution, the <code>providers.xml</code> mechanism can be used. We recommend this to be used only by expert developers, and refer others to the provider configuration form UI described on [[Help:Providers]].
+
+In order to configure a provider at solution installation time, one or more provider serialization files, e.g. MyProvider.xml, (in the following referred to as ''provider stub'') can be placed into the ''config/providers/'' directory of the app. 
+
+* If any <i>*.groovy</i> file is encountered in the ''config/providers'' directory, the groovy script is executed and the specialized DSL (as defined below) can be used to register provider stubs or perform any other of the operations allowed by the DSL.
+* If there is no <i>*.groovy</i> script inside the directory, all provider stub configuration files are bootstrapped. Note that they are only added to the provider service if they do not already exist (i.e., they explicitly do not override any existing provider configuration).
+
+The following operations are defined in the DSL:
+
+<pre>
+boolean addProvider(String providerStub)  
+ 	add a provider (if it does not yet exist), provider stub is relative to config/providers/
+boolean addProvider(String providerStub, boolean forceOverride)  
+	add a provider (use forceOverride to define behavior), provider stub is relative to config/providers/
+boolean deleteProvider(URI providerId)
+	Delete a provider with the given URI. If such provider does not exist this operation is a no-op.
+boolean disableProvider(URI providerId)
+	Disable a provider with the given URI. If such provider does not exist this operation is a no-op.
+boolean enableProvider(URI providerId)
+	Enable a provider with the given URI. If such provider does not exist this operation is a no-op.
+</pre>
+
+=== Configuring data sources ===
+
+In {{PRODUCT}} [[Help:DataSources| data sources]] can be configured automatically at installation time of a solution artifact. To do so, one or more task serialization files, e.g. MyDataSource.xml, (in the following referred to as ''data source stub'') can be placed into the ''config/datasources/'' directory of the app.
+
+Similarly to provider configurations a DSL can be used to programmatically define the installation behavior.
+
+<pre>
+boolean addDataSource(String dataSourceStub)  
+	add a data source (if it does not yet exist), data source stub is relative to config/datasources/
+boolean addDataSource(String dataSourceStub, boolean forceOverride)  
+	add a data source (use forceOverride to define behavior), data source stub is relative to config/datasources/
+boolean deleteDataSource(URI dataSourceId)
+	Delete a data source with the given URI. If such data source does not exist this operation is a no-op.
+</pre>
+
+* If any <i>*.groovy</i> file is encountered in the ''config/datasources'' directory of a solution, the groovy script is executed and the specialized DSL can be used to register data source stubs or perform any other of the operations allowed by the DSL.
+* If there is no <i>*.groovy</i> script inside the directory, all data source stub configuration files are bootstrapped, i.e. they are added to the data source service if they do not already exist.
+
+=== Custom task configurations ===
+
+The SDK allows to configure [[Help:Tasks| tasks]] at installation time of a solution artifact. For this one or more task serialization files, e.g. MyTask.xml, (in the following referred to as ''task stub'') can be placed into the ''config/tasks/'' directory of the app.
+
+Similarly to provider configurations a DSL can be used to programmatically define the installation behavior.
+
+<pre>
+boolean addTask(String taskStub)  
+	add a task (if it does not yet exist), task stub is relative to config/tasks/
+boolean addTaskr(String taskStub, boolean forceOverride)  
+	add a provider (use forceOverride to define behavior), provider stub is relative to config/tasks/
+boolean deleteTask(URI taskId)
+	Delete a task with the given URI. If such task does not exist this operation is a no-op.
+boolean disableTask(URI taskId)
+	Disable a task with the given URI. If such task does not exist this operation is a no-op.
+boolean enableTask(URI providerId)
+	Enable a task with the given URI. If such task does not exist this operation is a no-op.
+</pre>
+
+* If any <i>*.groovy</i> file is encountered in the ''config/tasks'' directory of a solution, the groovy script is executed and the specialized DSL can be used to register task stubs or perform any other of the operations allowed by the DSL.
+* If there is no <i>*.groovy</i> script inside the directory, all task stub configuration files are bootstrapped, i.e. they are added to the task service if they do not already exist.
+
+=== Custom widgets and widget configurations ===
+
+The file <code>widgets.prop</code> lists the system's widgets. The classes are registered with the application's widget service.
+
+Custom widgets (e.g., widgets added in solutions through the [[Help:WidgetSDK]]) need to be registered as illustrated in the following example (one widget per line):
+
+<source>
+MyDemoWidget=com.fluidops.iwb.widget.MyDemoWidget
+</source>
+
+To automatically configure a widget from a solution, the file <code>widgets.xml</code> can be used. This file contains the serialized widget configurations. We recommend making the configuration in the widget configuration UI as described on [[Help:Widgets]], and manually copy the respective configuration snippet from ''config/widgets-user.xml'' in the application's working directory. Note that this is an expert option.
+
+=== Customizing ACLs ===
+
+The enterprise editions of the fluidOps platform allows to customize ACLs as described on [[Help:UserManagement]]. In solutions, custom ACLs can be provided following theses schemes. Note that ACL files provided by solutions override the files available in the application. We recommend ACL changes to be done only by expert developers.
+
+{{Help:SDK-CustomConfiguration}}

@@ -1,0 +1,33 @@
+=== Code Execution Task ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.CodeExecutionTask
+| type = 'DESCRIPTION'
+}}
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.CodeExecutionTask
+| type = CONFIGURATION
+}}
+
+==== Quick guide ====
+
+This task can invoke methods 
+which are normally called by the [[Help:CodeExecution | Code Execution Widget]]. 
+The parameter (un)marshalling works the same way as for the [[Help:APITask]].
+Note that the CodeExecutionContext parameter is not supported and can only be
+passed as a null value. See the example below:
+
+==== Example ====
+
+Deleting all incoming and outgoing statements of a resource:
+
+<source>
+clazz = com.fluidops.iwb.util.ResourceControl
+method = deleteResource
+args = System:null
+args = <http://www.fluidops.com/resource/DeleteMe>
+</source>

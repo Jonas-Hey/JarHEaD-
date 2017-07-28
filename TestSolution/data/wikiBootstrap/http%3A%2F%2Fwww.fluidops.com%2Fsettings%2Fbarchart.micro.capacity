@@ -1,0 +1,50 @@
+<source>
+{
+	"type": "serial",
+	"addClassNames": true,
+	"rotate": true,
+	$if(colors)$ 
+	"colors": $colors$,
+	$endif$
+	"autoMargins": false,
+	"marginBottom": 0,
+	"marginLeft": 0,
+	"marginRight": 0,
+	"marginTop": 0,
+	"categoryAxis": {
+		"axisThickness": 0,
+		"gridCount": 0,
+		"gridThickness": 0,
+		"tickLength": 0
+	},
+	"graphs": [
+		{
+			"fillAlphas": 1,
+			"gradientOrientation" : "horizontal",
+			"lineColor": "#FFFFFF",
+			"lineThickness": 0.5,
+			"showBalloon": false,
+			"columnWidth": 1,
+			"type": "column"
+		},
+		{
+			"fillAlphas": 1,
+			"lineColor": "#FFFFFF",
+			"lineThickness": 0.5,
+			"showBalloon": false,
+			"columnWidth": 1,
+			"type": "column"
+		}
+	],
+	"valueAxes": [
+		{
+                  "stackType": "100%",
+                  "autoGridCount": false,
+                  "axisThickness": 0,
+                  "gridAlpha": 0,
+                  "gridThickness": 0,
+                  "tickLength": 0
+		}
+	]
+}
+</source>

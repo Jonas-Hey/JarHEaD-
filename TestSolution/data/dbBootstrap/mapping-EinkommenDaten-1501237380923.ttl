@@ -1,0 +1,212 @@
+@prefix patent: <http://patents.data.gov.uk/def/patents/> .
+@prefix Help: <http://www.fluidops.com/help/> .
+@prefix Platform: <http://www.fluidops.com/ontologies/platform/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix purl: <http://purl.org/stuff/project/> .
+@prefix demo: <http://www.fluidops.com/demo/> .
+@prefix System: <http://www.fluidops.com/> .
+@prefix research: <http://research.data.gov.uk/def/project/> .
+@prefix historyProvider: <http://www.fluidops.com/history/Provider/> .
+@prefix twitter: <http://twitter.com/> .
+@prefix default: <http://www.fluidops.com/resource/> .
+@prefix ldap: <http://www.fluidops.com/ontologies/ActiveDirectory/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix Setup: <http://www.fluidops.com/setup/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix Settings: <http://www.fluidops.com/settings/> .
+@prefix historyAggregationSnapshot: <http://www.fluidops.com/history/AggregationSnapshot/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix history: <http://www.fluidops.com/history/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix Admin: <http://www.fluidops.com/admin/> .
+@prefix skosCore04: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix historySnapshot: <http://www.fluidops.com/history/Snapshot/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix r2rml: <http://www.w3.org/ns/r2rml#> .
+
+
+default:logicalTable02993046986231786109581592888566 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TBL666514" .
+
+default:logicalTable25310700119687742208991991423844 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TBL666514" .
+
+default:logicalTable36351756411181091867455016955219 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TBL666514" .
+
+default:logicalTable66687276647027226041441923310471 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TBL666514" .
+
+default:logicalTable94454559801968520536744147618470 a r2rml:BaseTableOrView , r2rml:LogicalTable ;
+	r2rml:tableName "PUBLIC.TBL666514" .
+
+default:objectMap08906444047244059460525110534206 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/EINKOMMENJEEINWOHNER2014_{Einkommen Haushalte je Einwohner 2014}" .
+
+default:objectMap12323115721740481822809486694189 a r2rml:ObjectMap ;
+	r2rml:column "Einkommen Haushalte je Einwohner 2014" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap13665160317229936918549184278148 a r2rml:ObjectMap ;
+	r2rml:column "Einkommen Haushalte insgesamt 2014" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap30841001457748284324907229245109 a r2rml:ObjectMap ;
+	r2rml:column "Kreise und kreisfreie Städte" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap35868144644642793876624000554277 a r2rml:ObjectMap ;
+	r2rml:column "COLUMN0" .
+
+default:objectMap38041026958005730113775156622387 a r2rml:ObjectMap ;
+	r2rml:column "Kreise und kreisfreie Städte" .
+
+default:objectMap66492687514892552401907813425292 a r2rml:ObjectMap ;
+	r2rml:template "http://www.fluidops.com/resource/EINKOMMENINSGESAMT2014_{Einkommen Haushalte insgesamt 2014}" .
+
+default:objectMap70480506690397505218275787376070 a r2rml:ObjectMap ;
+	r2rml:column "Einkommen Haushalte insgesamt 2014" .
+
+default:objectMap79793170668190141720322040794006 a r2rml:ObjectMap ;
+	r2rml:column "COLUMN0" ;
+	r2rml:datatype xsd:string .
+
+default:objectMap81471694864565264270562921344413 a r2rml:ObjectMap ;
+	r2rml:column "Einkommen Haushalte je Einwohner 2014" .
+
+default:objectMap82473519087775550595962681055493 a r2rml:ObjectMap ;
+	r2rml:column "Kreise und kreisfreie Städte" ;
+	r2rml:datatype xsd:string .
+
+default:predicateMap02275255123189488154600530446457 a r2rml:PredicateMap ;
+	r2rml:constant default:einkommenprokopf .
+
+default:predicateMap07769320934278963526756173291521 a r2rml:PredicateMap ;
+	r2rml:constant default:einkommenprokopf .
+
+default:predicateMap16906187950329220191040082446934 a r2rml:PredicateMap ;
+	r2rml:constant rdfs:label .
+
+default:predicateMap35063209399846643523075144665666 a r2rml:PredicateMap ;
+	r2rml:constant rdfs:label .
+
+default:predicateMap43826851919552458738146090097848 a r2rml:PredicateMap ;
+	r2rml:constant default:einkommenins .
+
+default:predicateMap50527356588632593013977280495420 a r2rml:PredicateMap ;
+	r2rml:constant default:einkommengesamt .
+
+default:predicateMap52516655779494706114542513949136 a r2rml:PredicateMap ;
+	r2rml:constant rdfs:label .
+
+default:predicateMap53943557369833651595356787942832 a r2rml:PredicateMap ;
+	r2rml:constant default:kreisname .
+
+default:predicateMap82855890218169631344274368593466 a r2rml:PredicateMap ;
+	r2rml:constant default:name .
+
+default:predicateMap88208714174094034202421332998326 a r2rml:PredicateMap ;
+	r2rml:constant rdfs:label .
+
+default:predicateMap99315086041600029766428117593750 a r2rml:PredicateMap ;
+	r2rml:constant default:DG .
+
+default:predicateObjectMap08943935231844291605476830598503 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap08906444047244059460525110534206 ;
+	r2rml:predicateMap default:predicateMap07769320934278963526756173291521 .
+
+default:predicateObjectMap18350407994842441762952287797561 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap82473519087775550595962681055493 ;
+	r2rml:predicateMap default:predicateMap53943557369833651595356787942832 .
+
+default:predicateObjectMap20556555506410713932688275525036 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap13665160317229936918549184278148 ;
+	r2rml:predicateMap default:predicateMap43826851919552458738146090097848 .
+
+default:predicateObjectMap21275271343135662103569544402092 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap70480506690397505218275787376070 ;
+	r2rml:predicateMap default:predicateMap52516655779494706114542513949136 .
+
+default:predicateObjectMap40162360641017085312886036225161 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap81471694864565264270562921344413 ;
+	r2rml:predicateMap default:predicateMap88208714174094034202421332998326 .
+
+default:predicateObjectMap48587727270079012087064313018806 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap12323115721740481822809486694189 ;
+	r2rml:predicateMap default:predicateMap02275255123189488154600530446457 .
+
+default:predicateObjectMap72057445085559047798239170902042 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap79793170668190141720322040794006 ;
+	r2rml:predicateMap default:predicateMap99315086041600029766428117593750 .
+
+default:predicateObjectMap83343054628761250266118714823698 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap38041026958005730113775156622387 ;
+	r2rml:predicateMap default:predicateMap35063209399846643523075144665666 .
+
+default:predicateObjectMap84488394021607611054161958139471 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap30841001457748284324907229245109 ;
+	r2rml:predicateMap default:predicateMap82855890218169631344274368593466 .
+
+default:predicateObjectMap87942500508082225196119778583068 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap66492687514892552401907813425292 ;
+	r2rml:predicateMap default:predicateMap50527356588632593013977280495420 .
+
+default:predicateObjectMap90388900868755701648752990226011 a r2rml:PredicateObjectMap ;
+	r2rml:objectMap default:objectMap35868144644642793876624000554277 ;
+	r2rml:predicateMap default:predicateMap16906187950329220191040082446934 .
+
+default:subjectMap26103605602800356491313153200150 a r2rml:SubjectMap ;
+	r2rml:class default:EINKOMMENINSGESAMT ;
+	r2rml:template "http://www.fluidops.com/resource/EINKOMMENINSGESAMT2014_{Einkommen Haushalte insgesamt 2014}" .
+
+default:subjectMap43991385875084183268446532356513 a r2rml:SubjectMap ;
+	r2rml:class default:Kreis ;
+	r2rml:template "http://www.fluidops.com/resource/KREIS_{COLUMN0}" .
+
+default:subjectMap64197062215934854771320691950849 a r2rml:SubjectMap ;
+	r2rml:class default:DG ;
+	r2rml:template "http://www.fluidops.com/resource/DG_{COLUMN0}" .
+
+default:subjectMap74580832005385294535681324617566 a r2rml:SubjectMap ;
+	r2rml:class default:Kreis ;
+	r2rml:template "http://www.fluidops.com/resource/KREIS_{COLUMN0}" .
+
+default:subjectMap80778940490885114103728612384943 a r2rml:SubjectMap ;
+	r2rml:class default:EINKOMMENJEEINWOHNER ;
+	r2rml:template "http://www.fluidops.com/resource/EINKOMMENJEEINWOHNER2014_{Einkommen Haushalte je Einwohner 2014}" .
+
+default:triplesMap25485500906973392079264985067074 a r2rml:TriplesMap ;
+	rdfs:label "DG" ;
+	r2rml:logicalTable default:logicalTable36351756411181091867455016955219 ;
+	r2rml:predicateObjectMap default:predicateObjectMap72057445085559047798239170902042 , default:predicateObjectMap90388900868755701648752990226011 ;
+	r2rml:subjectMap default:subjectMap64197062215934854771320691950849 .
+
+default:triplesMap54061487181106505323426580299705 a r2rml:TriplesMap ;
+	rdfs:label "EinkommenDaten" ;
+	r2rml:logicalTable default:logicalTable02993046986231786109581592888566 ;
+	r2rml:predicateObjectMap default:predicateObjectMap08943935231844291605476830598503 , default:predicateObjectMap83343054628761250266118714823698 , default:predicateObjectMap84488394021607611054161958139471 , default:predicateObjectMap87942500508082225196119778583068 ;
+	r2rml:subjectMap default:subjectMap43991385875084183268446532356513 .
+
+default:triplesMap58327905129169741830771058540534 a r2rml:TriplesMap ;
+	rdfs:label "Einkommen je Einwohner" ;
+	r2rml:logicalTable default:logicalTable66687276647027226041441923310471 ;
+	r2rml:predicateObjectMap default:predicateObjectMap40162360641017085312886036225161 , default:predicateObjectMap48587727270079012087064313018806 ;
+	r2rml:subjectMap default:subjectMap80778940490885114103728612384943 .
+
+default:triplesMap64497163527168014471287000399187 a r2rml:TriplesMap ;
+	rdfs:label "Einkommen insgesamt" ;
+	r2rml:logicalTable default:logicalTable25310700119687742208991991423844 ;
+	r2rml:predicateObjectMap default:predicateObjectMap20556555506410713932688275525036 , default:predicateObjectMap21275271343135662103569544402092 ;
+	r2rml:subjectMap default:subjectMap26103605602800356491313153200150 .
+
+default:triplesMap72790838426042633785307163757798 a r2rml:TriplesMap ;
+	rdfs:label "Kreis" ;
+	r2rml:logicalTable default:logicalTable94454559801968520536744147618470 ;
+	r2rml:predicateObjectMap default:predicateObjectMap18350407994842441762952287797561 ;
+	r2rml:subjectMap default:subjectMap74580832005385294535681324617566 .

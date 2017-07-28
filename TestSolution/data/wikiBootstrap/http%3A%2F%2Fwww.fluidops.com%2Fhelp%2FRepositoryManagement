@@ -1,0 +1,63 @@
+== Repository Manager ==
+Beside the platform's default repository, one might want to connect to other types of repositories, for example, remote repositories or SPARQL endpoints. The [[Admin:RepositoryManagement  | platform repository manager ]] serves as a central registry for managing any kind of repository and connecting those to the platform.  
+
+The manager provides the following functionality:
+* generic creation and initialization of repositories
+* look-up of existing (and initialized) repositories
+* removal and shutdown of repositories and respective configurations
+* management of local folders and files (e.g., binary files and indices, one data folder for each repository ''/data/repositories/{repositoryID}'')
+
+=== Registration of repositories ===
+The platform's working '''default''' and '''history''' repository are registered automatically as proxies. This is because they are accessible (resolvable) through the manager, but the manager has no control over them (these need to be configured using the usual [[Help:RepositoryConfiguration | system configuration settings]]).  <br/>
+
+Repositories can be registered in three different ways:
+* using the [[Admin:RepositoryManagement | repository manager widget ]]
+* bootstrapping a repository configuration using turtle files
+* programmatically
+
+While the latter two options are of particular interest to solutions developers, most types of repositories can be easily created using the [[Admin:RepositoryManagement | repository manager widget ]].<br/>
+
+
+<img src="../images/help/repository-manager.png" width="1100px" />
+
+<br/>
+
+The creation interface uses the [http://openrdf.callimachus.net/sesame/2.7/docs/users.docbook?view#Repository_configuration_templates__advanced_ sesame template mechanism] and comes with three predefined templates:
+* SPARQL Repository
+* SPARQL Repository with basic authentication
+* Remote Sesame Repository / Server
+* Remote Sesame Repository / Server with basic authentication
+
+New templates for additional repository types e.g., sesame native or memory repositories can simply be added by putting the respective turtle template files into the ''./config/repositories/templates'' folder. Once there, new templates will automatically become available within the creation widget.
+
+=== Operating on repositories ===
+To the time being, repositories registered within the [[Admin:RepositoryManagement | platform repository manager ]]  can only be queried through widget configurations which inherit the WidgetQueryConfig.
+
+<img src="../images/help/repository-manager-table-result.png" />
+
+<br/>
+Furthermore, all widgets and functions on a single page can be set to operate on a different repository by overwriting the page context. Therefore, one needs to append the get parameter "&repository=repositoryID" to the URL of the respective page. 
+
+=== Accessing repositories with the SERVICE keyword ===
+
+{{PRODUCT}} supports access to managed repositories through the SPARQL 1.1 Federation Extensions in order to achieve a federated query result (without the use of a federation layer such as [[Help:FedX| FedX]]).
+
+When using a ''Sesame NativeStore'' as the global default repository (i.e. the default setting) it is possible to refer to a managed repository from queries using the SERVICE keyword. The system tries to resolve the given SERVICE IRI using the platform repository manager and falls back to the default behavior (i.e. resolving the IRI as SPARQL endpoint). 
+
+Note: the platform repositories can be referenced by using the ''System:'' namespace as prefix, e.g. ''System:default'', ''System:history''.
+
+Example:
+
+<source>
+SELECT * WHERE { 
+    SERVICE <System:history> { 
+          select * where { ?s ?p ?o } LIMIT 100 
+    }
+}
+</source>
+
+Note: please be aware that the use of SPARQL 1.1 Federation Extensions may result in less efficient queries due to communication overhead.
+
+
+=== Storage of repository configurations ===
+During startup, the platform creates an internal ''SYSTEM'' repository which is used to persist all repository configurations during runtime . When shutting down, the repository manager tries to serialize all repository configurations as turtle files to the folder ''./config/repositories/instances'' (one file for each repository config). Once the serialization has been successful, the manager resets the ''SYSTEM'' repository. All available serializations of repository configurations will automatically be bootstrapped during the next (re)start of the system.  In case of a failure i.e., hard shutdown, the platform tries to recover the configurations from the ''SYSTEM'' repository instead of bootstrapping them from the serializations.

@@ -1,0 +1,20 @@
+= New page =
+
+It seems that no wiki content is defined for resource {{PAGENAME}}.
+
+In order to create content, go to the edit mode of the page (*) and use a template include (e.g., a template for the instance's type: Template:foaf:Person) or provide manual content.
+
+For further details see [[Help:Wiki| here]].
+
+<noWiki>*</noWiki>) ''requires write permissions''
+
+{{#ifexpr: {{#hasPermission: nav_table | type=ui }} | 
+  {{#ifexpr: {{#sparql: ASK { ?? ?p ?o } }} | 
+== The following table lists the available data of this resource ==
+
+{{#widget: TripleEditor | 
+ limitProperties = false
+ | editMode = 'READ_ONLY'
+}}
+  }}
+}}

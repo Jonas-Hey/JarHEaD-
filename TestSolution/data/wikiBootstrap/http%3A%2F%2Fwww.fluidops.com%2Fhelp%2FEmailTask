@@ -1,0 +1,30 @@
+=== Email Task ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.EmailTask
+| type = 'DESCRIPTION'
+}}
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.task.EmailTask
+| type = CONFIGURATION
+}}
+
+==== Quick guide ====
+
+The email subject, html, and plain text can be parameterized using variables like $lastname$. The contents of these variables can be provided via the ''parameters'' using [[Help:AdvancedWidgetConfiguration| dynamic operators]]:
+
+<div class="sourceDiv">
+subject = Message for $lastname$<br/>
+
+parameters:<br/>
+name = lastname<br/>
+value = ''$''this.rdfs:label<i>$</i>
+</div>
+
+The parameter value is dynamically read from the task context (also see [[Help:Tasks]]). If this value is resolved to be "Smith", then the email subject will be "Message for Smith".
+
+Also note that sending email must be configured here: [[Setup:Email]].

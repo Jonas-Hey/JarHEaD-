@@ -1,0 +1,31 @@
+<!-- 
+The template for a donut chart to visualize 2 values in percent relation to each other in a tile.
+
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{used}}} - a numeric value (a part of the {{{total}}}) (required)
+	the parameter {{{total}}} - a numeric value (required)
+	
+-->
+
+<div class="tile1x1">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading}}}| headingLink={{{headingLink}}} | description={{{description|}}} }}
+<div class="tiledata">
+{{#widget: PieChart | 
+ input = 'category'
+ | output = {{ 'value' }}
+ | query = 'select ?category ?value 
+where{ {BIND( {{{used|0}}} as ?value ) BIND( "used" as ?category) } UNION {BIND({{{total|0}}} - {{{used|0}}} as ?value) BIND( "free" as ?category )  } }'
+ | settings = 'Settings:chargedonuttile'
+ | customMappings = 'total={{{total|0}}},used={{{used|0}}}'
+ | styling = 
+   {{ height = '274'
+   }}
+}}
+</div>
+
+<div style="clear:left;"></div>
+
+</div>
+</div>

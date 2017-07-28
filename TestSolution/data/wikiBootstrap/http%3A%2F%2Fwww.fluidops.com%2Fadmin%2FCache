@@ -1,0 +1,18 @@
+= Cache Management  <sup>[[Help:Cache | <img width="19" src="../images/navigation/help_start.png" />]]</sup> =
+
+On this page caches available in the platform can be managed (e.g. invalidated).
+<br/><br/>
+
+{{#widget: TabWidget | 
+ includes = {{ 
+      {{ pageUri = 'Admin:Cache_ManagedCaches'
+       | title = 'Managed Caches'
+       | cssClass = 'tableTab'
+      }} | 
+      {{ pageUri = 'Admin:Cache_SpecialCaches'
+       | title = 'Special Caches'
+      }} | 
+      {{ pageUri = 'Admin:DBIndex'
+       | title = 'DBIndex'
+      }} }}
+}}

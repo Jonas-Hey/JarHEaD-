@@ -1,0 +1,42 @@
+== SSL Client Configuration ==
+
+In this section we describe how to deal with SSL/TLS configuration issues with providers in {{PRODUCT}}. Sometimes certain systems have outdated security setups and this can cause issues when connecting or interacting with {{PRODUCT}}. Here we explain how to configure the settings in order to overcomes these problems. Please note, some of these security modifications are to be done at the user's own risk.
+
+=== Configuration Issues ===
+
+Older systems sometimes have SSL/TLS configurations which are not accepted by modern clients (e.g. browsers, {{PRODUCT}}, ...):
+* The transport protocol is considered broken (SSLv3, TLS 1.0)
+* TLS is not enabled at all (tls.enabled = false)
+* The key length is too small (RSA < 1024)
+* The signing algorithm is considered too weak (MD5, SHA-1, ...)
+* The certificate is self-signed and/or the hostname doesn't match the certificate's common name
+
+In {{PRODUCT}} we allow for modifying certain settings to allow access in these cases. 
+
+==== Certificate Problems ====
+
+If encountering issues with certificate, setting the '''sslTrustAll''' config property to true can simply rectify this issue as it will allow all certificates to be accepted. See the help section on setting [[Help:SystemConfiguration | System Configurations ]].
+
+==== Java Security Setting Modifications ====
+
+On older systems there are some settings that do not adhere to or accept updated security settings. The RSA key length is sometimes set to 512, however in {{PRODUCT}}, a default value is set by the JVM of 1024.
+
+The transport protocols, SSLv3 & TLS1.0, on recent Java versions are now disabled as they are not considered secure anymore, these however might still be used on older Storage systems (i.e. Netapp 7mode 7.3) and they might also be using signing algorithms that are now considered weak like MD5 and SHA-1.
+
+In order to to be able to use these older systems it is possible to make some modifications on {{PRODUCT}}. It is advisable not to have all security settings open and allowed but to configure them to your own requirements. 
+
+To modify these settings, there is a file in {{PRODUCT}} on the filesystem that can be adjusted, ''' etc/java.security'''. The settings in this file will override the JDK/JRE security settings which are defined in '''lib/security/java.security'''. To allow all, as can be seen below, the settings have no value set.
+
+We allow all transport protocols by setting the following : 
+<source>
+jdk.tls.disabledAlgorithms=
+</source>
+''This TLS setting essentially overrides the disabling of certain protocols in the default file from the JDK/JRE and allows connections to systems which SSLv3 is set by default. This can be good for interoperability, but insufficient for security.''
+
+Another setting that can be defined in this file is the ability to disable certain signature algorithms : 
+<source>
+jdk.certpath.disabledAlgorithms=
+</source>
+''Certificate issues occur when certain clients have disabled certain certificate signature algorithms but again we can override this default JDK/JRE security setting using this certpath setting.'' 
+
+For further information see the online documentation from Oracle regarding [https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#DisabledAlgorithms Disabling Algorithms].

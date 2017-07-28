@@ -1,0 +1,60 @@
+== Micro Bar Chart as a status component ==
+
+{{Template:fluidops:StatusPercentMicroBarchart | percent = 77}}
+{{Template:fluidops:StatusPercentMicroBarchart | percent = 8}}
+{{Template:fluidops:StatusPercentMicroBarchart | percent = 30}}
+
+==== Code ====
+<div style="width:40%;">
+<source>{{Template:StatusPercentMicroBarchart | percent = 77}}</source>
+</div>
+== Micro Thermometer Bar Chart as a status component ==
+
+{{Template:fluidops:StatusPercentMicroBarchartThermometer | percent = 30}}
+{{Template:fluidops:StatusPercentMicroBarchartThermometer | percent = 77}}
+{{Template:fluidops:StatusPercentMicroBarchartThermometer | percent = 8}}
+
+==== Code ====
+<div style="width:40%;">
+<source>{{Template:StatusPercentMicroPiechartThermometer | percent = 77}}</source>
+</div>
+
+
+== Micro Pie Chart as a status component ==
+
+{{Template:fluidops:StatusPercentMicroPiechart | percent = 77}}
+{{Template:fluidops:StatusPercentMicroPiechart | percent = 8}}
+{{Template:fluidops:StatusPercentMicroPiechart | percent = 30}}
+
+==== Code ====
+<div style="width:40%;">
+<source>{{Template:StatusPercentMicroPiechart | percent = 77}}</source>
+</div>
+
+== Gauge as a status component ==
+{{Template:fluidops:Gauge | percent = 30}}
+{{Template:fluidops:Gauge | percent = 65}}
+{{Template:fluidops:Gauge | percent = 90}}
+
+==== Code ====
+<div style="width:30%;">
+<source>{{Template:Gauge | percent = 30}}</source>
+</div>
+
+=== Using dynamic evaluation ===
+
+Often the actual arguments for the charts have to be computed. This can be achieved using the [[Help:QueryResult]].
+
+{{#widget: QueryResult | 
+ template = 'Template:fluidops:StatusPercentMicroBarchart'
+ | query = 'SELECT * WHERE { BIND("42" AS ?percent) }'
+ | format = 'TEMPLATE_PAGE'
+}}
+
+<source>
+{{#widget: QueryResult | 
+ template = 'Template:fluidops:StatusPercentMicroBarchart'
+ | query = 'SELECT * WHERE { BIND("42" AS ?percent) }'
+ | format = 'TEMPLATE_PAGE'
+}}
+</source>

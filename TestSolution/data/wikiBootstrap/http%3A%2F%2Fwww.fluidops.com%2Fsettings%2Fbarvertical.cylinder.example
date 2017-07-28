@@ -1,0 +1,33 @@
+<source>
+{
+	"type": "serial",
+        "depth3D": 30,
+	"angle": 20,
+	"color": "#1C1C1C",
+        "colors": ["#318529"],
+	"categoryAxis": {
+		"gridPosition": "start",
+                "axisAlpha":0,
+                "gridAlpha":0,
+                "fontSize": 9,
+                "autoWrap": true
+	},
+	"trendLines": [],
+	"graphs": [
+		{
+		        "balloonText": "[[description]]: <b>[[value]]</b>",
+		        "fillAlphas": 0.85,
+		        "lineAlpha": 0.1,
+		        "type": "column",
+		        "topRadius":1
+		}
+	],
+        "valueAxes": [ {
+                "axisAlpha":0,
+                "gridAlpha":0  
+         } ],
+	"guides": [],
+	"allLabels": [],
+	"balloon": {}
+}
+</source>

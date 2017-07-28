@@ -1,0 +1,25 @@
+<!-- 
+The template for a tile description
+
+	the parameter {{{description}}} - contains the textual description
+
+-->
+{{#widget: Callout | 
+ callout = 
+   {{ title = {{ #i18n: general#label_description| Description}}
+    | text = '{{{description}}}'
+    | position = 'center'
+    | effect = 'SLIDE'
+    | size = 
+      {{ minHeight = 200
+       | minWidth = 300
+       | maxWidth = 300
+      }}
+   }}
+ | calloutOnPageLoad = false
+ | asynch = true
+ | styling = 
+   {{ cssClass = 'tileDescriptionButton'
+   }}
+}}
+

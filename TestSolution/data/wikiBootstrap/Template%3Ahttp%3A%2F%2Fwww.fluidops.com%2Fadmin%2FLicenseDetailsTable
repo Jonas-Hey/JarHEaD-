@@ -1,0 +1,18 @@
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.licensing.LicenseDetailsUIContainer#getLicenseDetails'
+ | numberOfDisplayedRows = 10
+ | columnConfiguration = {{ 
+      {{ variableName = 'LicensedItem'
+       | displayName = 'Licensed Item'
+      }} | 
+      {{ variableName = 'RequiredLicenses'
+       | displayName = 'Required Licenses'
+      }} | 
+      {{ variableName = 'LicenseStatus'
+       | displayName = 'License Status'
+      }} }}
+ | queryParameters = {{ 
+      {{ name = 'Feature'
+       | value = '"{{{feature}}}"'
+      }} }}
+}}

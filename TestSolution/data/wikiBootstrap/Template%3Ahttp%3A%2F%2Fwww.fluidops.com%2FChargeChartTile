@@ -1,0 +1,27 @@
+<!-- 
+The tile shows percent values in a stacked bar chart. The graph names are in the 'dataset' variable. The first graph/stack contains the main values, the second graph/stack the rest percent values to imitate a charge display. Only the values from 0 to 100 are allowed.
+
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{query}}} - the query returning 'category', 'value', 'dataset' result set to be displayed in the chart (required)
+-->
+<div class="tile1x1">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading|}}}| headingLink={{{headingLink|}}} | description={{{description|}}} }}
+<div class="tiledata">
+{{#widget: BarChart | 
+ input = 'category'
+ | output = {{ 'value' }}
+ | query = '{{{query|SELECT ("Example" as ?category) (5 as ?value) ("dataset" as ?dataset) WHERE{}}}}'
+ | groupByDatasetVariable = true
+ | settings = 'Settings:chargetile'
+ | styling = 
+   {{ height = '200'
+   }}
+}}
+</div>
+
+<div style="clear:left;"></div>
+
+</div>
+</div>

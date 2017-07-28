@@ -1,0 +1,5 @@
+{{#widget: com.fluidops.iwb.ecm.widget.InlineConfigurationWidget | 
+ fields = {{ 'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+ | configOptions = {{ 'httpKeyStore' | 'httpKeyStorePassword' |'httpTrustStore' | 'httpTrustStorePassword' | httpKeyStoreServerCertificateAlias }}
+}}
+

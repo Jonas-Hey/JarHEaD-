@@ -1,0 +1,44 @@
+== Portal mode ==
+
+In portal mode, the system is configured as front end which forwards every file request to a back end system. 
+The back end serves as central file repository which should not be accessible from the outer network.
+
+=== Single file repository ===
+
+If another fluid Ops platform instance should be used as single file repository back end, it must have the [[Help:Upload#Upload_Folder_Scanner_Functionality|upload folder scanner functionality]] enabled. 
+Further, each front end fluid Ops platform must be configured to forward its file requests to the back end system. This is done by adding the following parameters to the configuration file <code>config.prop</code>:
+
+{| class="wikitable"
+|-
+! Name                  !! Optional !! Default	!! Description
+|-
+| ''backendServerUrl''  || NO		|| 			|| The URL of the back end fluid operations platform (e.g. https://localhost:50443).
+|-
+| ''backendUsername''   || NO		||			|| Back end fluid Ops user name which should be used for authentication.
+|}
+
+The password to access the back end is not stored in <code>config.prop</code> but in <code>secrets.xml</code> in folder ''application directory''. If this file does not exists, it must be created.
+The following lines make the password for the back end known to the system. Please add them just before the <code>&lt;/list&gt;</code> element.
+
+<pre>
+<com.fluidops.coremgmt.backend.PwdSafe_-Credentials>
+  <host>backendServerUrl</host>
+  <user>backendUsername</user>
+  <password>backendPassword</password>
+</com.fluidops.coremgmt.backend.PwdSafe_-Credentials>
+</pre>
+
+<code>backendServerUrl</code> and <code>backendUsername</code> must be the same as the corresponding configuration parameters <code>backendServerUrl</code> and <code>backendUsername</code>.
+Replace <code>backendPassword</code> with a clear password. Below there is a properly configured example <code>secrets.xml</code>.
+
+<pre>
+<list>
+ <com.fluidops.coremgmt.backend.PwdSafe_-Credentials>
+  <host>https://localhost:50443</host>
+  <user>admin</user>
+  <password>admin</password>
+ </com.fluidops.coremgmt.backend.PwdSafe_-Credentials>
+</list>
+</pre>
+
+'''Note:''' After the first start up of the front end sytem, the password will be encrypted.

@@ -1,0 +1,38 @@
+= fluidOps Platform Apps =
+
+List of installed Apps:
+
+{{#widget:com.fluidops.iwb.widget.admin.SolutionsWidget }}
+
+<div style="float:left">
+{{#widget: CodeExecution | 
+ method = 'uploadSolution'
+ | passContext = true
+ | label = 'Upload'
+ | onFinish = 'none'
+ | clazz = 'com.fluidops.iwb.widget.admin.SolutionsWidget'
+}}
+</div>
+<div style="float:left">
+{{#widget: CodeExecution | 
+ passContext = true
+ | method = 'refresh'
+ | label = 'Refresh'
+ | clazz = 'com.fluidops.iwb.widget.admin.SolutionsWidget'
+}}
+</div>
+<div>
+{{#widget: CodeExecution | 
+ passContext = true
+ | args = {{ '%url'| true }} 
+ | userInput = {{ 
+      {{ name = 'url'
+       | required = true
+       | displayName = 'URL'
+       | componentType = 'SIMPLE'
+      }} }}
+ | method = 'installSolutionFromUrl'
+ | label = 'Install from URL'
+ | clazz = 'com.fluidops.iwb.widget.admin.SolutionsWidget'
+}}
+</div>

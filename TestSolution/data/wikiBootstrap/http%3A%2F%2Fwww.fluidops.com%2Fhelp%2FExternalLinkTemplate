@@ -1,0 +1,73 @@
+= External Link Template =
+
+{{PRODUCT}} provides the possibility to generate an external link on any wiki page with the help of a [[Template:System:ExternalLink|template]].
+
+== Syntax ==
+
+{| class="wikitable"
+!Parameter
+!Description
+|-
+|BaseURL
+|Base URL of the link
+|-
+|Parameter
+|Parameter which will be attached to the base URL
+|-
+|Target
+|Target where the link will be opened (_blank (default), _self, _parent, _top) (optional)
+|-
+|Image
+|Image which will be linked (optional)
+|-
+|Height
+|Height of the image (optional)
+|-
+|Linkname
+|Name of the link which will also be used as linktext if no image is provided
+|}
+
+== Example ==
+
+=== Example with image ===
+
+In this example a link to the german wikipedia is generated. The label of the current resource is used as parameter. This parameter will be attached to the base URL.
+Because the Image parameter is set, the corresponding picture will be shown in the set height.
+
+<source>{{Template:System:ExternalLink
+  |BaseURL=https://de.wikipedia.org/wiki/
+  |Parameter={{#show: {{this}} | rdfs:label }}
+  |Target=_blank
+  |Image=https://yt3.ggpht.com/-fFtFQW4BX0w/AAAAAAAAAAI/AAAAAAAAAAA/ufTVa6yuX7A/s100-c-k-no-mo-rj-c0xffffff/photo.jpg
+  |Height=150
+  |Linkname=Semantic Web
+}}</source>
+
+{{Template:System:ExternalLink
+  |BaseURL=https://de.wikipedia.org/wiki/
+  |Parameter=Semantic_Web
+  |Target=_blank
+  |Image=https://yt3.ggpht.com/-fFtFQW4BX0w/AAAAAAAAAAI/AAAAAAAAAAA/ufTVa6yuX7A/s100-c-k-no-mo-rj-c0xffffff/photo.jpg
+  |Height=150
+  |Linkname=Semantic Web
+}}
+
+=== Example with linktext ===
+
+In this example a link to the german wikipedia is generated. The label of the current resource is used as parameter. This parameter will be attached to the base URL.
+Because the Image parameter is not set, the Linkname will be used as linktext.
+
+
+<source>{{Template:System:ExternalLink
+  |BaseURL=https://de.wikipedia.org/wiki/
+  |Parameter=Semantic_Web
+  |Target=_blank
+  |Linkname=Semantic Web
+}}</source>
+
+{{Template:System:ExternalLink
+  |BaseURL=https://de.wikipedia.org/wiki/
+  |Parameter=Semantic_Web
+  |Target=_blank
+  |Linkname=Semantic Web
+}}

@@ -1,0 +1,32 @@
+=== Tachometer Widget ===
+
+==== Functionalities ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.TachometerWidget
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.TachometerWidget
+}}
+
+==== Example ====
+
+The widget can be embedded in the wiki page with the following code:
+<source>
+{{#widget: TachometerWidget | 
+ tachoOptions = $SELECT ?min ?max ?current ?label WHERE {
+   BIND(0 AS ?min) .
+   BIND(100 AS ?max) .
+   BIND("Usage" as ?label) .
+   ?? :usage ?current .
+}$
+}}
+</source>
+
+The resulted view :
+
+<img src="../images/help/tachometer.png" />

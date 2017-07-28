@@ -1,0 +1,26 @@
+== Advanced Result Visualization ==
+
+Table centric user interfaces are hard to grasp at a single glance. This feature makes it easy for end-users to generate other kinds of visualizations (charts, maps, time graphs, ...) starting from a table. Without writing any SPARQL query users are able to generate different views on the data.
+
+=== From table results to Charts, Maps or Timelines ===
+
+Similar to the [[Help:Search#Visualization_of_Query_Results| visualization of search results]] {{PRODUCT}} supports this functionality from the [[Help:TableResult| table result widget]].
+
+The following visualizations are supported and depend on the type of returned data (i.e., the system automatically suggests suitable visualization components):
+
+* ''Table'' This is a default visualization option showing both results of structured queries.
+* [[Help:PivotWidget | Pivot view]] To display it, the query has to return a list of RDF resources in its first column.
+* ''Chart''. For this, the query has to return at least two fields, one of which is a string and another one is numeric. Available charts are:
+** [[Help:BarChart | Bar chart]]
+** [[Help:LineChart | Line chart]]
+** [[Help:PieChart | Pie chart]]
+* [[Help:Timeline | Timeline]]. To display a timeline, the query has to return at least one string field together with a date/time one.
+* [[Help:GMap | Google Map]]. For this, the query has to contain variables reserved for the [[Help:GMap | Google Map]] widget: ''location'' (containing the name of the location to show on a map) or both ''lat'' and ''lng'' (containing the latitude and longitude respectively).
+
+=== Visualization Configuration and Actions ===
+
+The visualization dialog offers the following functionality
+
+* '''Edit Widget:''' modify the configuration of the widgets (e.g., add another output variable to a chart or define a [[Help:ChartCustomization| settings file]])
+* '''Copy Widget:''' copy the widget snippet as wiki text and embed into any wiki page
+* '''Save As:''' opens a dialog that guides the user in saving the wiki snippet into a fresh wiki page

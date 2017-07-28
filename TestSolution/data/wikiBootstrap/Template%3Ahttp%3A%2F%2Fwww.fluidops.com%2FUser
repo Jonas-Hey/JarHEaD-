@@ -1,0 +1,8 @@
+<!-- Ensure foaf:Person template is always included:
+* is a foaf Person: included by default
+* is not a foaf Person include it
+-->
+{{#ifexpr: {{#sparql: ASK { ?? a foaf:Person} }}
+| 
+| {{Template:foaf:Person}}
+}}

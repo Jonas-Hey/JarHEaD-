@@ -1,0 +1,6 @@
+<div style="margin-left:10px;">
+{{#sparql: Java:com.fluidops.licensing.LicenseDetailsUIContainer#getLicenseFeatures
+ | format=template
+ | template=Template:Admin:LicenseDetailsTableCollapsed
+}}
+</div>

@@ -1,0 +1,54 @@
+= Query Profiling =
+
+Query Profiling will store all queries to the default database. Make sure to only activate it temporarily. It can be activated via the
+<a href="/REST/JSON/getSemanticService/getRepositoryService/">Repository API</a>.
+
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.analyzer.Measure'
+ | method = 'clear'
+ | label = 'Clear Measurements'
+}}
+
+== Query Usage Count ==
+
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.iwb.query.catalog.Aggregation#groupBy'
+ | queryParameters = {{ 
+      {{ name = '__query'
+       | value = '"Java:com.fluidops.iwb.util.analyzer.Measure#list"'
+      }} | 
+      {{ name = '__column'
+       | value = '"Time"'
+      }} | 
+      {{ name = '__function'
+       | value = '"count"'
+      }} | 
+      {{ name = '__groupBy'
+       | value = '"query"'
+      }} }}
+}}
+
+== Aggregated Query Runtime ==
+
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.iwb.query.catalog.Aggregation#groupBy'
+ | queryParameters = {{ 
+      {{ name = '__query'
+       | value = '"Java:com.fluidops.iwb.util.analyzer.Measure#list"'
+      }} | 
+      {{ name = '__column'
+       | value = '"Time"'
+      }} | 
+      {{ name = '__function'
+       | value = '"sum"'
+      }} | 
+      {{ name = '__groupBy'
+       | value = '"query"'
+      }} }}
+}}
+
+== List of all Queries ==
+
+{{#widget: TableResult | 
+ query = 'Java:com.fluidops.iwb.util.analyzer.Measure#list'
+}}

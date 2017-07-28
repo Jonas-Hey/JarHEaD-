@@ -1,0 +1,23 @@
+<!--
+One segment in a value pair tile
+
+	the parameter {{{query}}} - A query providing the data. Needs to have one result with the bindings "label" and "value". Optionally "color".
+	the parameter {{{valueResolver}}} - the value resolver to use for the "value" result
+
+-->
+<div class="keyvalue">
+{{#widget: QueryResult | 
+ query = '{{{query}}}'
+ | template = '
+<div class="value {{{color}}}">{{{value}}}</div>
+<div class="label">{{{label}}}</div>
+'
+ | format = 'NONE'
+ | valueConfiguration = {{ 
+      {{ variableName = 'value'
+       | valueResolver = '{{{valueResolver|DEFAULT}}}'
+      }} }}
+ | noDataMessage = 'No data available'
+ | asynch = true
+}}
+</div>

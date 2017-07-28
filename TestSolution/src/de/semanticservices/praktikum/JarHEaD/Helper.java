@@ -73,7 +73,8 @@ public class Helper {
         
         return out;
     }
-    	
+    
+	
 	
 	
 	
@@ -143,6 +144,65 @@ public class Helper {
 	 
 	 }
 	
+	
+	public static String[] query(URI current, String SPARQL,String parameter) throws QueryEvaluationException 
+	   {	  
+		String[] out=new String[2];
+		
+		ReadDataManager dm = EndpointImpl.api().getDataManager();
+		  ValueFactory vf = ValueFactoryImpl.getInstance();
+		  // setting URI context for ?? in the query
+		  //URI valueContext = vf.createURI(current);
+		  if (Util.debug)System.err.println(SPARQL);
+		  URI valueContext= current;
+		  QueryBuilder<TupleQuery> queryBuilder = QueryBuilder
+		    .createTupleQuery(SPARQL).resolveValue(valueContext)
+		    .infer(false);
+		  TupleQuery query = null;
+		  try {
+		   query = queryBuilder.build(dm);
+		  } catch (MalformedQueryException | RepositoryException e) {
+			  if (Util.debug)System.err.println(e);
+		   }
+		  TupleQueryResult iterator = null;
+		  
+		  try{
+		   iterator = query.evaluate();
+		   }catch (QueryEvaluationException e) {
+			   if (Util.debug)System.err.println(e);}
+				    
+		  
+	  // while (iterator.hasNext()) {
+		  if (iterator.hasNext()){  
+			  BindingSet bindingSet = null;
+		    try {
+		     bindingSet = iterator.next();
+		    } catch (QueryEvaluationException e) {
+		    	if (Util.debug)System.err.println(e);
+
+		    }
+		    //out= bindingSet.getValue("x").toString();
+		    //out+=bindingSet.getValue("y").toString();
+		    String s =bindingSet.getValue(parameter).toString();
+		   
+		    if (!s.isEmpty()){
+		    	if (Util.debug)System.out.println(s);
+		    	out[0]= s;		    	
+		    	}else{
+			    	if (Util.debug)System.err.println("Error: URI is null!");
+			    }}
+		   
+		           	  
+	  return out;
+	 
+	 }
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Test method for the distance Provider which gives him some municipalities
@@ -182,6 +242,25 @@ public class Helper {
 	}
 	
 	/**
+	 * Calling a helper function to get all URIs of order type
+	 * @param type rdfs:type 
+	 * @return List of URIs of type
+	 * @throws QueryEvaluationException 
+	 */
+	public static List<URI> getNewURIs(URI current,String type,String parameter) throws QueryEvaluationException{
+		List<URI>uris=new ArrayList<URI>();
+		List<URI> uriStrings=getNode(current,type,parameter);
+		 for(URI uri:uriStrings){
+			 if (Util.debug)System.out.println(uri);
+		 uris.add(uri);
+		 }
+		
+		return uris;
+	}
+	
+	
+	
+	/**
 	 * Query for getUris
 	 * @param current
 	 * @param SPARQL
@@ -205,9 +284,13 @@ public class Helper {
 		    }
 		    //out= bindingSet.getValue("x").toString();
 		    //out+=bindingSet.getValue("y").toString();
-		    String s =bindingSet.getValue(parameter).toString();
+		    List <String> s=new ArrayList<String>();
+		    int i= bindingSet.size();
+		    System.out.println(i);
+		    s.add(bindingSet.getValue(parameter).toString());
+		   
 		    if (!s.isEmpty()){
-		    	out.add(RDFUtil.fullUri(s));
+		    	out.add(RDFUtil.fullUri(s.get(0)));
 		    }else{
 		    	if (Util.debug)System.err.println("Error: URI is null!");
 		    }
@@ -261,7 +344,7 @@ public static TupleQueryResult getIterator(URI current,String SPARQL,String para
 	}
 	public static List<URI> getDistributor(URI type) throws QueryEvaluationException{
 		List<URI>uris=new ArrayList<URI>();
-		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select * where {?x :personenid ?y}","x");
+		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select * where {?x :personenid ?y}","y");
 		 for(URI uri:uriStrings){
 			 if (Util.debug)System.out.println(uri);
 		 uris.add(uri);

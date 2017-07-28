@@ -1,0 +1,20 @@
+<source>
+{
+	"type": "serial",
+	"categoryAxis": {
+		"gridPosition": "start",
+		"startOnAxis": true
+	},
+	"chartCursor": {},
+	"trendLines": [],
+	"graphs": [
+		{
+			"balloonText": "[[description]] of [[category]]:[[value]]",
+			"bullet": "round"
+		}
+	],
+	"guides": [],
+	"allLabels": [],
+	"balloon": {}
+}
+</source>

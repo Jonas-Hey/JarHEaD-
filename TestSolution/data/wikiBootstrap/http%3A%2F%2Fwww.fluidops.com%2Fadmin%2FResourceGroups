@@ -1,0 +1,18 @@
+[[Admin:Admin|Settings]] > [[Admin:ResourceGroups|Resource Groups]]
+
+= Resource Groups =
+
+Resource groups allow to define collections of resources that have a common purpose or that share certain characteristics.
+
+{{#widget: TableResult | 
+ query = 'select * where { ?Group a Platform:ResourceGroup }'
+}}
+
+You can manage groups on the [[Admin:Providers]] page, for instance by creating a new [[Help:GroupProvider]].
+In addition, you can manually create groups and add group members:
+
+{{#widget: InstanceCreation | 
+ instanceType = 'Platform:ResourceGroup'
+ | title = 'Create a group and manage its members manually'
+ | uri = 'http://www.fluidops.com/resource/group/$name$'
+}}

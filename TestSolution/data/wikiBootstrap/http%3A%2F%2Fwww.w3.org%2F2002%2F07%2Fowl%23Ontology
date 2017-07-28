@@ -1,0 +1,60 @@
+== Ontology Manager <sup>[[Help:OntologyManager | <img width="19" src="../images/navigation/help_start.png" />]]</sup> ==
+
+The following ontologies are known to the platform:
+<div style="padding-top:20px; padding-bottom:20px">
+
+{{#widget: ActionableResult | 
+ numberOfDisplayedRows = 10
+ | columnConfiguration = {{ 
+      {{ variableName = 'DateOfUpload'
+       | valueResolver = 'DATE'
+       | displayName = 'Date of Upload'
+      }} | 
+      {{ variableName = 'Ontology'
+       | displayName = 'Ontology IRI'
+      }} | 
+      {{ variableName = 'VersionIRI'
+       | valueResolver = 'LABEL'
+       | displayName = 'Version IRI'
+      }} }}
+ | rowActions = {{ 
+      {{ confirm = 'You are about to delete the ontology. Any reasoner using this ontology may cease to function.'
+       | args = {{ '?:Ontology' | '?:VersionIRI' }}
+       | method = 'deleteOntology'
+       | passContext = true
+       | label = 'Delete Ontology from Repository'
+       | onFinish = 'reload'
+       | render = 'img:/ajax/icons/delete.png'
+       | clazz = 'com.fluidops.iwb.ontology.OntologyManagerExecution'
+      }} | 
+      {{ args = {{ '?:Ontology' | '?:VersionIRI' | '%format' }}
+       | method = 'exportOntology'
+       | passContext = true
+       | userInput = {{ 
+            {{ componentType = 'DROPDOWN'
+             | displayName = 'Export Format (RDF/XML is recommended for Protege)'
+             | presetValue = '"RDF/XML"'
+             | name = 'format'
+             | selectValues = {{ '"RDF/XML"' | '"Turtle"' | '"N3"' | '"TriG"' | '"N-Triples"' }}
+            }} }}
+       | label = 'Export Ontology To File'
+       | onFinish = 'none'
+       | render = 'img:/ajax/icons/deploy.png'
+       | clazz = 'com.fluidops.iwb.ontology.OntologyManagerExecution'
+      }} }}
+ | query = 'SELECT DISTINCT ?Ontology ?VersionIRI ?Title ?DateOfUpload WHERE { 
+  ?Ontology rdf:type owl:Ontology. 
+   GRAPH ?graph {?Ontology rdf:type owl:Ontology}.
+   OPTIONAL{ ?graph dc:date ?DateOfUpload}.
+   OPTIONAL{?Ontology dc:title ?Title}
+   OPTIONAL{?Ontology rdfs:label ?Title}.
+   OPTIONAL{GRAPH ?graph {?Ontology owl:versionIRI ?TempVersionIRI}}.
+   BIND(IF(bound(?TempVersionIRI), ?TempVersionIRI, <http://www.fluidops.com/ontologies/none>) AS ?VersionIRI)
+   }'
+ | labels = false
+ | asynch = true
+}}
+
+</div>
+{{Admin:OntologyImport}}
+{{owl:Ontology_Extensions}}

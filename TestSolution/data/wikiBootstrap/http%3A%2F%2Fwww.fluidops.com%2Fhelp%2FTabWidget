@@ -1,0 +1,51 @@
+=== Tab Widget ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.TabWidget
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.TabWidget
+}}
+
+
+==== Simple Example: show the Help:Start and :MyPage as tabs ====
+
+<source>
+{{#widget: TabWidget | 
+ includes = {{ 
+      {{ pageUri = 'Help:Start'
+       | tooltip = 'This is the tooltip for Help:Start'
+       | title = 'Help:Start'
+      }} | 
+      {{ pageUri = ':MyPage'
+       | title = 'My Page'
+      }} }}
+}}
+</source>
+
+==== Styling of tab widget ====
+
+The Tab Widget supports styling rules to adjust its appearance. Consider for example the use case, when all tabs represent tables (i.e., the only content of a tab is a [[Help:TableResult| table result widget]]). When applying the css class ''tabbedTable'' on the widget, the table appears connected to the tab menu.
+
+<source>
+{{#widget: TabWidget | 
+ includes = {{ 
+      {{ pageUri = ':PageWithTable1'
+       | title = 'Table1 1'
+      }} | 
+      {{ pageUri = ':PageWithTable2'
+       | title = 'Table 2'
+      }} }}
+ | styling = 
+   {{ cssClass = 'tabbedTable'
+   }}
+}}
+</source>
+
+In addition it is possible to define the CSS classes ''noTableTab'' and ''tableTab'' on the individual tab containers to use mixed rendering.

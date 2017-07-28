@@ -1,0 +1,44 @@
+<!-- 
+The template can visualize up to 6 values (label + value) in a tile. The template expects a query, a heading and a heading link as parameters. The query results contains labels, values and colors (the font color for value pairs).
+
+	the parameter {{{heading}}} - heading of the tile (optional)
+	the parameter {{{headingLink}}} - the link behind the heading (optional)
+	the parameter {{{colspan}}} - the tile size: 1 or 2. Default is 1 (optional)
+	the parameter {{{query1}}} - the query returning 'label' and 'value' result set to be displayed in the chart. The query result is displayed in the first column of the tile (required)
+	the parameter {{{query2}}} - the query returning 'label' and 'value' result set to be displayed in the chart. The query result is displayed in the second column of the tile if there are two columns (optional)
+-->
+
+<div data-ss-colspan="{{{colspan|1}}}" class="keyvaluetile tile{{{colspan|1}}}x1">
+<div class="tilecontent">
+{{Template:fluidops:TileHeading  | heading={{{heading|}}}| headingLink={{{headingLink|}}} | description={{{description|}}} }}
+<div class="tiledata">
+{{#widget: QueryResult | 
+ query = '{{{query1|SELECT ?label ?value WHERE{}}}}'
+ | template = '<div class="keyvalue">
+<div class="value {{{color}}}">{{{value}}}</div>
+<div class="label">{{{label}}}</div>
+</div>'
+ | format = 'NONE'
+ | noDataMessage = 'No data available'
+ | asynch = true
+}}
+</div>
+{{#if: {{{query2|}}} 
+| <div class="tiledata">
+{{#widget: QueryResult | 
+ query = '{{{query2|SELECT ?label ?value WHERE{}}}}'
+ | template = '<div class="keyvalue">
+<div class="value {{{color}}}">{{{value}}}</div>
+<div class="label">{{{label}}}</div>
+</div>'
+ | format = 'NONE'
+ | noDataMessage = 'No data available'
+ | asynch = true
+}}
+</div>
+|
+}}
+<div style="clear:left;"></div>
+
+</div>
+</div>

@@ -1,0 +1,12 @@
+= Historic Information =
+
+* [[history:Providers|Historic Provider Information]]
+* [[history:Snapshot|Snapshots]] 
+** [[history:FullSnapshot|Full Snapshots]]
+** [[history:DeltaSnapshot|Delta Snapshots]]
+** [[history:AggregationSnapshot|Aggregation Snapshots]]
+*** [[history:HourlyAggregationSnapshot|Hourly Aggregation Snapshots]]
+*** [[history:DailyAggregationSnapshot|Daily Aggregation Snapshots]]
+*** [[history:MonthlyAggregationSnapshot|Monthly Aggregation Snapshots]]
+*** [[history:QuarterlyAggregationSnapshot|Quarterly Aggregation Snapshots]]
+*** [[history:YearlyAggregationSnapshot|Yearly Aggregation Snapshots]]

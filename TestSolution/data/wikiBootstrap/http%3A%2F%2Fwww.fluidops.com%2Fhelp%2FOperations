@@ -1,0 +1,103 @@
+= Operations =
+
+== Preparing a production installation ==
+
+A production installation often needs to be adjusted to the workload at hand, which often means increasing the memory available to {{PRODUCT}}. The maximum heap memory size for the Java Virtual Machine (JVM) is 3GB by default. This is enough for small to medium workloads and allows running {{PRODUCT}} on regular workstations or notebooks with only 4GB of RAM. For production workloads {{PRODUCT}} often needs more memory. The actual amount of memory depends on a multitude of factors such as number of monitored objects, RDF statements, concurrent users, etc. and needs to be determined individually for each installation. 
+
+The maximum heap memory size can be configured in the file <code>backend-user.conf</code> in the root directory of the installation. This file does not exist by default, but the provided template file <code>backend-user.conf.template</code> can easily be copied and adjusted. When upgrading to a newer version of {{PRODUCT}} this file is preserved and also active in the updated version.
+
+The file <code>backend-user.conf</code> contains the most commonly changed settings like the JVM heap memory size (e.g. <code>wrapper.java.additional.10=-Xmx8G</code>), the garbage collector to be used or for enabling remote debugging. To use one of the provided settings, simply uncomment it by removing the leading comment character <code>#</code>.
+
+Please note: when changing parameters, do NOT change the numbers in the parameter name (such as <code>wrapper.java.additional.10</code>) as these overwrite settings in the <code>backend.conf</code> file!
+
+
+=== Adjust memory size ===
+
+The JVM parameter <code>-Xmx</code> is used to specify the maximum heap memory size for the JVM (please note that this is not necessarily the maximum amount of memory used by the JVM as it needs additional memory for compiled code, runtime data, etc.). For medium-sized installation, increasing the amount of memory available to eCloudManager to <code>8GB</code> is usually enough, bigger installations might need more like <code>12GB</code>, <code>16GB</code> or even <code>24GB</code>.
+
+Example:
+<code>wrapper.java.additional.10=-Xmx8G</code>
+
+When configuring eCloudManager to use more than <code>4GB</code> of memory, the garbage collector used should also be changed. The garbage collector takes care of cleaning up the application's memory. The JVM provides a number of different algorithms which are tuned to different use cases and scenarios. For big heaps the <code>G1</code> ("Garbage First") yields better results and smaller pause times.
+
+Example:
+<code>wrapper.java.additional.40=-XX:+UseG1GC</code>  
+
+=== Changing HTTP / HTTPS ports ===
+
+In a default installation of {{PRODUCT}} the ports 50080 (http) and 50443 (https) are chosen to avoid collisions on ports 80 and 443 which are often used by other applications. Also on Unix system root permissions are required to run an application on a port less than 1000.
+
+In the following we describe options to change the default ports.
+
+==== Changing the web-server configuration ====
+
+The simplest option is to change the [[Admin:Config| system configuration]] settings ''httpPort'' and ''httpSslPort'' (e.g. to port 80 and 443, respectively) and restart the platform. This changes the ports the web server is running on.
+
+Note that on Unix systems root permissions are required to run an application on port 443. See below for alternative options.
+
+==== Port mapping on Windows ====
+
+When {{PRODUCT}} should be running on the default ports, but still be accessible on port 443 for https, it is possible to apply a port mapping that is available in Windows. This can be activated using the following command:
+
+<source>
+netsh interface portproxy add v4tov4 listenport=443 connectaddress=127.0.0.1 connectport=50443
+</source>
+
+==== Port mapping on Unix ====
+
+In Unix systems running applications on ports less than 1000 requires root permission. A simple way to still make the application accessible on port 443 is to use port mapping using iptables.
+
+This can be achieved using the following configuration steps (tested on Ubuntu 16.04).
+
+1. Create the file ''/etc/network/if-up.d/fluidOps'':
+
+<source>
+> sudo vi /etc/network/if-up.d/fluidOps
+</source>
+
+2. Use the following content
+
+<source>
+#!/bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+# Flush any existing firewall rules we might have
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+iptables -X
+
+# Perform the rewriting magic.
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 50080
+iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to 50443
+</source>
+
+3. Make the script executable
+
+<source>
+> sudo chmod +x /etc/network/if-up.d/fluidOps
+</source>
+
+4. Restart the sytem or execute the script that was just created
+
+== Remote debugging ==
+
+For some diagnostic tasks it might be necessary to connect to a running installation via a debugger to perform low-level analysis or debug program logic. Remote debugging can be enabled in the file <code>backend-user.conf</code> in the root directory of the installation. This file does not exist by default, but the provided template file <code>backend-user.conf.template</code> can easily be copied and adjusted. When upgrading to a newer version of eCloudManager this file is preserved and also active in the updated version.
+
+The file <code>backend-user.conf</code> contains the most commonly changed settings like the JVM heap memory size (e.g. <code>wrapper.java.additional.10=-Xmx8G</code>), the garbage collector to be used or for enabling remote debugging. To use one of the provided settings, simply uncomment it by removing the leading comment character <code>#</code>.
+
+Please note: when changing parameters, do NOT change the numbers in the parameter name (such as <code>wrapper.java.additional.10</code>) as these overwrite settings in the <code>backend.conf</code> file!
+
+=== Enabling remote debugging ===
+
+To enable remote debugging simply uncomment the following line:
+
+Example: <code>wrapper.java.additional.12=-Xrunjdwp:transport=dt_socket,address=50081,server=y,suspend=n</code>
+
+The debugger is listening on the port specified using the <code>address</code> property, i.e. <code>50081</code> by default. This can also be changed to <code>address=ip/hostname:port</code> to only listen on a specific address or interface.
+
+Please note (1): the are '''no''' security checks so leaving this enabled allows '''everybody''' with network access to the debug port to do EVERYTHING within the JVM!
+
+Please note (2): enabling debugging may impose a performance penalty.
+    

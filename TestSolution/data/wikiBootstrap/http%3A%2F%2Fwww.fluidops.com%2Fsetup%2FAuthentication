@@ -1,0 +1,34 @@
+= Authentication Setup <sup>[[Help:Authentication | <img width="19" src="../images/navigation/help_start.png" />]]</sup>=
+
+Using the following form you can configure the authentication modules and options of the platform. For details on the respective settings, see [[Help:Authentication|Help:Authentication]].
+
+{{#widget: com.fluidops.iwb.widget.admin.AuthenticationConfigurationWidget}}
+
+{{#widget: CodeExecution | 
+ passContext = false
+ | args = {{ '%username' | '%password' }}
+ | userInput = {{ 
+      {{ name = 'username'
+       | required = true
+       | displayName = 'User name'
+       | componentType = 'SIMPLE'
+      }} | 
+      {{ name = 'password'
+       | required = false
+       | displayName = 'Password'
+       | componentType = 'PASSWORD'
+      }} }}
+ | method = 'testAuthentication'
+ | label = 'Test Authentication'
+ | clazz = 'com.fluidops.iwb.widget.admin.AuthenticationConfigurationWidget'
+}}
+<br/>
+When authenticating users including the domain part (e.g. ''myuser@mydomain.corp'' instead of just ''myuser''), the ''DIGEST-MD5'' method cannot be used. In this case authentication with plain text passwords needs to be enabled.
+<span style="color:red;">Should only be used for LDAPS!</span>
+{{#widget: com.fluidops.iwb.widget.admin.InlineConfigurationWidget | 
+ configOptions = {{ 'authenticateLdapUsingPlaintext' | 'authGroupsWithDomain' }}
+}}
+Additional LDAP related properties:
+{{#widget: com.fluidops.iwb.widget.admin.InlineConfigurationWidget | 
+ configOptions = {{ 'ldapFollowReferrals' | 'ldapMaxGroupRecursionDepth' }}
+}}

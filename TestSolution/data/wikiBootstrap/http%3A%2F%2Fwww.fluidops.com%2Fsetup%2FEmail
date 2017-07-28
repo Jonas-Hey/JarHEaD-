@@ -1,0 +1,34 @@
+= Email Setup <sup>[[Help:Configuration |<img width="19" src="../images/navigation/help_start.png" />]]</sup>=
+On this page you can enable, set up, configure and test the Email functionality. 
+== Basic ==
+{{#widget: com.fluidops.iwb.widget.admin.InlineConfigurationWidget 
+ | fields = {{   'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+ | configOptions = {{ 'emailUser' | 'emailPwd' | 'mail.smtp.host' | 'mail.smtp.port' | 'mail.smtp.sourceaddress'}}
+}}
+
+== Advanced ==
+{{#widget: com.fluidops.iwb.widget.admin.InlineConfigurationWidget 
+ | fields = {{   'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+ | configOptions = {{ 'mail.smtp.auth' | 'mail.smtp.connectiontimeout' | 'mail.smtp.starttls.enable' | 'mail.smtp.timeout' | 'mail.transport.protocol' | 'maxContextItems' | 'sendEmailsForEachEvent' | 'serverUrl' | 'useSSLforSMTP' }}
+}}
+
+== Activate Email ==
+
+{{#widget: com.fluidops.iwb.widget.admin.InlineConfigurationWidget 
+ | fields = {{   'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+ | configOptions = {{ 'sendEmails' }}
+}}
+
+== Test Email Settings==
+{{#widget: CodeExecution
+ | userInput = {{ 
+      {{ name = 'targetEmail'
+       | required = true
+       | displayName = 'Target Email Address'
+       | componentType = 'SIMPLE'
+      }} }}
+ | args = {{ $this$ | '%targetEmail' }}
+ | method = 'sendTestMail'
+ | label = 'Send testmail'
+ | clazz = 'com.fluidops.iwb.util.EmailTest'
+}}

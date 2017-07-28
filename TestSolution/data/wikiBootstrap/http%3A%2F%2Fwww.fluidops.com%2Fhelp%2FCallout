@@ -1,0 +1,41 @@
+=== Callout Widget ===
+
+==== Functionalities ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.CalloutWidget
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = com.fluidops.iwb.widget.CalloutWidget
+}}
+
+==== Example ====
+
+The widget can be embedded in the wiki page with the following code:
+<source>
+{{#widget: Callout | 
+ title = 'Click Me...'
+ | callout = 
+   {{ text = '<b>Hi</b> there!'
+    | title = 'Hi'
+   }}
+ | width = '100'
+ | image = '/images/iwb_logo_margin.png'
+}}
+</source>
+
+The resulted view :
+
+{{#widget: Callout | 
+ title = 'Click Me...'
+ | callout = 
+   {{ text = '<b>Hi</b> there!'
+    | title = 'Hi'
+   }}
+ | width = '100'
+ | image = '/images/iwb_logo_margin.png'
+}}

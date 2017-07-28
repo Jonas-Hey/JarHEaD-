@@ -1,0 +1,68 @@
+== Pre and Post Install Logic ==
+
+This section explains how an App can customize and extend its installation procedure.
+
+
+=== File Location and Behavior ===
+
+Within the App, you may create folders "pre-install" and "post-install". They may contain a number of groovy files (with file suffix .groovy).
+Before and after the App is installed by the platform, every pre/post-install groovy script is executed. Typical tasks are:
+
+* manual copying of App specific files
+* downloading assets off the web
+* cleanup of RDF triples
+
+=== File Sturcture ===
+
+The files can contain three types of code:
+
+==== Plain Groovy ====
+
+If the groovy script contains straight commands, they are executed as is. Consider this example performing some triple cleanup:
+
+<source>
+ReadWriteDataManager rwdm = ReadWriteDataManagerImpl.openDataManager(Global.repository)
+try {
+	deleteStatement(rwdm, RDFUtil.uri("sesService:IaaS"), RDFUtil.uri("service:serviceState"), RDFUtil.literal("published"))
+} finally {
+	ReadWriteDataManagerImpl.closeQuietly(rwdm)
+}
+
+def deleteStatement(ReadWriteDataManager rwdm, subj, pred, obj) {
+	rwdm.removeInSpecifiedContext(RDFUtil.stmt(subj, pred, obj), Context.getFreshUserContext(ContextLabel.SOLUTION))
+}
+</source>
+
+==== Pre / Post Install DSL ====
+
+The install DSL allows expressing typical copy commands in a more concise fashion:
+
+<source>
+/*
+ * The DSL for pre/post install scripts supports the following predefined commands:
+ *
+ * void		copyFile(String fileName, boolean createBackup)
+ * void		copyFileIfNotExists(String fileName)
+ * void		removeFile(String fileName)
+ * boolean 	existsTarget(String fileName)
+ * boolean 	existsSource(String fileName)
+ * void		requireRestart()
+ * File		getSource(String fileName)
+ * File		getTarget(String fileName)
+ *
+ */
+ copyFile("config/rolemappings.xml", false)
+</source>
+
+==== GO Method ====
+ 
+Finally, a go method can be specified, which is called with the respective parameters:
+ 
+<source>
+def go(solInfo, solDir, appDir) {
+	// solInfo: provides access to the app info such as version, name, etc.
+	// solDir: the directory the app source resides in (source)
+	// appDir: the directory the app is installed into (destination)
+	...
+}
+</source>

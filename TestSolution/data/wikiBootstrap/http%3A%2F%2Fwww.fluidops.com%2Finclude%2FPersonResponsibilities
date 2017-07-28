@@ -1,0 +1,17 @@
+== Responsibilities ==
+
+{{#widget: TableResult
+  | query = 'SELECT ?resource ?type WHERE { ?resource :responsible ?? .  ?resource rdf:type ?type  }'
+  | numberOfDisplayedRows = 5
+  | columnConfiguration = {{
+   {{ variableName = 'resource' | displayName = 'Resource'}} |
+   {{ variableName = 'type' | displayName = 'Type'}} }}
+  | noDataMessage = 'There are no Responsibilities assigned to this Person.'
+}}
+
+This person is involved in the following projects: 
+
+{{#widget: QueryResult | 
+ query = 'select * where { ?p :associate ?? }'
+ | noDataMessage = 'There are no Projects this Person is associated with.'
+}}

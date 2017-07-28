@@ -1,0 +1,101 @@
+<source>
+{
+	"type":"stock",
+	"path":"$path$",
+	$if(colors)$
+	"colors": $colors$,
+	$endif$
+	"valueLabels":"$valueLabels$",
+	"categoryAxesSettings": {
+		"minPeriod": "mm"
+		},
+	"panels":[
+
+		 {
+		 	"color": "#1C1C1C",
+ 			"borderColor":"#cccccc",
+ 			"borderAlpha": 0.5,
+ 			"stockGraphs":[
+ 				{
+                                        "id":"g1",
+ 					"fillAlphas":0.3,
+ 					"type":"line",
+ 					"bullet":"square",
+ 					"bulletSize":4,
+ 					"customBullet":"$customBullet$"
+				}
+			],
+		"stockLegend":{
+			"periodValueTextComparing":"[[percents.value.close]]%",
+			"periodValueTextRegular":"[[value.close]]",
+			"valueWidth": 100,
+			"markerType":"circle",
+			"markerSize": 8
+			},
+		"drawingIconsEnabled":false,
+		"valueAxes":[
+				{
+				"position":"right",
+				"integersOnly": true
+				}
+				],
+		"categoryAxis":{
+				"startOnAxis":true,
+				"autoGridCount":false
+			}
+		}
+	],
+	"chartCursorSettings":{
+		"valueBalloonsEnabled":true,
+		"graphBulletSize":1,
+		"valueLineEnabled":true,
+		"valueLineBalloonEnabled":true
+		},
+	"chartScrollbarSettings": {
+		"position": "bottom",
+		"graph": "g1"
+		},
+	"periodSelector":{
+		"periods":[
+		{
+			"period":"hh",
+			"count":6,
+			"label":"6H"
+		},
+		{
+			"period":"DD",
+			"count":1,
+			"label":"1D"
+ 		},
+ 		{
+ 			"period":"MM",
+ 			"count":1,
+			"label":"1M"
+		},
+		{
+			"period":"MM",
+			"count":3,
+ 			"label":"3M"
+		},
+		{
+			"period":"YYYY",
+			"count":1,
+			"label":"1Y"
+		},
+		{
+			"period":"YYYY",
+			"count":3,
+			"label":"3Y"
+		},
+		{
+			"period":"MAX",
+			"label":"MAX"
+		}
+	]
+	},
+	"panelsSettings":{
+		"mouseWheelZoomEnabled":true,
+		"marginLeft": 5
+	}
+}
+</source>

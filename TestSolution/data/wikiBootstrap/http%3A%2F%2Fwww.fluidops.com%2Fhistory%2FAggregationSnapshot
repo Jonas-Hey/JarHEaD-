@@ -1,0 +1,154 @@
+= Aggregation Snapshots in History =
+
+Summary of aggregation snapshots:
+
+{{#widget: PieChart | 
+ output = {{ 'snapshotIdCount' }}
+ | input = 'aggregationType'
+ | query = '
+SELECT ?aggregationType (COUNT(?snapshotId) AS ?snapshotIdCount) 
+WHERE {
+  GRAPH history:MetaContext { 
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historySnapshot:type history:AggregationSnapshot .
+    ?snapshotId historyAggregationSnapshot:type ?aggregationType .
+    ?snapshotId dc:date ?date .
+  }
+} GROUP BY ?aggregationType
+ORDER BY DESC(?date)'
+ | repository = 'history'
+ | asynch = true
+}}
+<br/><br/>
+
+Summary of available aggregates:
+
+{{#widget: ActionableResult | 
+ columnConfiguration = {{ 
+      {{ variableName = 'date'
+       | valueResolver = 'DATETIME'
+      }} }}
+ | rowActions = {{ 
+      {{ args = {{ '?:snapshotId' }}
+       | confirm = 'Are you sure you want to delete this snapshot and all associated data?'
+       | method = 'deleteSnapshot'
+       | label = 'Delete'
+       | useJob = true
+       | onFinish = 'reload'
+       | render = 'img:/ajax/icons/delete.png'
+       | clazz = 'com.fluidops.iwb.history.HistoricalDataManagement'
+      }} }}
+ | query = '
+SELECT ?snapshotId ?provider ?date ?aggregationType
+WHERE {
+  GRAPH history:MetaContext { 
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historySnapshot:type history:AggregationSnapshot .
+    ?snapshotId historyAggregationSnapshot:type ?aggregationType .
+    ?snapshotId dc:date ?date
+  }
+}
+ORDER BY DESC(?date)'
+ | repository = 'history'
+ | asynch = true
+}}
+<br/><br/>
+
+== Hourly Aggregates ==
+
+{{#widget: TableResult |
+query = '
+SELECT ?snapshotId ?provider ?year ?quarter ?month ?day ?hour ?date
+WHERE {
+  GRAPH history:MetaContext {
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historyAggregationSnapshot:type history:HourlyAggregationSnapshot .
+    ?snapshotId dc:date ?date .
+    ?snapshotId historySnapshot:year ?year .
+    ?snapshotId historySnapshot:quarter ?quarter .
+    ?snapshotId historySnapshot:month ?month .
+    ?snapshotId historySnapshot:day ?day .
+    ?snapshotId historySnapshot:hour ?hour .
+  }
+}' |
+repository = 'history'
+| asynch = true
+}}
+<br/>
+
+== Daily Aggregates ==
+
+{{#widget: TableResult |
+query = '
+SELECT ?snapshotId ?provider ?year ?quarter ?month ?day ?date
+WHERE {
+  GRAPH history:MetaContext {
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historyAggregationSnapshot:type history:DailyAggregationSnapshot .
+    ?snapshotId dc:date ?date .
+    ?snapshotId historySnapshot:year ?year .
+    ?snapshotId historySnapshot:quarter ?quarter .
+    ?snapshotId historySnapshot:month ?month .
+    ?snapshotId historySnapshot:day ?day .
+  }
+}' |
+repository = 'history'
+ | asynch = true
+}}
+<br/>
+
+== Monthly Aggregates ==
+
+{{#widget: TableResult |
+query = '
+SELECT ?snapshotId ?provider ?year ?quarter ?month ?date
+WHERE {
+  GRAPH history:MetaContext {
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historyAggregationSnapshot:type history:MonthlyAggregationSnapshot .
+    ?snapshotId dc:date ?date .
+    ?snapshotId historySnapshot:year ?year .
+    ?snapshotId historySnapshot:quarter ?quarter .
+    ?snapshotId historySnapshot:month ?month .
+  }
+}' |
+repository = 'history'
+ | asynch = true
+}}
+<br/>
+
+== Quarterly Aggregates ==
+ 
+{{#widget: TableResult |
+query = '
+SELECT ?snapshotId ?provider ?year ?quarter ?date
+WHERE {
+  GRAPH history:MetaContext {
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historyAggregationSnapshot:type history:QuarterlyAggregationSnapshot .
+    ?snapshotId dc:date ?date .
+    ?snapshotId historySnapshot:year ?year .
+    ?snapshotId historySnapshot:quarter ?quarter .
+  }
+}' |
+repository = 'history'
+ | asynch = true
+}}
+<br/>
+
+== Yearly Aggregates ==
+
+{{#widget: TableResult |
+query = '
+SELECT ?snapshotId ?provider ?year ?date
+WHERE {
+  GRAPH history:MetaContext {
+    ?provider historyProvider:hasAggregationSnapshot ?snapshotId .
+    ?snapshotId historyAggregationSnapshot:type history:YearlyAggregationSnapshot .
+    ?snapshotId dc:date ?date .
+    ?snapshotId historySnapshot:year ?year .
+  }
+}' |
+repository = 'history'
+ | asynch = true
+}}

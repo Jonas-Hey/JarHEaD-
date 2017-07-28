@@ -1,0 +1,83 @@
+==== Tabular Data Source (Table) ====
+
+Tabular data sources are a type of [[Help:DataSources | data source]]  that access information stored in a tabular or relational format.
+This comprises relational databases, Excel spreadsheets, and others.
+
+===== List of Tabular Data Sources =====
+
+The following tabular data sources are available out of the box:
+
+* '''CSV''' for CSV (comma separated values) files.
+* '''Excel''' for Excel spreadsheets.
+* '''JDBC''' to connect relational databases.
+* '''TSV''' for TSV (tab-separated values) files.
+* '''REST''' to load tabular data from a REST API.
+* '''LDAP''' to access an Active Directory and other LDAP servers
+* '''Groovy''' to load tabular data programmatically using a <a href="http://www.groovy-lang.org/" target="_blank">Groovy</a> script. (* if ''developer-tools'' app from the [http://appcenter.fluidops.com App Center] is installed, the script can be edited from the UI)
+
+===== Integration Process for Tabular Data =====
+
+In the [[Help:DataOps | three-step  data integration process]], you first create a [[Help:DataSources | data source]] and choose the appropriate type from the dropdown (any of the data sources listed above).
+
+Complete configuration and save the data source.
+Configuration parameters depend on the data source of your choice.
+You need to specify connection details.
+For file based formats, this is the location of a file on the server or a URL.
+For databases, this is a ''JDBC connection string'' that specifies how to contact the database server.
+Some data sources additionally offer optional and/or advanced parameters.
+
+When the data source is saved, you can create mappings that transform its data into RDF.
+Tabular data sources require [[Help:R2RMLMappings | R2RML mappings]].
+The data source can then be accessed by a [[Help:Providers | data provider]] using those mappings.
+
+===== JDBC: Accessing Relational Databases =====
+
+JDBC is a data access API to connect with relational databases.
+Choose JDBC (Table) as a data source type to add a data source for accessing a relational database.
+
+Note, that not all relational database management systems are supported and not all versions of a database may work even for supported systems.
+JDBC data sources have been successfully tested with selected versions of 
+
+* PostgreSQL
+* MySQL
+* MSSQL
+* Oracle (particularly versions 11g and 12c)
+* DB2
+* H2
+* Teradata
+
+Please also see [[Admin:JDBCDriver]].
+
+To connect, you need to specify a ''JDBC connection string'' that specifies where and how to reach the database server.
+When you choose JDBC (Table) as a data source type, you will see an input field to enter the JDBC connection string.
+A dropdown menu offers you a set of patterns for typical connection strings for different databases.
+You will have to replace fields enclosed in brackets with the corresponding values for connecting with your database, e.g., substitute {port} for the actual port number.
+
+You also need to specify the correct driver class for the type of database you plan to connect.
+Note, that most JDBC drivers cannot be bundled with the {{PRODUCT}} due to restricting licenses.
+When a database driver is missing, you will see an error message when previewing your data source.
+See [[Admin:JDBCDriver]] for a status overview of installed JDBC drivers.
+In this case download the appropriate JDBC driver (a *.jar file) from the database vendor's web site.
+Place the driver *.jar into /lib/extensions of your {{PRODUCT}} installation.
+When finished, restart the system.
+
+===== Groovy: Programmatic Access to Table Data =====
+
+Using Groovy allows you to load data from a data source, transform it into RDF and import it into the {{PRODUCT}}.
+As a major difference to other tabular data sources, a Groovy script accesses your data programmatically, offering you the full expressive power of Groovy as a script language.
+On the other side, it is obviously necessary to write a custom script.
+
+Comprehensive examples for such scripts are available [[Help:Groovy | on a separate page]].
+
+
+===== LDAP: Access to a Directory =====
+
+In order to retrieve and access data from an active directory, an LDAP data source can be used. The LDAP data source maps a set of attributes to table columns and inserts the retrieved data as rows.
+
+In the data source configuration the ''LDAP connection settings'', the ''ROOT query'' as well as specific ''table configurations'' can be provided. Consider the screenshot below for illustration.
+
+Important: if a certain attribute (e.g. the ''memberOf'' relationship) returns multiple results for a given entity, the table is composed as the cross-product of the data (e.g. {A, (group1, group2)} will result in two rows, namely {A, group1} and {A, group2}).
+
+Note that the LDAP data source can be used together with [[Help:PolyglotWidgets| polyglot]].
+
+<img src="../images/help/DataOps/LDAP-datasource.png" style="max-width:1200px; border: 1px black solid;" />

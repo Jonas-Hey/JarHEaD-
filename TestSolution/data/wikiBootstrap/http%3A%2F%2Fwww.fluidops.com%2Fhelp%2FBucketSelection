@@ -1,0 +1,69 @@
+=== Bucket Selection Widget ===
+
+==== Functionality ====
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = 'com.fluidops.iwb.widget.wizard.BucketSelectionWidget'
+| type = 'DESCRIPTION'
+}}
+Go back to [[Help:Widgets | Widgets ]]
+
+==== Configuration Settings ====
+
+{{#widget: com.fluidops.iwb.widget.DisplayConfigurationWidget
+| clazz = 'com.fluidops.iwb.widget.wizard.BucketSelectionWidget'
+}}
+
+
+
+Bucket Selection is a specialized variant of the selectable table result. It supports adding and removing entries from a bucket by picking them from a set of offered items.
+
+This widget can only be used within the context of a [[Help:WizardWidget| wizard]] (i.e., within a wizard step). The source table must have the same layout as the bucket (i.e., the projections in both configuration queries need to be the same).
+
+==== Example ====
+
+'''a) Example 1: select owl:Class instances'''
+
+This example illustrates bucket selection using an owl:Class example.
+
+Particularly note that the projections of the two queries are the same.
+
+<source>
+
+{{#widget: com.fluidops.iwb.widget.wizard.BucketSelectionWidget | 
+ selectionConfig = 
+   {{ variableName = 'class'
+    | propertyName = ':selectedClassOfBucket'
+    | allowMultiSelection = true
+   }}
+ | noDataMessage = 'No class selected. Click on add to select from the available classes.'
+ | columnConfiguration = {{ 
+      {{ variableName = 'class'
+       | displayName = 'Class'
+      }} | 
+      {{ variableName = 'instances'
+       | displayName = 'Number of instances'
+       | tooltip = 'Number of Instances of the class'
+      }} }}
+ | query = 'SELECT ?class (COUNT(?instance) AS ?instances) WHERE { 
+ ?? :selectedClassOfBucket ?class .
+ ?instance rdf:type ?class .
+} GROUP BY ?class HAVING (COUNT(?class) > 0)'
+ | addElementsSelection = 
+   {{ selectionConfig = 
+      {{ variableName = 'class'
+       | propertyName = ':selectedClassOfBucket'
+       | allowMultiSelection = true
+      }}
+    | noDataMessage = 'No class matching'
+    | columnConfiguration = {{ 
+         {{ variableName = 'instances'
+          | displayName = 'Number of instances'
+          | tooltip = 'Number of Instances of the class'
+         }} }}
+    | query = 'SELECT ?class (COUNT(?instance) AS ?instances) WHERE { 
+  ?class rdf:type owl:Class .
+  ?instance rdf:type ?class .
+} GROUP BY ?class'
+   }}
+}}
+</source>

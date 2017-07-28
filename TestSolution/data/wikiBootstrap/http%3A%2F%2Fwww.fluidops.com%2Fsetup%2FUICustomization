@@ -1,0 +1,218 @@
+= Color Scheme =
+
+This page allows to customize the color schemes of the UI.
+
+== Primary Colors ==
+
+The following color scheme configuration can be used to change the appearance of the UI.
+
+* Note: The cache of the browser needs to be refreshed such that the changes take effect (Hint: press Ctrl + F5).
+
+<div style="float:left;">
+{{#widget: com.fluidops.iwb.widget.admin.InlineConfigurationWidget | 
+ configOptions = {{ 'ui.color.primaryBackground' | 'ui.color.secondaryBackground' | 'ui.color.contrastColor' | 'ui.color.secondaryContrastColor' | 'ui.header.logo' }}
+ | fields = {{ 'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+}}
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.UIUtil'
+ | method = 'resetColorScheme'
+ | passContext = true
+ | render = 'btn'
+ | label = 'Reset'
+}}
+</div>
+
+<div style="float:left;margin-top:15px;">
+	<table style="margin:0px;margin-left:20px">
+		<caption><b>Preview</b></caption>
+		<tr>
+			<td style="margin:1px;"><div class="previewPrimaryBackground" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valuePrimaryBackground">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSecondaryBackground" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSecondaryBackground">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewContrastColor" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueContrastColor">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSecondaryContrastColor" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSecondaryContrastColor">Value: </div></td>
+		</tr>
+	</table>
+</div>
+<div style="clear:both;/"><br>
+
+== Chart Colors ==
+
+The following color scheme configuration can be used to change the default colors for charts.
+
+Hint: See [[Help:ChartCustomization]] for additional customization options.
+
+<div style="float:left;">
+{{#widget: com.fluidops.iwb.ecm.widget.InlineConfigurationWidget | 
+ fields = {{ 'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+ | configOptions = {{ 'chartColorLow' | 'chartColorHigh' }}
+}}
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.UIUtil'
+ | method = 'resetChartColors'
+ | passContext = true
+ | render = 'btn'
+ | label = 'Reset'
+}}
+</div>
+
+<div style="float:left;margin-top:15px;">
+	<table style="margin:0px;margin-left:20px">
+		<caption><b>Preview</b></caption>
+		<tr>
+			<td>
+				{{#widget: PieChart | 
+				 output = {{ 'y1' }}
+				 | input = 'x'
+				 | styling = 
+				   {{ width = '300'
+				    | height = '300'
+				   }}
+				 | query = 'SELECT * WHERE {  
+				 VALUES (?x ?y1 ?y2) {
+					( "Low"  "10" "5")
+					( "Mixed"  "20" "10" )
+					( "High"  "30" "15" )
+				}
+				}'
+				}}
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="clear:both;/">
+
+Change the 8 chart scheme colors. This is applicable for the charts that use the corresponding color variables in their settings file.
+
+<div style="float:left;">
+{{#widget: com.fluidops.iwb.ecm.widget.InlineConfigurationWidget | 
+ fields = {{ 'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+ | configOptions = {{ 'ui.color.schemeColor1' | 'ui.color.schemeColor2' | 'ui.color.schemeColor3' | 'ui.color.schemeColor4' | 'ui.color.schemeColor5' | 'ui.color.schemeColor6' | 'ui.color.schemeColor7' | 'ui.color.schemeColor8'}}
+}}
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.UIUtil'
+ | method = 'resetChartSchemeColors'
+ | passContext = true
+ | render = 'btn'
+ | label = 'Reset'
+}}
+</div>
+
+<div style="float:left;margin-top:15px;">
+	<table style="margin:0px;margin-left:20px">
+		<caption><b>Preview</b></caption>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor1" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor1">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor2" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor2">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor3" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor3">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor4" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor4">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor5" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor5">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor6" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor6">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor7" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor7">Value: </div></td>
+		</tr>
+		<tr>
+			<td style="margin:1px;"><div class="previewSchemeColor8" style="width:25px; height:25px; border: 1px solid black;">&nbsp;</div></td>
+			<td style="vertical-align:middle;"><div class="valueSchemeColor8">Value: </div></td>
+		</tr>
+	</table>
+</div>
+
+<div style="clear:both;/">
+* Note: The cache of the browser needs to be refreshed such that the changes take effect (Hint: press Ctrl + F5).
+
+<div style="float:left;margin-top:15px;width:400px;">
+	<table style="margin-left:20px;">
+		<caption><b>Preview</b></caption>
+		<tr>
+			<td>
+				{{#widget: PieChart | 
+				input = 'category'
+				| output = {{ 'value' }}
+				| query = 'SELECT ?category ?value WHERE { 
+							VALUES (?category ?value)
+							{ 
+								("Color1" 85)
+								("Color2" 60)
+								("Color3" 123)
+								("Color4" 13)
+								("Color5" 85)
+								("Color6" 60)
+								("Color7" 123)
+								("Color8" 13)
+					} }'
+				| settings = 'Settings:pietile1x1'
+				| customMappings = 'position={{{legendPosition|right}}}'
+				| styling = 
+					{{ width = '400'
+					| height = '300'
+					}}
+				}}
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="clear:both;/">
+= Header Logo =
+
+In the following the logo that is rendered in the header and on the login screen respectively can be customized. 
+
+Note that for positioning reasons the logos should have the following dimensions:
+* Login logo: <i>150 x 22 px</i>
+* Header logo: <i>250 x 90 px</i> (maximum values, actual logo can be smaller)
+Also note that the login logo must be located in the ''login'' folder of the {{PRODUCT}} installation.
+
+<div style="float:left;">
+{{#widget: com.fluidops.iwb.ecm.widget.InlineConfigurationWidget | 
+ fields = {{ 'PROPERTY_NAME' | 'INPUT_FIELD' | 'DESCRIPTION' }}
+ | configOptions = {{  'ui.logo.path' | 'ui.loginLogo.path'}}
+}}
+{{#widget: CodeExecution | 
+ clazz = 'com.fluidops.iwb.util.UIUtil'
+ | method = 'resetLogos'
+ | passContext = true
+ | render = 'btn'
+ | label = 'Reset'
+}}
+</div>
+
+<div style="float:left;margin-top:15px;">
+	<table style="margin:0px;margin-left:20px">
+		<tr>
+			<td> <center><b>Header Logo Preview</b></center> </td>
+			<td>  <center><b>Login Logo Preview</b></center> </td>
+ 		</tr>
+		<tr>
+			<td><div class="headerLogoPreview"></div></td>
+			<td><div class="loginLogoPreview"></div></td>
+		</tr>
+	</table>
+</div>
+<div style="clear:both"/>

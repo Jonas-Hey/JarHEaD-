@@ -1,0 +1,198 @@
+== Data Management API ==
+
+In this section we present how solutions may interact with the underlying triple store, e.g. to read statements.
+
+=== Convenience Functionality for Programming with RDF data ===
+
+The fluidOps platform ships with a rich set of convenience functionality to ease the use of RDF in Java applications (e.g. in [[Help:ProviderSDK| providers]]). This includes
+
+* RDFUtil (''com.fluidops.iwb.util.RDFUtil'')
+* OWLObject (''com.fluidops.iwb.util.OWLObject'')
+
+''RDFUtil'' offers convenience functions to create ''URIs'', ''Literals'', ''Statements'' as well as factory methods to instantiate ''OWLObject''. For the detailed documentation about the respective functionality please refer to the Javadoc attached to the SDK.
+
+In the following, we provide some examples for illustration. For full details please refer to the ''Javadoc'' provided with the SDK.
+
+==== Creating URIs, Literals & Statements ====
+
+<source>
+RDFUtil.uri("<http://example.org/fullUri>")
+RDFUtil.uri("prefix:localName")
+RDFUtil.uri(":uriInDefaultNamespace")
+RDFUtil.uri("uriInDefaultNamespace")
+
+RDFUtil.fullUri("http://example.org/fullUri")
+RDFUtil.fullUri("urn:fullUri")
+
+RDFUtil.literal("label")
+RDFUtil.literal(42)
+RDFUtil.literal("string", XMLSchema.STRING)
+RDFUtil.literal("42", XMLSchema.INTEGER)
+RDFUtil.literal("Hello World", "en")
+
+RDFUtil.stmt(uri(":subject"), RDF.TYPE, FOAF.PERSON)
+RDFUtil.stmt(uri(":subject"), RDFS.LABEL, literal("Some Person"))
+</source>
+
+Using static imports this can be written more compact:
+
+<source>
+import static com.fluidops.iwb.util.RDFUtil.literal;
+import static com.fluidops.iwb.util.RDFUtil.stmt;
+import static com.fluidops.iwb.util.RDFUtil.uri;
+...
+
+Statement st = stmt( uri(":subject"), RDFS.LABEL, literal("Hello World") );
+</source>
+
+'''Note:''' we are using these static imports below for convenience.
+
+==== Creating Ontology Objects ====
+
+In many use cases developers need to create an instance with a certain ''rdf:type'' and an ''rdfs:label''. For these use cases, and to add additional values to this object, we introduce the ''OWLObject''. Consider the following example for illustration.
+
+<source>
+URI subject = RDFUtil.uri(":subject");
+URI type = FOAF.PERSON;
+Literal label = RDFUtil.literal("Some Person");
+		
+OWLObject obj = new OWLObject(subject, type, label);
+obj.addValue(RDFS.COMMENT, literal("Some Comment"));
+obj.addValue(FOAF.MBOX, "mail@something.com");
+obj.addValue(FOAF.IMAGE, uri(":image"));
+</source>
+
+With the ''OWLObject#asStatements()'' method you can retrieve the Statements representing this object.
+
+==== Using OWLObject in Groovy ====
+
+With ''OWLObject'' it is possible to use some language functionality of Groovy, which in particular comes handy when writing [[Help:ScriptProvider| script providers]]. Consider the following snippet for illustration, where the ''field'' access represents attaching a Literal or URI to the respective URI property.
+
+<source>
+import static com.fluidops.iwb.util.RDFUtil.*
+import com.fluidops.iwb.util.OWLObject
+import com.fluidops.iwb.model.Vocabulary.FOAF
+
+OWLObject newUser = newObject(URI(":john_doe"), FOAF.PERSON, "John Doe");
+
+newUser.userName = "john"
+newUser.livesIn = URI(":Germany")
+newUser."foaf:mbox" = [ "john_doe@fluidops.com", "j_doe@fluidops.com" ]
+OWLObject someVm = newObject(uri("VM-1235"), uri(":VM"), "Some VM");
+newUser.vm = [ URI("VM-1234"), someVm ]
+</source>
+
+=== Read Access ===
+
+In the platform we abstract from the physical operations using a ''ReadDataManager''. This facility offers many convenience functions to interact with the database, and internally takes care for context management and resource handling.
+
+==== Retrieving a ''ReadDataManager'' instance ====
+
+The instance of the global ''ReadDataManager'' can be obtained from our API as follows:
+
+<source>
+ReadDataManager dm = EndpointImpl.api().getDataManager();
+</source>
+
+In more advanced use cases (e.g. for additional repositories) the ''ReadDataManager'' can be retrieved via a static factory method:
+
+<source>
+Repository myRepository = ...;     // e.g. from PlatformRepositoryManager
+ReadDataManager dm = RDFUtil.readDataManager(myRepository);
+</source>
+
+Note that the ReadDataManager internally takes care for proper connection handling.
+
+==== Retrieving Statements ====
+
+The ''ReadDataManager'' exposes various methods to obtain Statements from the database. The most convenient one to retrieve Statements matching a simple query is the following:
+
+<source>
+RepositoryResult<Statement> getStatements(Resource subject, URI predicate, Value object, boolean infer, Resource... contexts)
+</source>
+
+Note that for each position of the triple you can use <code>null</code> as a wildcard. 
+
+'''Example:''' Retrieve all outgoing statements of the resource ''http://example.org/subject'' in the context ''http://example.org/ctx1''
+
+<source>
+ReadDataManager dm = ...;
+ValueFactory vf = ValueFactoryImpl.getInstance();
+URI subject = vf.createURI("http://example.org/subject");
+URI context = vf.createURI("http://example.org/ctx1");
+
+RepositoryResult<Statement> res = dm.getStatements(subject, null, null, false, context);
+try {
+   while (res.hasNext()) {
+      Statement st = res.next();
+      ...
+   }
+} finally {
+   ReadDataManagerImpl.closeQuietly(res);
+}
+</source>
+
+Note in particular that triple store result resources have to be closed after usage.
+
+A convenience method which returns the result as a List of Statements is also available:
+
+<source>
+List<Statement> getStatementsAsList(Resource subject, URI predicate, Value object, boolean infer, Resource... contexts) 
+</source>
+
+==== Executing SPARQL queries ====
+
+For executing SPARQL queries we introduced a ''QueryBuilder'', which allows to construct queries and passing all relevant configuration settings. The ''QueryBuilder'' offers static factory methods for typical use-cases and internally takes care for resolving namespaces or query parameters.
+
+Consider the following examples for illustration of its usage. For details please refer to the Javadoc documentation of this component.
+
+'''Example 1:''' Evaluating a simple SELECT query
+
+<source>
+ReadDataManager dm = ...;
+ValueFactory vf = ValueFactoryImpl.getInstance();
+// the value context is used for ?? in the query, typically the current resource
+URI valueContext = vf.createURI("http://example.org/subject");
+QueryBuilder<TupleQuery> queryBuilder = QueryBuilder.createTupleQuery("SELECT * WHERE { ?? ?p ?o }").resolveValue(valueContext).infer(false);
+
+TupleQuery query = queryBuilder.build(dm);
+TupleQueryResult res = query.evaluate();
+</source>
+
+'''Example 2:''' Evaluating a query for which the type is unknown in advance, passing additional query parameters
+
+<source>
+ReadDataManager dm = ...;
+ValueFactory vf = ValueFactoryImpl.getInstance();
+
+String queryString = ...;   // any SELECT or CONSTRUCT query
+FromStringQueryBuilder<? extends Operation> queryBuilder = QueryBuilder.create(queryString);
+
+// a query may contain parameters, notated by ?:param
+queryBuilder.queryParameter("param", vf.createLiteral("The value for param");
+
+// the query type can be retrieved by asking the query builder
+SPARQLQueryType queryType = queryBuilder.getQueryType();
+
+// depending on the queryType the parsed Operation is a TupleQuery, GraphQuery or BooleanQuery
+Operation op = queryBuilder.build(dm);
+</source>
+
+=== Write Access ===
+
+The RDFUtil utility class also provides convenient write access to the default repository:
+
+<source>
+import static com.fluidops.iwb.util.RDFUtil.*;
+
+List<Statement> stmts = new ArrayList<>();
+addStmt( stmts, uri("a:b"), uri("a:b"), literal(55) );
+writeStatements(stmts);
+writeStatementsIfNotExist(stmts);
+</source>
+
+Methods for deleting and modifying statements are also available. Please see the JavaDoc for details.
+
+Note that every call performs its operations in one transaction.
+If you want multiple calls to be in a single transaction, you need to 
+refer to the javadoc and use the lower level APIs.

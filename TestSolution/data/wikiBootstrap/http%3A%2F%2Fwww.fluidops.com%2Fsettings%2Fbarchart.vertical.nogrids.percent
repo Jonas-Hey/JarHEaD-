@@ -1,0 +1,43 @@
+<source>
+{
+	"type": "serial",
+	$if(colors)$
+	"colors": $colors$,
+	$endif$
+	"color": "#1C1C1C",
+	"columnWidth": 0.7,
+	"marginBottom": 30,
+	"marginLeft": 150,
+	"marginTop": 30,
+	"startDuration": $growTime$,
+	"fontFamily": "Tahoma",
+	"graphs": [
+		{
+			"balloonText": "$balloonText$",
+			"fillAlphas": 0.80,
+			"lineAlpha": 1,
+  			"type": "column"
+		}
+	],
+	"balloon": {
+		"borderThickness": 1,
+		"color": "#1C1C1C"
+	},
+	"categoryAxis": {
+		"autoWrap": true,
+		"gridPosition": "start",
+		"axisColor": "#1C1C1C",
+                "gridPosition": "start",
+                "gridAlpha": 0,
+		"fontSize": 10
+	},
+	"valueAxes": [
+		{
+			"axisAlpha": 0,
+                        "color": "#969696",
+                        "unit": "%",
+                        "gridAlpha": 0
+		}
+	]
+}
+</source>
