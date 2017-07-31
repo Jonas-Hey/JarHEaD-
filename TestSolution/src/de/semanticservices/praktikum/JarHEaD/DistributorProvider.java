@@ -52,23 +52,24 @@ public class DistributorProvider extends AbstractFlexProvider<DistributorProvide
 			for (URI distributor:distributoren){
 				
 				if(Util.debug)System.out.println(distributor+" ja ");
-				order=Helper.getNewURIs(distributor,"select ?orderid where {?? :orderid ?orderid}","orderid");
+				order=Helper.getNewURIs(distributor,"select ?order where {?? :order ?order}","order");
 				if(Util.debug)System.out.println(order);
 				if(Util.debug)System.out.println(distributor+" "+order.size());
 				if(order.size()==1){
 					if(Util.debug)System.out.println("Order1");
-					o= Helper.query(order.get(0),Util.srSPARQL,"srpempfohlenerpreis");
+					o= Helper.query(order.get(0),Util.srSPARQL,"srp");
 					za=Helper.literalToString(o[0]);
 					price=Double.parseDouble(za);
 					System.out.println(price);
 				}else{
 				for (int x=0;x<order.size();x++){
-					o= Helper.query(order.get(x),Util.srSPARQL,"srpempfohlenerpreis");
+					o= Helper.query(order.get(x),Util.srSPARQL,"srp");
 					System.out.println(o[0]+" O ");
 					za=Helper.literalToString(o[0]);
 					price=price+Double.parseDouble(za);
 					System.out.println(price);
 				}	}
+				price=Math.floor(price*100)/100;;
 				if(order.size()==1){
 				res.add(ProviderUtils.createStatement(distributor, RDFUtil.uri("Es liegt eine Bestellungen vor mit einem Gesamtwert von "+price+"€"), order.get(0)));
 				}else{for (int x=0;x<order.size();x++){

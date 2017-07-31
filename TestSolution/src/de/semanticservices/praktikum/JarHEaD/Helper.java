@@ -344,7 +344,7 @@ public static TupleQueryResult getIterator(URI current,String SPARQL,String para
 	}
 	public static List<URI> getDistributor(URI type) throws QueryEvaluationException{
 		List<URI>uris=new ArrayList<URI>();
-		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select * where {?x :personenid ?y}","y");
+		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select * where {?x :personen ?y}","y");
 		 for(URI uri:uriStrings){
 			 if (Util.debug)System.out.println(uri);
 		 uris.add(uri);
