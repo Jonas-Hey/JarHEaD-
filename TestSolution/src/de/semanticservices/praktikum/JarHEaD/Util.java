@@ -14,7 +14,7 @@ public class Util {
 	public static final String gemeinde = ":GEMEINDE";
 	public static final String länge=":längengrad";
 	public static final String breite=":breitengrad";
-	public static final String distributor=":personen";
+	public static final String distributor=":distributor";
 	public static final String srSPARQL="select ?srp where {?? :srp ?srp}";
 	public static boolean debug=true;
 	
