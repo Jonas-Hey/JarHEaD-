@@ -68,7 +68,7 @@ public class DistanceProvider extends AbstractFlexProvider<DistanceProvider.Conf
 		   					if(Util.debug){System.out.println("distance ist -1");}
 		   				continue;
 		   				}else if (distance<config.range){		   					
-		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Abstand unter "+range),
+		   					res.add(ProviderUtils.createStatement(gemeinde, RDFUtil.uri("Im Umkreis von "+range),
 		   							vergleich));
 		   				}
 		   				/*else if (distance<30){

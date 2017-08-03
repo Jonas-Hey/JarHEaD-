@@ -3,10 +3,10 @@ Ant-Version: Apache Ant 1.9.6
 Created-By: 1.8.0_131-b12 (Oracle Corporation)
 project: TestSolution
 ProductName: TestSolution
-ProductLongName: JarHEaD v2
-ProductVersion: 2.0.5
-version: 2.0.5
+ProductLongName: JarHEaD v2.1
+ProductVersion: 2.2
+version: 2.2
 ProductContact: n/a
 CompanyName: n/a
-date: 2017-07-31_08:24:17
+date: 2017-08-03_09:12:36
 

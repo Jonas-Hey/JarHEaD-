@@ -353,5 +353,15 @@ public static TupleQueryResult getIterator(URI current,String SPARQL,String para
 		return uris;
 	}
 	
+	public static List<URI> getZips(URI type) throws QueryEvaluationException{
+		List<URI>uris=new ArrayList<URI>();
+		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select * where {?x :postleitzahl ?y}","x");
+		 for(URI uri:uriStrings){
+			 if (Util.debug)System.out.println(uri);
+		 uris.add(uri);
+		 }
+		
+		return uris;
+	}
 	
 }

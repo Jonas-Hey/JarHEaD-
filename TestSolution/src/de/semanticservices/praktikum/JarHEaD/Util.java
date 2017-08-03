@@ -57,11 +57,14 @@ public class Util {
 		if (Util.debug)System.out.println(rechtsLänge+" c "+rechtsBreite);
 		
 		l =Helper.query(left, SPARQL,"längengrad","breitengrad");
+				
 		
 		if (l[0]!=null&&l[1]!=null&&!(l[1].isEmpty())&&!l[0].isEmpty()&&!l[0].equals("0")&&!l[1].equals("0")){
-			if(Util.debug)System.out.println("Ausgabe von l: "+l);
+					if(Util.debug)System.out.println("Ausgabe von l: "+l);
 		linksBreite=Helper.literalToString(l[1]);
 		linksLänge=Helper.literalToString(l[0]);}//kann sein, dass nichts oder mehr als eins zurück gegeben wird
+		
+		
 		
 		
 		if (Util.debug)System.out.println(linksLänge+" O "+linksBreite);
@@ -81,8 +84,7 @@ public class Util {
 			
 		}
 		
-		return Util.berechneDistance(Double.parseDouble(rechtsLänge),Double.parseDouble(rechtsBreite),Double.parseDouble(linksLänge),Double.parseDouble(linksBreite));
-		
+		return Util.berechneDistance(Helper.stringToDouble(rechtsLänge),Helper.stringToDouble(rechtsBreite),Helper.stringToDouble(linksLänge),Helper.stringToDouble(linksBreite));
 	}
 
 	/**

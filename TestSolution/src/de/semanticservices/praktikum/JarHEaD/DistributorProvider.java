@@ -69,11 +69,15 @@ public class DistributorProvider extends AbstractFlexProvider<DistributorProvide
 					price=price+Double.parseDouble(za);
 					System.out.println(price);
 				}	}
-				price=Math.floor(price*100)/100;;
+				price=Math.floor(price*100)/100;
+				System.out.println(order.get(0));;
+				
 				if(order.size()==1){
-				res.add(ProviderUtils.createStatement(distributor, RDFUtil.uri("Es liegt eine Bestellungen vor mit einem Gesamtwert von "+price+"€"), order.get(0)));
+					String var="Es liegt eine Bestellungen vor mit einem Gesamtwert von "+price+"€";
+				res.add(ProviderUtils.createStatement(distributor, RDFUtil.uri(var), order.get(0)));
 				}else{for (int x=0;x<order.size();x++){
-				res.add(ProviderUtils.createStatement(distributor, RDFUtil.uri("Es liegen "+order.size()+" Bestellungen vor mit einem Gesamtwert von "+price+"€"), order.get(x)));
+					String var="Es liegen "+order.size()+" Bestellungen vor mit einem Gesamtwert von "+price+"€";
+				res.add(ProviderUtils.createStatement(distributor, RDFUtil.uri(var), order.get(x)));
 					
 				}}
 				
