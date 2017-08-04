@@ -18,8 +18,8 @@ import com.fluidops.iwb.util.RDFUtil;
 import de.semanticservices.praktikum.JarHEaD.DistanceProvider.Config;
 
 /**
- * A Provider that asks for all municipalities and then calculates the distance between them
- * and writes it in the database
+ * The Provider takes all Distributors, their offers and the price and gives back
+ * the Distributor how many offers he has and the total profit.
  */
 @SuppressWarnings("unused")
 public class DistributorProvider extends AbstractFlexProvider<DistributorProvider.Config> {

@@ -18,8 +18,7 @@ import com.fluidops.iwb.util.RDFUtil;
 import de.semanticservices.praktikum.JarHEaD.DistanceProvider.Config;
 
 /**
- * A Provider that asks for all municipalities and then calculates the distance between them
- * and writes it in the database
+ * A Provider that writes the total profit and all orders within all Zip codes
  */
 @SuppressWarnings("unused")
 public class ZipProvider extends AbstractFlexProvider<ZipProvider.Config> {
