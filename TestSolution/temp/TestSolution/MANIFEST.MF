@@ -4,9 +4,9 @@ Created-By: 1.8.0_131-b12 (Oracle Corporation)
 project: TestSolution
 ProductName: TestSolution
 ProductLongName: JarHEaD v2.1
-ProductVersion: 2.2
-version: 2.2
+ProductVersion: 2.3
+version: 2.3
 ProductContact: n/a
 CompanyName: n/a
-date: 2017-08-03_09:12:36
+date: 2017-08-04_10:07:24
 
