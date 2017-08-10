@@ -353,9 +353,20 @@ public static TupleQueryResult getIterator(URI current,String SPARQL,String para
 		return uris;
 	}
 	
+	public static List<URI> getNewDistributor(URI type) throws QueryEvaluationException{
+		List<URI>uris=new ArrayList<URI>();
+		List<URI> uriStrings=getNode(RDFUtil.uri("x"),"Select * where {?x :distributor ?y}","x");
+		 for(URI uri:uriStrings){
+			 if (Util.debug)System.out.println(uri);
+		 uris.add(uri);
+		 }
+		
+		return uris;
+	}
+	
 	public static List<URI> getPlz(URI type) throws QueryEvaluationException{
 		List<URI>uris=new ArrayList<URI>();
-		List<URI> uriStrings=getNode(RDFUtil.uri("y"),"Select * where {?x :gemeindename ?y}","x");
+		List<URI> uriStrings=getNode(null,"Select * where {?x :gemeindename ?y}","x");
 		 for(URI uri:uriStrings){
 			 if (Util.debug)System.out.println(uri);
 		 uris.add(uri);

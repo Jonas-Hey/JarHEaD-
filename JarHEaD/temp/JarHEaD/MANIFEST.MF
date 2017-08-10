@@ -4,9 +4,9 @@ Created-By: 1.8.0_131-b12 (Oracle Corporation)
 project: JarHEaD
 ProductName: JarHEaD
 ProductLongName: JarHEaD for fluidOps Platform
-ProductVersion: 3
-version: 3
+ProductVersion: 3.1
+version: 3.1
 ProductContact: n/a
 CompanyName: n/a
-date: 2017-08-10_01:52:35
+date: 2017-08-10_08:51:31
 
